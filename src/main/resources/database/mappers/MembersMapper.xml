@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- namespace의 값은 사용할 DAO의 풀 패키지명 -->
+<mapper namespace="com.iu.home.member.MemberDAO">
+	<!-- id == DAO.method name -->
+	<select id="getLogin" parameterType="MemberDTO"
+		resultMap="getLoginResult">
+		select m.userid, m.username, c.classname, c.classnum
+		from
+		promembers m
+		inner join
+		userclass uc
+		on m.userid = uc.userid
+		inner join
+		class c
+		on
+		uc.classnum = c.classnum
+		where m.userid=#{userid} and m.pwd=#{pwd}
+		<!-- sql문 에러 고치기 -->
+	</select>
+
+	<resultMap type="MemberDTO" id="getLoginResult">
+		<id column="userid" property="userid" />
+		<result column="username" property="username" />
+		<collection property="classDTOs" javaType="List"
+			ofType="ClassDTO">
+			<id column="classnum" property="classNum" />
+			<result column="classname" property="className" />
+		</collection>
+	</resultMap>
+
+	<insert id="setJoin" parameterType="MemberDTO">
+		INSERT INTO promembers
+		VALUES(#{userid},#{username},#{pwd},#{email},#{age},#{birth},#{phone},#{gender})
+		<!-- insert into promembers values('id2', 'name2', 'pwd2', 'email2', 2, 'birth2', 
+			'phone2', 2); -->
+	</insert>
+	<!-- <select id="getMyPage" parameterType="BankMembersDTO" resultMap="getMyPageResult"> 
+		SELECT BM.USERID, NAME, EMAIL, PHONE,FILENUM, FILENAME, ACCOUNTNUM, BOOKNAME, 
+		ACCOUNTDATE FROM BANKMEMBERS BM LEFT JOIN MEMBERFILE MF ON BM.USERID = MF.USERID 
+		LEFT JOIN BANKACCOUNT BA ON BM.USERID = BA.USERID LEFT JOIN BANKBOOK BB ON 
+		BA.BOOKNUM = BB.BOOKNUM WHERE BM.userid = #{userid} </select> -->
+	<!-- <resultMap type="BankMembersDTO" id="getMyPageResult"> <id column="USERID" 
+		property="userid" /> <result column="NAME" property="name" /> <result column="EMAIL" 
+		property="email" /> <result column="PHONE" property="phone" /> <collection 
+		property="bankAccountDTOs" javaType="List" ofType="BankAccountDTO"> <id column="ACCOUNTNUM" 
+		property="accountNum" /> <result column="ACCOUNTDATE" property="accountDate" 
+		/> <association property="bankBookDTO" javaType="bankBookDTO"> <result column="BOOKNUM" 
+		property="bookName" /> </association> <association property="bankMembersFileDTO" 
+		javaType="bankMembersFileDTO"> <id column="FILENUM" property="fileNum" /> 
+		<result column="FILENAME" property="fileName" /> </association> </collection> 
+		</resultMap> -->
+
+</mapper>
