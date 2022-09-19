@@ -9,7 +9,6 @@
 	Hello world!  
 </h1>
 
-	<a href="./chat/join">chat</a>
 <P>  The time on the server is ${serverTime}. </P>
 </body>
 </html>
