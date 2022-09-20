@@ -75,12 +75,27 @@ function em() {
     else {
         document.getElementById("emailText").style.display = 'none';
     }
-    let regExp = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/;
-    const emch = document.getElementById("email");
-    let rs = regExp.test(emch.value);
-    console.log(emch.value);
-    console.log(rs);
+    // let regExp = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/;
+    // const emch = document.getElementById("email");
+    // let rs = regExp.test(emch.value);
+    // console.log(emch.value);
+    // console.log(rs);
 }
+
+var emin = document.getElementById("email2");
+var emse = document.getElementById("emse");
+
+emse.addEventListener("change", function(){
+    console.log("value: " + emse.options[emse.selectedIndex].value);
+    console.log("text: " + emse.options[emse.selectedIndex].text);
+    let emvalue = emse.options[emse.selectedIndex].value;
+    let emtext = emse.options[emse.selectedIndex].text;
+    console.log(emvalue);
+    console.log(emtext);
+    console.log("변경 테스트: " + emvalue);
+    $("#email2").val(emvalue);
+});
+
 phone.addEventListener("blur", ph);
 function ph() {
     let ne = phone.value;
@@ -217,7 +232,7 @@ const frm = document.getElementById("frm");
 
 btn.addEventListener("click", function () {
     console.log(idcheck && pwdcheck && namecheck && emailcheck && phonecheck);
-    if ((idcheck && pwdcheck && namecheck && emailcheck && phonecheck) == true) {
+    if ((idcheck && pwdcheck && namecheck && emailcheck && phonecheck && agecheck && brithcheck && gendercheck) == true) {
         frm.submit();
     }
     else {

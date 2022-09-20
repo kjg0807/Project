@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -65,5 +66,15 @@ public class MemberController
 		System.out.println("Join GET Test");
 
 		return "member/join";
+	}
+	
+	@PostMapping
+	public String join(MemberDTO memberDTO, HttpSession session) throws Exception {
+		System.out.println("Join POST Test");
+		
+		int rs = memberService.setJoin(memberDTO, session.getServletContext());
+		System.out.println(memberDTO.getUserid());
+
+		return "redirect:./login";
 	}
 }

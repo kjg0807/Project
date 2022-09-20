@@ -20,7 +20,7 @@ public class MemberService
 		return memberDAO.getLogin(memberDTO);
 	}
 
-	public int setJoin(MemberDTO memberDTO) throws Exception
+	public int setJoin(MemberDTO memberDTO, ServletContext servletContext) throws Exception
 	{
 		return memberDAO.setJoin(memberDTO);
 	}
