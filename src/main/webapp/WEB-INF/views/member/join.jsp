@@ -68,10 +68,12 @@
 						<!-- phone -->
 						<div class="mb-3">
 							<label class="form-label">Phone</label> <input type="text" class="form-control" name="phone"
-								id="phone" placeholder="Phone Input" onfocus="this.placeholder=''"
-								onblur="this.placeholder='Phone Input'">
+								id="phone" placeholder="Phone Input - 010-xxxx-xxxx" onfocus="this.placeholder=''"
+								onblur="this.placeholder='Phone Input - 010-xxxx-xxxx'">
 							<!-- 입력 후 최소 1글자 이상 -->
 							<div id="phoneText" style="display: none; color: red;">최소 1글자를 입력하세요.</div>
+							<div id="phoneText1" style="display: none; color: red;">휴대전화 번호 형식에 맞지 않습니다.</div>
+							<div id="phoneText2" style="display: none; color: red;">숫자를 입력하세요.</div>
 						</div>
 						<!-- 나이 -->
 						<div class="mb-3">
@@ -82,7 +84,7 @@
 							<div id="ageText" style="display: none; color: red;">최소 1글자를 입력하세요.</div>
 							<div id="ageText1" style="display: none; color: red;">0보다 큰 숫자를 입력하세요.</div>
 							<div id="ageText2" style="display: none; color: red;">숫자를 입력하세요.</div>
-							<div id="ageText3" style="display: none; color: red;">2자리만 입력 가능합니다.</div>
+							<div id="ageText3" style="display: none; color: red;">2자리 이하만 입력 가능합니다.</div>
 						</div>
 						<!-- 생년월일 -->
 						<div class="mb-3">
@@ -96,12 +98,13 @@
 						<!-- 성별 -->
 						<div class="mb-3">
 							<label class="form-label">Gender</label> <input type="text" class="form-control"
-								name="Gender" id="gender" placeholder="Gender Input - ex)1"
+								name="Gender" id="gender" placeholder="Gender Input - man: 1, women: 2"
 								onfocus="this.placeholder=''" onblur="this.placeholder='Gender Input - man: 1, women: 2'">
 							<!-- 입력 후 최소 1글자 이상 -->
 							<div id="genderText" style="display: none; color: red;">최소 1글자를 입력하세요.</div>
-							<div id="genderText1" style="display: none; color: red;">남자는 1, 여자는 2를 입력하세요.</div>
-							<div id="genderText2" style="display: none; color: red;">1글자만 입력 가능합니다.</div>
+							<div id="genderText1" style="display: none; color: red;">형식에 맞게 입력하세요.</div>
+							<div id="genderText2" style="display: none; color: red;">1 또는 2만 입력 가능합니다.</div>
+							<div id="genderText3" style="display: none; color: red;">숫자를 입력하세요.</div>
 						</div>
 
 						<!-- id, pwd, name, email, phone의 각 조건을 검사 후 조건이 맞을때만 회원가입 -->

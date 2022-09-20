@@ -75,16 +75,35 @@ function em() {
     else {
         document.getElementById("emailText").style.display = 'none';
     }
+    let regExp = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/;
+    const emch = document.getElementById("email");
+    let rs = regExp.test(emch.value);
+    console.log(emch.value);
+    console.log(rs);
 }
 phone.addEventListener("blur", ph);
 function ph() {
     let ne = phone.value;
-    if (ne.length < a) {
+    // 입력하지 않았을 때
+    if (ne.length == 0) {
         document.getElementById("phoneText").style.display = 'block';
         phonecheck = false;
     }
     else {
         document.getElementById("phoneText").style.display = 'none';
+    }
+    // 전화번호 유효 검사
+    let regExp = /^(010)-?[0-9]{3,4}-?[0-9]{4}$/;
+    const phone_number = document.getElementById("phone");
+    phnum = phone_number.value;
+    let rs = regExp.test(phnum);
+    console.log(rs);
+    if (rs == false) {
+        document.getElementById("phoneText1").style.display = 'block';
+        phonecheck = false;
+    }
+    else {
+        document.getElementById("phoneText1").style.display = 'none';
     }
 }
 
@@ -142,11 +161,7 @@ birth.addEventListener("blur", function () {
     }
     else {
         document.getElementById("birthText1").style.display = 'none';
-    }
-
-    console.log(isNaN(ne));
-    console.log(!isNaN(ne));
-    if (isNaN(ne)) { // 숫자가 아닐 때 - 문자열이면 true
+    } if (isNaN(ne)) { // 숫자가 아닐 때 - 문자열이면 true
         document.getElementById("birthText2").style.display = 'block';
         birthcheck = false;
     }
@@ -158,26 +173,38 @@ birth.addEventListener("blur", function () {
 const gender = document.getElementById("gender");
 gender.addEventListener("blur", function () {
     let ne = gender.value;
-    if (ne.length < a) {
+    console.log(ne);
+    // 아무것도 입력하지 않았을 때
+    if (ne.length == 0) {
         document.getElementById("genderText").style.display = 'block';
+        gendercheck = false;
     }
     else {
         document.getElementById("genderText").style.display = 'none';
     }
-    
-    // 1자리만 입력가능
-    if (ne > 1) {
+    // 숫자가 아닐 때
+    if (isNaN(ne)) {
+        document.getElementById("genderText3").style.display = 'block';
+        gendercheck = false;
+    }
+    else {
+        document.getElementById("genderText3").style.display = 'none';
+    }
+    // 남자 : 1 여자 : 2 가 아닐 때
+    if (!ne == 1 && !ne == 2) {
         document.getElementById("genderText1").style.display = "block";
+        gendercheck = false;
     }
     else {
         document.getElementById("genderText1").style.display = 'none';
     }
-    // 남자 : 1 여자 : 2
-    if (!ne == 1) {
-        document.getElementById("genderText2").style.display = "block";
-    }
-    else if (!ne == 2) {
-        document.getElementById("genderText2").style.display = "block";
+    // 2보다 큰 숫자 입력시 , 2자리이상 입력시
+    if (ne > 2 || ne.length > 1) {
+        document.getElementById("genderText2").style.display = 'block';
+        if (isNaN(ne)) {
+            document.getElementById("genderText2").style.display = 'none';
+        }
+        gendercheck = false;
     }
     else {
         document.getElementById("genderText2").style.display = 'none';
