@@ -69,11 +69,11 @@ public class MemberController
 	}
 	
 	@PostMapping
-	public String join(MemberDTO memberDTO, HttpSession session) throws Exception {
+	public String join(MemberDTO memberDTO) throws Exception {
 		System.out.println("Join POST Test");
 		
-		int rs = memberService.setJoin(memberDTO, session.getServletContext());
-		System.out.println(memberDTO.getUserid());
+		int rs = memberService.setJoin(memberDTO);
+		System.out.println(rs == 1);
 
 		return "redirect:./login";
 	}

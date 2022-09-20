@@ -31,12 +31,13 @@
 	</resultMap>
 
 	<insert id="setJoin" parameterType="MemberDTO">
-		INSERT INTO promembers
-		VALUES(#{userid},#{username},#{pwd},#{email},#{age},#{birth},#{phone},#{gender})
+		insert into promembers values(#{userid}, #{username}, #{pwd},
+		#{email}, #{age}, #{birth}, #{phone}, #{gender})	<!-- INSERT INTO promembers 
+			VALUES(#{userid},#{username},#{pwd},#{email},#{age},#{birth},#{phone},#{gender}) -->
 	</insert>
-	
+
 	<!-- class 등급 설정하는 insert문 만들기 -->
-	
+
 	<!-- <select id="getMyPage" parameterType="BankMembersDTO" resultMap="getMyPageResult"> 
 		SELECT BM.USERID, NAME, EMAIL, PHONE,FILENUM, FILENAME, ACCOUNTNUM, BOOKNAME, 
 		ACCOUNTDATE FROM BANKMEMBERS BM LEFT JOIN MEMBERFILE MF ON BM.USERID = MF.USERID 

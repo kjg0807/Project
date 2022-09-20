@@ -7,6 +7,7 @@
 	<typeAliases>
 		<typeAlias type="com.iu.home.member.MemberDTO" alias="MemberDTO" />
 		<typeAlias type="com.iu.home.member.ClassDTO" alias="ClassDTO" />
+		<typeAlias type="com.iu.home.member.UserClassDTO" alias="UserClassDTO" />
 
 		<typeAlias type="java.lang.String" alias="String" />
 		<typeAlias type="java.lang.Long" alias="Long" />
