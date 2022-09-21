@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="com.iu.home.party.PartyDAO">
+	
+	<insert id="setPartyFileAdd">
+		INSERT INTO PARTYFILE
+			VALUES(PARTYFILE_SEQ.NEXTVAL, #{fileName}, #{oriName}, #{partyNum})
+	</insert>
+	
+	<select id="getPartyDetail" parameterType="PartyDTO" resultMap="getPartyFile">
+		SELECT P.*, PF.* FROM PARTYLIST P 
+			LEFT JOIN PARTYFILE PF ON P.PARTYNUM = PF.PARTYNUM
+				WHERE P.PARTYNUM=#{partyNum}
+	</select>
+	
+	<resultMap type="PartyListDTO" id="getPartyFile">
+		<id column="PARTYNUM" property="partyNum"/>
+		<result column="USERID" property="userID"/>
+		<result column="SHOPNUM" property="shopName"/>
+		<result column="PARTYTITLE" property="partyTitle"/>
+		<result column="PARTYCONTENTS" property="partyContents"/>
+		<result column="PARTYREGDATE" property="partyRegdate"/>
+		<result column="PARTYTIMOUT" property="partyTimeout"/>
+		<collection property="partyFileDTOs" javaType="List" ofType="partyFileDTO">
+			<id column="FILENUM" property="fileNum"/>
+			<result column="FILENAME" property="fileName"/>
+			<result column="ORINAME" property="oriName"/>
+		</collection>
+	</resultMap>
+	
+
+    <select id="getPartyList" resultType="PartyListDTO" parameterType="Pager">
+    	SELECT * FROM 
+    		(SELECT ROWNUM R, P.* FROM
+    			(SELECT * FROM PARTYList
+    			ORDER BY PARTYNUM DESC) P
+    				) WHERE R BETWEEN #{startRow} AND #{lastRow}
+    </select>
+    
+    <select id="getPartyCount" resultType="Long" parameterType="Pager">
+    	SELECT COUNT(partyNum) FROM PARTYList WHERE SHOPNUM LIKE '%'||#{search}||'%'	
+    </select>
+    
+    <insert id="setPartyAdd" parameterType="PartyListDTO">
+    	INSERT INTO PARTY VALUES (
+    		PARTY_SEQ.NEXTVAL, #{userID}, #{shopNum}, #{partyTitle}, #{partyContents}, sysdate, sysdate+(#{partyHH}*60)+#{partymm)/(24*60))
+    </insert>
+    
+    
+    
+    
+    
+</mapper>    

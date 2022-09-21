@@ -96,6 +96,10 @@ local.properties
 hs_err_pid*
 replay_pid*
 
+#My DBConnector
+DBConnector.java
+target/
+
 ### Maven ###
 target/
 pom.xml.tag
