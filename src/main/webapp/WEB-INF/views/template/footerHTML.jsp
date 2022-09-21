@@ -9,7 +9,17 @@
 			<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/footer.css">
 		</head>
 		<style>
-			
+			.ab{
+				margin: auto;
+			}
+			.ccc{
+				margin-left: 30%;
+			}
+			.aa{
+				align-content: left;
+				height: 400px;
+				font-size: small;
+			}
 		</style>
 
 		<body>
@@ -29,8 +39,8 @@
 					<div class="map-img-box">
 						<img src="" alt="">
 					</div>
-					<div class="map-text-box">
-						<div class="map-list">
+					<div class="map-text-box aa">
+						
 							<h3>찾아오시는길</h3>
 							<span>HIT 513-2호 본사 / FTC 812호 연구실 / 신소재공학관 B111 실험실<br /> 서울특별시 성동구 왕십리로 222 한양대학교 HIT
 								513-2호<br />
@@ -39,13 +49,13 @@
 								<p>버스 이용시</p> 2012, 2014, 2016, 2222, 302, 121 한양대학교 앞 하차 도보 5분<br />
 								<hr /> jmk9445@hanyang.ac.kr
 							</span>
-						</div>
+						
 					</div>
 				</div>
 			</div>
 			<!-- main-board end-->
-			<div class="footer">
-				<p>Copyright © UJUENERTECH.COM All rights reserved.</p>
+			<div class="footer ab">
+				<p class="ccc">Copyright © UJUENERTECH.COM All rights reserved.</p>
 			</div>
 		</body>
 

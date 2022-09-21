@@ -24,4 +24,9 @@ public class MemberService
 	{
 		return memberDAO.setJoin(memberDTO);
 	}
+
+	public MemberDTO getMyPage(MemberDTO memberDTO) throws Exception
+	{
+		return memberDAO.getMyPage(memberDTO);
+	}
 }

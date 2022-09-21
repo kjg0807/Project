@@ -9,6 +9,7 @@ phonecheck = true;
 
 id.addEventListener("blur", id1);
 function id1() {
+    console.log(id.value);
     let d = id.value;
     if (d.length < 2) {
         document.getElementById("idText").style.display = 'block';
@@ -75,11 +76,6 @@ function em() {
     else {
         document.getElementById("emailText").style.display = 'none';
     }
-    // let regExp = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/;
-    // const emch = document.getElementById("email");
-    // let rs = regExp.test(emch.value);
-    // console.log(emch.value);
-    // console.log(rs);
 }
 
 var emin = document.getElementById("email2");
@@ -90,9 +86,9 @@ emse.addEventListener("change", function(){
     console.log("text: " + emse.options[emse.selectedIndex].text);
     let emvalue = emse.options[emse.selectedIndex].value;
     let emtext = emse.options[emse.selectedIndex].text;
-    console.log(emvalue);
-    console.log(emtext);
-    console.log("변경 테스트: " + emvalue);
+    // console.log(emvalue);
+    // console.log(emtext);
+    // console.log("변경 테스트: " + emvalue);
     $("#email2").val(emvalue);
 });
 
@@ -112,7 +108,7 @@ function ph() {
     const phone_number = document.getElementById("phone");
     phnum = phone_number.value;
     let rs = regExp.test(phnum);
-    console.log(rs);
+    // console.log(rs);
     if (rs == false) {
         document.getElementById("phoneText1").style.display = 'block';
         phonecheck = false;
@@ -188,7 +184,7 @@ birth.addEventListener("blur", function () {
 const gender = document.getElementById("gender");
 gender.addEventListener("blur", function () {
     let ne = gender.value;
-    console.log(ne);
+    // console.log(ne);
     // 아무것도 입력하지 않았을 때
     if (ne.length == 0) {
         document.getElementById("genderText").style.display = 'block';
@@ -231,7 +227,7 @@ const btn = document.getElementById("btn");
 const frm = document.getElementById("frm");
 
 btn.addEventListener("click", function () {
-    console.log(idcheck && pwdcheck && namecheck && emailcheck && phonecheck);
+    console.log(idcheck && pwdcheck && namecheck && emailcheck && phonecheck && agecheck && brithcheck && gendercheck);
     if ((idcheck && pwdcheck && namecheck && emailcheck && phonecheck && agecheck && brithcheck && gendercheck) == true) {
         frm.submit();
     }

@@ -27,7 +27,7 @@
 		<section class="col-lg-6 container-fluid mt-4">
 			<div class="row">
 				<div class="mb-3">
-					<label>ID</label> <input type="text" id="id" class="form-control" name="userid" aria-describedby="emailHelp" placeholder="ID Input"
+					<label>ID</label> <input type="text" id="id" class="form-control" name="userid" placeholder="ID Input"
 						onfocus="this.placeholder=''" onblur="this.placeholder='ID Input'"
 					>
 					<div>We'll never share your ID with anyone else.</div>

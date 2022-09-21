@@ -34,11 +34,15 @@ public class MemberController
 	{
 		ModelAndView mv = new ModelAndView();
 		System.out.println("Login POST Test");
+		System.out.println(memberDTO.getUserid());
+		System.out.println(memberDTO.getPwd());
 		memberDTO = memberService.getLogin(memberDTO);
 		session.setAttribute("member", memberDTO);
 
+		System.out.println(memberDTO);
+
 		String message = "로그인 실패";
-		String url = "../member/login.naver";
+		String url = "../member/login";
 		if (memberDTO != null)
 		{ // login succeed
 			message = "로그인 성공";
@@ -60,21 +64,47 @@ public class MemberController
 		return "redirect:../";
 	}
 
-	@GetMapping
+	@GetMapping(value = "join")
 	public String join()
 	{
 		System.out.println("Join GET Test");
 
 		return "member/join";
 	}
-	
-	@PostMapping
-	public String join(MemberDTO memberDTO) throws Exception {
+
+	@PostMapping(value = "join")
+	public ModelAndView join(MemberDTO memberDTO) throws Exception
+	{
+		ModelAndView mv = new ModelAndView();
 		System.out.println("Join POST Test");
-		
+		// System.out.println(memberDTO);
+		// System.out.println(memberDTO.getUserid());
+		System.out.println(memberDTO.getUsername());
+		// System.out.println(memberDTO.getGender());
+
 		int rs = memberService.setJoin(memberDTO);
 		System.out.println(rs == 1);
 
-		return "redirect:./login";
+		mv.addObject("join", memberDTO);
+		mv.setViewName("redirect:./login");
+
+		// return "redirect:./login";
+		return mv;
+	}
+
+	@GetMapping(value = "mypage")
+	public ModelAndView mypage(HttpSession session) throws Exception
+	{
+		ModelAndView mv = new ModelAndView();
+		System.out.println("mypage Get Test");
+		
+		MemberDTO memberDTO = (MemberDTO) session.getAttribute("member");
+		memberDTO = memberService.getMyPage(memberDTO);
+		System.out.println("getMyPage: " + memberDTO);
+		mv.addObject("dto", memberDTO);
+
+		mv.setViewName("member/mypage");
+		
+		return mv;
 	}
 }

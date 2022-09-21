@@ -21,14 +21,15 @@
 
 			<c:import url="../template/headerHTML.jsp"></c:import>
 
-			<form action="./join" method="post" enctype="multipart/form-data" id="frm">
+			<form action="./join" method="post" id="frm">
 				<br>
 				<h1>Join Page</h1>
 				<section class="col-lg-6 container-fluid mt-4">
 					<div class="row">
 						<!-- id -->
 						<div class="mb-3">
-							<label class="form-label">아이디</label> <input type="text" class="form-control" name="userid"
+							<label class="form-label">아이디</label> 
+							<input type="text" class="form-control" name="userid"
 								aria-describedby="emailHelp" id="id" placeholder="아이디 입력"
 								onfocus="this.placeholder=''" onblur="this.placeholder='아이디 입력'">
 							<!-- id를 입력하고 나왔을 때 2글자 미만이면 메세지 출력 : id는 2글자 이상 -->
@@ -53,7 +54,7 @@
 						</div>
 						<!-- name -->
 						<div class="mb-3">
-							<label class="form-label">이름</label> <input type="text" class="form-control" name="name"
+							<label class="form-label">이름</label> <input type="text" class="form-control" name="username"
 								aria-describedby="emailHelp" id="name" placeholder="이름 입력"
 								onfocus="this.placeholder=''" onblur="this.placeholder='이름 입력'">
 							<!-- 입력 후 최소 1글자 이상 -->
@@ -128,7 +129,7 @@
 						</div>
 						<!-- 성별 -->
 						<div class="mb-3">
-							<label class="form-label">성별</label> <input type="text" class="form-control" name="Gender"
+							<label class="form-label">성별</label> <input type="text" class="form-control" name="gender"
 								id="gender" placeholder="성별 입력 - 남: 1, 여: 2" onfocus="this.placeholder=''"
 								onblur="this.placeholder='성별 입력 - 남: 1, 여: 2'">
 							<!-- 입력 후 최소 1글자 이상 -->

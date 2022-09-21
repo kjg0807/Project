@@ -9,7 +9,7 @@ public class MemberDAO
 {
 	@Autowired
 	private SqlSession sqlSession;
-	private final String NAMESPACE = "com.iu.home.member.MemberDAO.";
+	public final String NAMESPACE = "com.iu.home.member.MemberDAO.";
 
 	public MemberDTO getLogin(MemberDTO memberDTO) throws Exception
 	{
@@ -19,5 +19,10 @@ public class MemberDAO
 	public int setJoin(MemberDTO memberDTO) throws Exception
 	{
 		return sqlSession.insert(NAMESPACE + "setJoin", memberDTO);
+	}
+
+	public MemberDTO getMyPage(MemberDTO memberDTO) throws Exception
+	{
+		return sqlSession.selectOne(NAMESPACE + "getMyPage", memberDTO);
 	}
 }

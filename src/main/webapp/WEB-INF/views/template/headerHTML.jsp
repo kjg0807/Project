@@ -31,7 +31,7 @@
 						<ul class="navbar-nav mb-2 mb-lg-0 ms-lg-4">
 							<c:choose>
 								<c:when test="${member != null }">
-									<li class="nav-item">${member.username}님안녕하세요!</li>
+									<li class="nav-item"><b><a class="nav-link" href="#">${member.username}님안녕하세요!</a></b></li>
 									<button class="btn btn-outline-dark" onclick="location.href='/member/mypage';"
 										type="submit" style="width: 90px; margin-left: 3px">
 										My Page

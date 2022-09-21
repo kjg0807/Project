@@ -9,14 +9,15 @@
 		select m.userid, m.username, c.classname, c.classnum
 		from
 		promembers m
-		inner join
+		LEFT join <!-- userclass 자동부여 만들고 inner -->
 		userclass uc
 		on m.userid = uc.userid
-		inner join
+		LEFT join <!-- class 자동부여 만들고 inner -->
 		class c
 		on
 		uc.classnum = c.classnum
-		where m.userid=#{userid} and m.pwd=#{pwd}
+		where m.userid=#{userid} and
+		m.pwd=#{pwd}
 		<!-- sql문 에러 고치기 -->
 	</select>
 
@@ -31,27 +32,43 @@
 	</resultMap>
 
 	<insert id="setJoin" parameterType="MemberDTO">
-		insert into promembers values(#{userid}, #{username}, #{pwd},
-		#{email}, #{age}, #{birth}, #{phone}, #{gender})	<!-- INSERT INTO promembers 
-			VALUES(#{userid},#{username},#{pwd},#{email},#{age},#{birth},#{phone},#{gender}) -->
+		insert into promembers
+		values(#{userid}, #{username}, #{pwd}, #{email},
+		#{age}, #{birth}, #{phone}, #{gender})
+		<!-- INSERT INTO promembers VALUES(#{userid},#{username},#{pwd},#{email},#{age},#{birth},#{phone},#{gender}) -->
 	</insert>
 
 	<!-- class 등급 설정하는 insert문 만들기 -->
 
-	<!-- <select id="getMyPage" parameterType="BankMembersDTO" resultMap="getMyPageResult"> 
-		SELECT BM.USERID, NAME, EMAIL, PHONE,FILENUM, FILENAME, ACCOUNTNUM, BOOKNAME, 
-		ACCOUNTDATE FROM BANKMEMBERS BM LEFT JOIN MEMBERFILE MF ON BM.USERID = MF.USERID 
-		LEFT JOIN BANKACCOUNT BA ON BM.USERID = BA.USERID LEFT JOIN BANKBOOK BB ON 
-		BA.BOOKNUM = BB.BOOKNUM WHERE BM.userid = #{userid} </select> -->
-	<!-- <resultMap type="BankMembersDTO" id="getMyPageResult"> <id column="USERID" 
-		property="userid" /> <result column="NAME" property="name" /> <result column="EMAIL" 
-		property="email" /> <result column="PHONE" property="phone" /> <collection 
-		property="bankAccountDTOs" javaType="List" ofType="BankAccountDTO"> <id column="ACCOUNTNUM" 
-		property="accountNum" /> <result column="ACCOUNTDATE" property="accountDate" 
-		/> <association property="bankBookDTO" javaType="bankBookDTO"> <result column="BOOKNUM" 
-		property="bookName" /> </association> <association property="bankMembersFileDTO" 
-		javaType="bankMembersFileDTO"> <id column="FILENUM" property="fileNum" /> 
-		<result column="FILENAME" property="fileName" /> </association> </collection> 
-		</resultMap> -->
+	<select id="getMyPage" parameterType="MemberDTO"
+		resultMap="getMyPageResult">
+		select m.userid, username, email, phone, c.classname
+		from
+		promembers m
+		LEFT join
+		userclass uc
+		on m.userid = uc.userid
+		LEFT join
+		class c on
+		uc.classnum = c.classnum
+		where m.userid=#{userid}
+	</select>
+	<resultMap type="MemberDTO" id="getMyPageResult">
+		<id column="USERID" property="userid" />
+		<result column="userNAME" property="username" />
+		<result column="EMAIL" property="email" />
+		<result column="PHONE" property="phone" />
+		<collection property="classDTOs" javaType="List"
+			ofType="ClassDTO">
+			<id column="classnum" property="classNum" />
+			<result column="classname" property="className" />
+		</collection>
+	</resultMap>
+
+	<!-- <resultMap type="MemberDTO" id="getLoginResult"> <id column="userid" 
+		property="userid" /> <result column="username" property="username" /> <collection 
+		property="classDTOs" javaType="List" ofType="ClassDTO"> <id column="classnum" 
+		property="classNum" /> <result column="classname" property="className" /> 
+		</collection> </resultMap> -->
 
 </mapper>
