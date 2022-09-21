@@ -66,6 +66,8 @@ function na() {
         document.getElementById("nameText").style.display = 'none';
     }
 }
+
+
 email.addEventListener("blur", em);
 function em() {
     let ne = email.value;
@@ -77,20 +79,25 @@ function em() {
         document.getElementById("emailText").style.display = 'none';
     }
 }
-
 var emin = document.getElementById("email2");
 var emse = document.getElementById("emse");
 
-emse.addEventListener("change", function(){
+// @ 이후
+emse.addEventListener("change", function () {
     console.log("value: " + emse.options[emse.selectedIndex].value);
     console.log("text: " + emse.options[emse.selectedIndex].text);
     let emvalue = emse.options[emse.selectedIndex].value;
-    let emtext = emse.options[emse.selectedIndex].text;
     // console.log(emvalue);
     // console.log(emtext);
     // console.log("변경 테스트: " + emvalue);
     $("#email2").val(emvalue);
+    console.log("email all: " + email.value + "@" + emin.value);
+    if(emailcheck = true){
+        $("#email").val(email.value + "@" + emin.value);
+    }
 });
+
+
 
 phone.addEventListener("blur", ph);
 function ph() {
@@ -172,7 +179,8 @@ birth.addEventListener("blur", function () {
     }
     else {
         document.getElementById("birthText1").style.display = 'none';
-    } if (isNaN(ne)) { // 숫자가 아닐 때 - 문자열이면 true
+    }
+    if (isNaN(ne)) { // 숫자가 아닐 때 - 문자열이면 true
         document.getElementById("birthText2").style.display = 'block';
         birthcheck = false;
     }
@@ -231,7 +239,31 @@ btn.addEventListener("click", function () {
     if ((idcheck && pwdcheck && namecheck && emailcheck && phonecheck && agecheck && brithcheck && gendercheck) == true) {
         frm.submit();
     }
+    else if (idcheck = false) {
+        alert("아이디가 조건에 맞지 않습니다.");
+    }
+    else if (pwdcheck = false) {
+        alert("비밀번호가 조건에 맞지 않습니다.");
+    }
+    else if (namecheck = false) {
+        alert("이름이 조건에 맞지 않습니다.");
+    }
+    else if (emailcheck = false) {
+        alert("이메일이 조건에 맞지 않습니다.");
+    }
+    else if (phonecheck = false) {
+        alert("전화번호가 조건에 맞지 않습니다.");
+    }
+    else if (agecheck = false) {
+        alert("나이가 조건에 맞지 않습니다.");
+    }
+    else if (birthcheck = false) {
+        alert("생년월일이 조건에 맞지 않습니다.");
+    }
+    else if (gendercheck = false) {
+        alert("성별이 조건에 맞지 않습니다.");
+    }
     else {
-        alert("조건을 충족하지 못하였습니다.");
+        alert("전부 조건을 충족하지 못하였습니다.");
     }
 });
