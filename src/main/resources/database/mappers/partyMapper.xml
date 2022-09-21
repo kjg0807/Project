@@ -5,12 +5,14 @@
     
 <mapper namespace="com.iu.home.party.PartyDAO">
 	
+	
+	<!-- partyList======================================================================================= -->
 	<insert id="setPartyFileAdd">
 		INSERT INTO PARTYFILE
 			VALUES(PARTYFILE_SEQ.NEXTVAL, #{fileName}, #{oriName}, #{partyNum})
 	</insert>
 	
-	<select id="getPartyDetail" parameterType="PartyDTO" resultMap="getPartyFile">
+	<select id="getPartyDetail" parameterType="PartyListDTO" resultMap="getPartyFile">
 		SELECT P.*, PF.* FROM PARTYLIST P 
 			LEFT JOIN PARTYFILE PF ON P.PARTYNUM = PF.PARTYNUM
 				WHERE P.PARTYNUM=#{partyNum}
@@ -35,22 +37,32 @@
     <select id="getPartyList" resultType="PartyListDTO" parameterType="Pager">
     	SELECT * FROM 
     		(SELECT ROWNUM R, P.* FROM
-    			(SELECT * FROM PARTYList
+    			(SELECT * FROM PARTYLIST
     			ORDER BY PARTYNUM DESC) P
     				) WHERE R BETWEEN #{startRow} AND #{lastRow}
     </select>
     
     <select id="getPartyCount" resultType="Long" parameterType="Pager">
-    	SELECT COUNT(partyNum) FROM PARTYList WHERE SHOPNUM LIKE '%'||#{search}||'%'	
+    	SELECT COUNT(partyNum) FROM PARTYLIST WHERE PARTYTITLE LIKE '%'||#{search}||'%'	
     </select>
     
     <insert id="setPartyAdd" parameterType="PartyListDTO">
-    	INSERT INTO PARTY VALUES (
-    		PARTY_SEQ.NEXTVAL, #{userID}, #{shopNum}, #{partyTitle}, #{partyContents}, sysdate, sysdate+(#{partyHH}*60)+#{partymm)/(24*60))
+    	INSERT INTO PARTYLIST VALUES (
+    		PARTY_SEQ.NEXTVAL, #{userID}, #{userName}, #{shopNum}, #{partyTitle}, #{partyContents}, sysdate, sysdate+(#{partyHH}*60)+#{partymm}/(24*60))
+    </insert>
+   
+   <!-- partyList======================================================================================= -->
+   
+   <!-- party=========================================================================================== -->
+    
+    <insert id="setPartyJoin" parameterType="PartyDTO">
+    	INSERT INTO PARTY VALUES
+    		(#{partyNum}, #{userName}, #{partyAge}, #{partyGender}, #{partyComment})
     </insert>
     
-    
-    
+    <select id="getParty" resultType="PartyDTO">
+    	SELECT * FROM PARTY
+    </select>
     
     
 </mapper>    

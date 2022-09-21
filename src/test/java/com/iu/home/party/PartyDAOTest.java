@@ -16,25 +16,26 @@ public class PartyDAOTest extends MyAbstractTest {
 	@Autowired
 	private PartyDAO partyDAO;
 	
-//	@Test
-//	public void setPartyAdd()throws Exception{
-//		
-//		for(int i=0; i<100; i++) {
-//		PartyDTO partyDTO = new PartyDTO();
-//		partyDTO.setUserID("user1");
-//		partyDTO.setShopNum(1L);
-//		partyDTO.setUserName("per1");
-//		partyDTO.setAge(i);
-//		partyDTO.setSpot("spot"+i);
-//		partyDTO.setPartyContents("con"+i);
-//		int result = partyDAO.setPartyAdd(partyDTO);
-//		
-//		if(i%10==0) {
-//			Thread.sleep(500);
-//		}
-//		}
-//		System.out.println("끝");
-//		
+	@Test
+	public void setPartyAdd()throws Exception{
+		
+		for(int i=0; i<100; i++) {
+		PartyListDTO partyDTO = new PartyListDTO();
+		partyDTO.setUserID("user1");
+		partyDTO.setUserName("per1");
+		partyDTO.setShopNum(1L);
+		partyDTO.setPartyTitle("title"+i);
+		partyDTO.setPartyContents("con"+i);
+		partyDTO.setPartyHH(1);
+		partyDTO.setPartymm(i);
+		int result = partyDAO.setPartyAdd(partyDTO);
+		
+		if(i%10==0) {
+			Thread.sleep(500);
+		}
+		}
+		System.out.println("끝");
+	}
 //	}
 	
 //	@Test

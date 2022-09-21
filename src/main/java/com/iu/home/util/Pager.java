@@ -13,7 +13,7 @@ public class Pager {
 
 	private boolean pre;
 	private boolean next;
-	private Long search;
+	private String search;
 	
 	public Pager() {
 		this.perPage=10L;
@@ -130,13 +130,18 @@ public class Pager {
 		this.next = next;
 	}
 
-	public Long getSearch() {
+	public String getSearch() {
+		if(this.search==null) {
+			this.search="";
+		}
 		return search;
 	}
 
-	public void setSearch(Long search) {
+	public void setSearch(String search) {
 		this.search = search;
 	}
+
+
 
 	
 	

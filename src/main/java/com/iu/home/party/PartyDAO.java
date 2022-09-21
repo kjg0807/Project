@@ -10,7 +10,8 @@ import com.iu.home.util.Pager;
 
 @Repository
 public class PartyDAO {
-
+	
+	//PartyList DAO
 	@Autowired
 	private SqlSession sqlSession;
 	private final String NAMESPACE = "com.iu.home.party.PartyDAO.";
@@ -34,4 +35,15 @@ public class PartyDAO {
 	public int setPartyAdd(PartyListDTO partyListDTO)throws Exception{
 		return sqlSession.insert(NAMESPACE+"setPartyAdd", partyListDTO);
 	}
+	//====================================================================
+	// Party DAO
+	public int setPartyJoin(PartyDTO partyDTO)throws Exception{
+		return sqlSession.insert(NAMESPACE+"setPartyJoin", partyDTO);	
+	}
+	
+	public List<PartyDTO> getParty()throws Exception{
+		return sqlSession.selectList(NAMESPACE+"getParty");
+	}
+	
+	
 }

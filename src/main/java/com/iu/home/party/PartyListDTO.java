@@ -9,12 +9,13 @@ public class PartyListDTO {
 	
 	private Long partyNum;
 	private String userID;
+	private String userName;
 	private Long shopNum;
 	private String partyTitle;
 	private String partyContents;
 	@JsonFormat(pattern = "yy-MM-dd")
 	private Date partyRegdate;
-	
+	@JsonFormat(pattern = "HH:mm:ss")
 	private Date partyTimeout;
 	private int partyHH;
 	private int partymm;
@@ -31,6 +32,12 @@ public class PartyListDTO {
 	}
 	public void setUserID(String userID) {
 		this.userID = userID;
+	}
+	public String getUserName() {
+		return userName;
+	}
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
 	public Long getShopNum() {
 		return shopNum;
@@ -60,9 +67,6 @@ public class PartyListDTO {
 		return partyTimeout;
 	}
 	public void setPartyTimeout(Date partyTimeout) {
-		if(this.partyTimeout==null) {
-			
-		}
 		this.partyTimeout = partyTimeout;
 	}
 	public List<PartyFileDTO> getPartyFileDTOs() {
@@ -70,6 +74,18 @@ public class PartyListDTO {
 	}
 	public void setPartyFileDTOs(List<PartyFileDTO> partyFileDTOs) {
 		this.partyFileDTOs = partyFileDTOs;
+	}
+	public int getPartyHH() {
+		return partyHH;
+	}
+	public void setPartyHH(int partyHH) {
+		this.partyHH = partyHH;
+	}
+	public int getPartymm() {
+		return partymm;
+	}
+	public void setPartymm(int partymm) {
+		this.partymm = partymm;
 	}
 	
 	

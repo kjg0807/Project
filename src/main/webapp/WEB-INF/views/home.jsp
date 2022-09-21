@@ -10,6 +10,7 @@
 </h1>
 
 	<a href="./chat/join">chat</a>
+	<a href="./party/list">list</a>
 <P>  The time on the server is ${serverTime}. </P>
 </body>
 </html>
