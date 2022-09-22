@@ -65,10 +65,20 @@
 		</collection>
 	</resultMap>
 
-	<!-- <resultMap type="MemberDTO" id="getLoginResult"> <id column="userid" 
-		property="userid" /> <result column="username" property="username" /> <collection 
-		property="classDTOs" javaType="List" ofType="ClassDTO"> <id column="classnum" 
-		property="classNum" /> <result column="classname" property="className" /> 
-		</collection> </resultMap> -->
+
+	<!-- <select id="adMyPage" parameterType="MemberDTO" resultMap="adMyPage">
+		select * from
+		promembers
+	</select> -->
+	
+	<!-- <resultMap type="MemberDTO" id="adMyPage">
+		<id column="userid" property="userid" />
+		<result column="username" property="username" />
+		<collection property="classDTOs" javaType="List"
+			ofType="ClassDTO">
+			<id column="classnum" property="classNum" />
+			<result column="classname" property="className" />
+		</collection>
+	</resultMap> -->
 
 </mapper>

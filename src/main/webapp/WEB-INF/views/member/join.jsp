@@ -28,10 +28,9 @@
 					<div class="row">
 						<!-- id -->
 						<div class="mb-3">
-							<label class="form-label">아이디</label> 
-							<input type="text" class="form-control" name="userid"
-								aria-describedby="emailHelp" id="id" placeholder="아이디 입력"
-								onfocus="this.placeholder=''" onblur="this.placeholder='아이디 입력'">
+							<label class="form-label">아이디</label> <input type="text" class="form-control" name="userid"
+								aria-describedby="emailHelp" id="id" placeholder="아이디 입력" onfocus="this.placeholder=''"
+								onblur="this.placeholder='아이디 입력'">
 							<!-- id를 입력하고 나왔을 때 2글자 미만이면 메세지 출력 : id는 2글자 이상 -->
 							<div id="idText" style="display: none; color: red;">ID는 2글자 이상 입력해야 합니다.</div>
 						</div>
@@ -55,8 +54,8 @@
 						<!-- name -->
 						<div class="mb-3">
 							<label class="form-label">이름</label> <input type="text" class="form-control" name="username"
-								aria-describedby="emailHelp" id="name" placeholder="이름 입력"
-								onfocus="this.placeholder=''" onblur="this.placeholder='이름 입력'">
+								aria-describedby="emailHelp" id="name" placeholder="이름 입력" onfocus="this.placeholder=''"
+								onblur="this.placeholder='이름 입력'">
 							<!-- 입력 후 최소 1글자 이상 -->
 							<div id="nameText" style="display: none; color: red;">최소 1글자를 입력하세요.</div>
 						</div>
@@ -65,7 +64,7 @@
 							.emcs {
 								display: flex;
 
-								input:read-only {
+								input: read-only {
 									background-color: #dedede
 								}
 
@@ -80,16 +79,17 @@
 							<label class="form-label" required>이메일</label>
 							<div class="emcs">
 								<!-- 이메일 @뒤 내용 스크롤 만들기 -->
-								<input style="width: 46%; padding: 5px; border: 1px solid #dedede" name="email" id="email" type="text" placeholder="이메일 입력"
-									onfocus="this.placeholder=''" onblur="this.placeholder='이메일 입력'">
-								@
-								<input style="width: 35%; padding: 5px; border: 1px solid #dedede" name="email2" id="email2" type="text">
-								<br>
-								<select style="width: 20%; justify-content: right;" name="select_email" id="emse">
-									<option value="">직접입력</option>
-									<option value="naver.com">naver.com</option>
-									<option value="gmail.com">gmail.com</option>
-									<option value="daum.com">daum.com</option>
+								<input style="width: 46%; padding: 5px; border: 1px solid #dedede" name="email"
+									id="email" type="text" placeholder="이메일 입력" onfocus="this.placeholder=''"
+									onblur="this.placeholder='이메일 입력'"><input
+									style="width: 35%; padding: 5px; border: 1px solid #dedede" name="email2"
+									id="email2" type="text"> <br> 
+									<select style="width: 20%; justify-content: right;"
+									name="select_email" id="emse" class="kind">
+									<option class="kinds" value="">직접입력</option>
+									<option class="kinds" value="@naver.com">naver.com</option>
+									<option class="kinds" value="@gmail.com">gmail.com</option>
+									<option class="kinds" value="@daum.com">daum.com</option>
 								</select>
 							</div>
 							<!-- 입력 후 최소 1글자 이상 -->
@@ -97,7 +97,9 @@
 							<div id="emailText" style="display: none; color: red;">최소 1글자를 입력하세요.</div>
 						</div>
 						<!-- phone -->
-						<br><br><br>
+						<br>
+						<br>
+						<br>
 						<div class="mb-3">
 							<label class="form-label">전화번호</label> <input type="text" class="form-control" name="phone"
 								id="phone" placeholder="전화번호 입력 - 010-xxxx-xxxx" onfocus="this.placeholder=''"
@@ -146,6 +148,8 @@
 						</div>
 					</div>
 				</section>
+				<br>
+				<br>
 			</form>
 
 			<c:import url="../template/footerHTML.jsp"></c:import>

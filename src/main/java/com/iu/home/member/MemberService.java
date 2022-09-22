@@ -1,5 +1,7 @@
 package com.iu.home.member;
 
+import java.util.List;
+
 import javax.servlet.ServletContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,4 +31,9 @@ public class MemberService
 	{
 		return memberDAO.getMyPage(memberDTO);
 	}
+
+//	public MemberDTO adMyPage(MemberDTO memberDTO) throws Exception
+//	{
+//		return memberDAO.adMyPage(memberDTO);
+//	}
 }

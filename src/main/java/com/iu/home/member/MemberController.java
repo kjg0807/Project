@@ -1,5 +1,7 @@
 package com.iu.home.member;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -39,6 +41,8 @@ public class MemberController
 		memberDTO = memberService.getLogin(memberDTO);
 		session.setAttribute("member", memberDTO);
 
+		memberDTO = (MemberDTO) session.getAttribute("member");
+
 		System.out.println(memberDTO);
 
 		String message = "로그인 실패";
@@ -48,6 +52,7 @@ public class MemberController
 			message = "로그인 성공";
 			url = "../";
 		}
+		mv.addObject("dto", memberDTO);
 		mv.addObject("message", message);
 		mv.addObject("url", url);
 		mv.setViewName("common/rs");
@@ -97,14 +102,19 @@ public class MemberController
 	{
 		ModelAndView mv = new ModelAndView();
 		System.out.println("mypage Get Test");
-		
+
 		MemberDTO memberDTO = (MemberDTO) session.getAttribute("member");
 		memberDTO = memberService.getMyPage(memberDTO);
-		System.out.println("getMyPage: " + memberDTO);
 		mv.addObject("dto", memberDTO);
 
 		mv.setViewName("member/mypage");
-		
+
 		return mv;
+	}
+
+	@GetMapping(value = "adpage")
+	public void adMypage(HttpSession session) throws Exception
+	{
+		System.out.println("Adpage GEt");
 	}
 }

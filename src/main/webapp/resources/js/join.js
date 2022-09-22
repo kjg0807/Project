@@ -67,6 +67,8 @@ function na() {
     }
 }
 
+var emin = document.getElementById("email2");
+var emse = document.getElementById("emse");
 
 email.addEventListener("blur", em);
 function em() {
@@ -78,24 +80,22 @@ function em() {
     else {
         document.getElementById("emailText").style.display = 'none';
     }
+    // @ 이후
+    emse.addEventListener("change", function () {
+        console.log("value: " + emse.options[emse.selectedIndex].value);
+        console.log("text: " + emse.options[emse.selectedIndex].text);
+        let emvalue = emse.options[emse.selectedIndex].value;
+        // console.log(emvalue);
+        // console.log(emtext);
+        // console.log("변경 테스트: " + emvalue);
+        $("#email2").val(emvalue);
+        console.log("email all: " + email.value + emin.value);
+        if (emailcheck = true) {
+            $("#email").val(email.value + emin.value);
+        }
+    });
 }
-var emin = document.getElementById("email2");
-var emse = document.getElementById("emse");
 
-// @ 이후
-emse.addEventListener("change", function () {
-    console.log("value: " + emse.options[emse.selectedIndex].value);
-    console.log("text: " + emse.options[emse.selectedIndex].text);
-    let emvalue = emse.options[emse.selectedIndex].value;
-    // console.log(emvalue);
-    // console.log(emtext);
-    // console.log("변경 테스트: " + emvalue);
-    $("#email2").val(emvalue);
-    console.log("email all: " + email.value + "@" + emin.value);
-    if(emailcheck = true){
-        $("#email").val(email.value + "@" + emin.value);
-    }
-});
 
 
 
@@ -265,5 +265,8 @@ btn.addEventListener("click", function () {
     }
     else {
         alert("전부 조건을 충족하지 못하였습니다.");
+        if ((id || pwd || name1 || email || phone || age || birth || gender) == "") {
+            alert("빈칸이 존재합니다.");
+        }
     }
 });
