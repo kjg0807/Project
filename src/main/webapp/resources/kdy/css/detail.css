@@ -1,0 +1,47 @@
+
+.name{
+    font-size: 20px;
+    margin: 0px auto;
+    text-align: left;
+}
+
+.p{
+    margin: 1px;
+}
+.q{
+    margin: 5px;
+    font-size: 30px;
+}
+.carousel-item{
+    height: 350px;
+}
+
+
+#address, #phone, #priceAvg, #delivery{
+    color: gray;
+    font-size: 15px;
+}
+#realAddress, #realPhone, #realpriceAvg, #realdelivery{
+    color: black;
+    font-size: 18px;
+}9
+
+.qwer{
+    height: 200px;
+    width: 500px;
+    
+
+}
+
+ article{
+    float: left;
+    margin-left: 10px;
+}
+
+#img1{
+    height: 250px;
+    width: auto;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+

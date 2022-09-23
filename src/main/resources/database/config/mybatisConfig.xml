@@ -13,6 +13,15 @@
 		<typeAlias type="java.lang.String" alias="String"/>
 		<typeAlias type="java.lang.Long" alias="Long"/>
 		<typeAlias type="java.util.List" alias="List"/>
+		
+		<typeAlias type="com.iu.home.shop.ShopDTO" alias="ShopDTO"/>
+		<typeAlias type="com.iu.home.shop.ShopFileDTO" alias="ShopFileDTO"/>
+		<typeAlias type="com.iu.home.util.ShopPager" alias="ShopPager"/>
+		
+		<typeAlias type="com.iu.home.category.CategoryDTO" alias="CategoryDTO"/>
+		
+		<typeAlias type="com.iu.home.menu.MenuDTO" alias="MenuDTO"/>
+		
 	</typeAliases>
 
 </configuration>
