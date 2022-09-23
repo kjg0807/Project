@@ -38,7 +38,7 @@
 							{
 							%>
 							<c:choose>
-								<c:when test="${dto.classDTOs.get(0).className eq 'admin'}">
+								<c:when test="${member.classDTOs.get(0).className eq 'admin'}">
 									<li class="nav-item"><b><a class="nav-link" href="#"> 관리자님 안녕하세요 </a></b></li>
 								</c:when>
 								<c:otherwise>

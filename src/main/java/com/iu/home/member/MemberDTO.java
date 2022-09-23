@@ -14,6 +14,17 @@ public class MemberDTO
 	private Long gender; // 1: man, 2: woman
 	private List<ClassDTO> classDTOs;
 	private List<UserClassDTO> userClassDTOs;
+	private List<MemberDTO> memberDTOs;
+
+	public List<MemberDTO> getMemberDTOs()
+	{
+		return memberDTOs;
+	}
+
+	public void setMemberDTOs(List<MemberDTO> memberDTOs)
+	{
+		this.memberDTOs = memberDTOs;
+	}
 
 	public List<UserClassDTO> getUserClassDTOs()
 	{

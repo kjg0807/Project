@@ -1,5 +1,6 @@
 package com.iu.home.member;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -28,8 +29,8 @@ public class MemberDAO
 		return sqlSession.selectOne(NAMESPACE + "getMyPage", memberDTO);
 	}
 
-//	public MemberDTO adMyPage(MemberDTO memberDTO) throws Exception
-//	{
-//		return sqlSession.selectOne(NAMESPACE + "adMyPage", memberDTO);
-//	}
+	public List<MemberDTO> adMyPage(MemberDTO memberDTO) throws Exception
+	{
+		return sqlSession.selectList(NAMESPACE + "adMyPage", memberDTO);
+	}
 }

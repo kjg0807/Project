@@ -1,5 +1,6 @@
 package com.iu.home.member;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletContext;
@@ -32,8 +33,8 @@ public class MemberService
 		return memberDAO.getMyPage(memberDTO);
 	}
 
-//	public MemberDTO adMyPage(MemberDTO memberDTO) throws Exception
-//	{
-//		return memberDAO.adMyPage(memberDTO);
-//	}
+	public List<MemberDTO> adMyPage(MemberDTO memberDTO) throws Exception
+	{
+		return memberDAO.adMyPage(memberDTO);
+	}
 }

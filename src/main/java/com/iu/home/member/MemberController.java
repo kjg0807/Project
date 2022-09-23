@@ -1,5 +1,7 @@
 package com.iu.home.member;
 
+import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -113,8 +115,20 @@ public class MemberController
 	}
 
 	@GetMapping(value = "adpage")
-	public void adMypage(HttpSession session) throws Exception
+	public ModelAndView adMypage(MemberDTO memberDTO, HttpSession session) throws Exception
 	{
 		System.out.println("Adpage GEt");
+		ModelAndView mv = new ModelAndView();
+		List<MemberDTO> ar = memberService.adMyPage(memberDTO);
+		for (MemberDTO memberDTO2 : ar)
+		{
+			System.out.println(memberDTO2.getPwd());
+			System.out.println(memberDTO2.getEmail());
+			System.out.println(memberDTO2.getPhone());
+		}
+		mv.addObject("dto", ar);
+		mv.setViewName("member/adpage");
+
+		return mv;
 	}
 }
