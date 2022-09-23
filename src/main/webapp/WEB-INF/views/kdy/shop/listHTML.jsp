@@ -8,7 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/js/kdy/list.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/kdy/css/list.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
 </head>
 <body>
@@ -62,7 +62,7 @@
                             </div>
                             <div class="p-2 flex-shrink-1">
                                 <div class="mt-2" id="img" style="height: 200px; width: 310px">
-                                    <img src="../../../resources/images/kdy/hma.jpg" style="width: 300px;">
+                                    <img src="../../../../resources/kdy/images/hma.jpg" style="width: 300px;">
                                 </div>
                             </div>
                         </div>

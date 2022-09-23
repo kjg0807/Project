@@ -8,14 +8,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/js/detail.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/kdy/css/detail.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
 </head>
 <body>
 <c:import url="../../template/headerHTML.jsp"></c:import>
     <div class="d-flex" id="img1">
     <c:forEach items="${detail.shopFileDTOs}" var="shopFileDTO">               
-        <img class="flex image" style="width: 380px; height: 380px;" src="../../../resources/upload/shop/${shopFileDTO.fileName}">
+        <img class="flex image" style="width: 380px; height: 380px;" src="../../../../resources/upload/shop/${shopFileDTO.fileName}">
     </c:forEach>
 </div>
 
