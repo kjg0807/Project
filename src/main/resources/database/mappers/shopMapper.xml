@@ -4,6 +4,7 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.iu.home.shop.ShopDAO">
+	
 	<sql id="search">
 		WHERE
 		<choose>
@@ -13,6 +14,7 @@
 		</choose>
 		LIKE '%'||#{search}||'%'
 	</sql>
+	
 	<insert id="setAdd" parameterType="ShopDTO">
 		<selectKey keyProperty="shopNum" order="BEFORE"
 			resultType="Long">
@@ -21,25 +23,36 @@
 		INSERT INTO SHOP VALUES
 		(#{shopNum},#{categoryNum},#{shopPhone},#{shopName},#{shopAddress},#{priceAvg},#{delivery},#{contents},#{title})
 	</insert>
+	
 	<select id="getList" resultType="ShopDTO"
 		parameterType="ShopPager">
-		SELECT * FROM (SELECT ROWNUM R, SN.MENUNAME,SN.SHOPNUM, SN.SHOPNAME,
-		SN.SHOPADDRESS, SN.SHOPPHONE, SN.PRICEAVG, SN.DELIVERY, SN.CONTENTS,
-		SN.TITLE FROM (SELECT S.*, M.MENUNAME, M.MENUPRICE FROM SHOP S INNER
-		JOIN MENU M ON S.SHOPNUM = M.SHOPNUM
-		<include refid="search" />
-		ORDER BY S.SHOPNUM DESC)SN) WHERE R BETWEEN #{startRow} AND #{lastRow}
+		SELECT * FROM 
+		(SELECT ROWNUM R, SN.MENUNAME,SN.SHOPNUM, SN.SHOPNAME, SN.SHOPADDRESS, SN.SHOPPHONE, SN.PRICEAVG, SN.DELIVERY, SN.CONTENTS, SN.TITLE FROM 
+		(SELECT S.*, M.MENUNAME, M.MENUPRICE FROM
+		SHOP S INNER
+		JOIN MENU M 
+		ON S.SHOPNUM = M.SHOPNUM
+		<include refid="search"/>
+		ORDER BY S.SHOPNUM DESC)SN)
+		WHERE R BETWEEN #{startRow} AND #{lastRow}
 	</select>
+	
 	<select id="getCount" resultType="Long"
 		parameterType="ShopPager">
 		SELECT COUNT(S.SHOPNUM) FROM SHOP S INNER JOIN MENU M ON S.SHOPNUM =
 		M.SHOPNUM
 		<include refid="search" />
 	</select>
-	<select id="getDetail" parameterType="ShopDTO"
-		resultMap="getDetailMap"> SELECT S.*, SF.*, M.* FROM SHOP S LEFT JOIN SHOPFILE SF ON
-		S.SHOPNUM = SF.SHOPNUM LEFT JOIN MENU M ON S.SHOPNUM = M.SHOPNUM WHERE
-		S.SHOPNUM=#{shopNum} </select>
+	
+	<select id="getDetail" parameterType="ShopDTO" resultMap="getDetailMap"> 
+	    SELECT S.*, SF.*, M.* FROM SHOP S LEFT JOIN SHOPFILE SF 
+	    ON S.SHOPNUM = SF.SHOPNUM 
+	    LEFT JOIN 
+	    MENU M 
+	    ON S.SHOPNUM = M.SHOPNUM WHERE
+		S.SHOPNUM=#{shopNum}
+	</select>
+	
 	<resultMap type="ShopDTO" id="getDetailMap">
 		<id column="SHOPNUM" property="shopNum" />
 		<result column="CATEGORYNUM" property="categoryNum" />
@@ -80,4 +93,6 @@
 	<!-- ===================================menu -->
 	<insert id="setAddMenu" parameterType="ShopDTO"> INSERT INTO MENU VALUES
 		(#{shopNum}, #{menuName}, #{menuPrice}) </insert>
+		
+	
 </mapper>

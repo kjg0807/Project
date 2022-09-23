@@ -28,18 +28,6 @@
                     <div class="p-2 a">양식</div>
                     <div class="p-2 a">아시안</div>
                 </div>
-
-                <!-- <div class="d-flex flex-row mb-3">
-                    <div class="p-2 a">전체</div>
-                    <div class="p-2 a">밥</div>
-                    <div class="p-2 a">국</div>
-                    <div class="p-2 a">죽</div>
-                    <div class="p-2 a">튀김</div>
-                    <div class="p-2 a">면</div>
-                    <div class="p-2 a">고기</div>
-                    <div class="p-2 a">생선</div>
-                    <div class="p-2 a">패스트푸드</div>
-                </div> -->
          <c:forEach items="${requestScope.list}" var="list">
                 
             <div class="shop_list"  onclick="location.href='/shop/detailHTML?shopNum=${list.getShopNum()}';">
@@ -70,7 +58,58 @@
                 </div>
             </div>
       </c:forEach>
-		<a class="btn btn-secondary" href="./add" role="add">가게등록</a>
+		<div class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap" role="add" >가게등록</div>
+		
+		<!--  -->
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">++가게 등록++</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label"></label>
+            <input type="text" class="form-control" placeholder="제목을 입력해주세요" name="title" id="title">
+          </div>
+          
+          <div class="mb-3">
+            <label for="message-text" class="col-form-label"></label>
+            <input type="text" class="form-control" placeholder="식당을 소개해주세요" name="contents" id="contents">
+          </div>
+          <div class="mb-3">
+            <label for="message-text" class="col-form-label"> </label>
+           <input type="text" class="form-control" placeholder="식당의 상호명을 입력해주세요" name="shopName" id="shopName">
+          </div>
+          <div class="mb-3">
+            <label for="message-text" class="col-form-label"> </label>
+           <input type="text" class="form-control" placeholder="식당의 주소를 입력해주세요" name="shopAddress" id="shopAddress">
+          </div>
+          <div class="mb-3">
+            <label for="message-text" class="col-form-label"> </label>
+            <input type="text" class="form-control" placeholder="식당의 가격대를 입력해주세요" name="priceAvg" id="priceAvg">
+          </div>
+          <div class="mb-3">
+            <label for="message-text" class="col-form-label"></label>
+            <input type="text" class="form-control" placeholder="식당의 배달비를 입력해주세요" name="delevery" id="delevery">
+          </div>
+          <div class="mb-3">
+            <label for="message-text" class="col-form-label"></label>
+            <input type="text" class="form-control" placeholder="식당의 전화번호를 입력해주세요" name="shopPhone" id="shopPhone">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
+        <button type="button" class="btn btn-primary" id="btn">등록</button>
+      </div>
+    </div>
+  </div>
+</div>
+		<!--  -->
             </div>
     </main>
     <div style="display: flex; margin: 5 5px;  justify-content: center;">
@@ -104,7 +143,9 @@
 			}
 		</script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
-<script src="../../../resources/js/list.js"></script>
+<script src="../../../resources/kdy/js/list.js"></script>
+<script src="../../../../resources/kdy/js/shopAdd.js"></script>
+
 <c:import url="../../template/footerHTML.jsp"></c:import>
 </body>
 </html>

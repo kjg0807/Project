@@ -131,7 +131,7 @@ public class ShopController {
 		mv.setViewName("redirect:./detailHTML?shopNum="+shopDTO.getShopNum());
 		return mv;
 	}
-	//===========================file
+	
 	
 	
 
