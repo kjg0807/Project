@@ -26,7 +26,7 @@
 			<tr>
 				<td>${dto.partyNum}</td>
 				<td>
-				<a href="./detail.?partyNum=${dto.partyNum}">${dto.partyTitle}</a>
+				<a href="./detail?partyNum=${dto.partyNum}">${dto.partyTitle}</a>
 				</td>
 				<td>${dto.userName}</td>
 				<td>${dto.partyRegdate}</td>
@@ -38,7 +38,7 @@
 </div>
 
 <div class="mb-3">
-		<a href="./add.iu" class="btn btn-primary">글쓰기</a>
+		<a href="./add" class="btn btn-primary">글쓰기</a>
 	</div>
 	
 	<nav aria-label="Page navigation example">

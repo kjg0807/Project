@@ -16,6 +16,10 @@ public class PartyDAO {
 	private SqlSession sqlSession;
 	private final String NAMESPACE = "com.iu.home.party.PartyDAO.";
 	
+	public int setPartyUpdate(PartyListDTO partyListDTO)throws Exception{
+		return sqlSession.update(NAMESPACE+"setPartyUpdate", partyListDTO);
+	}
+	
 	public int setPartyFileAdd(PartyFileDTO partyFileDTO)throws Exception{
 		return sqlSession.insert(NAMESPACE+"setPartyFileAdd", partyFileDTO);
 	}
@@ -39,6 +43,15 @@ public class PartyDAO {
 	// Party DAO
 	public int setPartyJoin(PartyDTO partyDTO)throws Exception{
 		return sqlSession.insert(NAMESPACE+"setPartyJoin", partyDTO);	
+	}
+	
+	public int setPartyAccept(PartyListDTO partyListDTO)throws Exception{
+		return sqlSession.update(NAMESPACE+"setPartyAccept", partyListDTO);
+	}
+	
+	
+	public int setPartyCancel(PartyDTO partyDTO)throws Exception{
+		return sqlSession.delete(NAMESPACE+"setPartyCancel", partyDTO);
 	}
 	
 	public List<PartyDTO> getParty()throws Exception{

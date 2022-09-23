@@ -7,7 +7,7 @@ public class PartyDTO {
 	private int partyAge;
 	private int partyGender;
 	private String partyComment;
-	
+	private int partyRequest;
 	
 	public Long getPartyNum() {
 		return partyNum;
@@ -39,7 +39,13 @@ public class PartyDTO {
 	public void setPartyComment(String partyComment) {
 		this.partyComment = partyComment;
 	}
-	
+	public int getPartyRequest() {
+		return partyRequest;
+	}
+	public void setPartyRequest(int partyRequest) {
+		this.partyRequest = partyRequest;
+	}
+
 	
 
 }

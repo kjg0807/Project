@@ -7,10 +7,15 @@
 	
 	
 	<!-- partyList======================================================================================= -->
-	<insert id="setPartyFileAdd">
+	<insert id="setPartyFileAdd" parameterType="PartyFileDTO">
 		INSERT INTO PARTYFILE
 			VALUES(PARTYFILE_SEQ.NEXTVAL, #{fileName}, #{oriName}, #{partyNum})
 	</insert>
+	
+	<update id="setPartyUpdate" parameterType="PartyListDTO">
+		UPDATE PARTYLIST SET PARTYTITLE=#{partyTitle}, PARTYCONTENTS=#{partyContents}, PARTYREGDATE=sysdate, 
+			PARTYTIMEOUT=sysdate+(#{partyHH}*60)+#{partymm}/(24*60) WHERE USERID=#{userID}
+	</update>
 	
 	<select id="getPartyDetail" parameterType="PartyListDTO" resultMap="getPartyFile">
 		SELECT P.*, PF.* FROM PARTYLIST P 
@@ -20,12 +25,12 @@
 	
 	<resultMap type="PartyListDTO" id="getPartyFile">
 		<id column="PARTYNUM" property="partyNum"/>
-		<result column="USERID" property="userID"/>
-		<result column="SHOPNUM" property="shopName"/>
+		<result column="USERNAME" property="userName"/>
+		<result column="SHOPNUM" property="shopNum"/>
 		<result column="PARTYTITLE" property="partyTitle"/>
 		<result column="PARTYCONTENTS" property="partyContents"/>
 		<result column="PARTYREGDATE" property="partyRegdate"/>
-		<result column="PARTYTIMOUT" property="partyTimeout"/>
+		<result column="PARTYTIMEOUT" property="partyTimeout"/>
 		<collection property="partyFileDTOs" javaType="List" ofType="partyFileDTO">
 			<id column="FILENUM" property="fileNum"/>
 			<result column="FILENAME" property="fileName"/>
@@ -64,5 +69,12 @@
     	SELECT * FROM PARTY
     </select>
     
+    <update id="setPartyAccept" parameterType="PartyDTO">
+    	UPDATE PARTY SET PARTYREQUEST = 1 WHERE USERNAME = #{userName}
+    </update>
+    
+    <delete id="setPartyCancel" parameterType="PartyDTO">
+    	DELETE FROM PARTY WHERE PARTYNUM = #{partyNum} AND USERNAME = #{userName}
+    </delete>
     
 </mapper>    
