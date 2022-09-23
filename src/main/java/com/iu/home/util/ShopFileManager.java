@@ -8,33 +8,38 @@ import javax.servlet.ServletContext;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
-@Component
-public class FileManger {
-	//@Autowired
-	//private ServletContext servletContext;
+import com.iu.home.shop.ShopFileDTO;
+
+import oracle.net.aso.m;
+
+@Component//요소
+public class ShopFileManager {
 	
-	//save
-	//public void saveFile(ServletContext servletContext, String path)throws Exception{
-	public String saveFile(ServletContext servletContext, String path, MultipartFile multipartFile)throws Exception{
-		//1. 실제 경로
+	public boolean deleteFile(ServletContext servletContext, String path, ShopFileDTO shopFileDTO)throws Exception{
 		String realPath = servletContext.getRealPath(path);
-		System.out.println(realPath);
 		
-		//2. 폴더(directory) 체크
+		File file = new File(realPath, shopFileDTO.getFileName());
+		
+		return file.delete();
+	}
+	
+	public String saveFile(String path, ServletContext servletContext, MultipartFile multipartFile)throws Exception{
+		
+		String realPath = servletContext.getRealPath(path);
+		
 		File file = new File(realPath);
 		if(!file.exists()) {
 			file.mkdirs();
 		}
-		
-		//3. 저장할 파일명 생성
 		String fileName = UUID.randomUUID().toString();
 		fileName = fileName+"_"+multipartFile.getOriginalFilename();
 		
-		//4. HDD에 저장
 		file = new File(file, fileName);
 		multipartFile.transferTo(file);
 		
 		return fileName;
 	}
+	
+	
 
 }
