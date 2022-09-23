@@ -21,7 +21,11 @@
 		<typeAlias type="com.iu.home.category.CategoryDTO" alias="CategoryDTO"/>
 		
 		<typeAlias type="com.iu.home.menu.MenuDTO" alias="MenuDTO"/>
-		
+		<!-- member -->
+		<typeAlias type="com.iu.home.member.MemberDTO" alias="MemberDTO" />
+		<typeAlias type="com.iu.home.member.ClassDTO" alias="ClassDTO" />
+		<typeAlias type="com.iu.home.member.UserClassDTO" alias="UserClassDTO" />
+		<!-- member -->
 	</typeAliases>
 
 </configuration>
