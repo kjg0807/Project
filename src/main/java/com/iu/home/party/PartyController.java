@@ -36,10 +36,12 @@ public class PartyController {
 	}
 	
 	@GetMapping(value = "detail")
-	public ModelAndView getPartyDetail(PartyListDTO partyListDTO)throws Exception{
+	public ModelAndView getPartyDetail(PartyListDTO partyListDTO, PartyDTO partyDTO)throws Exception{
 		ModelAndView mv = new ModelAndView();
 		partyListDTO = partyService.getPartyDetail(partyListDTO);
+		List<PartyDTO> ar = partyService.getParty();
 		
+		mv.addObject("partyDTO",ar);
 		mv.addObject("partyListDTO", partyListDTO);
 		mv.setViewName("party/detail");
 		

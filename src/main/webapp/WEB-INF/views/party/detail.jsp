@@ -41,39 +41,78 @@
 				</c:forEach>
 			</div>
 		</div>
-		<div>
-				<button type="button" style="display: none;" class="btn btn-primary" id="up" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap">Open modal for @getbootstrap</button>
-		
-				<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-					<div class="modal-dialog">
-						<div class="modal-content">
-						<div class="modal-header">
-							<h5 class="modal-title" id="exampleModalLabel">Update</h5>
-							<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+		<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#joinModal">
+			파티가입
+		</button>
+
+		<div class="modal fade" id="joinModal" tabindex="-1" aria-labelledby="joinModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<input type="hidden" id="joinNum">
+					<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLabel">파티 신청</h5>
+						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+					</div>
+					<div class="modal-body">
+						<div class="mb-3">
+							<label for="recipient-name" class="col-form-label">닉네임</label>
+							<input class="form-control" type="text" id="joinUserName" placeholder="닉네임" >
 						</div>
-						<div class="modal-body">
-							<form>
-								<input type="hidden" id="num">
-								<div class="mb-3">
-									<label for="recipient-name" class="col-form-label">writer:</label>
-									<input type="text" class="form-control" id="updateWriter">
-								</div>
-								<div class="mb-3">
-									<label for="message-text" class="col-form-label">Contents:</label>
-									<textarea class="form-control" id="updateContents"></textarea>
-								</div>
-							</form>
+						<div class="form-check">
+							<div class="form-check" >
+								<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+								<label class="form-check-label" for="flexRadioDefault1">
+									남자
+								</label>
+							</div>
+							<div class="form-check" >
+								<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
+								<label class="form-check-label" for="flexRadioDefault2">
+									여자
+								</label>
+							</div>
 						</div>
-						<div class="modal-footer">
-							<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-							<button type="button" class="btn btn-primary" data-bs-dismiss="modal" id="update">Send message</button>
+						<select id="joinAge">
+
+						</select>
+						<div class="mb-3">
+							<label for="message-text" class="col-form-label">Commenet</label>
+							<textarea class="form-control" id="joinComment"></textarea>
 						</div>
-						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+						<button type="button" class="btn btn-primary" id="joinbtn">신청</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#partyModal">
+			파티목록
+		</button>
+
+		<div class="modal fade" id="partyModal" tabindex="-1" aria-labelledby="joinModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					...
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+					<button type="button" class="btn btn-primary">수락</button>
+				</div>
+				</div>
+			</div>
 		</div>
 
 		
 	</section>
-
+	<script src="/resources/js/party.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
 </body>
 </html>

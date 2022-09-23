@@ -62,15 +62,15 @@
     
     <insert id="setPartyJoin" parameterType="PartyDTO">
     	INSERT INTO PARTY VALUES
-    		(#{partyNum}, #{userName}, #{partyAge}, #{partyGender}, #{partyComment})
+    		(#{partyNum}, #{userName}, #{partyAge}, #{partyGender}, #{partyComment}, 0)
     </insert>
     
     <select id="getParty" resultType="PartyDTO">
     	SELECT * FROM PARTY
     </select>
     
-    <update id="setPartyAccept" parameterType="PartyDTO">
-    	UPDATE PARTY SET PARTYREQUEST = 1 WHERE USERNAME = #{userName}
+    <update id="setPartyAccept" parameterType="PartyListDTO">
+    	UPDATE PARTY SET PARTYREQUEST = 1 WHERE USERID = #{userID}
     </update>
     
     <delete id="setPartyCancel" parameterType="PartyDTO">

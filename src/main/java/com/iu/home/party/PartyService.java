@@ -61,6 +61,14 @@ public class PartyService {
 		return partyDAO.setPartyJoin(partyDTO);	
 	}
 	
+	public int setPartyAccept(PartyListDTO partyListDTO)throws Exception{
+		return partyDAO.setPartyAccept(partyListDTO);
+	}
+	
+	public int setPartyCancel(PartyDTO partyDTO)throws Exception{
+		return partyDAO.setPartyCancel(partyDTO);
+	}
+	
 	public List<PartyDTO> getParty()throws Exception{
 		return partyDAO.getParty();
 	}
