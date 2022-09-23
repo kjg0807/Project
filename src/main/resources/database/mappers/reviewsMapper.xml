@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+          PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+          "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.iu.home.reviews.ReviewsDAO">
+<sql id="search">
+		WHERE
+     			 <choose>
+     			 		<when test="kind == 'userId'">USERID</when>
+     					<when test="kind == 'title'">TITLE</when>
+     					<!-- <when test="kind == 'contents'">CONTENTS</when> -->
+     					<otherwise>CONTENTS</otherwise>
+     			 </choose>
+     	LIKE '%'||#{search}||'%'
+</sql>
+	
+	<select id="getReviewsList" resultType="ReviewsDTO" parameterType="Pager">
+			SELECT * FROM
+			(
+				SELECT ROWNUM RN, N.* FROM
+					(
+						SELECT * FROM REVIEWS 
+							<include refid="search"></include>
+							ORDER BY REVIEWNUM DESC
+						)N
+				)
+			WHERE RN BETWEEN #{startRow} AND #{lastRow}
+	</select>
+	
+	<select id="getReviewsDetail" parameterType="ReviewsDTO" resultMap="getReviewsDetailResult">
+		SELECT R.*, RF.*
+			FROM REVIEWS R
+		
+				LEFT JOIN
+				REVIEWS_FILES RF
+				ON R.REVIEWNUM=RF.REVIEWNUM				
+			
+		 WHERE R.REVIEWNUM = #{reviewNum}
+	</select>
+	<resultMap type="ReviewsDTO" id="getReviewsDetailResult">
+		<id column="reviewNum" property="reviewNum"/>
+		<result column="shopNum" property="shopNum"/>
+		<result column="userId" property="userId"/>
+		<result column="categoryNum" property="categoryNum"/>
+		<result column="title" property="title"/>
+		<result column="contents" property="contents"/>
+		<result column="reviewDate" property="reviewDate"/>
+		<result column="hits" property="hits"/>
+		
+		
+		<collection property="reviewsFilesDTOs" javaType="list" ofType="ReviewsFilesDTO">
+			<id column="filesNum" property="filesNum"/>
+			<result column="fileName" property="fileName"/>
+			<result column="oriName" property="oriName"/>
+		    <result column="reviewNum" property="reviewNum"/>
+		</collection>
+		
+		
+	</resultMap>
+	
+	<insert id="setReviewsAdd" parameterType="ReviewsDTO">
+		<selectKey order="BEFORE" keyProperty="reviewNum" resultType="Long">
+			SELECT REVIEWS_SEQ.NEXTVAL FROM DUAL
+		</selectKey>
+		INSERT INTO REVIEWS (REVIEWNUM, SHOPNUM, USERID, CATEGORYNUM, TITLE, CONTENTS, REVIEWDATE, HITS)
+		VALUES 				(#{reviewNum}, 5, 'id1' , 1, #{title}, #{contents}, SYSDATE, 0)
+	</insert>
+	
+	<update id="setReviewsUpdate" parameterType="ReviewsDTO">
+		UPDATE REVIEWS SET TITLE = #{title}, CONTENTS = #{contents} WHERE REVIEWNUM = #{reviewNum}
+	</update>
+	
+	<delete id="setReviewsDelete">
+		DELETE REVIEWS WHERE REVIEWNUM = #{reviewNum}
+	</delete>
+	
+	<select id="getReviewsCount" resultType="Long" parameterType="Pager">
+		SELECT COUNT(REVIEWNUM) FROM REVIEWS
+			<include refid="search"></include>
+	</select>
+	
+ 	<select id="getReviewsFilesDetail" parameterType="ReviewsFilesDTO" resultType="ReviewsFilesDTO">
+		SELECT * FROM REVIEWS_FILES WHERE FILESNUM = #{filesNum}
+	</select>
+	
+	<insert id="setReviewsAddFiles" parameterType="ReviewsFilesDTO">
+		INSERT INTO REVIEWS_FILES VALUES(REVIEWSFILES_SEQ.NEXTVAL, #{fileName}, #{oriName}, #{reviewNum})
+	</insert> 
+	
+<!-- 	<delete id="setReviewsFileDelete" parameterMap="ReviewsFilesDTO">
+		DELETE REVIEWS_FILES WHERE FILESNUM = #{filesNum}
+	</delete> -->
+	 
+	
+	
+</mapper>

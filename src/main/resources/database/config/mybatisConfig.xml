@@ -5,21 +5,32 @@
   
 <configuration>
 	<typeAliases>
+	<!-- 고성훈 -->
 		<typeAlias type="com.iu.home.party.PartyDTO" alias="PartyDTO"/>
 		<typeAlias type="com.iu.home.party.PartyListDTO" alias="PartyListDTO"/>
 		<typeAlias type="com.iu.home.party.PartyFileDTO" alias="PartyFileDTO"/>
 		<typeAlias type="com.iu.home.util.Pager" alias="Pager"/>
 		
+
+<!-- 공용 -->
 		<typeAlias type="java.lang.String" alias="String"/>
 		<typeAlias type="java.lang.Long" alias="Long"/>
 		<typeAlias type="java.util.List" alias="List"/>
 		
+		<!-- 한종석 -->
+		<typeAlias type="com.iu.home.reviews.ReviewsDTO" alias="ReviewsDTO"/>
+		<typeAlias type="com.iu.home.reply.reviews.ReplyReviewsDTO" alias="ReplyReviewsDTO"/>
+		<typeAlias type="com.iu.home.notice.NoticeDTO" alias="NoticeDTO"/>
+		<typeAlias type="com.iu.home.qna.QnaDTO" alias="QnaDTO"/>
+		<typeAlias type="com.iu.home.reviews.ReviewsFilesDTO" alias="ReviewsFilesDTO"/>
+		
+		
+		
+		<!-- 김도영 -->
 		<typeAlias type="com.iu.home.shop.ShopDTO" alias="ShopDTO"/>
 		<typeAlias type="com.iu.home.shop.ShopFileDTO" alias="ShopFileDTO"/>
 		<typeAlias type="com.iu.home.util.ShopPager" alias="ShopPager"/>
-		
 		<typeAlias type="com.iu.home.category.CategoryDTO" alias="CategoryDTO"/>
-		
 		<typeAlias type="com.iu.home.menu.MenuDTO" alias="MenuDTO"/>
 		
 	</typeAliases>
