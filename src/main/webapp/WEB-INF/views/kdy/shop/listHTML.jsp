@@ -71,6 +71,10 @@
       </div>
       <div class="modal-body">
         <form>
+          <div>
+            <input type="hidden" name="shopNum" id="shopNum" value="${result.shopNum}">
+          </div> 
+
           <div class="mb-3">
             <label for="recipient-name" class="col-form-label"></label>
             <input type="text" class="form-control" placeholder="제목을 입력해주세요" name="title" id="title">
@@ -103,7 +107,7 @@
         </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="close">취소</button>
         <button type="button" class="btn btn-primary" id="btn">등록</button>
       </div>
     </div>

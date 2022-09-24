@@ -42,19 +42,29 @@
                         </select>
                         <!-- kind란 이름으로 넘어감 -->
                       </div>
+
+                      <!-- <div class="searchBox">
+
+                        <input class="searchInput"type="text" name="" placeholder="Search">
+                        <button class="searchButton" href="#">
+                            <i class="material-icons">
+                                search
+                            </i>
+                        </button>
+                    </div> -->
                       
                       <div class="col-12">
                         <label class="visually-hidden" for="search">검색어</label>
                         <div class="input-group">
-                          <input type="text" name="search" value="${param.search}" var="" class="form-control" placeholder="검색어를 입력해 주세요">
+                          <input type="text" name="search" value="${param.search}" var="" class="form-control" id="search" placeholder="검색어를 입력해 주세요">
+                          <button type="submit" class="btn btn-secondary" id="searchNull">검색</button>
                         </div>
+                        <!-- <div class="col-12">
+                        </div> -->
+                      </form>
+                  </div>
                       </div>
                     
-                      <div class="col-12">
-                        <button type="submit" class="btn btn-secondary">검색</button>
-                      </div>
-                    </form>
-                </div>
                
                 </div>
             </div>
@@ -171,7 +181,8 @@
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
-        <script src="js/scripts.js"></script>
+        <!-- <script src="js/scripts.js"></script> -->
         <c:import url="./template/footerHTML.jsp"></c:import>
+        <script src="../../resources/kdy/js/index.js"></script>
     </body>
 </html>

@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -30,6 +31,7 @@ public class ShopController {
 		return "kdy/shop/add";
 	}
 	@PostMapping(value = "add")
+	@ResponseBody
 	public ModelAndView setAdd(ShopDTO shopDTO, MultipartFile[] files, HttpSession session)throws Exception{
 		ModelAndView mv = new ModelAndView();	
 		System.out.println("postadd");
@@ -41,6 +43,15 @@ public class ShopController {
 		return mv;
 	}
 	
+//	   //강사답글 추가
+//	   @PostMapping("c_add")
+//	   @ResponseBody
+//	   public int setCommentAdd(CommentDTO commentDTO)throws Exception{
+//	      int result = commentService.setCommentAdd(commentDTO);
+//	      
+//	      return result;
+//	   }
+//	
 	@GetMapping(value = "addMenu")
 	public ModelAndView setAddMenu(Long shopNum)throws Exception{
 		ModelAndView mv = new ModelAndView();
