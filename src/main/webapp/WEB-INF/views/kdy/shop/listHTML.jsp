@@ -136,8 +136,8 @@
 
         </div>
         <!-- </form> -->
-        <div class="modal-footer" id="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="close">취소</button>
+        <div class="modal-footer file_box" id="modal-footer">
+          <button type="button" class="btn btn-secondary upload-name" data-bs-dismiss="modal" id="close">취소</button>
           <button type="button" class="btn btn-primary" id="btn">등록</button>
           
         </div>
