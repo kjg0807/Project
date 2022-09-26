@@ -25,18 +25,18 @@ public class ShopController {
 	@Autowired
 	private ShopService shopService;
 	
-	@GetMapping("add")
-	public String setAdd()throws Exception{	
-		System.out.println("getadd");
-		return "kdy/shop/add";
-	}
+//	@GetMapping("add")
+//	public String setAdd()throws Exception{	
+//		System.out.println("getadd");
+//		return "kdy/shop/add";
+//	}
 	@PostMapping("add")
 	@ResponseBody
 	public ModelAndView setAdd(ShopDTO shopDTO, MultipartFile[] files, HttpSession session)throws Exception{
 		ModelAndView mv = new ModelAndView();	
 		System.out.println("postadd");
 		int result = shopService.setAdd(shopDTO, files, session.getServletContext());
-		System.out.println("결과="+result);
+		System.out.println("files"+files);
 		mv.addObject("result", result);
 		
 		mv.setViewName("redirect:./listHTML");
@@ -64,7 +64,7 @@ public class ShopController {
 		ModelAndView mv = new ModelAndView();
 		
 		System.out.println("postAddMenu");
-		System.out.println(shopDTO.getShopNum());
+		System.out.println("getShopNum"+shopDTO.getShopNum());
 		int result = shopService.setAddMenu(shopDTO);
 		
 		if(result == 1) {
@@ -91,7 +91,7 @@ public class ShopController {
 	@GetMapping(value = "detailHTML")
 	public ModelAndView getDetail(ShopDTO shopDTO)throws Exception{
 		System.out.println("getDetail");
-		System.out.println(shopDTO.getMenuName());
+		System.out.println("getMenuName"+shopDTO.getMenuName());
 		ModelAndView mv = new ModelAndView();
 		shopDTO = shopService.getDetail(shopDTO);
 		mv.setViewName("kdy/shop/detailHTML");

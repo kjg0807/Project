@@ -12,7 +12,11 @@ const close = document.querySelector("#close");
 
 
 
-btn.addEventListener("click", function(){
+console.log(btn);
+
+btn.addEventListener("click", function(e){
+    e.preventDefault();
+    e.stopPropagation();
     console.log("가게정보 전송 ");
     let si = shopNum.value;
     let cat = categoryNum.value;
@@ -23,8 +27,7 @@ btn.addEventListener("click", function(){
     let de = delivery.value;
     let co = contents.value;
     let ti = title.value;
-    const files = document.querySelector("#files");
-    let file = files.value;
+
 
     console.log(si);
     console.log(cat);
@@ -35,7 +38,7 @@ btn.addEventListener("click", function(){
     console.log(de);
     console.log(co);
     console.log(ti);
-    console.log(file);
+
 
 
     const xhttp = new XMLHttpRequest();
@@ -44,7 +47,7 @@ btn.addEventListener("click", function(){
 
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 
-    xhttp.send("shopNum="+si+"&categoryNum="+cat+"&shopPhone="+sp+"&shopName="+sh+"&shopAddress="+adr+"&priceAvg="+pa+"&delivery="+de+"&contents="+co+"&title="+ti+"&files="+file);
+    xhttp.send("shopNum="+si+"&categoryNum="+cat+"&shopPhone="+sp+"&shopName="+sh+"&shopAddress="+adr+"&priceAvg="+pa+"&delivery="+de+"&contents="+co+"&title="+ti);
     // +"&files="+file
 
     xhttp.onreadystatechange=function(){
@@ -60,4 +63,5 @@ btn.addEventListener("click", function(){
             }
         } 
     }
+
 })

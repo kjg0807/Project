@@ -22,9 +22,9 @@
   </head>
 <body>
 <c:import url="../../template/headerHTML.jsp"></c:import>
-    <main class="realMain">
+<main class="realMain" id="realMain">
         
-        <div class="container">
+  <div class="container">
             <div class="c1">
                 맛집 리뷰
             </div>
@@ -88,7 +88,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form>
+        <!-- <form> -->
 
           <div class="mb-3">
             <label for="message-text" class="col-form-label"> </label>
@@ -131,22 +131,24 @@
           <div id="addFiles" class="mb-3">
             <i class="fa-regular fa-image"></i>
             <label for="message-text" class="col-form-label"></label>
-              <button type="button" id="fileAdd" style="color: black;">파일추가</button>
+              <input type="file" name="files" id="fileAdd">파일
           </div>
 
-          </div>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="close">취소</button>
-        <button type="button" class="btn btn-primary" id="btn">등록</button>
+        </div>
+        <!-- </form> -->
+        <div class="modal-footer" id="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="close">취소</button>
+          <button type="button" class="btn btn-primary" id="btn">등록</button>
+          
+        </div>
       </div>
     </div>
   </div>
 </div>
 		<!--  -->
-            </div>
-    </main>
+   
+
+</main>
     <div style="display: flex; margin: 5 5px;  justify-content: center;">
     <nav aria-label="Page navigation example">
 			<ul class="pagination">
@@ -169,7 +171,7 @@
   <c:import url="../../template/footerHTML.jsp"></c:import>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
   <script src="../../../../resources/kdy/js/shopAdd.js"></script>
-  <script src="../../../../resources/kdy/js/shop_files.js"></script> 
+  <script src="../../../../resources/kdy/js/shop_files.js"></script>
 
     <script type="text/javascript">
       $("#contents").summernote(
