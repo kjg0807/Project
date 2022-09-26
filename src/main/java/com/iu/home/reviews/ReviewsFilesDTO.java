@@ -7,7 +7,7 @@ public class ReviewsFilesDTO extends ReviewsDTO{
 	private Long filesNum;
 	private String fileName;
 	private String oriName;
-	private List<ReviewsDTO> reviewsDTOs;
+	private Long reviewNum;
 	
 	
 	
@@ -29,12 +29,18 @@ public class ReviewsFilesDTO extends ReviewsDTO{
 	public void setOriName(String oriName) {
 		this.oriName = oriName;
 	}
-	public List<ReviewsDTO> getReviewsDTOs() {
-		return reviewsDTOs;
+	public Long getReviewNum() {
+		return reviewNum;
 	}
-	public void setReviewsDTOs(List<ReviewsDTO> reviewsDTOs) {
-		this.reviewsDTOs = reviewsDTOs;
+	public void setReviewNum(Long reviewNum) {
+		this.reviewNum = reviewNum;
 	}
+	
+	
+
+	
+	
+
 	
 	
 	

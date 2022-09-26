@@ -35,7 +35,7 @@
 				조회수 : ${dto.hits}
 			</div>
 				<div class="row border border-top-0 border-danger bg-light"  style="min-height: 60vh" >
-					<div class="border border-danger">
+					<div class="col">
 						내용 : ${dto.contents}
 					</div>
 				</div>
@@ -76,6 +76,37 @@
 
 		</tbody>
 	</table> --%>
+	
+	<!-- 댓글 코드 시작 -->
+	<div class="row">
+		<div class="mb-3">
+			<label for="writer" class="form-label">작성자</label>
+			<input type="text" class="form-label" id="writer" placeholder="작성자 :">
+		</div>
+		
+		<div class="mb-3">
+			<label for="contents" class="form-label">내용</label>
+			<input type="text" class="form-label" id="contents" placeholder="내용 :">
+		</div>
+		
+		<div class="mb-3">
+			<button type="button" id="btn" data-reviewNum="${dto.reviewNum}">댓글 작성</button>
+		</div>
+	</div>
+	
+	
+	<!-- 댓글 리스트 출력 -->
+	<div>
+		<table id="reviewsCommentList" class="table table-striped col-lg-16">
+			<tr>
+				<th>작성자</th>
+				<th>내용</th>
+				<th>작성날짜</th>
+				<th>수정/삭제</th>
+			</tr>
+		</table>
+		<button id="plus" class="btn btn-success disabled">더보기</button>
+	</div>
 
 <a href="./list">목록</a>
 <a href="./update?reviewNum=${dto.reviewNum}">수정</a>
@@ -88,6 +119,6 @@
     			 integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" 
     			 crossorigin="anonymous"></script>
 	
-
+<script src="/resources/js/ReviewsComment.js"></script>
 </body>
 </html>

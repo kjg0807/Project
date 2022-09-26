@@ -8,8 +8,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.iu.home.reviewsComment.ReviewsCommentDAO;
+import com.iu.home.reviewsComment.ReviewsCommentDTO;
 import com.iu.home.util.FileManger;
 import com.iu.home.util.Pager;
+import com.iu.home.util.ReviewsCommentPager;
 import com.iu.home.util.ReviewsPager;
 
 @Service
@@ -19,6 +22,8 @@ public class ReviewsService {
 	private ReviewsDAO reviewsDAO;
 	@Autowired
 	private FileManger fileManager;
+	@Autowired
+	private ReviewsCommentDAO reviewsCommentDAO;
 	
 	//리뷰 목록
 	public List<ReviewsDTO> getReviewsList(ReviewsPager reviewsPager) throws Exception{
@@ -82,6 +87,28 @@ public class ReviewsService {
 			fileManager.deleteReviewsFiles(servletContext, path, reviewsFilesDTO);
 		}
 		return result;
+	}
+	
+	
+	public List<ReviewsCommentDTO> getReviewsCommentList(ReviewsCommentPager reviewsCommentPager) throws Exception{
+
+		reviewsCommentPager.getRowNum();
+		Long totalCount = reviewsCommentDAO.getReviewsCommentCount(reviewsCommentPager);
+		reviewsCommentPager.makePage(totalCount);
+		return reviewsCommentDAO.getReviewsCommentList(reviewsCommentPager);
+	}
+	
+	//답글 달기
+	public int setReviewsCommentAdd(ReviewsCommentDTO reviewsCommentDTO) throws Exception{
+		return reviewsCommentDAO.setReviewsCommentAdd(reviewsCommentDTO);
+	}
+	
+	public int setReviewsCommentUpdate(ReviewsCommentDTO reviewsCommentDTO) throws Exception{
+		return reviewsCommentDAO.setReviewsCommentUpdate(reviewsCommentDTO);	
+	}
+	
+	public int setReviewsCommentDelete(ReviewsCommentDTO reviewsCommentDTO) throws Exception{
+		return reviewsCommentDAO.setReviewsCommentDelete(reviewsCommentDTO);
 	}
 	
 }

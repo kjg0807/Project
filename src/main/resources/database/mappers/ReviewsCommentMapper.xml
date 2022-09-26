@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+          PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+          "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+          
+          
+<mapper namespace="com.iu.home.reviewsComment.ReviewsCommentDAO">
+	<select id="getReviewsCommentList" resultType="ReviewsCommentDTO" parameterType="ReviewsCommentPager">
+		SELECT * FROM 
+			(
+				SELECT ROWNUM R, RC.* FROM
+					(
+						SELECT * FROM REVIEWS_COMMENT
+						WHERE REVIEWNUM = #{reviewNum}
+						ORDER BY NUM DESC) RC)
+		WHERE R BETWEEN #{startRow} AND #{lastRow}
+	</select>
+	
+	<insert id="setReviewsCommentAdd" parameterType="ReviewsCommentDTO">
+		INSERT INTO REVIEWS_COMMENT (NUM, REVIEWNUM, WRITER, CONTENTS, REGDATE)
+		VALUES	(NOTICE_1_SEQ.NEXTVAL, #{reviewNum}, #{writer}, #{contents}, SYSDATE)
+	</insert>
+	
+	<select id="getReviewsCommentListTotalCount" parameterType="ReviewsCommentPager" resultType="Long">
+		SELECT COUNT(NUM) FROM REVIEWS_COMMENT WHERE REVIEWNUM = #{reviewNum}
+	</select>
+	
+	<update id="setReviewsCommentUpdate" parameterType="ReviewsCommentDTO">
+		UPDATE REVIEWS_COMMENT SET CONTENTS = #{contents} WHERE NUM = #{num}
+	</update>
+	
+	<delete id="setReviewsCommentDelete" parameterType="ReviewsCommentDTO">
+		DELETE REVIEWS_COMMENT WHERE NUM = #{num}
+	</delete>
+	
+</mapper>

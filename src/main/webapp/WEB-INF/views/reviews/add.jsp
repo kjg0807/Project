@@ -7,16 +7,16 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <!-- summernote JQUERY -->
-<script type="text/javascript" src="//code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 <!-- summernote bootstrap -->
  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
  
 <!-- include summernote css/js -->
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
-		 <c:import url="../template/headerHTML.jsp"></c:import>
 </head>
 <body>
+<c:import url="../template/headerHTML.jsp"></c:import>
 <section class="container-fluid col-lg-6 mt-5">
 
 	<h1>리뷰 글쓰기 페이지</h1>
@@ -31,7 +31,7 @@
 		
 		<div class="mb-3">
 		  <label for="formGroupExampleInput2" class="form-label">글내용</label>
-		  <input type="text" class="form-control" name="contents" placeholder="내용: ${dto.contents}">
+		  <textarea class="form-control" name="contents" id="contents" rows="5" placeholder="내용: ${dto.contents}"></textarea>
 		</div>
 		
 		<br>
@@ -56,13 +56,13 @@
 </div>
 
 </section>
+<c:import url="../template/footerHTML.jsp"></c:import>
 <!-- 부트스트랩 -->
 <!-- 부트스트랩 -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
 <script type="text/javascript">
 	$("#contents").summernote();
 </script>
-<c:import url="../template/footerHTML.jsp"></c:import>
 <script src="/resources/js/reviewsFile.js"></script>			 
 </body>
 </html>
