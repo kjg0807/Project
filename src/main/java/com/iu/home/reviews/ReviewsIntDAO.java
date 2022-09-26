@@ -21,6 +21,8 @@ public interface ReviewsIntDAO {
 	
 	public int setReviewsAddFiles(ReviewsFilesDTO reviewsFilesDTO) throws Exception;
 	
-	//public int getReviewsFilesDetail
+	public ReviewsFilesDTO getReviewsFilesDetail(ReviewsFilesDTO reviewsFilesDTO) throws Exception;
+	
+	public int setReviewsFilesDelete(ReviewsFilesDTO reviewsFilesDTO) throws Exception;
 
 }

@@ -15,7 +15,7 @@
 </sql>
  
 	<!-- 글 목록을 최신순(DESC)로 조회 -->	
- 	<select id="getQnaList" resultType="QnaDTO" parameterType="Pager">
+ 	<select id="getQnaList" resultType="QnaDTO" parameterType="ReviewsPager">
 		SELECT * FROM
 			(
 				SELECT ROWNUM RN, QN.* FROM
@@ -49,7 +49,7 @@
  		DELETE QNA_1 WHERE NUM = #{num}
  	</delete>
  	
- 	<select id="getCount" resultType="Long" parameterType="Pager">
+ 	<select id="getCount" resultType="Long" parameterType="ReviewsPager">
 		SELECT COUNT(num) FROM QNA_1
 		<include refid="search"></include>
 	</select>

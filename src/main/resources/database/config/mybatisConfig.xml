@@ -23,6 +23,7 @@
 		<typeAlias type="com.iu.home.notice.NoticeDTO" alias="NoticeDTO"/>
 		<typeAlias type="com.iu.home.qna.QnaDTO" alias="QnaDTO"/>
 		<typeAlias type="com.iu.home.reviews.ReviewsFilesDTO" alias="ReviewsFilesDTO"/>
+		<typeAlias type="com.iu.home.util.ReviewsPager" alias="ReviewsPager"/>
 		
 		
 		

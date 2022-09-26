@@ -13,7 +13,7 @@
      	LIKE '%'||#{search}||'%'
 </sql>
 
-	<select id="getNoticeList" resultType="NoticeDTO" parameterType="Pager">
+	<select id="getNoticeList" resultType="NoticeDTO" parameterType="ReviewsPager">
 		SELECT * FROM
 			(
 				SELECT ROWNUM RN, NN.* FROM
@@ -48,7 +48,7 @@
 		DELETE NOTICE_1 WHERE NUM = #{num}
 	</delete>
 	
-	<select id="getCount" resultType="Long" parameterType="Pager">
+	<select id="getCount" resultType="Long" parameterType="ReviewsPager">
 		SELECT COUNT(num) FROM NOTICE_1
 		<include refid="search"></include>
 	</select>

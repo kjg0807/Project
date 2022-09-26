@@ -65,6 +65,20 @@ public class ReviewsDAO implements ReviewsIntDAO{
 		return sqlSession.insert(NAMESPACE+"setReviewsAddFiles", reviewsFilesDTO);
 	}
 
+
+	@Override
+	public ReviewsFilesDTO getReviewsFilesDetail(ReviewsFilesDTO reviewsFilesDTO) throws Exception {
+	
+		return sqlSession.selectOne(NAMESPACE+"getReviewsFilesDetail", reviewsFilesDTO);
+	}
+
+
+	@Override
+	public int setReviewsFilesDelete(ReviewsFilesDTO reviewsFilesDTO) throws Exception {
+	
+		return sqlSession.delete(NAMESPACE, reviewsFilesDTO);
+	}
+
 	
 	
 

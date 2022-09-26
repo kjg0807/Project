@@ -29,6 +29,17 @@
 		  <input type="text" class="form-control" name="contents" placeholder="${dto.contents}">
 		</div>
 		
+		<c:forEach items="${boardDTO.boardFileDTOs}" var="fileDTO">
+			 <div class="mb-3">
+			      <span class="form-control">${fileDTO.oriName}</span>
+			      <button type="button" class="fileDelete" data-file-num="${fileDTO.fileNum}">삭제</button>
+      		</div>
+		</c:forEach>
+
+		<div id="addFiles" class="mb-3">
+				<button id="fileAdd" type="button" class="btn btn-secondary">파일 추가</button>
+		</div>
+		
 		<br>
 		
 		<button type="submit" class="btn btn-success">수정완료</button>

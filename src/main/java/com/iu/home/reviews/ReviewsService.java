@@ -69,4 +69,19 @@ public class ReviewsService {
 		return reviewsDAO.setReviewsDelete(reviewsDTO);
 	}
 	
+
+	public int setReviewsFilesDelete(ReviewsFilesDTO reviewsFilesDTO, ServletContext servletContext) throws Exception{
+		
+		reviewsFilesDTO = reviewsDAO.getReviewsFilesDetail(reviewsFilesDTO);
+		
+		int result = reviewsDAO.setReviewsDelete(reviewsFilesDTO);
+		
+		String path = "resources/upload/reviews";
+		
+		if(result > 0) {
+			fileManager.deleteReviewsFiles(servletContext, path, reviewsFilesDTO);
+		}
+		return result;
+	}
+	
 }

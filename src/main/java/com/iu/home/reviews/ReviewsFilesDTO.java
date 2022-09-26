@@ -35,7 +35,8 @@ public class ReviewsFilesDTO extends ReviewsDTO{
 	public void setReviewsDTOs(List<ReviewsDTO> reviewsDTOs) {
 		this.reviewsDTOs = reviewsDTOs;
 	}
-
+	
+	
 	
 
 	
