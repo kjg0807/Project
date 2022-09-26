@@ -28,7 +28,6 @@ public class ShopService {
 			if(multipartFile.isEmpty()) {
 				continue;
 			}
-	
 			String fileName = ShopfileManager.saveFile(path, servletContext, multipartFile);
 			ShopFileDTO shopFileDTO = new ShopFileDTO();
 			shopFileDTO.setFileName(fileName);

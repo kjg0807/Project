@@ -4,13 +4,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    
+  <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/kdy/css/list.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
-</head>
+    <link rel="stylesheet" href="../../../../resources/kdy/css/list.css">
+    <%-- Bootstrap CSS --%>
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <!-- jquery -->
+      <script type="text/javascript" src="//code.jquery.com/jquery-3.6.0.min.js"></script>
+      <!-- include summernote css/js-->
+       <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+       <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+
+       
+  </head>
 <body>
 <c:import url="../../template/headerHTML.jsp"></c:import>
     <main class="realMain">
@@ -51,12 +60,21 @@
                             <div class="p-2 flex-shrink-1">
                                 <div class="mt-2" id="img" style="height: 200px; width: 310px">
                                     <img src="../../../../resources/kdy/images/hma.jpg" style="width: 300px;">
+<!-- 
+                                    <div class="mt-2" id="img" style="height: 200px; width: 310px">
+                                      <c:forEach items="${list.shopFileDTOs}" var="shopFileDTO">  
+                                        <img src="../../../../resources/upload/shop/${shopFileDTO.fileName}" style="width: 300px;">
+                                      </c:forEach> 
+                                      </div> -->
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+            <div>
+              <input name="shopNum"  id="shopNum" value="${list.shopNum}">
+            </div> 
       </c:forEach>
 		<div class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap" role="add" >가게등록</div>
 		
@@ -71,18 +89,14 @@
       </div>
       <div class="modal-body">
         <form>
-          <div>
-            <input type="hidden" name="shopNum" id="shopNum" value="${result.shopNum}">
-          </div> 
 
           <div class="mb-3">
-            <label for="recipient-name" class="col-form-label"></label>
-            <input type="text" class="form-control" placeholder="제목을 입력해주세요" name="title" id="title">
+            <label for="message-text" class="col-form-label"> </label>
+           <input type="text" class="form-control" placeholder="카테고리" name="categoryNum" id="categoryNum">
           </div>
-          
           <div class="mb-3">
             <label for="message-text" class="col-form-label"></label>
-            <input type="text" class="form-control" placeholder="식당을 소개해주세요" name="contents" id="contents">
+            <input type="text" class="form-control" placeholder="식당의 전화번호를 입력해주세요" name="shopPhone" id="shopPhone">
           </div>
           <div class="mb-3">
             <label for="message-text" class="col-form-label"> </label>
@@ -98,11 +112,28 @@
           </div>
           <div class="mb-3">
             <label for="message-text" class="col-form-label"></label>
-            <input type="text" class="form-control" placeholder="식당의 배달비를 입력해주세요" name="delevery" id="delevery">
+            <input type="text" class="form-control" placeholder="식당의 배달비를 입력해주세요" name="delivery" id="delivery">
           </div>
-          <div class="mb-3">
+          <div class="mt-1">
+            <div ><label  for="exampleFormControlInput1">글내용</label></div>
+            <textarea name = "contents" class="form-control mt-1" id="contents" rows="3"></textarea>
+        </div>
+        <div class="mb-3">
+          <label for="recipient-name" class="col-form-label"></label>
+          <input type="text" class="form-control" placeholder="제목을 입력해주세요" name="title" id="title">
+        </div>          
+          <!-- <div class="mb-3" id="addFiles">
+            <i class="fa-regular fa-image"></i>
             <label for="message-text" class="col-form-label"></label>
-            <input type="text" class="form-control" placeholder="식당의 전화번호를 입력해주세요" name="shopPhone" id="shopPhone">
+            <button type="submit" id="fileAdd">이미지</button>
+          </div> -->
+
+          <div id="addFiles" class="mb-3">
+            <i class="fa-regular fa-image"></i>
+            <label for="message-text" class="col-form-label"></label>
+              <button type="button" id="fileAdd" style="color: black;">파일추가</button>
+          </div>
+
           </div>
         </form>
       </div>
@@ -126,15 +157,48 @@
 			</c:if>
 			
 			<c:forEach begin="${shopPager.startNum}" end="${shopPager.lastNum}" var="i">
-				<li class="page-item">
-					<a class="page-link" href="./listHTML?shopPage=${i}">${i}</a>
+        <li class="page-item">
+          <a class="page-link" href="./listHTML?shopPage=${i}">${i}</a>
 				</li>
 			</c:forEach>
 			<li class="page-item ${shopPager.next?'':'disabled'}">
-			<a class="page-link" href="./listHTML?shopPage=${shopPager.lastNum+1}">&raquo;</a>
+        <a class="page-link" href="./listHTML?shopPage=${shopPager.lastNum+1}">&raquo;</a>
 			</ul>
 		</nav>
-		</div>
+  </div>
+  <c:import url="../../template/footerHTML.jsp"></c:import>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+  <script src="../../../../resources/kdy/js/shopAdd.js"></script>
+  <script src="../../../../resources/kdy/js/shop_files.js"></script> 
+
+    <script type="text/javascript">
+      $("#contents").summernote(
+              {
+                      height: 260,                
+                      minHeight: null,           
+                      maxHeight: null,          
+                      focus: true 
+
+                  });
+                  $('#contents').summernote({
+      height : 350,
+      toolbar: [
+          ['style', ['style']],
+          ['font', ['bold', 'italic', 'underline', 'clear']],
+          ['fontname', ['fontname']],
+          ['color', ['color']],
+          ['para', ['ul', 'ol', 'paragraph']],
+          ['height', ['height']],
+          ['table', ['table']],
+          ['insert', ['link', 'picture', 'hr']],
+          ['view', ['fullscreen', 'codeview']],
+          ['help', ['help']]
+        ]
+   });
+       
+  
+  </script>
+
         <script>
 			let k = '${param.kind}'; 
 			const kinds = document.getElementsByClassName("kinds");
@@ -146,10 +210,6 @@
 				}
 			}
 		</script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
-<script src="../../../resources/kdy/js/list.js"></script>
-<script src="../../../../resources/kdy/js/shopAdd.js"></script>
 
-<c:import url="../../template/footerHTML.jsp"></c:import>
 </body>
 </html>

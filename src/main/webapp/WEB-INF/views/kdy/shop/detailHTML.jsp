@@ -16,6 +16,7 @@
     <div class="d-flex" id="img1">
     <c:forEach items="${detail.shopFileDTOs}" var="shopFileDTO">               
         <img class="flex image" style="width: 380px; height: 380px;" src="../../../../resources/upload/shop/${shopFileDTO.fileName}">
+        <!-- <img src="../../../../resources/upload/shop" -->
     </c:forEach>
 </div>
 

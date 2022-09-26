@@ -25,18 +25,18 @@ public class ShopController {
 	@Autowired
 	private ShopService shopService;
 	
-	@GetMapping(value = "add")
+	@GetMapping("add")
 	public String setAdd()throws Exception{	
 		System.out.println("getadd");
 		return "kdy/shop/add";
 	}
-	@PostMapping(value = "add")
+	@PostMapping("add")
 	@ResponseBody
 	public ModelAndView setAdd(ShopDTO shopDTO, MultipartFile[] files, HttpSession session)throws Exception{
 		ModelAndView mv = new ModelAndView();	
 		System.out.println("postadd");
 		int result = shopService.setAdd(shopDTO, files, session.getServletContext());
-		
+		System.out.println("결과="+result);
 		mv.addObject("result", result);
 		
 		mv.setViewName("redirect:./listHTML");
@@ -113,10 +113,11 @@ public class ShopController {
 		return mv;
 	}
 	@GetMapping(value = "updateMenu")
-	public ModelAndView setUpdateMenu(Long shopNum)throws Exception{
+	public ModelAndView setUpdateMenu(Long shopNum, ShopDTO shopDTO)throws Exception{
 		ModelAndView mv = new ModelAndView();
-		mv.addObject("shopNum", shopNum);
-		mv.setViewName("kdy/shop/addMenu");
+		mv.addObject("detail", shopNum);
+		mv.addObject("detail", shopDTO);
+		mv.setViewName("kdy/shop/updateMenu");
 		return mv;
 	}
 	@PostMapping(value = "updateMenu")

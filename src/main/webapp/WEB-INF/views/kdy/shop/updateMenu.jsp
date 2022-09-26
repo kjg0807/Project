@@ -8,14 +8,14 @@
 <title>Insert title here</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
 
+<%-- <c:import url="../template/headerHTML.jsp"></c:import> --%>
 </head>
 <body>
-<c:import url="../template/headerHTML.jsp"></c:import>
 	<section class="container-fluid col-lg-6 mt-5">
 	<h1>가게 정보 수정</h1>
 		
 <div class="row">
-<form action="update" method="post">
+<form action="updateMenu" method="post">
 
 	<input type="hidden" name="shopNum" readonly="readonly" value="${detail.shopNum}">
 	
@@ -34,6 +34,6 @@
 
 </div>
 </section>
-<c:import url="../template/footerHTML.jsp"></c:import>
+<%-- <c:import url="../template/footerHTML.jsp"></c:import> --%>
 </body>
 </html>
