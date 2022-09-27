@@ -58,22 +58,22 @@
                                 </div>
                             </div>
                             <div class="p-2 flex-shrink-1">
-                                <div class="mt-2" id="img" style="height: 200px; width: 310px">
-                                    <img src="../../../../resources/kdy/images/hma.jpg" style="width: 300px;">
+                              <div class="mt-2" id="img" style="height: 200px; width: 310px">
+                                  <img src="../../../../resources/upload/shop/${shopFileDTO.fileName}" style="width: 300px;">
 <!-- 
-                                    <div class="mt-2" id="img" style="height: 200px; width: 310px">
-                                      <c:forEach items="${list.shopFileDTOs}" var="shopFileDTO">  
-                                        <img src="../../../../resources/upload/shop/${shopFileDTO.fileName}" style="width: 300px;">
-                                      </c:forEach> 
-                                      </div> -->
-                                </div>
-                            </div>
+                                  <div class="mt-2" id="img" style="height: 200px; width: 310px">
+                                    <c:forEach items="${list.shopFileDTOs}" var="shopFileDTO">  
+                                      <img src="../../../../resources/upload/shop/${shopFileDTO.fileName}" style="width: 300px;">
+                                    </c:forEach> 
+                                    </div> -->
+                              </div>
+                          </div>
                         </div>
                     </div>
                 </div>
             </div>
             <div>
-              <input name="shopNum"  id="shopNum" value="${list.shopNum}">
+              <input name="shopNum" type="hidden" id="shopNum" value="${list.shopNum}">
             </div> 
       </c:forEach>
 		<div class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap" role="add" >가게등록</div>
@@ -88,7 +88,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <!-- <form> -->
+        <form action="/shop/add" method="post" enctype="multipart/form-data">
 
           <div class="mb-3">
             <label for="message-text" class="col-form-label"> </label>
@@ -122,11 +122,6 @@
           <label for="recipient-name" class="col-form-label"></label>
           <input type="text" class="form-control" placeholder="제목을 입력해주세요" name="title" id="title">
         </div>          
-          <!-- <div class="mb-3" id="addFiles">
-            <i class="fa-regular fa-image"></i>
-            <label for="message-text" class="col-form-label"></label>
-            <button type="submit" id="fileAdd">이미지</button>
-          </div> -->
 
           <div id="addFiles" class="mb-3">
             <i class="fa-regular fa-image"></i>
@@ -135,12 +130,12 @@
           </div>
 
         </div>
-        <!-- </form> -->
         <div class="modal-footer file_box" id="modal-footer">
           <button type="button" class="btn btn-secondary upload-name" data-bs-dismiss="modal" id="close">취소</button>
-          <button type="button" class="btn btn-primary" id="btn">등록</button>
+          <button type="submit" class="btn btn-primary" id="btn">등록</button>
           
         </div>
+        </form>
       </div>
     </div>
   </div>
@@ -170,7 +165,6 @@
   </div>
   <c:import url="../../template/footerHTML.jsp"></c:import>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
-  <script src="../../../../resources/kdy/js/shopAdd.js"></script>
   <script src="../../../../resources/kdy/js/shop_files.js"></script>
 
     <script type="text/javascript">
@@ -196,10 +190,7 @@
           ['view', ['fullscreen', 'codeview']],
           ['help', ['help']]
         ]
-   });
-       
-  
-  </script>
+   }); </script>
 
         <script>
 			let k = '${param.kind}'; 
@@ -212,6 +203,8 @@
 				}
 			}
 		</script>
+
+    
 
 </body>
 </html>

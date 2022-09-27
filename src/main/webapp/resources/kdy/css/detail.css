@@ -8,6 +8,12 @@
 .p{
     margin: 1px;
 }
+button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-color: transparent; 
+}
 .q{
     margin: 5px;
     font-size: 30px;
@@ -17,14 +23,14 @@
 }
 
 
-#address, #phone, #priceAvg, #delivery{
+#address, #phone, #priceAvg, #delivery, #menu{
     color: gray;
     font-size: 15px;
 }
-#realAddress, #realPhone, #realpriceAvg, #realdelivery{
+#realAddress, #realPhone, #realpriceAvg, #realdelivery, #realmenu{
     color: black;
     font-size: 18px;
-}9
+}
 
 .qwer{
     height: 200px;

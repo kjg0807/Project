@@ -88,6 +88,7 @@ public class ShopDTO extends MenuDTO{
 		this.menuDTOs = menuDTOs;
 	}
 
+
 	
 	
 	

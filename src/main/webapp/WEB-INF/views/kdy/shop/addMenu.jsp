@@ -19,7 +19,7 @@
 		<form action="./addMenu" method="post">
 			<input type="hidden" name="shopNum" value="${shopNum }">
 			<div class="mb-3">
-				<br><input type="text" placeholder="메뉴이름을 입력해주세요" class="form-control" name="menuName" data-shopnum="${shopNum }">
+				<br><input type="text" placeholder="메뉴이름을 입력해주세요" class="form-control" name="menuName" data-shopnum="${shopNum}">
 			</div>
 			<div class="mb-3">
 				<br><input type="text" placeholder="메뉴가격을 입력해주세요" class="form-control" name="menuPrice">

@@ -45,7 +45,10 @@
 	</select>
 	
 	<select id="getDetail" parameterType="ShopDTO" resultMap="getDetailMap"> 
-	    SELECT S.*, SF.*, M.* FROM SHOP S LEFT JOIN SHOPFILE SF 
+	    SELECT S.*, SF.*, M.* FROM 
+	    SHOP S 
+	    LEFT JOIN 
+	    SHOPFILE SF 
 	    ON S.SHOPNUM = SF.SHOPNUM 
 	    LEFT JOIN 
 	    MENU M 
@@ -63,15 +66,15 @@
 		<result column="DELIVERY" property="delivery" />
 		<result column="CONTENTS" property="contents" />
 		<result column="TITLE" property="title" />
-		<collection property="shopFileDTOs" javaType="List"
-			ofType="ShopFileDTO">
+		
+		<collection property="shopFileDTOs" javaType="List" ofType="ShopFileDTO">
 			<id column="FILENUM" property="fileNum" />
 			<result column="FILENAME" property="fileName" />
 			<result column="ORINAME" property="oriName" />
-		</collection>
-		<collection property="menuDTOs" javaType="List"
-			ofType="MenuDTO">
-			<id column="SHOPNUM" property="shopNum" />
+		</collection> 
+		
+		<collection property="menuDTOs" javaType="List" ofType="MenuDTO">
+			<!-- <id column="SHOPNUM" property="shopNum" /> -->
 			<result column="MENUNAME" property="menuName" />
 			<result column="MENUPRICE" property="menuPrice" />
 		</collection>
@@ -87,7 +90,8 @@
 	<delete id="setDeleteMenu" parameterType="ShopDTO"> DELETE MENU WHERE
 		SHOPNUM=#{shopNum} </delete>
 	<!-- =============================file -->
-	<insert id="setAddFile" parameterType="ShopFileDTO"> INSERT INTO SHOPFILE
+	<insert id="setAddFile" parameterType="ShopFileDTO"> 
+		INSERT INTO SHOPFILE
 		VALUES (SHOPFILE_SEQ.NEXTVAL, #{shopNum}, #{fileName}, #{oriName})
 	</insert>
 	<!-- ===================================menu -->
