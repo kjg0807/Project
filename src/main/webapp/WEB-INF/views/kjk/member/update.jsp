@@ -5,16 +5,13 @@
 
 <head>
 <meta charset="UTF-8">
-<title>회원 가입</title>
+<title>정보 수정</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
 	integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous"
 >
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
 	integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"
 ></script>
-
-<!-- jquery -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <style>
 .emcs {
@@ -28,30 +25,29 @@ select {
 	padding: 7px;
 	vertical-align: middle
 }
+}
 </style>
 <body>
 	<c:import url="../../template/headerHTML.jsp"></c:import>
 
-	<form action="../member/join" method="post" id="frm">
+
+	<form action="../member/update" method="post" id="frm">
 		<br>
-		<h1 style="text-align: center;">회원 가입</h1>
+		<h1 style="text-align: center;">정보 수정</h1>
 		<section class="col-lg-6 container-fluid mt-4">
 			<div class="row">
 				<!-- id -->
+
 				<div class="mb-3">
 					<label class="form-label">아이디</label>
-					<input type="text" class="form-control" name="userid" aria-describedby="emailHelp" id="id" placeholder="아이디 입력" onfocus="this.placeholder=''"
-						onblur="this.placeholder='아이디 입력'"
-					>
+					<input type="text" class="form-control" name="userid" id="id" value="${dto.userid}">
 					<!-- id를 입력하고 나왔을 때 2글자 미만이면 메세지 출력 : id는 2글자 이상 -->
 					<div id="idText" style="display: none; color: red;">ID는 2글자 이상 입력해야 합니다.</div>
 				</div>
 				<!-- password 1 -->
 				<div class="mb-3">
 					<label class="form-label">비밀번호</label>
-					<input type="password" class="form-control" name="pwd" placeholder="비밀번호 입력" id="pwd" onfocus="this.placeholder=''"
-						onblur="this.placeholder='비밀번호 입력'"
-					>
+					<input type="text" class="form-control" name="pwd" id="pwd" value="${dto.pwd}">
 					<!-- pwd를 입력할 때마다 (1글자씩) 메세지를 출력 : pwd - 최소 6글자 이상 -->
 					<div id="pwdText" style="display: none; color: red;">PWD는 6글자 이상 입력해야 합니다.</div>
 				</div>
@@ -59,16 +55,14 @@ select {
 				<div class="mb-3">
 					<label class="form-label">비밀번호 확인</label>
 					<!-- name="pwd"-->
-					<input type="password" class="form-control" placeholder="비밀번호 확인" id="pwd2" onfocus="this.placeholder=''" onblur="this.placeholder='비밀번호 확인'">
+					<input type="password" class="form-control" id="pwd2">
 					<!-- pwd를 입력하고 나왔을 때 첫번째 pwd와 값 비교 후 메세지 출력 : 같다, 다르다 -->
 					<div id="pwdText2" style="display: none; color: red;">PWD가 일치하지 않습니다.</div>
 				</div>
 				<!-- name -->
 				<div class="mb-3">
 					<label class="form-label">이름</label>
-					<input type="text" class="form-control" name="username" aria-describedby="emailHelp" id="name" placeholder="이름 입력" onfocus="this.placeholder=''"
-						onblur="this.placeholder='이름 입력'"
-					>
+					<input type="text" class="form-control" name="username" id="name" value="${dto.username}">
 					<!-- 입력 후 최소 1글자 이상 -->
 					<div id="nameText" style="display: none; color: red;">최소 1글자를 입력하세요.</div>
 				</div>
@@ -78,9 +72,7 @@ select {
 					<div class="emcs">
 						<!-- 이메일 @뒤 내용 스크롤 만들기 -->
 						<!-- style="width: 46%; padding: 5px; border: 1px solid #dedede" -->
-						<input name="email" class="form-control" id="email" type="text" placeholder="이메일 입력" onfocus="this.placeholder=''"
-							onblur="this.placeholder='이메일 입력'"
-						>
+						<input name="email" class="form-control" id="email" type="text" value="${dto.email}">
 						<input style="width: 35%; padding: 5px; border: 1px solid #dedede" name="email2" id="email2" type="hidden">
 						<br>
 						<select style="width: 20%; justify-content: right;" name="select_email" id="emse" class="kind">
@@ -98,9 +90,7 @@ select {
 				<br> <br> <br>
 				<div class="mb-3">
 					<label class="form-label">전화번호</label>
-					<input type="text" class="form-control" name="phone" id="phone" placeholder="전화번호 입력 - 010-xxxx-xxxx" onfocus="this.placeholder=''"
-						onblur="this.placeholder='전화번호 입력 - 010-xxxx-xxxx'"
-					>
+					<input type="text" class="form-control" name="phone" id="phone" value="${dto.phone}">
 					<!-- 입력 후 최소 1글자 이상 -->
 					<div id="phoneText" style="display: none; color: red;">최소 1글자를 입력하세요.</div>
 					<div id="phoneText1" style="display: none; color: red;">휴대전화 번호 형식에 맞지 않습니다.</div>
@@ -109,7 +99,7 @@ select {
 				<!-- 나이 -->
 				<div class="mb-3">
 					<label class="form-label">나이</label>
-					<input type="text" class="form-control" name="age" id="age" placeholder="나이 입력" onfocus="this.placeholder=''" onblur="this.placeholder='나이 입력'">
+					<input type="text" class="form-control" name="age" id="age" value="${dto.age}">
 					<!-- 입력 후 최소 1글자 이상 -->
 					<div id="ageText" style="display: none; color: red;">최소 1글자를 입력하세요.</div>
 					<div id="ageText1" style="display: none; color: red;">0보다 큰 숫자를 입력하세요.</div>
@@ -119,9 +109,7 @@ select {
 				<!-- 생년월일 -->
 				<div class="mb-3">
 					<label class="form-label">생년월일</label>
-					<input type="text" class="form-control" name="birth" id="birth" placeholder="생년월일 입력 - ex)990807" onfocus="this.placeholder=''"
-						onblur="this.placeholder='생년월일 입력 - ex)990807'"
-					>
+					<input type="text" class="form-control" name="birth" id="birth" value="${dto.birth}">
 					<div id="birthText" style="display: none; color: red;">6자를 입력하세요</div>
 					<div id="birthText1" style="display: none; color: red;">6자를 입력하세요</div>
 					<div id="birthText2" style="display: none; color: red;">숫자를 입력하세요.</div>
@@ -129,19 +117,15 @@ select {
 				<!-- 성별 -->
 				<div class="mb-3">
 					<label class="form-label">성별</label>
-					<input type="text" class="form-control" name="gender" id="gender" placeholder="성별 입력 - 남: 1, 여: 2" onfocus="this.placeholder=''"
-						onblur="this.placeholder='성별 입력 - 남: 1, 여: 2'"
-					>
+					<input type="text" class="form-control" name="gender" id="gender" value="${dto.gender}">
 					<!-- 입력 후 최소 1글자 이상 -->
 					<div id="genderText" style="display: none; color: red;">최소 1글자를 입력하세요.</div>
 					<div id="genderText1" style="display: none; color: red;">형식에 맞게 입력하세요.</div>
 					<div id="genderText2" style="display: none; color: red;">1 또는 2만 입력 가능합니다.</div>
 					<div id="genderText3" style="display: none; color: red;">숫자를 입력하세요.</div>
 				</div>
-
-				<!-- id, pwd, name, email, phone의 각 조건을 검사 후 조건이 맞을때만 회원가입 -->
 				<div>
-					<button type="button" id="btn" class="btn btn-primary">회원 가입</button>
+					<button type="button" id="btn" class="btn btn-primary">정보 수정</button>
 					<button type="reset" class="btn btn-primary">초기화</button>
 				</div>
 			</div>

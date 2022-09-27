@@ -33,4 +33,14 @@ public class MemberDAO
 	{
 		return sqlSession.selectList(NAMESPACE + "adMyPage", memberDTO);
 	}
+
+	public int setUpdate(MemberDTO memberDTO) throws Exception
+	{
+		return sqlSession.update(NAMESPACE + "setUpdate", memberDTO);
+	}
+
+	public int setDelete(MemberDTO memberDTO) throws Exception
+	{
+		return sqlSession.delete(NAMESPACE + "setDelete", memberDTO);
+	}
 }

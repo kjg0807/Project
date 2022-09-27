@@ -1,7 +1,5 @@
 package com.iu.home.member;
 
-import java.sql.ResultSet;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -14,7 +12,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -25,50 +22,50 @@ public class MemberController
 	@Qualifier("myservice")
 	private MemberService memberService;
 
-	@GetMapping("login")
+	@GetMapping(value = "login")
 	public String login()
 	{
 		System.out.println("Login GET Test");
 
-		return "member/login";
+		return "kjk/member/login";
 	}
 
-	@RequestMapping(value = "login", method = RequestMethod.POST)
+	@PostMapping(value = "login")
 	public ModelAndView login(HttpSession session, HttpServletRequest request, MemberDTO memberDTO, Model model) throws Exception
 	{
 		ModelAndView mv = new ModelAndView();
 		System.out.println("Login POST Test");
-		System.out.println(memberDTO.getUserid());
-		System.out.println(memberDTO.getPwd());
+		// System.out.println(memberDTO.getUserid());
+		// System.out.println(memberDTO.getPwd());
 		memberDTO = memberService.getLogin(memberDTO);
 		session.setAttribute("member", memberDTO);
 
 		memberDTO = (MemberDTO) session.getAttribute("member");
 
-		System.out.println(memberDTO);
+		// System.out.println(memberDTO);
 
 		String message = "로그인 실패";
-		String url = "../kjk/member/login";
+		String url = "../member/login";
 		if (memberDTO != null)
 		{ // login succeed
 			message = "로그인 성공";
-			url = "../";
+			url = "../../";
 		}
 		mv.addObject("dto", memberDTO);
 		mv.addObject("message", message);
 		mv.addObject("url", url);
-		mv.setViewName("common/rs");
+		mv.setViewName("kjk/common/rs");
 
 		return mv;
 	}
 
-	@RequestMapping(value = "logout", method = RequestMethod.GET)
+	@GetMapping(value = "logout")
 	public String logout(HttpSession session) throws Exception
 	{
 		// 1. session�쓣 �냼硫몄떆�궎湲�
 		session.invalidate();
 
-		return "redirect:../";
+		return "redirect:../../";
 	}
 
 	@GetMapping(value = "join")
@@ -86,11 +83,11 @@ public class MemberController
 		System.out.println("Join POST Test");
 		// System.out.println(memberDTO);
 		// System.out.println(memberDTO.getUserid());
-		System.out.println(memberDTO.getUsername());
+		// System.out.println(memberDTO.getUsername());
 		// System.out.println(memberDTO.getGender());
 
 		int rs = memberService.setJoin(memberDTO);
-		System.out.println(rs == 1);
+		// System.out.println(rs == 1);
 
 		mv.addObject("join", memberDTO);
 		mv.setViewName("redirect:./login");
@@ -122,13 +119,54 @@ public class MemberController
 		List<MemberDTO> ar = memberService.adMyPage(memberDTO);
 		for (MemberDTO memberDTO2 : ar)
 		{
-			System.out.println(memberDTO2.getPwd());
-			System.out.println(memberDTO2.getEmail());
-			System.out.println(memberDTO2.getPhone());
+			// System.out.println(memberDTO2.getPwd());
+			// System.out.println(memberDTO2.getEmail());
+			// System.out.println(memberDTO2.getPhone());
 		}
 		mv.addObject("dto", ar);
 		mv.setViewName("kjk/member/adpage");
 
 		return mv;
+	}
+
+	@GetMapping(value = "update")
+	public void update(Model model, HttpSession session) throws Exception
+	{
+		System.out.println("Update GET Page");
+
+		MemberDTO memberDTO = (MemberDTO) session.getAttribute("member");
+		memberDTO = memberService.getMyPage(memberDTO);
+		System.out.println(memberDTO.getUserid());
+		System.out.println(memberDTO.getPwd());
+		System.out.println(memberDTO.getGender());
+
+		// mv.addObject("dto", memberDTO);
+		// mv.setViewName("kjk/member/update");
+		model.addAttribute("dto", memberDTO);
+	}
+
+	@PostMapping(value = "update")
+	public String setUpdate(MemberDTO memberDTO) throws Exception
+	{
+		int rs = memberService.setUpdate(memberDTO);
+
+		return "redirect:./mypage?userid=" + memberDTO.getUserid();
+	}
+
+	@GetMapping(value = "delete")
+	public void setDelete(MemberDTO memberDTO) throws Exception
+	{
+		System.out.println("Delete GET Page");
+
+		int rs = memberService.setDelete(memberDTO);
+		// System.out.println(rs == 1);
+	}
+
+	@PostMapping(value = "delete")
+	public String setDelete(MemberDTO memberDTO, HttpSession session) throws Exception
+	{
+		System.out.println("Delete POST Page");
+
+		return "redirect:../../";
 	}
 }

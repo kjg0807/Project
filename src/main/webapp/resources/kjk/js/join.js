@@ -28,6 +28,7 @@ function pwd11() {
     let p = pwd.value;
     if (p.length < 6) {
         document.getElementById("pwdText").style.display = 'block';
+        pwdcheck = false;
     }
     else {
         document.getElementById("pwdText").style.display = 'none';
@@ -82,16 +83,20 @@ function em() {
     }
     // @ 이후
     emse.addEventListener("change", function () {
-        console.log("value: " + emse.options[emse.selectedIndex].value);
-        console.log("text: " + emse.options[emse.selectedIndex].text);
+        // console.log("value: " + emse.options[emse.selectedIndex].value);
         let emvalue = emse.options[emse.selectedIndex].value;
         // console.log(emvalue);
         // console.log(emtext);
         // console.log("변경 테스트: " + emvalue);
+        
         $("#email2").val(emvalue);
         console.log("email all: " + email.value + emin.value);
         if (emailcheck = true) {
             $("#email").val(email.value + emin.value);
+            return;
+        }
+        if(emvalue.val != ''){
+            emvalue.val = '';
         }
     });
 }
@@ -220,10 +225,10 @@ gender.addEventListener("blur", function () {
     // 2보다 큰 숫자 입력시 , 2자리이상 입력시
     if (ne > 2 || ne.length > 1) {
         document.getElementById("genderText2").style.display = 'block';
+        gendercheck = false;
         if (isNaN(ne)) {
             document.getElementById("genderText2").style.display = 'none';
         }
-        gendercheck = false;
     }
     else {
         document.getElementById("genderText2").style.display = 'none';
@@ -264,9 +269,9 @@ btn.addEventListener("click", function () {
         alert("성별이 조건에 맞지 않습니다.");
     }
     else {
-        alert("전부 조건을 충족하지 못하였습니다.");
-        if ((id || pwd || name1 || email || phone || age || birth || gender) == "") {
-            alert("빈칸이 존재합니다.");
-        }
+        alert("어떤 조건이 틀림")
+    }
+    if ((id || pwd || name1 || email || phone || age || birth || gender) == "") {
+        alert("빈칸이 존재합니다.");
     }
 });

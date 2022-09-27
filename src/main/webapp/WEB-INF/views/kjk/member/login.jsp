@@ -5,7 +5,7 @@
 
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>로그인</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
 	integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous"
 >
@@ -21,30 +21,30 @@
 </style>
 
 <body>
-	<c:import url="../template/headerHTML.jsp"></c:import>
-
-	<form action="./login" method="post">
+	<c:import url="../../template/headerHTML.jsp"></c:import>
+	
+	<form action="../member/login" method="post">
 		<section class="col-lg-6 container-fluid mt-4">
 			<div class="row">
 				<div class="mb-3">
-					<label>ID</label> <input type="text" id="id" class="form-control" name="userid" placeholder="ID Input"
+					<label>아이디</label> <input type="text" id="id" class="form-control" name="userid" placeholder="ID Input"
 						onfocus="this.placeholder=''" onblur="this.placeholder='ID Input'"
 					>
 					<div>We'll never share your ID with anyone else.</div>
 				</div>
 				<div class="mb-3">
-					<label>Password</label> <input type="password" id="pwd" class="form-control" name="pwd" placeholder="Password Input"
+					<label>비밀번호</label> <input type="password" id="pwd" class="form-control" name="pwd" placeholder="Password Input"
 						onfocus="this.placeholder=''" onblur="this.placeholder='Password Input'"
 					>
 				</div>
 				<div class="mb-3">
-					<button type="submit" class="btn btn-primary log">Login</button>
+					<button type="submit" class="btn btn-primary log">로그인</button>
 				</div>
 			</div>
 		</section>
 	</form>
 
-	<c:import url="../template/footerHTML.jsp"></c:import>
+	<c:import url="../../template/footerHTML.jsp"></c:import>
 </body>
 
 </html>

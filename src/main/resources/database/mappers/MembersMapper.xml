@@ -32,13 +32,16 @@
 	</resultMap>
 
 	<insert id="setJoin" parameterType="MemberDTO">
-		insert into promembers
-		values(#{userid}, #{username}, #{pwd}, #{email},
+		insert all into promembers values
+		(#{userid}, #{username}, #{pwd},
+		#{email},
 		#{age}, #{birth}, #{phone}, #{gender})
-		<!-- INSERT INTO promembers VALUES(#{userid},#{username},#{pwd},#{email},#{age},#{birth},#{phone},#{gender}) -->
+		into userclass
+		values(class_seq.nextval, #{userid}, 6)
+		select * from dual
+		<!-- insert into promembers values(#{userid}, #{username}, #{pwd}, #{email}, 
+			#{age}, #{birth}, #{phone}, #{gender}) -->
 	</insert>
-
-	<!-- class 등급 설정하는 insert문 만들기 -->
 
 	<select id="getMyPage" parameterType="MemberDTO"
 		resultMap="getMyPageResult">
@@ -56,8 +59,12 @@
 	<resultMap type="MemberDTO" id="getMyPageResult">
 		<id column="USERID" property="userid" />
 		<result column="userNAME" property="username" />
+		<result column="pwd" property="pwd" />
 		<result column="EMAIL" property="email" />
-		<result column="PHONE" property="phone" />
+		<result column="age" property="age" />
+		<result column="birth" property="birth" />
+		<result column="phone" property="phone" />
+		<result column="gender" property="gender" />
 		<collection property="classDTOs" javaType="List"
 			ofType="ClassDTO">
 			<id column="classnum" property="classNum" />
@@ -66,9 +73,10 @@
 	</resultMap>
 
 
-	<select id="adMyPage" parameterType="MemberDTO" resultMap="aMyPage"> <!-- resultMap="aMyPage" -->
+	<select id="adMyPage" parameterType="MemberDTO"
+		resultMap="aMyPage"> <!-- resultMap="aMyPage" -->
 		select * from
-		promembers
+		promembers order by userid asc
 	</select>
 
 	<resultMap type="MemberDTO" id="aMyPage">
@@ -86,5 +94,21 @@
 			<result column="classname" property="className" />
 		</collection>
 	</resultMap>
+
+	<update id="setUpdate" parameterType="MemberDTO">
+		update promembers set
+		userid= #{userid}, username = #{username}, pwd = #{pwd},
+		email =
+		#{email}, age = #{age}, phone = #{phone}, gender = #{gender}
+		where
+		userid = #{userid}
+	</update>
+
+	<delete id="setDelete" parameterType="MemberDTO">
+		delete
+		from promembers
+		where
+		userid = #{userid}
+	</delete>
 
 </mapper>
