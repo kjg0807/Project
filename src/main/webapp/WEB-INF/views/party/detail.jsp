@@ -48,7 +48,7 @@
 		<div class="modal fade" id="joinModal" tabindex="-1" aria-labelledby="joinModalLabel" aria-hidden="true">
 			<div class="modal-dialog">
 				<div class="modal-content">
-					<input type="hidden" id="joinNum">
+					<input type="hidden" id="joinNum" value="${partyListDTO.partyNum}">
 					<div class="modal-header">
 						<h5 class="modal-title" id="exampleModalLabel">파티 신청</h5>
 						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -59,21 +59,21 @@
 							<input class="form-control" type="text" id="joinUserName" placeholder="닉네임" >
 						</div>
 						<div class="form-check">
-							<div class="form-check" >
-								<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+							<div>
+								<input class="form-check-input" type="radio" name="genderRadio" id="flexRadioDefault1" value="1">
 								<label class="form-check-label" for="flexRadioDefault1">
 									남자
 								</label>
 							</div>
-							<div class="form-check" >
-								<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
+							<div>
+								<input class="form-check-input" type="radio" name="genderRadio" id="flexRadioDefault2" value="2">
 								<label class="form-check-label" for="flexRadioDefault2">
 									여자
 								</label>
 							</div>
 						</div>
 						<select id="joinAge">
-
+							<option value="나이를 선택해주세요" checked>나이를 선택해주세요</option>
 						</select>
 						<div class="mb-3">
 							<label for="message-text" class="col-form-label">Commenet</label>
@@ -88,7 +88,7 @@
 			</div>
 		</div>
 
-		<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#partyModal">
+		<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#partyModal" id="partybtn">
 			파티목록
 		</button>
 
@@ -96,17 +96,20 @@
 			<div class="modal-dialog">
 				<div class="modal-content">
 				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+					<h5 class="modal-title" id="exampleModalLabel">파티 목록</h5>
 					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 				</div>
+				
 				<div class="modal-body">
-					...
+					<table class="table" id="partyMember">
+	
+					</table>
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
 					<button type="button" class="btn btn-primary">수락</button>
 				</div>
-				</div>
+				</div> 
 			</div>
 		</div>
 

@@ -54,8 +54,8 @@ public class PartyDAO {
 		return sqlSession.delete(NAMESPACE+"setPartyCancel", partyDTO);
 	}
 	
-	public List<PartyDTO> getParty()throws Exception{
-		return sqlSession.selectList(NAMESPACE+"getParty");
+	public List<PartyDTO> getPartyRequest(PartyDTO partyDTO)throws Exception{
+		return sqlSession.selectList(NAMESPACE+"getPartyRequest", partyDTO);
 	}
 	
 	

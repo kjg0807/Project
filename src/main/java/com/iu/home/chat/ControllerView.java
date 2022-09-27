@@ -30,7 +30,7 @@ public class ControllerView {
 	@PostMapping("join")
 	public String joinChat(ChatDTO chatDTO)throws Exception{
 		System.out.println("챗 진입실행");
-		System.out.println(chatDTO.getName());
+		
 		return "chat/chat";
 	}
 }
