@@ -45,15 +45,18 @@
 	</select>
 	
 	<select id="getDetail" parameterType="ShopDTO" resultMap="getDetailMap"> 
-	    SELECT S.*, SF.*, M.* FROM 
+	    SELECT S.*, SF.*, M.*, CA.* FROM 
 	    SHOP S 
 	    LEFT JOIN 
 	    SHOPFILE SF 
 	    ON S.SHOPNUM = SF.SHOPNUM 
 	    LEFT JOIN 
 	    MENU M 
-	    ON S.SHOPNUM = M.SHOPNUM WHERE
-		S.SHOPNUM=#{shopNum}
+	    ON S.SHOPNUM = M.SHOPNUM
+	    INNER JOIN 
+        CATEGORY CA
+        ON S.CATEGORYNUM = CA.CATEGORYNUM
+        WHERE S.SHOPNUM=#{shopNum}
 	</select>
 	
 	<resultMap type="ShopDTO" id="getDetailMap">

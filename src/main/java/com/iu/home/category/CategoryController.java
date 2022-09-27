@@ -54,5 +54,7 @@ public class CategoryController {
 		mv.setViewName("redirect:./list");
 		return mv;
 	}
+	
+	public 
 
 }
