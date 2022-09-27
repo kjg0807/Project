@@ -185,23 +185,24 @@ public class ReviewsController {
 	
 	
 	
-	@GetMapping(value = "reviewsCommentAdd")
-	public void reviewsCommentAdd () throws Exception{
-		
-		System.out.println("답글달기 GET 실행");
-	}
+//	@GetMapping(value = "reviewsCommentAdd")
+//	public void reviewsCommentAdd () throws Exception{
+//		
+//		System.out.println("답글달기 GET 실행");
+//	}
+//	
 	
 	
-	
-	@PostMapping(value = "reviewsComentAdd")
-	public String reviewsCommentAdd(ReviewsCommentDTO reviewsCommentDTO) throws Exception{
+	@PostMapping(value = "reviewsCommentAdd")
+	@ResponseBody
+	public int reviewsCommentAdd(ReviewsCommentDTO reviewsCommentDTO) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		
 		System.out.println("답글달기 POST 실행");
 		
 		int result = reviewsService.setReviewsCommentAdd(reviewsCommentDTO);
 		
-		String jsonResult = "{\result\":\""+result+"}";
+		mv.addObject("result", result);
 		
 		if(result == 1) {
 			System.out.println("답글이 성공적으로 달렸습니다!!");
@@ -209,7 +210,7 @@ public class ReviewsController {
 			System.out.println("답글이 달리지 못했씁니다ㅜㅜ");
 		}
 		
-		return jsonResult;
+		return result;
 	}
 	
 	

@@ -2,12 +2,15 @@ package com.iu.home.reviewsComment;
 
 import java.sql.Date;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 public class ReviewsCommentDTO {
 	
 	private Long num;
 	private Long reviewNum;
 	private String writer;
 	private String contents;
+	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd")
 	private Date regDate;
 	
 	

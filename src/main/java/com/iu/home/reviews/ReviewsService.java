@@ -93,13 +93,14 @@ public class ReviewsService {
 	public List<ReviewsCommentDTO> getReviewsCommentList(ReviewsCommentPager reviewsCommentPager) throws Exception{
 
 		reviewsCommentPager.getRowNum();
-		Long totalCount = reviewsCommentDAO.getReviewsCommentCount(reviewsCommentPager);
+		Long totalCount = reviewsCommentDAO.getReviewsCommentListCount(reviewsCommentPager);
 		reviewsCommentPager.makePage(totalCount);
 		return reviewsCommentDAO.getReviewsCommentList(reviewsCommentPager);
 	}
 	
 	//답글 달기
 	public int setReviewsCommentAdd(ReviewsCommentDTO reviewsCommentDTO) throws Exception{
+		System.out.println("num: " + reviewsCommentDTO.getReviewNum());
 		return reviewsCommentDAO.setReviewsCommentAdd(reviewsCommentDTO);
 	}
 	

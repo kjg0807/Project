@@ -18,7 +18,7 @@
 		<h1>리뷰 detail 페이지</h1>
 	</div>
 	
-	<div class="row border border-danger mt-5 bg-light" style="height: 75px">
+<%-- 	<div class="row border border-danger mt-5 bg-light" style="height: 75px">
 			<div class="col-lg-2 border border-danger">
 				글번호 : ${dto.reviewNum}
 			</div>
@@ -39,15 +39,64 @@
 						내용 : ${dto.contents}
 					</div>
 				</div>
-		</div>
+		</div> --%>
+<%-- 		<div class="row g-3">
+			  <div class="col-sm">
+			    <input type="text" class="form-control" placeholder="글 번호 : ${dto.reviewNum}">
+			  </div>
+			  <div class="col-sm">
+			    <input type="text" class="form-control" placeholder="닉네임 : ${dto.userId}">
+			  </div>
+			  <div class="col-sm">
+			    <input type="text" class="form-control" placeholder="제목 : ${dto.title}">
+			  </div>
+			  <div class="col-sm">
+			    <input type="text" class="form-control" placeholder="내용 : ${dto.contents}">
+			  </div>
+			  <div class="col-sm">
+			    <input type="text" class="form-control" placeholder="작성 날짜 : ${dto.reviewDate}">
+			  </div>
+		</div> --%>
 		
-		<div class="row border border-top-0 border-danger bg-light"  style="min-height: 60vh" >
-			<div class="col">
+		<table border="1" class="table table-striped col-lg-16">
+			<thead class="table-info">
+				<tr>
+					<th>글번호</th>
+					<th>닉네임</th>
+					<th>제목</th>
+					<th>내용</th>
+					<th>작성날짜</th>
+					<th>이미지</th>
+				</tr>
+			</thead>
+			
+			<tbody>
+					<tr>
+						<td>${dto.reviewNum}</td>
+						<td>${dto.userId}</td>
+						<td>${dto.title}</td>
+						<td>${dto.contents}</td>
+						<td>${dto.reviewDate}</td>
+					<td>
+						<c:forEach items="${dto.reviewsFilesDTOs}" var="fileDTO">
+							<a href="../resources/upload/reviews/${fileDTO.fileName}">${fileDTO.oriName}</a>
+							<img src="../resources/upload/reviews/${fileDTO.fileName}${fileDTO.oriName}"/>
+						</c:forEach>
+					</td>
+					</tr>
+					
+			</tbody>
+		</table>
+		
+	<%-- 	<div class="row border border-top-0 border-danger bg-light"  style="min-height: 60vh" >
+		
 				<c:forEach items="${reviewsDTO.reviewsFilesDTOs}" var="fileDTO">
-					<a href="../resources/upload/reviews/${filesDTO.fileName}">${filesDTO.oriName}</a>
+					<a href="../resources/upload/${reviews}/${filesDTO.fileName}">${filesDTO.oriName}</a>
 				</c:forEach>
-			</div>
-		</div>
+			
+		</div> --%>
+		
+		
 		
 		
 <%-- 	<table border="1" class="table table-striped table-hover">
@@ -85,7 +134,7 @@
 		</div>
 		
 		<div class="mb-3">
-			<label for="contents" class="form-label">내용</label>
+			<label for="contents" class="form-label">내 용</label>
 			<input type="text" class="form-label" id="contents" placeholder="내용 :">
 		</div>
 		
@@ -97,16 +146,53 @@
 	
 	<!-- 댓글 리스트 출력 -->
 	<div>
-		<table id="reviewsCommentList" class="table table-striped col-lg-16">
-			<tr>
-				<th>작성자</th>
-				<th>내용</th>
-				<th>작성날짜</th>
-				<th>수정/삭제</th>
-			</tr>
+		<table id="reviewsCommentList" class="table table-striped col-lg-26">
+			<thead class="table-info">
+				<tr>
+					<th>작성자</th>
+					<th>내용</th>
+					<th>작성날짜</th>
+					<th>수정</th>
+					<th>삭제</th>
+				</tr>
+			</thead>
 		</table>
 		<button id="plus" class="btn btn-success disabled">더보기</button>
+		<button id="minus" class="btn btn-success disabled">닫기</button>
 	</div>
+	<!-- 댓글 끝 -->
+	<!----- 모달 ------>
+   <div>
+		<button type="button" style="display: none;" id="up" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap">바튼</button>
+
+		<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">수정하기</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					<form>
+						<input type="hidden" id="num">
+						<div class="mb-3">
+							<label for="recipient-name" class="col-form-label">작성자</label>
+							<input type="text" class="form-control" id="updateWriter" value="${dto.writer}">
+						</div>
+						<div class="mb-3">
+							<label for="message-text" class="col-form-label">내용</label>
+							<textarea class="form-control" id="updateContents">value="${dto.contents}"</textarea>
+						</div>
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+					<button type="button" id="update" data-bs-dismiss="modal" class="btn btn-primary">수정하기</button>
+				</div>
+				</div>
+			</div>
+		</div>
+   </div>
 
 <a href="./list">목록</a>
 <a href="./update?reviewNum=${dto.reviewNum}">수정</a>

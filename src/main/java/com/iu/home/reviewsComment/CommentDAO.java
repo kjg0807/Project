@@ -10,7 +10,7 @@ public interface CommentDAO {
 	
 	public int setReviewsCommentAdd(ReviewsCommentDTO reviewsCommentDTO) throws Exception;
 	
-	public Long getReviewsCommentCount(ReviewsCommentPager reviewsCommentPager) throws Exception;
+	public Long getReviewsCommentListCount(ReviewsCommentPager reviewsCommentPager) throws Exception;
 	
 	public int setReviewsCommentUpdate(ReviewsCommentDTO reviewsCommentDTO) throws Exception;
 	

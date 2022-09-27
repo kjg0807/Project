@@ -17,20 +17,21 @@ public class ReviewsCommentDAO implements CommentDAO{
 
 	@Override
 	public List<ReviewsCommentDTO> getReviewsCommentList(ReviewsCommentPager reviewsCommentPager) throws Exception {
+		System.out.println("list NUM : " + reviewsCommentPager.getReviewNum());
 		
 		return sqlSession.selectList(NAMESPACE+"getReviewsCommentList", reviewsCommentPager);
 	}
 
 	@Override
 	public int setReviewsCommentAdd(ReviewsCommentDTO reviewsCommentDTO) throws Exception {
-		
+		System.out.println("DAO NUM: " + reviewsCommentDTO.getReviewNum());
 		return sqlSession.insert(NAMESPACE+"setReviewsCommentAdd", reviewsCommentDTO);
 	}
 
 	@Override
-	public Long getReviewsCommentCount(ReviewsCommentPager reviewsCommentPager) throws Exception {
+	public Long getReviewsCommentListCount(ReviewsCommentPager reviewsCommentPager) throws Exception {
 
-		return sqlSession.selectOne(NAMESPACE+"getReviewsCommentCount", reviewsCommentPager);
+		return sqlSession.selectOne(NAMESPACE+"getReviewsCommentListCount", reviewsCommentPager);
 	}
 
 	@Override

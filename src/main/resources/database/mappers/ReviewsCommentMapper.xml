@@ -22,7 +22,7 @@
 		VALUES	(NOTICE_1_SEQ.NEXTVAL, #{reviewNum}, #{writer}, #{contents}, SYSDATE)
 	</insert>
 	
-	<select id="getReviewsCommentListTotalCount" parameterType="ReviewsCommentPager" resultType="Long">
+	<select id="getReviewsCommentListCount" parameterType="ReviewsCommentPager" resultType="Long">
 		SELECT COUNT(NUM) FROM REVIEWS_COMMENT WHERE REVIEWNUM = #{reviewNum}
 	</select>
 	
