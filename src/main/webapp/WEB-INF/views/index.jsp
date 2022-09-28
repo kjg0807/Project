@@ -10,12 +10,12 @@
         <meta name="author" content="" />
         <title>Shop Homepage - Start Bootstrap Template</title>
         <!-- Favicon-->
-        <link rel="stylesheet" href="./styles.css">
+        <link rel="stylesheet" href="../../resources/kdy/css/styles.css">
         <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/kdy/css/styles.css">
         <!-- Bootstrap icons-->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
         <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="css/styles.css" rel="stylesheet" />
+        <link href="../../resources/kdy/css/styles.css" rel="stylesheet" />
     </head>
     <body>
         <c:import url="./template/headerHTML.jsp"></c:import>
@@ -72,24 +72,24 @@
         <!-- Section-->
         <section class="py-5 nn">
             <div class="container px-4 px-lg-5 mt-5">
-                <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+                <div  class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
 
                     <div class="col mb-5">
-                        <div class="card h-100">
+                        <div class="card h-100 cs" id="al">
                             <!-- Product image-->
                             <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
                             <!-- Product details-->
                             <div class="card-body p-4">
                                 <div class="text-center">
                                     <!-- Product name-->
-                                    <h5 class="fw-bolder">전 체</h5>
+                                    <h5 class="fw-bolder" value="전체">전 체</h5>
                                 </div>
                             </div>
                         </div>
                     </div>
                     
                     <div class="col mb-5">
-                        <div class="card h-100">
+                        <div class="card h-100 cs" id="al">
                             <!-- Product image-->
                             <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
                             <!-- Product details-->
@@ -102,7 +102,7 @@
                     </div>
 
                     <div class="col mb-5">
-                        <div class="card h-100">
+                        <div class="card h-100 cs" id="al">
                             <!-- Product image-->
                             <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
                             <!-- Product details-->
@@ -116,7 +116,7 @@
                     </div>
 
                     <div class="col mb-5">
-                        <div class="card h-100">
+                        <div class="card h-100 cs" id="al">
                             <!-- Product image-->
                             <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
                             <!-- Product details-->
@@ -130,8 +130,7 @@
                     </div>
 
                     <div class="col mb-5">
-                        <div class="card h-100">
-
+                        <div class="card h-100 cs" id="al">
                             <!-- Product image-->
                             <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
                             <!-- Product details-->
@@ -145,7 +144,7 @@
                     </div>
 
                     <div class="col mb-5">
-                        <div class="card h-100">
+                        <div class="card h-100 cs" id="al">
                             <!-- Product image-->
                             <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
                             <!-- Product details-->
@@ -159,7 +158,7 @@
                     </div> 
                     
                     <div class="col mb-5">
-                        <div class="card h-100">
+                        <div class="card h-100 cs" id="al">
                             <!-- Product image-->
                             <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
                             <!-- Product details-->
@@ -179,10 +178,10 @@
 
        
         <!-- Bootstrap core JS-->
+        <script src="../../resources/kdy/js/index.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
         <!-- <script src="js/scripts.js"></script> -->
         <c:import url="./template/footerHTML.jsp"></c:import>
-        <script src="../../resources/kdy/js/index.js"></script>
     </body>
 </html>

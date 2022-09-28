@@ -10,3 +10,11 @@ sn.addEventListener("click", function(){
         return;
     }
 })
+
+const all = document.querySelectorAll(".cs");
+
+for(let i = 0; i < all.length; i++){
+    all[i].addEventListener("click", function(){
+        console.log("all click")
+    })
+}

@@ -25,10 +25,8 @@ public class ShopService {
 	
 	
 	public int setAdd(ShopDTO shopDTO, MultipartFile[] files, ServletContext servletContext)throws Exception{
-int result = shopDAO.setAdd(shopDTO);
-		
+		int result = shopDAO.setAdd(shopDTO);
 		String path = "resources/upload/shop";
-			
 		for(MultipartFile multipartFile : files) {
 			if(multipartFile.isEmpty()) {
 				continue;
@@ -41,12 +39,7 @@ int result = shopDAO.setAdd(shopDTO);
 			shopDAO.setAddFile(shopFileDTO);
 		}
 		return result;
-		
 	}
-	public int setAddMenu(ShopDTO shopDTO)throws Exception{
-		return shopDAO.setAddMenu(shopDTO);
-	}
-
 	public List<ShopDTO> getList(ShopPager shopPager) throws Exception{
 		// TODO Auto-generated method stub
 		Long totalCount = shopDAO.getCount(shopPager);
@@ -60,17 +53,19 @@ int result = shopDAO.setAdd(shopDTO);
 	public int setUpdate(ShopDTO shopDTO)throws Exception{
 		return shopDAO.setUpdate(shopDTO);
 	}
-	public int setUpdateMenu(ShopDTO shopDTO)throws Exception{
-		return shopDAO.setAddMenu(shopDTO);
-	}
 	public int setDelete(ShopDTO shopDTO)throws Exception{
 		return shopDAO.setDelete(shopDTO);
+	}
+//						MENU
+	public int setAddMenu(ShopDTO shopDTO)throws Exception{
+		return shopDAO.setAddMenu(shopDTO);
+	}
+	public int setUpdateMenu(ShopDTO shopDTO)throws Exception{
+		return shopDAO.setUpdateMenu(shopDTO);
 	}
 	public int setDeleteMenu(ShopDTO shopDTO)throws Exception{
 		return shopDAO.setDeleteMenu(shopDTO);
 	}
-
-	
 	
 
 }

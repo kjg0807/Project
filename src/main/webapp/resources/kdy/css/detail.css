@@ -51,3 +51,7 @@ button {
     background-size: contain;
 }
 
+#deleteMenu{
+    display: none;
+}
+

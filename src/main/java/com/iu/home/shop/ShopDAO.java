@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+
 import com.iu.home.menu.MenuDTO;
 import com.iu.home.util.ShopPager;
 
@@ -55,6 +56,10 @@ public class ShopDAO {
 	public int setDeleteMenu(ShopDTO shopDTO)throws Exception{
 		return sqlSession.delete(NAMESPACE+"setDeleteMenu", shopDTO);
 	}
+	//===========================================category
+//	public List<CategoryDTO> getCategoryList(ShopPager shopPager)throws Exception{
+//		return sqlSession.selectList(NAMESPACE+"getCategoryList", shopPager);
+//	}
 
 
 

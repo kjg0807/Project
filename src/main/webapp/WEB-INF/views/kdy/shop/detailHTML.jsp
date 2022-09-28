@@ -15,6 +15,7 @@
     <!-- include summernote css/js-->
      <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
      <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+     <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c971ac6c7712b0e728a1ba2df98cf0fd"></script>
 </head>
 <body>
 <c:import url="../../template/headerHTML.jsp"></c:import>
@@ -32,31 +33,7 @@
  
         <div class="container" style="margin-top: 200px;">
 			<!-- 확인 -->
-			<!-- Button trigger modal -->
-			<button type="button" class="btn btn-primary" data-bs-toggle="modal"
-				data-bs-target="#staticBackdrop">Launch static backdrop
-				modal</button>
-
-			<!-- Modal -->
-			<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static"
-				data-bs-keyboard="false" tabindex="-1"
-				aria-labelledby="staticBackdropLabel" aria-hidden="true">
-				<div class="modal-dialog">
-					<div class="modal-content">
-						<div class="modal-header">
-							<h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
-							<button type="button" class="btn-close" data-bs-dismiss="modal"
-								aria-label="Close"></button>
-						</div>
-						<div class="modal-body">...</div>
-						<div class="modal-footer">
-							<button type="button" class="btn btn-secondary"
-								data-bs-dismiss="modal">Close</button>
-							<button type="button" class="btn btn-primary">Understood</button>
-						</div>
-					</div>
-				</div>
-			</div>
+		
 			<!-- 수정 -->
             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal1" data-bs-whatever="@mdo">게시글 수정</button>
 
@@ -104,11 +81,15 @@
                                             <label for="recipient-name" class="col-form-label"></label>
                                             가게 제목 수정 <br><textarea name="title" rows="10" cols="57">${detail.title}</textarea>
                                           </div>
-                                          <div id="addFiles" class="mb-3">
+                                          <!-- <div class="mb-3">
+                                            <label for="recipient-name" class="col-form-label"></label>
+                                            파일수정 <br><textarea name="title" rows="10" cols="57">${detail.title}</textarea>
+                                          </div> -->
+                                          <!-- <div id="addFiles" class="mb-3">
                                             <i class="fa-regular fa-image"></i>
                                             <label for="message-text" class="col-form-label"></label>
-                                              <input type="file" name="files" id="fileAdd">파일
-                                          </div>
+                                              <input type="file" name="files" id="fileAdd" >파일
+                                          </div> -->
                                        
                                     </div>
                                     
@@ -160,6 +141,9 @@
 			</div>
 
 			<div class="Information">
+
+        <div id="map" style="width:1000px; height:1000px;"></div>
+
 				<div class="d-flex q" id="address">주소 &ensp;&ensp;&ensp;&ensp;&nbsp;&nbsp;&ensp;&ensp;:
 					<div class="flex q" id="realAddress">&ensp;&ensp;&ensp;${detail.shopAddress}</div>
 				</div>
@@ -174,11 +158,21 @@
 				</div>
 
 				<c:forEach items="${detail.menuDTOs}" var="menuDTO">
-					<div class="d-flex q" id="menu" onclick="">대표메뉴 &ensp;&ensp;&nbsp;:
+          <div class="d-flex q" id="menu" >대표메뉴 &ensp;&ensp;&nbsp;
+            <input type="hidden" id="shopNum" name="shopNum" value="${detail.shopNum}">
+            <input type="hidden" id="menuNum" name="menuNum" value="${menuDTO.menuNum}">
 						<div class="flex q" id="realmenu">&ensp;&ensp;&ensp;${menuDTO.menuName}</div>
 						<div class="flex q" id="realmenu">&ensp;&ensp;&ensp;${menuDTO.menuPrice}원</div>
 					</div>
+          <div class="dy flex" id="deleteMenu"  onclick="location.href='/shop/deleteMenu?menuNum=${menuDTO.menuNum}&shopNum=${detail.shopNum}';">&ensp;대표메뉴삭제</div>
 				</c:forEach>
+        
+        <!-- <c:forEach items="${detail.menuDTOs}" var="menuDTO">
+          <div class="d-flex q" id="menu" onclick="">대표메뉴 &ensp;&ensp;&nbsp;:
+            <div class="flex q" id="realmenu">&ensp;&ensp;&ensp;${menuDTO.menuName}</div>
+						<div class="flex q" id="realmenu">&ensp;&ensp;&ensp;${menuDTO.menuPrice}원</div>
+					</div>
+				</c:forEach> -->
         <!-- 대표메뉴 추가 -->
 				 <button type="hidden" class="btn btn-primary" id="menuAdd" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">대표메뉴 등록</button> 
                     
@@ -193,10 +187,11 @@
                                         
                                     <div class="modal-body">
                                             <input type="hidden" id="shopNum" name="shopNum" value="${detail.shopNum}">
+                                            <input type="hidden" id="menuNum" name="menuNum" value="${detail.menuNum}">
                                             
                                         <div class="mb-3">
                                           <label for="recipient-name" class="col-form-label"></label>
-                                          <input type="text" class="form-control" id="recipient-name" placeholder="메뉴의 이름을 작성해주세요" name="menuName" data-shopnum="${shopNum}">
+                                          <input type="text" class="form-control" id="recipient-name" placeholder="메뉴의 이름을 작성해주세요" name="menuName">
                                         </div>
                                         
                                         <div class="mb-3">
@@ -207,7 +202,7 @@
                                     
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소하기</button>
-                                        <button type="submit" class="btn btn-primary">등록하기</button>
+                                        <button type="submit" class="btn btn-primary" id="num">등록하기</button>
                                     </div>
 					           </form>
                           </div>
@@ -216,7 +211,6 @@
             
       
                 
-                <div class="dy flex" id="deleteMenu" style="display: hidden;" onclick="location.href='/shop/deleteMenu?shopNum=${detail.getShopNum()}';">&ensp;대표메뉴삭제</div>
          </div>
      </div>
 </main>

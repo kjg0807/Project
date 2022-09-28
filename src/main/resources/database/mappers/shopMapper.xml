@@ -26,9 +26,9 @@
 	
 	<select id="getList" resultType="ShopDTO"
 		parameterType="ShopPager">
-		SELECT * FROM 
-		(SELECT ROWNUM R, SN.MENUNAME,SN.SHOPNUM, SN.SHOPNAME, SN.SHOPADDRESS, SN.SHOPPHONE, SN.PRICEAVG, SN.DELIVERY, SN.CONTENTS, SN.TITLE FROM 
-		(SELECT S.*, M.MENUNAME, M.MENUPRICE FROM
+SELECT * FROM 
+(SELECT ROWNUM R, SN.MENUNAME,SN.SHOPNUM, SN.SHOPNAME, SN.SHOPADDRESS, SN.SHOPPHONE, SN.PRICEAVG, SN.DELIVERY, SN.CONTENTS, SN.TITLE , SN.MENUNUM  FROM
+		(SELECT S.*, M.MENUNAME, M.MENUPRICE, M.MENUNUM FROM
 		SHOP S LEFT
 		JOIN MENU M 
 		ON S.SHOPNUM = M.SHOPNUM
@@ -45,7 +45,7 @@
 	</select>
 	
 	<select id="getDetail" parameterType="ShopDTO" resultMap="getDetailMap"> 
-	    SELECT S.*, SF.*, M.*, CA.* FROM 
+	   <!--  SELECT S.*, SF.*, M.*, CA.* FROM 
 	    SHOP S 
 	    LEFT JOIN 
 	    SHOPFILE SF 
@@ -56,6 +56,15 @@
 	    INNER JOIN 
         CATEGORY CA
         ON S.CATEGORYNUM = CA.CATEGORYNUM
+        WHERE S.SHOPNUM=#{shopNum} -->
+        SELECT S.*, SF.*, M.* FROM 
+	    SHOP S 
+	    LEFT JOIN 
+	    SHOPFILE SF 
+	    ON S.SHOPNUM = SF.SHOPNUM 
+	    LEFT JOIN 
+	    MENU M 
+	    ON S.SHOPNUM = M.SHOPNUM
         WHERE S.SHOPNUM=#{shopNum}
 	</select>
 	
@@ -77,7 +86,7 @@
 		</collection> 
 		
 		<collection property="menuDTOs" javaType="List" ofType="MenuDTO">
-			<!-- <id column="SHOPNUM" property="shopNum" /> -->
+			<id column="MENUNUM" property="menuNum" />
 			<result column="MENUNAME" property="menuName" />
 			<result column="MENUPRICE" property="menuPrice" />
 		</collection>
@@ -85,12 +94,7 @@
 	<update id="setUpdate" parameterType="ShopDTO"> UPDATE SHOP SET
 		SHOPNAME=#{shopName},SHOPPHONE=#{shopPhone},SHOPADDRESS=#{shopAddress},PRICEAVG=#{priceAvg},DELIVERY=#{delivery},CONTENTS=#{contents},TITLE=#{title}
 		WHERE SHOPNUM=#{shopNum} </update>
-	<update id="setUpdateMenu" parameterType="ShopDTO"> UPDATE MENU SET
-		MENUNAME=#{menuName},MENUPRICE=#{menuPrice} WHERE SHOPNUM=#{shopNum}
-	</update>
 	<delete id="setDelete" parameterType="ShopDTO"> DELETE SHOP WHERE
-		SHOPNUM=#{shopNum} </delete>
-	<delete id="setDeleteMenu" parameterType="ShopDTO"> DELETE MENU WHERE
 		SHOPNUM=#{shopNum} </delete>
 	<!-- =============================file -->
 	<insert id="setAddFile" parameterType="ShopFileDTO"> 
@@ -99,7 +103,15 @@
 	</insert>
 	<!-- ===================================menu -->
 	<insert id="setAddMenu" parameterType="ShopDTO"> INSERT INTO MENU VALUES
-		(#{shopNum}, #{menuName}, #{menuPrice}) </insert>
+		(MENU_SEQ.NEXTVAL, #{shopNum}, #{menuName}, #{menuPrice}) </insert>
+		
+	<delete id="setDeleteMenu" parameterType="ShopDTO">
+		 DELETE MENU 
+		 WHERE MENUNUM=#{menuNum}
+	</delete>
+	<update id="setUpdateMenu" parameterType="ShopDTO"> UPDATE MENU SET
+		MENUNAME=#{menuName},MENUPRICE=#{menuPrice}, MENUNUM=#{menuNum} WHERE SHOPNUM=#{shopNum}
+	</update>
 		
 	
 </mapper>

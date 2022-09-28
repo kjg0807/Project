@@ -18,6 +18,7 @@ public class ShopDTO extends MenuDTO{
 	private String title;
 	private List<ShopFileDTO> shopFileDTOs;
 	private List<MenuDTO> menuDTOs;
+//	private List<CategoryDTO> categoryDTOs;
 
 
 	
@@ -87,6 +88,12 @@ public class ShopDTO extends MenuDTO{
 	public void setMenuDTOs(List<MenuDTO> menuDTOs) {
 		this.menuDTOs = menuDTOs;
 	}
+//	public List<CategoryDTO> getCategoryDTOs() {
+//		return categoryDTOs;
+//	}
+//	public void setCategoryDTOs(List<CategoryDTO> categoryDTOs) {
+//		this.categoryDTOs = categoryDTOs;
+//	}
 
 
 	

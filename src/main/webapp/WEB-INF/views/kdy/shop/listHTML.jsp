@@ -17,6 +17,8 @@
       <!-- include summernote css/js-->
        <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
        <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+       <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c971ac6c7712b0e728a1ba2df98cf0fd"></script>
+       <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c971ac6c7712b0e728a1ba2df98cf0fd&libraries=services"></script>
 
        
   </head>
@@ -121,7 +123,9 @@
         <div class="mb-3">
           <label for="recipient-name" class="col-form-label"></label>
           <input type="text" class="form-control" placeholder="제목을 입력해주세요" name="title" id="title">
-        </div>          
+        </div>
+        
+        <div id="map" style="width:100%; height:500px;"></div>
 
           <div id="addFiles" class="mb-3">
             <i class="fa-regular fa-image"></i>

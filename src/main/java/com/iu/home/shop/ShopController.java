@@ -26,11 +26,6 @@ public class ShopController {
 	@Autowired
 	private ShopService shopService;
 	
-//	@GetMapping("add")
-//	public String setAdd()throws Exception{	
-//		System.out.println("getadd");
-//		return "kdy/shop/add";
-//	}
 	@PostMapping("add")
 	@ResponseBody
 	public ModelAndView setAdd(ShopDTO shopDTO, MultipartFile[] files,HttpSession session)throws Exception{
@@ -38,10 +33,9 @@ public class ShopController {
 		int result = shopService.setAdd(shopDTO, files, session.getServletContext());
 		mv.addObject("result", result);
 		mv.setViewName("redirect:./listHTML");
-		System.out.println("postadd");
-		System.out.println("files"+files);
-		System.out.println("파일은~"+files);
-		
+//		System.out.println("postadd");
+//		System.out.println("files"+files);
+//		System.out.println("파일은~"+files);
 		return mv;		
 	}
 
@@ -87,17 +81,7 @@ public class ShopController {
 		mv.setViewName("redirect:./list");
 		return mv;
 	}
-	
-	@GetMapping("deleteMenu")
-	public ModelAndView setDeleteMenu(ShopDTO shopDTO)throws Exception{
-		ModelAndView mv = new ModelAndView();
-		int result = shopService.setDeleteMenu(shopDTO);
-		mv.setViewName("redirect:./detailHTML?shopNum="+shopDTO.getShopNum());
-		return mv;
-	}
-	
 //	--------------------------------------MENU
-	
 	@GetMapping(value = "addMenuHTML")
 	public ModelAndView setAddMenu(Long shopNum) throws Exception {
 		ModelAndView mv = new ModelAndView();
@@ -105,16 +89,13 @@ public class ShopController {
 		mv.setViewName("kdy/shop/detailHTML");
 		return mv;
 	}
-
 	@PostMapping(value = "addMenuHTML")
 	@ResponseBody
 	public ModelAndView setAddMenu(ShopDTO shopDTO) throws Exception {
 		ModelAndView mv = new ModelAndView();
-
 		System.out.println("postAddMenu");
 		System.out.println("getShopNum" + shopDTO.getShopNum());
 		int result = shopService.setAddMenu(shopDTO);
-
 		if (result == 1) {
 			System.out.println("성공");
 		} else {
@@ -122,7 +103,6 @@ public class ShopController {
 		}
 		mv.addObject("detail", shopDTO);
 		mv.setViewName("redirect:./detailHTML?shopNum=" + shopDTO.getShopNum());
-
 		return mv;
 	}
 
@@ -134,7 +114,6 @@ public class ShopController {
 		mv.setViewName("kdy/shop/updateMenu");
 		return mv;
 	}
-
 	@PostMapping(value = "updateMenu")
 	public ModelAndView setUddateMenu(ShopDTO shopDTO) throws Exception {
 		ModelAndView mv = new ModelAndView();
@@ -143,6 +122,13 @@ public class ShopController {
 		return mv;
 	}
 	
+	@GetMapping("deleteMenu")
+	public ModelAndView setDeleteMenu(ShopDTO shopDTO)throws Exception{
+		ModelAndView mv = new ModelAndView();
+		int result = shopService.setDeleteMenu(shopDTO);
+		mv.setViewName("redirect:./detailHTML?menuNum="+shopDTO.getMenuNum()+"&shopNum="+shopDTO.getShopNum());
+		return mv;
+	}
 	
 	
 
