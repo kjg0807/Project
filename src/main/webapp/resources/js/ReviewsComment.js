@@ -1,10 +1,28 @@
 //ReviewsComment.js
+
+
+//댓글작성 버튼
 const btn = document.querySelector("#btn");
 const writer = document.querySelector("#writer");
 const contents = document.querySelector("#contents");
 const reviewsCommentList = document.querySelector("#reviewsCommentList");
+//더보기 버튼
 const plus = document.querySelector("#plus");
+//더보기 페이지를 줄이는 버튼
 const minus = document.querySelector("#minus");
+//리뷰에 남기는 이미지
+const rvimg = document.querySelector("#rvimg");
+// 이미지를 감싸는 div태그 클래스명
+const modal_1 = document.querySelector(".modal_1");         //태그명이 class명이기 때문에 .으로 선택
+// 이미지 태그 안의 class명
+const img = document.querySelector(".img");
+// 이미지를 눌렀을때 원본이미지
+const modal_contents = document.querySelector(".modal_contents");
+// 모달창에 있는 원본이미지 닫기버튼
+const clos = document.querySelector(".close");
+
+const cat = document.querySelector("#cat");
+const cat2 = document.querySelector("#cat2");
 
 //page번호를 담는 변수
 let page = 1;
@@ -51,7 +69,8 @@ btn.addEventListener("click", function(){
             console.log(result);
             
             if(result == 1){
-                alert("성공적인 답글 달기~!");
+                confirm("성공적인 답글 달기~!");
+                self.close();
 
                 for(let i=0; i<reviewsCommentList.children.length;){
                     reviewsCommentList.children[0].remove();
@@ -154,11 +173,13 @@ function getReviewsCommentList(p, rn){
                     plus.classList.remove("disabled");
                 }
 
-                if(page >= result.reviewsCommentPager.totalPage){
+                if(page < result.reviewsCommentPager.perPage){
                     minus.classList.add("disabled");
                 }else{
                     minus.classList.remove("disabled");
                 }
+
+                
     
                 reviewsCommentList.append(tb);
     
@@ -271,7 +292,6 @@ update.addEventListener("click", function(){
 
     //1.XHTTPRequest 생성
     const xhttp = new XMLHttpRequest();
-
     //2. Method, URL 정보
     xhttp.open("POST", "./reviewsCommentUpdate");
 
@@ -300,4 +320,77 @@ update.addEventListener("click", function(){
             }
         }
     }
+});
+
+// rvimg.addEventListener("click", function(event){
+//     // rvimg.click();
+//     // let check = window.confirm("이미지를 바꾸시겠습니까?");
+//     console.log("이미지 강제클릭 이벤트");
+    
+    
+//     let num = document.getElementById("num").value;
+
+//     let writer = document.getElementById("writer").value;
+//     let contents = document.getElementById("contents").value;
+
+
+//     //--ajax--
+//     const xhttp = XMLHttpRequest();
+
+//     xhttp.open("POST", "./reviewsFilesDelete");
+
+//     xhttp.send("num="+num+"&writer"+writer+"&contents"+contents);
+
+//     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+//     xhttp.onreadystatechange = function(){
+
+//         if(xhttp.status = 200 && xhttp.readyState == 4){
+//             let result = xhttp.responseText.trim();
+
+//             if(result>0){
+//                 confirm("")
+//             }
+//         }
+
+//     }
+
+// });
+
+
+//이미지 클릭시 모달창을 띄우고 모달의 display를 "block"으로 변경후, 이미지의 display로 block 으로 바꾼다.
+//                          => 모달창을 스크롤할 때 모달창 뒤에 있는 이미지 등이 움직이지 않게 하기 위해서
+// img.addEventListener("click", ()=>{
+
+//     modalDisplay("block");
+//     modal_contents.src = img.src;
+//     console.log("이미지 클릭");
+// });
+
+
+// // 닫기 X 버튼과 모달의 공백부분을 클릭 했을때 모달창을 none으로 바꾼다 ===> 모달창 공백 아무곳이나 닫기버튼을 누르면 원본이미지가 꺼진다
+// clos.addEventListener("click", ()=>{
+
+//     modalDisplay("none");
+// });
+
+// modal_1.addEventListener("click", ()=>{
+
+//     modalDisplay("none");
+// });
+
+
+
+// //위에서 쓰인 modalDisplay() 함수, text로 받은 값을 display값으로 변경함
+// function modalDisplay(text){
+//     modal_1.sytle.display = text; 
+// }
+
+// img.addEventListener("click", function(){
+//     confirm();
+//     console.log("이미지 클릭222");
+// });
+
+cat2.addEventListener("click", function(){
+    cat.click();
 });

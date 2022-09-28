@@ -13,7 +13,7 @@
 <c:import url="../template/headerHTML.jsp"></c:import>
 </head>
 <body>
-<section class="container-fluid col-lg-6 mt-5">
+<section class="container-fluid col-lg-8 mt-5">
 	<h1>리뷰 목록</h1>
 	
 <form action="./list" class="row row-cols-lg-auto g-3 align-items-center">

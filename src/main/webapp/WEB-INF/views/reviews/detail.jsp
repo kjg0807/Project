@@ -10,6 +10,7 @@
 		rel="stylesheet" 
 		integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx"
 		 crossorigin="anonymous">
+<!-- <link rel="stylesheet" href="../../../resources/css/reviewsComment.css"> -->
 </head>
 <body>
 
@@ -77,12 +78,46 @@
 						<td>${dto.title}</td>
 						<td>${dto.contents}</td>
 						<td>${dto.reviewDate}</td>
-					<td>
-						<c:forEach items="${dto.reviewsFilesDTOs}" var="fileDTO">
-							<a href="../resources/upload/reviews/${fileDTO.fileName}">${fileDTO.oriName}</a>
-							<img src="../resources/upload/reviews/${fileDTO.fileName}${fileDTO.oriName}"/>
-						</c:forEach>
-					</td>
+				
+						
+						<td>
+							<div class="modal_1">
+								<c:forEach items="${dto.reviewsFilesDTOs}" var="reviewsFileDTO">
+									<!-- <a href="../resources/upload/reviews/${reviewsFileDTO.fileName}">${fileDTO.oriName}</a> -->
+									<div class="modal-dialog modal-lg">22</div>
+										<a href="../resources/upload/reviews/${reviewsFileDTO.fileName}" style="display: none;" id="cat">${reviewsFileDTO.oriName}</a>
+									
+									<img src="../resources/upload/reviews/${reviewsFileDTO.fileName}" width="100px" height="100px" id="cat2" class="img">
+					
+									<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+										<div class="modal-dialog">
+
+										<div class="modal-content" style="width: 500%;">
+											<div class="modal-header">
+											<h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+											<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+											</div>
+											<div class="modal-body">
+												<img src="../resources/upload/reviews/${reviewsFileDTO.fileName}" id="cat2" class="img">
+												<!-- <img src="../../../resources/images/noze.png" alt=""> -->
+											</div>
+										
+										</div>
+										</div>
+									</div>
+								</c:forEach> 
+								<!--모달에 뜨는 닫기창-->
+								<span class="close">&times;</span>	
+								<img class="modeal_contents" id="rvimg">
+							</div>
+						</td>
+						<!-- Button trigger modal -->
+						<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+							Launch demo modal
+						</button>
+						
+						<!-- Modal -->
+						
 					</tr>
 					
 			</tbody>
@@ -135,7 +170,8 @@
 		
 		<div class="mb-3">
 			<label for="contents" class="form-label">내 용</label>
-			<input type="text" class="form-label" id="contents" placeholder="내용 :">
+			<textarea id="contents" class="form-label" rows="3" cols="50" placeholder="내 용 :"></textarea>
+			<!-- <input type="text" class="form-label" id="contents" placeholder="내용 :"> -->
 		</div>
 		
 		<div class="mb-3">
@@ -157,7 +193,7 @@
 				</tr>
 			</thead>
 		</table>
-		<button id="plus" class="btn btn-success disabled">더보기</button>
+		<button id="plus" class="btn btn-secondary disabled">더보기</button>
 		<button id="minus" class="btn btn-success disabled">닫기</button>
 	</div>
 	<!-- 댓글 끝 -->
