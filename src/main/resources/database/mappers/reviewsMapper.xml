@@ -42,7 +42,7 @@
 		<id column="reviewNum" property="reviewNum"/>
 		<result column="shopNum" property="shopNum"/>
 		<result column="userId" property="userId"/>
-		<result column="categoryNum" property="categoryNum"/>
+	
 		<result column="title" property="title"/>
 		<result column="contents" property="contents"/>
 		<result column="reviewDate" property="reviewDate"/>
@@ -62,8 +62,8 @@
 		<selectKey order="BEFORE" keyProperty="reviewNum" resultType="Long">
 			SELECT REVIEWS_SEQ.NEXTVAL FROM DUAL
 		</selectKey>
-		INSERT INTO REVIEWS (REVIEWNUM, SHOPNUM, USERID, CATEGORYNUM, TITLE, CONTENTS, REVIEWDATE, HITS)
-		VALUES 				(#{reviewNum}, 5, 'id1' , 1, #{title}, #{contents}, SYSDATE, 0)
+		INSERT INTO REVIEWS (REVIEWNUM, SHOPNUM, USERID, TITLE, CONTENTS, REVIEWDATE, HITS)
+		VALUES 				(#{reviewNum}, 5, 'id1' , #{title}, #{contents}, SYSDATE, 0)
 	</insert>
 	
 	<update id="setReviewsUpdate" parameterType="ReviewsDTO">

@@ -1,0 +1,20 @@
+/* imageModal.css */
+
+
+/* 모달 버튼 안보이게 가리기 */
+#modalExecute{
+    display: none;
+    visibility: hidden;
+}
+
+
+#modal_size{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+}
+

@@ -10,7 +10,8 @@
 		rel="stylesheet" 
 		integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx"
 		 crossorigin="anonymous">
-<!-- <link rel="stylesheet" href="../../../resources/css/reviewsComment.css"> -->
+<!-- <link rel="stylesheet" href="../../../resources/css/reviewsComment.css">  -->
+<link rel="stylesheet" href="../../../resources/css/imageModal.css">
 </head>
 <body>
 
@@ -81,42 +82,48 @@
 				
 						
 						<td>
-							<div class="modal_1">
+							<div class="modal_1" id="modal_1">
 								<c:forEach items="${dto.reviewsFilesDTOs}" var="reviewsFileDTO">
 									<!-- <a href="../resources/upload/reviews/${reviewsFileDTO.fileName}">${fileDTO.oriName}</a> -->
-									<div class="modal-dialog modal-lg">22</div>
-										<a href="../resources/upload/reviews/${reviewsFileDTO.fileName}" style="display: none;" id="cat">${reviewsFileDTO.oriName}</a>
+									<!-- <div class="modal-dialog modal-lg">22</div> -->
+										 <!-- <a href="../resources/upload/reviews/${reviewsFileDTO.fileName}" id="cat">${reviewsFileDTO.oriName}</a>  -->
 									
-									<img src="../resources/upload/reviews/${reviewsFileDTO.fileName}" width="100px" height="100px" id="cat2" class="img">
-					
-									<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-										<div class="modal-dialog">
-
-										<div class="modal-content" style="width: 500%;">
-											<div class="modal-header">
-											<h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-											<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-											</div>
-											<div class="modal-body">
-												<img src="../resources/upload/reviews/${reviewsFileDTO.fileName}" id="cat2" class="img">
-												<!-- <img src="../../../resources/images/noze.png" alt=""> -->
-											</div>
+										<img src="../resources/upload/reviews/${reviewsFileDTO.fileName}" width="100px" height="100px" id="cat2" class="img">
 										
+								
+								
+								
+									</c:forEach> 
+										<!--부트스트랩 모달-->
+										<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+											<div class="modal-dialog">
+				
+												<div class="modal-content" id="modal_size">
+													<div class="modal-header">
+														<!-- <h5 class="modal-title" id="exampleModalLabel">Modal title</h5> -->
+														<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+													</div>
+																
+													<div class="modal-body">
+														<img src="" class="img" id="c1">		
+														<!-- <img class="img" src="../resources/upload/reviews/">													 -->
+													</div>
+															
+												</div>
+											</div>
 										</div>
-										</div>
-									</div>
-								</c:forEach> 
-								<!--모달에 뜨는 닫기창-->
-								<span class="close">&times;</span>	
-								<img class="modeal_contents" id="rvimg">
+								<!-- Modal -->
+										<!--모달에 뜨는 닫기창-->
+										<span class="close">&times;</span>	
+										<img class="modeal_contents" id="rvimg">
+									
+								</td>
+								<!-- 부트스트랩 모달 버튼-->
+								<button type="button" id="modalExecute" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+									Launch demo modal
+								</button>
+
 							</div>
-						</td>
-						<!-- Button trigger modal -->
-						<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-							Launch demo modal
-						</button>
-						
-						<!-- Modal -->
 						
 					</tr>
 					
@@ -240,6 +247,7 @@
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
     			 integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" 
     			 crossorigin="anonymous"></script>
+				 
 	
 <script src="/resources/js/ReviewsComment.js"></script>
 </body>

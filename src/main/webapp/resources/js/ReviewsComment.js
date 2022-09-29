@@ -13,9 +13,9 @@ const minus = document.querySelector("#minus");
 //리뷰에 남기는 이미지
 const rvimg = document.querySelector("#rvimg");
 // 이미지를 감싸는 div태그 클래스명
-const modal_1 = document.querySelector(".modal_1");         //태그명이 class명이기 때문에 .으로 선택
+const modal_1 = document.querySelector("#modal_1");         //태그명이 class명이기 때문에 .으로 선택
 // 이미지 태그 안의 class명
-const img = document.querySelector(".img");
+const img = document.querySelectorAll(".img");
 // 이미지를 눌렀을때 원본이미지
 const modal_contents = document.querySelector(".modal_contents");
 // 모달창에 있는 원본이미지 닫기버튼
@@ -322,44 +322,64 @@ update.addEventListener("click", function(){
     }
 });
 
-// rvimg.addEventListener("click", function(event){
-//     // rvimg.click();
-//     // let check = window.confirm("이미지를 바꾸시겠습니까?");
-//     console.log("이미지 강제클릭 이벤트");
+rvimg.addEventListener("click", function(event){
+    // rvimg.click();
+    // let check = window.confirm("이미지를 바꾸시겠습니까?");
+    console.log("이미지 강제클릭 이벤트");
     
     
-//     let num = document.getElementById("num").value;
+    let num = document.getElementById("num").value;
 
-//     let writer = document.getElementById("writer").value;
-//     let contents = document.getElementById("contents").value;
+    let writer = document.getElementById("writer").value;
+    let contents = document.getElementById("contents").value;
 
 
-//     //--ajax--
-//     const xhttp = XMLHttpRequest();
+    //--ajax--
+    const xhttp = XMLHttpRequest();
 
-//     xhttp.open("POST", "./reviewsFilesDelete");
+    xhttp.open("POST", "./reviewsFilesDelete");
 
-//     xhttp.send("num="+num+"&writer"+writer+"&contents"+contents);
+    xhttp.send("num="+num+"&writer"+writer+"&contents"+contents);
 
-//     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 
-//     xhttp.onreadystatechange = function(){
+    xhttp.onreadystatechange = function(){
 
-//         if(xhttp.status = 200 && xhttp.readyState == 4){
-//             let result = xhttp.responseText.trim();
+        if(xhttp.status = 200 && xhttp.readyState == 4){
+            let result = xhttp.responseText.trim();
 
-//             if(result>0){
-//                 confirm("")
-//             }
-//         }
+            if(result>0){
+                confirm("")
+            }
+        }
 
-//     }
+    }
 
-// });
+});
 
 
 //이미지 클릭시 모달창을 띄우고 모달의 display를 "block"으로 변경후, 이미지의 display로 block 으로 바꾼다.
-//                          => 모달창을 스크롤할 때 모달창 뒤에 있는 이미지 등이 움직이지 않게 하기 위해서
+//                         => 모달창을 스크롤할 때 모달창 뒤에 있는 이미지 등이 움직이지 않게 하기 위해서
+
+//-------------------------------------------------------------------------------------
+img.forEach(function(im, index){
+    console.log(im);
+    im.addEventListener("click", function(){
+        const modalExecute = document.querySelector("#modalExecute");
+        modalExecute.click();
+
+        // modalDisplay("block");
+        // modal_contents.src = im.src;
+        console.log("이미지 클릭");
+        console.log(im.src);            //이미지 속성값
+
+        const c1 = document.querySelector("#c1");
+
+        c1.src = im.src;                //이미지 속성값을 이미지 링크에있는 src속성값에 보내줌
+    })
+})
+
+//-----------------------------------------------------------------------------------------
 // img.addEventListener("click", ()=>{
 
 //     modalDisplay("block");
@@ -368,29 +388,36 @@ update.addEventListener("click", function(){
 // });
 
 
-// // 닫기 X 버튼과 모달의 공백부분을 클릭 했을때 모달창을 none으로 바꾼다 ===> 모달창 공백 아무곳이나 닫기버튼을 누르면 원본이미지가 꺼진다
-// clos.addEventListener("click", ()=>{
+// 닫기 X 버튼과 모달의 공백부분을 클릭 했을때 모달창을 none으로 바꾼다 ===> 모달창 공백 아무곳이나 닫기버튼을 누르면 원본이미지가 꺼진다
+clos.addEventListener("click", ()=>{
 
-//     modalDisplay("none");
-// });
+    modalDisplay("none");
+});
 
-// modal_1.addEventListener("click", ()=>{
+modal_1.addEventListener("click", ()=>{
 
-//     modalDisplay("none");
-// });
+    modalDisplay("none");
+});
 
 
 
-// //위에서 쓰인 modalDisplay() 함수, text로 받은 값을 display값으로 변경함
-// function modalDisplay(text){
-//     modal_1.sytle.display = text; 
-// }
+//위에서 쓰인 modalDisplay() 함수, text로 받은 값을 display값으로 변경함
+function modalDisplay(text){
+    modal_1.style.display='block';
+    console.log(modal_1.style.display);
+    //modal_1.sytle.display = text; 
+
+}
+
+
+
+
 
 // img.addEventListener("click", function(){
 //     confirm();
 //     console.log("이미지 클릭222");
 // });
 
-cat2.addEventListener("click", function(){
-    cat.click();
-});
+// cat2.addEventListener("click", function(){
+//     cat.click();
+// });

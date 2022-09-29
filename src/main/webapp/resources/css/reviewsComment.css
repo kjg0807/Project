@@ -1,16 +1,25 @@
 /* reviewsComment.css */
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
 .img{
     width: auto;
     height: auto;
     border-radius: 10px;
     cursor: pointer;
     transition: 0.3s;           /* transition = > 애니메이션 속도 조절*/
+    z-index: 1;
 
 }
 
 /* 이미지 클릭시 밝기 조절*/
 
 .img:hover {opacity: 0.8;}
+
+
 
 .modal_1 {
     display: none;              /*모달창 숨겨두기*/

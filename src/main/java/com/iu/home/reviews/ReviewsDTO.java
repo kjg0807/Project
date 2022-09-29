@@ -8,7 +8,6 @@ public class ReviewsDTO{
 	private Long reviewNum;
 	private Long shopNum;
 	private String userId;
-	private Long categoryNum;
 	private String title;
 	private String writer;
 	private String contents;
@@ -35,12 +34,7 @@ public class ReviewsDTO{
 	public void setUserId(String userId) {
 		this.userId = userId;
 	}
-	public Long getCategoryNum() {
-		return categoryNum;
-	}
-	public void setCategoryNum(Long categoryNum) {
-		this.categoryNum = categoryNum;
-	}
+
 	public String getTitle() {
 		return title;
 	}
