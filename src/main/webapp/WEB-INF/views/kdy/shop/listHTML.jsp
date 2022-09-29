@@ -30,14 +30,14 @@
             <div class="c1">
                 맛집 리뷰
             </div>
-                <div class="d-flex flex-row mb-3">
-                    <div class="p-2 a">전체</div>
-                    <div class="p-2 a">한식</div>
-                    <div class="p-2 a">중식</div>
-                    <div class="p-2 a">일식</div>
-                    <div class="p-2 a">분식</div>
-                    <div class="p-2 a">양식</div>
-                    <div class="p-2 a">아시안</div>
+                <div class="d-flex flex-row mb-3" id="cccc">
+                    <div class="p-2 a" data-miniCategory="">전체</div>
+                    <div class="p-2 a" data-miniCategory="한식">한식</div>
+                    <div class="p-2 a" data-miniCategory="중식">중식</div>
+                    <div class="p-2 a" data-miniCategory="일식">일식</div>
+                    <div class="p-2 a" data-miniCategory="분식">분식</div>
+                    <div class="p-2 a" data-miniCategory="양식">양식</div>
+                    <div class="p-2 a" data-miniCategory="아시안">아시안</div>
                 </div>
          <c:forEach items="${requestScope.list}" var="list">
                 
@@ -50,6 +50,7 @@
                                     <div class="name">${list.shopName}</div>
                                     <div class="contents">${list.title}</div>
                                     <div class="contents2">${list.shopAddress}</div>
+                                    
                                 </div>
                                 <div class="d-flex flex-row mb-3 mt-2">
                                     <div class="p-2 b">#test</div>
@@ -62,12 +63,6 @@
                             <div class="p-2 flex-shrink-1">
                               <div class="mt-2" id="img" style="height: 200px; width: 310px">
                                   <img src="../../../../resources/upload/shop/${shopFileDTO.fileName}" style="width: 300px;">
-<!-- 
-                                  <div class="mt-2" id="img" style="height: 200px; width: 310px">
-                                    <c:forEach items="${list.shopFileDTOs}" var="shopFileDTO">  
-                                      <img src="../../../../resources/upload/shop/${shopFileDTO.fileName}" style="width: 300px;">
-                                    </c:forEach> 
-                                    </div> -->
                               </div>
                           </div>
                         </div>
@@ -92,9 +87,16 @@
       <div class="modal-body">
         <form action="/shop/add" method="post" enctype="multipart/form-data">
 
-          <div class="mb-3">
-            <label for="message-text" class="col-form-label"> </label>
-           <input type="text" class="form-control" placeholder="카테고리" name="categoryNum" id="categoryNum">
+          <div class="mb-3" id="caNum">
+            <label for="message-text" class="col-form-label">category</label>
+            <select  name="categoryNum" class="form-select" id="categoryNum">
+              <option class="categoryNums" value="1">한식</option>
+              <option class="categoryNums" value="2">중식</option>
+              <option class="categoryNums" value="3">일식</option>
+              <option class="categoryNums" value="4">분식</option>
+              <option class="categoryNums" value="5">양식</option>
+              <option class="categoryNums" value="6">아시안</option>
+            </select>
           </div>
           <div class="mb-3">
             <label for="message-text" class="col-form-label"></label>
@@ -124,6 +126,10 @@
           <label for="recipient-name" class="col-form-label"></label>
           <input type="text" class="form-control" placeholder="제목을 입력해주세요" name="title" id="title">
         </div>
+        <div class="mb-3">
+          <label for="recipient-name" class="col-form-label"></label>
+          <input type="text" class="form-control" placeholder="hit" name="hit" id="hit">
+        </div>
         
         <div id="map" style="width:100%; height:500px;"></div>
 
@@ -148,25 +154,28 @@
    
 
 </main>
-    <div style="display: flex; margin: 5 5px;  justify-content: center;">
-    <nav aria-label="Page navigation example">
-			<ul class="pagination">
-			<c:if test="${shopPager.pre}">
-				<li class="page-item">
-					<a class="page-link" href="./listHTML?shopPage=${shopPager.startNum-1}">&laquo;</a>
-				</li>
-			</c:if>
-			
-			<c:forEach begin="${shopPager.startNum}" end="${shopPager.lastNum}" var="i">
-        <li class="page-item">
-          <a class="page-link" href="./listHTML?shopPage=${i}">${i}</a>
-				</li>
-			</c:forEach>
-			<li class="page-item ${shopPager.next?'':'disabled'}">
-        <a class="page-link" href="./listHTML?shopPage=${shopPager.lastNum+1}">&raquo;</a>
-			</ul>
-		</nav>
-  </div>
+<div style="display: flex; margin: 5 5px;  justify-content: center;">
+  <nav aria-label="Page navigation example">
+    <ul class="pagination">
+       <c:if test="${shopPager.pre}">
+         <li class="page-item">
+           <a class="page-link" href="./listHTML?shopPage=${shopPager.startNum-1}&kind=${shopPager.kind}&search=${shopPager.search}" aria-label="Previous">
+             <span aria-hidden="true">&laquo;</span>
+           </a>
+         </li>
+      </c:if>
+      
+      <c:forEach begin="${shopPager.startNum}" end="${shopPager.lastNum}" var="i">
+             <li class="page-item"><a class="page-link" href="./listHTML?shopPage=${i}&kind=${shopPager.kind}&search=${shopPager.search}">${i}</a></li>
+      </c:forEach>
+     <li class="page-item ${shopPager.next?'':'disabled'}">
+        <a class="page-link" href="./listHTML?shopPage=${shopPager.lastNum+1}&kind=${shopPager.kind}&search=${shopPager.search}" aria-label="Next">
+          <span aria-hidden="true">&raquo;</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+</div>
   <c:import url="../../template/footerHTML.jsp"></c:import>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
   <script src="../../../../resources/kdy/js/shop_files.js"></script>

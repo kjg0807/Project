@@ -15,7 +15,7 @@
     <!-- include summernote css/js-->
      <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
      <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
-     <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c971ac6c7712b0e728a1ba2df98cf0fd"></script>
+     <!-- <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c971ac6c7712b0e728a1ba2df98cf0fd"></script> -->
 </head>
 <body>
 <c:import url="../../template/headerHTML.jsp"></c:import>
@@ -66,7 +66,7 @@
                                             가게 주소 수정  <input type="text" class="form-control" name="shopAddress" value="${detail.shopAddress}">
                                           </div>
                                           <div class="mb-3">
-                                            <label for="recipient-name" class="col-form-label"></label>
+                                            <label   for="recipient-name" class="col-form-label"></label>
                                             가게 평균가격 수정  <input type="text" class="form-control" name="priceAvg" value="${detail.priceAvg}">
                                           </div>
                                           <div class="mb-3">
@@ -81,15 +81,9 @@
                                             <label for="recipient-name" class="col-form-label"></label>
                                             가게 제목 수정 <br><textarea name="title" rows="10" cols="57">${detail.title}</textarea>
                                           </div>
-                                          <!-- <div class="mb-3">
-                                            <label for="recipient-name" class="col-form-label"></label>
-                                            파일수정 <br><textarea name="title" rows="10" cols="57">${detail.title}</textarea>
-                                          </div> -->
-                                          <!-- <div id="addFiles" class="mb-3">
-                                            <i class="fa-regular fa-image"></i>
-                                            <label for="message-text" class="col-form-label"></label>
-                                              <input type="file" name="files" id="fileAdd" >파일
-                                          </div> -->
+                                     
+
+                                         
                                        
                                     </div>
                                     
@@ -138,11 +132,12 @@
 			<div style="border-bottom: solid 1px gainsboro;">
 				<div class="p-2 pt-3" style="font-size: 50px;">${detail.shopName}
 				</div>
+  
 			</div>
 
 			<div class="Information">
 
-        <div id="map" style="width:1000px; height:1000px;"></div>
+        <!-- <div id="map" style="width:1000px; height:1000px;"></div> -->
 
 				<div class="d-flex q" id="address">주소 &ensp;&ensp;&ensp;&ensp;&nbsp;&nbsp;&ensp;&ensp;:
 					<div class="flex q" id="realAddress">&ensp;&ensp;&ensp;${detail.shopAddress}</div>
