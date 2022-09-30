@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/styles.css">
+<link rel="stylesheet" type="text/css" href="../../resources/kdy/css/styles.css">
 <%-- <script type="text/javascript" src="${pageContext.request.contextPath}/js/test.js"></script> --%>
 
 </head>

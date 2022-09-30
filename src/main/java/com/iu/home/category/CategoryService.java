@@ -26,5 +26,9 @@ public class CategoryService {
 	public int setDelete(CategoryDTO categoryDTO)throws Exception{
 		return categoryDAO.setDelete(categoryDTO);
 	}
+	
+	public int setUpdate(CategoryDTO categoryDTO)throws Exception{
+		return categoryDAO.setUpdate(categoryDTO);
+	}
 }
 

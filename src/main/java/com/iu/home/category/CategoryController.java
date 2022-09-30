@@ -38,21 +38,13 @@ public class CategoryController {
 		return "kdy/category/list";
 		}
 	
-//	@GetMapping(value = )
-//	public ModelAndView getCategoryList(ShopDTO shopDTO)throws Exception{
-//		ModelAndView mv = new ModelAndView();
-//		List<CategoryDTO> ar = categoryService.getCategoryList(shopDTO);
-//		mv.addObject("categoryList", ar);
-//		mv.setViewName("shop/listHTML");
-//		return mv;
-//		
-//	}
-	
 	public ModelAndView setDelete(CategoryDTO categoryDTO)throws Exception{
 		ModelAndView mv = new ModelAndView();
 		int result = categoryService.setDelete(categoryDTO);
 		mv.setViewName("redirect:./list");
 		return mv;
 	}
+	
+
 
 }
