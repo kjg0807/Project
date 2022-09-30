@@ -34,7 +34,7 @@
 		
 		<div class="mb-3">
 		  <label for="formGroupExampleInput2" class="form-label">글내용</label>
-		  <input type="text" class="form-control" name="contents" placeholder="${dto.contents}">
+		  <textarea class="form-control" name="contents" id="contents" rows="5" placeholder="내용: ${dto.contents}"></textarea>
 		</div>
 		
 		<c:forEach items="${reviewsDTO.reviewsFilesDTOs}" var="reviewsFileDTO">
