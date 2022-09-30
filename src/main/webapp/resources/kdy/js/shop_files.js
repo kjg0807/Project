@@ -4,6 +4,9 @@ const fileDelete = document.querySelectorAll(".fileDelete"); // 클래스명 fil
 //const fileDelete = document.getElementsByClassName("fileDelete"); // forEach 불가능
 
 
+const shopAddres = document.querySelector("#shopAddress");
+
+
 //---------------------Update시 file Delelte----------------
 try {
 fileDelete.forEach(function(f){
