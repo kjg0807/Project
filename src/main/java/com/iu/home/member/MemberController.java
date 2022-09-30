@@ -130,42 +130,45 @@ public class MemberController
 	}
 
 	@GetMapping(value = "update")
-	public void update(Model model, HttpSession session) throws Exception
+	public void update(MemberDTO memberDTO, Model model) throws Exception
 	{
 		System.out.println("Update GET Page");
 
-		MemberDTO memberDTO = (MemberDTO) session.getAttribute("member");
 		memberDTO = memberService.getMyPage(memberDTO);
-		System.out.println(memberDTO.getUserid());
-		System.out.println(memberDTO.getPwd());
-		System.out.println(memberDTO.getGender());
 
-		// mv.addObject("dto", memberDTO);
-		// mv.setViewName("kjk/member/update");
+		// System.out.println(memberDTO.getUserid());
+		// System.out.println(memberDTO.getPwd());
+		// System.out.println(memberDTO.getGender());
+
 		model.addAttribute("dto", memberDTO);
 	}
 
 	@PostMapping(value = "update")
 	public String setUpdate(MemberDTO memberDTO) throws Exception
 	{
+		System.out.println("update POST");
 		int rs = memberService.setUpdate(memberDTO);
+		System.out.println(rs == 1);
 
 		return "redirect:./mypage?userid=" + memberDTO.getUserid();
 	}
 
 	@GetMapping(value = "delete")
-	public void setDelete(MemberDTO memberDTO) throws Exception
+	public void setDelete(HttpSession session, Model model) throws Exception
 	{
 		System.out.println("Delete GET Page");
+		MemberDTO memberDTO = (MemberDTO) session.getAttribute("member");
+		memberDTO = memberService.getMyPage(memberDTO);
 
-		int rs = memberService.setDelete(memberDTO);
-		// System.out.println(rs == 1);
+		model.addAttribute("dto", memberDTO);
 	}
 
 	@PostMapping(value = "delete")
 	public String setDelete(MemberDTO memberDTO, HttpSession session) throws Exception
 	{
 		System.out.println("Delete POST Page");
+		int rs = memberService.setDelete(memberDTO);
+		session.invalidate();
 
 		return "redirect:../../";
 	}

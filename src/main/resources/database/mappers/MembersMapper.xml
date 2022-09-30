@@ -45,7 +45,7 @@
 
 	<select id="getMyPage" parameterType="MemberDTO"
 		resultMap="getMyPageResult">
-		select m.userid, username, email, phone, c.classname
+		select m.*, c.className, c.classNum
 		from
 		promembers m
 		LEFT join
@@ -53,7 +53,8 @@
 		on m.userid = uc.userid
 		LEFT join
 		class c on
-		uc.classnum = c.classnum
+		uc.classnum =
+		c.classnum
 		where m.userid=#{userid}
 	</select>
 	<resultMap type="MemberDTO" id="getMyPageResult">
@@ -85,7 +86,7 @@
 		<result column="pwd" property="pwd" />
 		<result column="email" property="email" />
 		<result column="age" property="age" />
-		<result column="email" property="birth" />
+		<result column="birth" property="birth" />
 		<result column="PHONE" property="phone" />
 		<result column="gender" property="gender" />
 		<collection property="classDTOs" javaType="List"
@@ -96,12 +97,13 @@
 	</resultMap>
 
 	<update id="setUpdate" parameterType="MemberDTO">
+		<!-- update promembers set userid=#{userid}, username=#{username}, pwd=#{pwd}, 
+			email=#{email}, age=#{age}, birth=#{birth}, phone=#{phone}, gender=#{gender} 
+			where userid=#{userid} -->
 		update promembers set
-		userid= #{userid}, username = #{username}, pwd = #{pwd},
-		email =
-		#{email}, age = #{age}, phone = #{phone}, gender = #{gender}
-		where
-		userid = #{userid}
+		userid=#{userid}, username = #{username}, pwd = #{pwd}, email = #{email}
+		, age = #{age}, birth=#{birth} ,phone = #{phone}, gender = #{gender}
+		where userid = #{userid}
 	</update>
 
 	<delete id="setDelete" parameterType="MemberDTO">

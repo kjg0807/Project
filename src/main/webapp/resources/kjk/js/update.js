@@ -1,5 +1,4 @@
-// id를 입력하고 나왔을 때 2글자 미만이면 메세지 출력 : id는 2글자 이상
-const id = document.getElementById("id");
+let id = document.getElementById("id");
 
 idcheck = true;
 pwdcheck = true;
@@ -9,8 +8,10 @@ phonecheck = true;
 
 id.addEventListener("blur", id1);
 function id1() {
-    console.log(id.value);
     let d = id.value;
+    let usid = document.getElementById("usid");
+    usid.value = d;
+    console.log("id: " + usid.value);
     if (d.length < 2) {
         document.getElementById("idText").style.display = 'block';
         idcheck = false;
@@ -19,16 +20,17 @@ function id1() {
         document.getElementById("idText").style.display = 'none';
         idcheck = true;
     }
-    // let realid = document.getElementById("usid");
-    // realid.value = id.value;
 }
 
 // pwd를 입력할 때마다 (1글자씩) 메세지를 출력 : pwd - 최소 6글자 이상
-const pwd = document.getElementById("pwd");
+const pwd = document.getElementById("pass");
 
 pwd.addEventListener("blur", pwd11);
 function pwd11() {
     let p = pwd.value;
+    let pw = document.getElementById("pwd");
+    pw.value = p;
+    console.log("pwd: " + pw.value);
     if (p.length < 6) {
         document.getElementById("pwdText").style.display = 'block';
         pwdcheck = false;
@@ -46,6 +48,7 @@ pwd2.addEventListener("blur", pwd22);
 function pwd22() {
     let pw = pwd2.value;
     let p1 = pwd.value;
+    console.log("pwd2: " + pw);
     if (p1 != pw) {
         document.getElementById("pwdText2").style.display = 'block';
         pwdcheck = false;
@@ -61,7 +64,12 @@ const name1 = document.getElementById("name");
 let a = 1;
 name1.addEventListener("blur", na);
 function na() {
+    // 이 범위 안에 형식을 전체에 적용하기
     let ne = name1.value;
+    let una = document.getElementById("name");
+    una.value = ne;
+    console.log("name: " + una.value);
+    //
     if (ne.length < a) {
         document.getElementById("nameText").style.display = 'block';
         namecheck = false;
@@ -73,9 +81,19 @@ function na() {
 }
 
 var emin = document.getElementById("email2");
-var emse = document.getElementById("emse");
+var emse = document.getElementById("emses");
 let email = document.getElementById("emaill");
 let sendEmail = document.getElementById("email");
+let se = sendEmail.value;
+
+email.value = se.substring(0, se.indexOf('@'));
+console.log("@ front email: "+ email.value);
+$("#emaill").val(email.value);
+
+emin.value = se.substring(se.indexOf('@'));
+console.log("@ back email: "+emin.value);
+$("#email2").val(emin.value);
+
 email.addEventListener("blur", em);
 function em() {
     let ne = email.value;
@@ -88,27 +106,28 @@ function em() {
         emailcheck = true;
     }
 }
+
+
 // @ 이후
 emse.addEventListener("change", function () {
     // console.log("value: " + emse.options[emse.selectedIndex].value);
     let emvalue = emse.options[emse.selectedIndex].value;
     // console.log(emvalue);
-    // console.log(emtext);
-    // console.log("변경 테스트: " + emvalue);
+
     $("#email2").val(emvalue);
-    console.log("email all: " + email.value + emin.value);
+    // console.log("email all: " + email.value + emin.value);
     let emailValue = email.value + emin.value;
     let rs = emailValue.substring(0, emailValue.indexOf('@'));
     document.getElementById("email").innerHTML = rs;
     sendEmail.value = rs + emin.value;
+    console.log("email: " + sendEmail.value);
 });
 
 const phone = document.getElementById("phone");
 
-phone.addEventListener("blur", ph);
-function ph() {
-    let ne = phone.value;
-    // 입력하지 않았을 때
+phone.addEventListener("blur", function(){
+    let ne = phone.value; // 입력하지 않았을 때
+    console.log("phone: " + ne);
     if (ne.length == 0) {
         document.getElementById("phoneText").style.display = 'block';
         phonecheck = false;
@@ -120,7 +139,7 @@ function ph() {
     // 전화번호 유효 검사
     let regExp = /^(010)-?[0-9]{3,4}-?[0-9]{4}$/;
     const phone_number = document.getElementById("phone");
-    phnum = phone_number.value;
+    let phnum = phone_number.value;
     let rs = regExp.test(phnum);
     // console.log(rs);
     if (rs == false) {
@@ -131,15 +150,16 @@ function ph() {
         document.getElementById("phoneText1").style.display = 'none';
         phonecheck = true;
     }
-}
+});
 
 // age, birth, gender
 agecheck = true;
-brithcheck = true;
+birthcheck = true;
 gendercheck = true;
 const age = document.getElementById("age");
 age.addEventListener("blur", function () {
     let ne = age.value;
+    console.log("age: " + ne);
     if (ne.length < a) { // 입력하지 않았을 때
         document.getElementById("ageText").style.display = 'block';
         agecheck = false;
@@ -177,6 +197,7 @@ age.addEventListener("blur", function () {
 const birth = document.getElementById("birth");
 birth.addEventListener("blur", function () {
     let ne = birth.value;
+    console.log("birth: " + ne);
     // 형식에 맞게 입력 - 990807
     if (ne.length < 6) { // 입력한 길이가 6보다 작을 때
         document.getElementById("birthText").style.display = 'block';
@@ -207,7 +228,7 @@ birth.addEventListener("blur", function () {
 const gender = document.getElementById("gender");
 gender.addEventListener("blur", function () {
     let ne = gender.value;
-    // console.log(ne);
+    console.log("gender: " + ne);
     // 아무것도 입력하지 않았을 때
     if (ne.length == 0) {
         document.getElementById("genderText").style.display = 'block';
@@ -255,36 +276,13 @@ const btn = document.getElementById("btn");
 const frm = document.getElementById("frm");
 
 btn.addEventListener("click", function () {
-    console.log(idcheck && pwdcheck && namecheck && emailcheck && phonecheck && agecheck && brithcheck && gendercheck);
-    if ((idcheck && pwdcheck && namecheck && emailcheck && phonecheck && agecheck && brithcheck && gendercheck) == true) {
+    let ebm = idcheck && pwdcheck && namecheck && emailcheck && phonecheck && agecheck && birthcheck && gendercheck;
+    console.log(ebm == 1);
+    if ((idcheck && pwdcheck && namecheck && emailcheck && phonecheck && agecheck && birthcheck && gendercheck) == true) {
         frm.submit();
     }
-    else if (idcheck == false) {
-        alert("아이디가 조건에 맞지 않습니다.");
-    }
-    else if (pwdcheck == false) {
-        alert("비밀번호가 조건에 맞지 않습니다.");
-    }
-    else if (namecheck == false) {
-        alert("닉네임이 조건에 맞지 않습니다.");
-    }
-    else if (emailcheck == false) {
-        alert("이메일이 조건에 맞지 않습니다.");
-    }
-    else if (phonecheck == false) {
-        alert("전화번호가 조건에 맞지 않습니다.");
-    }
-    else if (agecheck == false) {
-        alert("나이가 조건에 맞지 않습니다.");
-    }
-    else if (birthcheck == false) {
-        alert("생년월일이 조건에 맞지 않습니다.");
-    }
-    else if (gendercheck == false) {
-        alert("성별이 조건에 맞지 않습니다.");
-    }
-    else {
-        alert("새로고침 후 다시");
+    else{
+        alert("이유가 뭐저ㅣ");
     }
     if ((id || pwd || name1 || email || phone || age || birth || gender) == "") {
         alert("빈칸이 존재합니다.");
