@@ -374,8 +374,15 @@ img.forEach(function(im, index){
         console.log(im.src);            //이미지 속성값
 
         const c1 = document.querySelector("#c1");
+        
 
         c1.src = im.src;                //이미지 속성값을 이미지 링크에있는 src속성값에 보내줌
+
+        // c1.style.width = 600+"px";
+        // c1.style.height = auto;
+        // c1.style.margin = 0;
+        // c1.style.padding = 0;
+        
     })
 })
 
