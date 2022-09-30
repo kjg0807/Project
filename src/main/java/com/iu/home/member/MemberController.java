@@ -172,4 +172,10 @@ public class MemberController
 
 		return "redirect:../../";
 	}
+
+	@GetMapping(value = "adupdate")
+	public void adUpdate() throws Exception
+	{
+		System.out.println("admin Update get Test");
+	}
 }

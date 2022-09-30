@@ -42,16 +42,14 @@
 						<!-- id -->
 						<div class="mb-3">
 							<label class="form-label">아이디</label>
-							<input type="hidden" class="form-control" name="userid" id="usid">
-							<input type="text" class="form-control" name = "id" id = "id" value="${dto.userid}">
+							<input type="text" class="form-control" name="userid" id="id" value="${dto.userid}" disabled>
 							<!-- id를 입력하고 나왔을 때 2글자 미만이면 메세지 출력 : id는 2글자 이상 -->
 							<div id="idText" style="display: none; color: red;">ID는 2글자 이상 입력해야 합니다.</div>
 						</div>
 						<!-- password 1 -->
 						<div class="mb-3">
 							<label class="form-label">비밀번호</label>
-							<input type="hidden" class="form-control" name="pwd" id="pwd" value="${dto.pwd}">
-							<input type="text" class="form-control" name="pass" id="pass" value="${dto.pwd}">
+							<input type="text" class="form-control" name="pwd" id="pwd" value="${dto.pwd}">
 							<!-- pwd를 입력할 때마다 (1글자씩) 메세지를 출력 : pwd - 최소 6글자 이상 -->
 							<div id="pwdText" style="display: none; color: red;">PWD는 6글자 이상 입력해야 합니다.</div>
 						</div>
@@ -66,8 +64,7 @@
 						<!-- name -->
 						<div class="mb-3">
 							<label class="form-label">닉네임</label>
-							<input type="hidden" class="form-control" name="username" id="username">
-							<input type="text" class="form-control" name="usena" id="name" value="${dto.username}">
+							<input type="text" class="form-control" name="username" id="name" value="${dto.username}">
 							<!-- 입력 후 최소 1글자 이상 -->
 							<div id="nameText" style="display: none; color: red;">최소 1글자를 입력하세요.</div>
 						</div>

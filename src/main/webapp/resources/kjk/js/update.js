@@ -9,9 +9,6 @@ phonecheck = true;
 id.addEventListener("blur", id1);
 function id1() {
     let d = id.value;
-    let usid = document.getElementById("usid");
-    usid.value = d;
-    console.log("id: " + usid.value);
     if (d.length < 2) {
         document.getElementById("idText").style.display = 'block';
         idcheck = false;
@@ -23,14 +20,11 @@ function id1() {
 }
 
 // pwd를 입력할 때마다 (1글자씩) 메세지를 출력 : pwd - 최소 6글자 이상
-const pwd = document.getElementById("pass");
+const pwd = document.getElementById("pwd");
 
 pwd.addEventListener("blur", pwd11);
 function pwd11() {
     let p = pwd.value;
-    let pw = document.getElementById("pwd");
-    pw.value = p;
-    console.log("pwd: " + pw.value);
     if (p.length < 6) {
         document.getElementById("pwdText").style.display = 'block';
         pwdcheck = false;

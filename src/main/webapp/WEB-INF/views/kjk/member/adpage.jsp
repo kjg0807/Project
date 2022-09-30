@@ -13,10 +13,6 @@
 ></script>
 </head>
 <style>
-.abc {
-	
-}
-
 a {
 	text-decoration-line: none;
 }
@@ -61,7 +57,7 @@ a {
 							<td>${dto.gender}</td>
 							<%-- <td>${dto.classDTOs.get(0).className}</td> --%>
 							<td>
-								<a class="abc" href="./update?userid=${dto.userid}">수정</a> <a class="abc" href="./delete?userid=${dto.userid}">삭제</a>
+								<a id="uplink" href="./adupdate?userid=${dto.userid}">수정</a> <a class="abc" href="./addelete?userid=${dto.userid}">삭제</a>
 							</td>
 						</tr>
 					</c:forEach>
