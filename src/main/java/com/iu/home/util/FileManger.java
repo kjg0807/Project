@@ -8,6 +8,8 @@ import javax.servlet.ServletContext;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.iu.home.reviews.ReviewsFilesDTO;
+
 @Component
 public class FileManger {
 	//@Autowired
@@ -37,4 +39,15 @@ public class FileManger {
 		return fileName;
 	}
 
+	
+	//Delete
+	
+	public boolean deleteReviewsFiles(ServletContext servletContext, String path, ReviewsFilesDTO reviewsFilesDTO) throws Exception{
+		
+		String realPath = servletContext.getRealPath(path);
+		System.out.println(realPath);
+		File file = new File(realPath, reviewsFilesDTO.getFileName());
+		
+		return file.delete();
+	}
 }
