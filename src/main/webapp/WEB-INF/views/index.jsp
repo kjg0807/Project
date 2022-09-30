@@ -164,7 +164,7 @@
                     </div> 
                 </div>
             </div>
-		<a href="./chat/join">chat</a>
+		<a href="./chat/chat">chat</a>
 		<a href="./party/list">list</a>
         </section>
 

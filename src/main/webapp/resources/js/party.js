@@ -10,6 +10,8 @@ const jc = document.querySelector("#joinComment")
 const pm = document.querySelector("#partyMember");
 const pb = document.querySelector("#partybtn");
 
+const reject = document.querySelector("#rejectbtn");
+const accept = document.querySelector("#acceptbtn");
 
 jm.addEventListener("click",age())
 
@@ -82,6 +84,28 @@ function getRequestList(pn){
             for(let i=0; i<ar.length; i++){
                 let tr = document.createElement("tr");
                 let td = document.createElement("td");
+                tdput = document.createElement("input");
+
+                puttype = document.createAttribute("type");
+                puttype.value = "checkbox";
+
+                putid = document.createAttribute("id");
+                putid.value = "partyID"+i;
+
+                putvalue = document.createAttribute("username");
+                putvalue.value = ar[i].userName;
+
+                putnum = document.createAttribute("partnum");
+                putnum.value = pn;
+
+                tdput.setAttributeNode(putnum);
+                tdput.setAttributeNode(putvalue);
+                tdput.setAttributeNode(putid);
+                tdput.setAttributeNode(puttype);
+                td.appendChild(tdput);
+                tr.appendChild(td);
+
+                td = document.createElement("td");
                 tdtext = document.createTextNode(ar[i].userName);
                 td.appendChild(tdtext);
                 tr.appendChild(td);
@@ -125,3 +149,35 @@ function getRequestList(pn){
        }
     })
 }
+
+reject.addEventListener("click", function(){
+    let check = window.confirm("삭제 하시겠습니까?");
+    if(check==true){
+        for(let i=0; i<10; i++){
+            const pid = document.querySelector("#partyID"+i)
+            if(pid != null){
+                if(pid.checked){
+                    let uv = pid.getAttribute("username");
+
+                    const xhttp = new XMLHttpRequest();
+
+                    xhttp.open("POST",  "./partyCancel");
+
+                    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+                    xhttp.send("partyNum="+pn+"&userName="+uv);
+
+                    xhttp.onreadystatechange=function(){
+                        if(this.readyState==4 && this.status==200){
+                            let result = xhttp.responseText.trim();
+                            if(result == 1){
+
+                            }
+                        }
+                        
+                }
+            }
+        }
+    }
+
+})
