@@ -10,16 +10,17 @@
         <meta name="author" content="" />
         <title>Shop Homepage - Start Bootstrap Template</title>
         <!-- Favicon-->
-        <link rel="stylesheet" href="./styles.css">
+        <link rel="stylesheet" href="../../resources/kdy/css/styles.css">
         <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/kdy/css/styles.css">
         <!-- Bootstrap icons-->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
         <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="css/styles.css" rel="stylesheet" />
+        <link href="../../resources/kdy/css/styles.css" rel="stylesheet" />
     </head>
     <body>
         <c:import url="./template/headerHTML.jsp"></c:import>
         <header class="bg-dark py-5">
+            <img src="../../resources/kdy/images/allfood.webp" id="allf" alt="">
             <div class="container px-4 px-lg-5 my-5">
                <div class="text-center text-white">
                   <h1 class="display-4 fw-bolder">Shop in style</h1>
@@ -42,30 +43,38 @@
                         </select>
                         <!-- kind란 이름으로 넘어감 -->
                       </div>
+
+                      <!-- <div class="searchBox">
+
+                        <input class="searchInput"type="text" name="" placeholder="Search">
+                        <button class="searchButton" href="#">
+                            <i class="material-icons">
+                                search
+                            </i>
+                        </button>
+                    </div> -->
                       
                       <div class="col-12">
                         <label class="visually-hidden" for="search">검색어</label>
                         <div class="input-group">
-                          <input type="text" name="search" value="${param.search}" var="" class="form-control" placeholder="검색어를 입력해 주세요">
+                          <input type="text" name="search" value="${param.search}" var="" class="form-control" id="search" placeholder="검색어를 입력해 주세요">
+                          <button type="submit" class="btn btn-secondary" id="searchNull">검색</button>
                         </div>
+                        <!-- <div class="col-12">
+                        </div> -->
+                      </form>
+                  </div>
                       </div>
-                    
-                      <div class="col-12">
-                        <button type="submit" class="btn btn-secondary">검색</button>
-                      </div>
-                    </form>
-                </div>
-               
                 </div>
             </div>
          </header>
         <!-- Section-->
         <section class="py-5 nn">
             <div class="container px-4 px-lg-5 mt-5">
-                <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+                <div  class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center" id="tttt">
 
-                    <div class="col mb-5">
-                        <div class="card h-100">
+                    <div class="col mb-5" data-category="">
+                        <div class="card h-100 cs" id="al">
                             <!-- Product image-->
                             <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
                             <!-- Product details-->
@@ -78,10 +87,12 @@
                         </div>
                     </div>
                     
-                    <div class="col mb-5">
-                        <div class="card h-100">
+                    <div class="col mb-5" data-category="한식">
+                        <div class="card h-100 categorykor" id="categoryName" name="categoryName">
+                            <input type="text" name="categoryName" value="한식">
+                            <button type="submit" style="display: none;"></button>
                             <!-- Product image-->
-                            <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
+                            <img class="card-img-top" src="../../resources/kdy/images/korea.jpg" alt="..." value="한식" />
                             <!-- Product details-->
                             <div class="card-body p-4">
                                 <div class="text-center">
@@ -91,10 +102,10 @@
                         </div>
                     </div>
 
-                    <div class="col mb-5">
-                        <div class="card h-100">
+                    <div class="col mb-5" data-category="중식">
+                        <div class="card h-100 cs">
                             <!-- Product image-->
-                            <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
+                            <img class="card-img-top" src="../../resources/kdy/images/china.jpg" alt="..." />
                             <!-- Product details-->
                             <div class="card-body p-4">
                                 <div class="text-center">
@@ -105,10 +116,10 @@
                         </div>
                     </div>
 
-                    <div class="col mb-5">
-                        <div class="card h-100">
+                    <div class="col mb-5" data-category="일식">
+                        <div class="card h-100 cs" >
                             <!-- Product image-->
-                            <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
+                            <img class="card-img-top" src="../../resources/kdy/images/jap.jpg" alt="..." />
                             <!-- Product details-->
                             <div class="card-body p-4">
                                 <div class="text-center">
@@ -119,11 +130,10 @@
                         </div>
                     </div>
 
-                    <div class="col mb-5">
-                        <div class="card h-100">
-
+                    <div class="col mb-5" data-category="분식">
+                        <div class="card h-100 cs">
                             <!-- Product image-->
-                            <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
+                            <img class="card-img-top" src="../../resources/kdy/images/bun.jpg" alt="..." />
                             <!-- Product details-->
                             <div class="card-body p-4">
                                 <div class="text-center">
@@ -134,10 +144,10 @@
                         </div>
                     </div>
 
-                    <div class="col mb-5">
-                        <div class="card h-100">
+                    <div class="col mb-5" data-category="양식">
+                        <div class="card h-100 cs">
                             <!-- Product image-->
-                            <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
+                            <img class="card-img-top" src="../../resources/kdy/images/yang.jpg" alt="..." />
                             <!-- Product details-->
                             <div class="card-body p-4">
                                 <div class="text-center">
@@ -148,10 +158,10 @@
                         </div>
                     </div> 
                     
-                    <div class="col mb-5">
-                        <div class="card h-100">
+                    <div class="col mb-5" data-category="아시안">
+                        <div class="card h-100 cs" >
                             <!-- Product image-->
-                            <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
+                            <img class="card-img-top" src="../../resources/kdy/images/ssal.jpg" alt="..." />
                             <!-- Product details-->
                             <div class="card-body p-4">
                                 <div class="text-center">
@@ -170,9 +180,10 @@
 
        
         <!-- Bootstrap core JS-->
+        <script src="../../resources/kdy/js/index.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
-        <script src="js/scripts.js"></script>
+        <!-- <script src="js/scripts.js"></script> -->
         <c:import url="./template/footerHTML.jsp"></c:import>
     </body>
 </html>

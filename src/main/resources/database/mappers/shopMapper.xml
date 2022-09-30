@@ -4,6 +4,7 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.iu.home.shop.ShopDAO">
+	
 	<sql id="search">
 		WHERE
 		<choose>
@@ -13,33 +14,67 @@
 		</choose>
 		LIKE '%'||#{search}||'%'
 	</sql>
+	
 	<insert id="setAdd" parameterType="ShopDTO">
 		<selectKey keyProperty="shopNum" order="BEFORE"
 			resultType="Long">
 			SELECT SHOP_SEQ.NEXTVAL FROM DUAL
 		</selectKey>
 		INSERT INTO SHOP VALUES
-		(#{shopNum},#{categoryNum},#{shopPhone},#{shopName},#{shopAddress},#{priceAvg},#{delivery},#{contents},#{title})
+		(#{shopNum},#{categoryNum},#{shopPhone},#{shopName},#{shopAddress},#{priceAvg},#{delivery},#{contents},#{title}, 1)
 	</insert>
+	
 	<select id="getList" resultType="ShopDTO"
 		parameterType="ShopPager">
-		SELECT * FROM (SELECT ROWNUM R, SN.MENUNAME,SN.SHOPNUM, SN.SHOPNAME,
-		SN.SHOPADDRESS, SN.SHOPPHONE, SN.PRICEAVG, SN.DELIVERY, SN.CONTENTS,
-		SN.TITLE FROM (SELECT S.*, M.MENUNAME, M.MENUPRICE FROM SHOP S INNER
-		JOIN MENU M ON S.SHOPNUM = M.SHOPNUM
-		<include refid="search" />
-		ORDER BY S.SHOPNUM DESC)SN) WHERE R BETWEEN #{startRow} AND #{lastRow}
+      	SELECT * FROM 
+        (SELECT ROWNUM R, SN.MENUNAME,SN.SHOPNUM, SN.SHOPNAME, SN.SHOPADDRESS, SN.SHOPPHONE, SN.PRICEAVG, SN.DELIVERY, SN.CONTENTS, SN.TITLE ,SN.HIT, SN.MENUNUM, SN.CATEGORYNAME  FROM
+		(SELECT S.*, M.MENUNAME, M.MENUPRICE, M.MENUNUM, C.CATEGORYNUM, C.CATEGORYNAME FROM
+		SHOP S 
+        LEFT JOIN 
+        MENU M 
+		ON S.SHOPNUM = M.SHOPNUM
+        INNER JOIN
+        CATEGORY C
+        ON C.CATEGORYNUM = S.CATEGORYNUM
+		<include refid="search"/> AND CATEGORYNAME LIKE '%'||#{categoryName}||'%'
+		ORDER BY S.SHOPNUM DESC)SN)
+		WHERE R BETWEEN #{startRow} AND #{lastRow} 
 	</select>
+	
 	<select id="getCount" resultType="Long"
 		parameterType="ShopPager">
-		SELECT COUNT(S.SHOPNUM) FROM SHOP S INNER JOIN MENU M ON S.SHOPNUM =
-		M.SHOPNUM
+		SELECT COUNT(S.SHOPNUM) FROM 
+		SHOP S 
+		INNER JOIN 
+		MENU M ON 
+		S.SHOPNUM = M.SHOPNUM
 		<include refid="search" />
 	</select>
-	<select id="getDetail" parameterType="ShopDTO"
-		resultMap="getDetailMap"> SELECT S.*, SF.*, M.* FROM SHOP S LEFT JOIN SHOPFILE SF ON
-		S.SHOPNUM = SF.SHOPNUM LEFT JOIN MENU M ON S.SHOPNUM = M.SHOPNUM WHERE
-		S.SHOPNUM=#{shopNum} </select>
+	
+	<select id="getDetail" parameterType="ShopDTO" resultMap="getDetailMap"> 
+	    SELECT S.*, SF.*, M.*, CA.* FROM 
+	    SHOP S 
+	    LEFT JOIN 
+	    SHOPFILE SF 
+	    ON S.SHOPNUM = SF.SHOPNUM 
+	    LEFT JOIN 
+	    MENU M 
+	    ON S.SHOPNUM = M.SHOPNUM
+	    INNER JOIN 
+        CATEGORY CA
+        ON S.CATEGORYNUM = CA.CATEGORYNUM
+        WHERE S.SHOPNUM=#{shopNum}
+        <!-- SELECT S.*, SF.*, M.* FROM 
+	    SHOP S 
+	    LEFT JOIN 
+	    SHOPFILE SF 
+	    ON S.SHOPNUM = SF.SHOPNUM 
+	    LEFT JOIN 
+	    MENU M 
+	    ON S.SHOPNUM = M.SHOPNUM
+        WHERE S.SHOPNUM=#{shopNum} -->
+	</select>
+	
 	<resultMap type="ShopDTO" id="getDetailMap">
 		<id column="SHOPNUM" property="shopNum" />
 		<result column="CATEGORYNUM" property="categoryNum" />
@@ -50,34 +85,48 @@
 		<result column="DELIVERY" property="delivery" />
 		<result column="CONTENTS" property="contents" />
 		<result column="TITLE" property="title" />
-		<collection property="shopFileDTOs" javaType="List"
-			ofType="ShopFileDTO">
+		<result column="HIT" property="hit"/>
+		
+		<collection property="shopFileDTOs" javaType="List" ofType="ShopFileDTO">
 			<id column="FILENUM" property="fileNum" />
 			<result column="FILENAME" property="fileName" />
 			<result column="ORINAME" property="oriName" />
-		</collection>
-		<collection property="menuDTOs" javaType="List"
-			ofType="MenuDTO">
-			<id column="SHOPNUM" property="shopNum" />
+		</collection> 
+		
+		<collection property="menuDTOs" javaType="List" ofType="MenuDTO">
+			<id column="MENUNUM" property="menuNum" />
 			<result column="MENUNAME" property="menuName" />
 			<result column="MENUPRICE" property="menuPrice" />
 		</collection>
+		
+		<collection property="categoryDTOs" javaType="List" ofType="CategoryDTO">
+			<id column="CATEGORY" property="categoryNum"/>
+			<result column="CATEGORYNAME" property="categoryName"/>
+		</collection>
+		
 	</resultMap>
 	<update id="setUpdate" parameterType="ShopDTO"> UPDATE SHOP SET
-		SHOPNAME=#{shopName},SHOPPHONE=#{shopPhone},SHOPADDRESS=#{shopAddress},PRICEAVG=#{priceAvg},DELIVERY=#{delivery},CONTENTS=#{contents},TITLE=#{title}
+		SHOPNAME=#{shopName},CATEGORYNUM=#{categoryNum}, SHOPPHONE=#{shopPhone},SHOPADDRESS=#{shopAddress},PRICEAVG=#{priceAvg},DELIVERY=#{delivery},CONTENTS=#{contents},TITLE=#{title}, 1
 		WHERE SHOPNUM=#{shopNum} </update>
-	<update id="setUpdateMenu" parameterType="ShopDTO"> UPDATE MENU SET
-		MENUNAME=#{menuName},MENUPRICE=#{menuPrice} WHERE SHOPNUM=#{shopNum}
-	</update>
 	<delete id="setDelete" parameterType="ShopDTO"> DELETE SHOP WHERE
 		SHOPNUM=#{shopNum} </delete>
-	<delete id="setDeleteMenu" parameterType="ShopDTO"> DELETE MENU WHERE
-		SHOPNUM=#{shopNum} </delete>
 	<!-- =============================file -->
-	<insert id="setAddFile" parameterType="ShopFileDTO"> INSERT INTO SHOPFILE
+	<insert id="setAddFile" parameterType="ShopFileDTO"> 
+		INSERT INTO SHOPFILE
 		VALUES (SHOPFILE_SEQ.NEXTVAL, #{shopNum}, #{fileName}, #{oriName})
 	</insert>
 	<!-- ===================================menu -->
 	<insert id="setAddMenu" parameterType="ShopDTO"> INSERT INTO MENU VALUES
-		(#{shopNum}, #{menuName}, #{menuPrice}) </insert>
+		(MENU_SEQ.NEXTVAL, #{shopNum}, #{menuName}, #{menuPrice}) </insert>
+		
+	<delete id="setDeleteMenu" parameterType="ShopDTO">
+		 DELETE MENU 
+		 WHERE MENUNUM=#{menuNum}
+	</delete>
+	<update id="setUpdateMenu" parameterType="ShopDTO"> UPDATE MENU SET
+		MENUNAME=#{menuName},MENUPRICE=#{menuPrice}, MENUNUM=#{menuNum} WHERE SHOPNUM=#{shopNum}
+	</update>
+	<!-- =========================categoryList -->
+		
+	
 </mapper>

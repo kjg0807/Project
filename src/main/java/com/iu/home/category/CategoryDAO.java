@@ -29,4 +29,8 @@ public class CategoryDAO {
 	public int setDelete(CategoryDTO categoryDTO)throws Exception{
 		return sqlSession.delete(NAMESPACE+"setDelete", categoryDTO);
 	}
+	
+	public int setUpdate(CategoryDTO categoryDTO)throws Exception{
+		return sqlSession.update(NAMESPACE+"setUpdate", categoryDTO);
+	}
 }
