@@ -65,8 +65,8 @@
     		(#{partyNum}, #{userName}, #{partyAge}, #{partyGender}, #{partyComment}, 0)
     </insert>
     
-    <select id="getParty" resultType="PartyDTO">
-    	SELECT * FROM PARTY
+    <select id="getPartyRequest" parameterType="partyDTO" resultType="PartyDTO">
+    	SELECT * FROM PARTY WHERE PARTYNUM = #{partyNum}
     </select>
     
     <update id="setPartyAccept" parameterType="PartyListDTO">
