@@ -6,7 +6,8 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
-<link rel="stylesheet" type="text/css" href="../../resources/kdy/css/styles.css">
+
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/styles.css">
 <%-- <script type="text/javascript" src="${pageContext.request.contextPath}/js/test.js"></script> --%>
 
 </head>
@@ -21,15 +22,12 @@
 			</button>
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
-					<li class="nav-item"><a class="nav-link" href="#!">About</a></li>
-
-					<li class="nav-item"><a class="nac-link" href="../shop/listHTML">가게 목록</a></li>
-					
-					<li class="nav-item"><a class="nav-link" href="../shop/add">가게 정보 추가</a></li>
-					<li class="nav-item"><a class="nav-link" href="../category/list">카테고리 목록</a></li>
-					
 					<li class="nav-item dropdown"><a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown"
-						aria-expanded="false">Shop</a>
+						aria-expanded="false"
+					>Shop</a>
+					<li class="nav-item"><a class="nav-link" href="../notice/list">공지사항</a></li>
+					<li class="nav-item"><a class="nav-link" href="../../qna/list">Q&A</a></li>
+					<li class="nav-item"><a class="nav-link" href="../reviews/list">리뷰</a></li>
 				</ul>
 				<form class="d-flex" action="../member/login">
 					<button class="btn btn-outline-dark" type="submit">
