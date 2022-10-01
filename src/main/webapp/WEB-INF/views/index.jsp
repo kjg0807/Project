@@ -20,7 +20,7 @@
     <body>
         <c:import url="./template/headerHTML.jsp"></c:import>
         <header class="bg-dark py-5">
-            <img src="../../resources/kdy/images/allfood.webp" id="allf" alt="">
+          
             <div class="container px-4 px-lg-5 my-5">
                <div class="text-center text-white">
                   <h1 class="display-4 fw-bolder">Shop in style</h1>

@@ -237,6 +237,10 @@
       ]
  }); </script>
    <script src="../../../../resources/kdy/js/shop_files.js"></script>
+
+   
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=abf31ecaa88152d20b1faa70bc69a3d1&libraries=services,clusterer,drawing"></script>
+
 <c:import url="../../template/footerHTML.jsp"></c:import>
 </body>
 </html>

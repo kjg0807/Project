@@ -27,9 +27,7 @@
 <main class="realMain" id="realMain">
         
   <div class="container">
-    <!-- <div class="mb-3">
-      <div id="map" style="width:500px;height:400px;"></div>
-    </div> -->
+ 
             <div class="c1">
                 맛집 리뷰
             </div>
@@ -111,13 +109,10 @@
             <label for="message-text" class="col-form-label"> </label>
            <input type="text" class="form-control" placeholder="식당의 상호명을 입력해주세요" name="shopName" id="shopName">
           </div>
-          <!-- <div class="mb-3">
+          <div class="mb-3" id="map" style="width:500px;height:400px;">
             <label for="message-text" class="col-form-label"> </label>
-           <input type="text" class="form-control" placeholder="식당의 주소를 입력해주세요" name="shopAddress" id="shopAddress">
-          </div> -->
-            <div class="mb-3" id="map" style="width:500px;height:400px;">
-            	<input type="text" class="form-control" placeholder="식당의 주소를 입력해주세요" name="shopAddress" id="shopAddress">
-            </div>
+            <input type="text" class="form-control" name="shopAddress" value="shopAddress" id="shopAddress" >
+          </div>
           <div class="mb-3">
             <label for="message-text" class="col-form-label"> </label>
             <input type="text" class="form-control" placeholder="식당의 가격대를 입력해주세요" name="priceAvg" id="priceAvg">
@@ -134,10 +129,10 @@
           <label for="recipient-name" class="col-form-label"></label>
           <input type="text" class="form-control" placeholder="제목을 입력해주세요" name="title" id="title">
         </div>
-        <div class="mb-3">
+        <!-- <div class="mb-3">
           <label for="recipient-name" class="col-form-label"></label>
           <input type="text" class="form-control" placeholder="hit" name="hit" id="hit">
-        </div>
+        </div> -->
         
 
           <div id="addFiles" class="mb-3">
@@ -238,20 +233,32 @@ var map = new kakao.maps.Map(mapContainer, mapOption);
 // 주소-좌표 변환 객체를 생성합니다
 var geocoder = new kakao.maps.services.Geocoder();
 
+
+
 var marker = new kakao.maps.Marker(), // 클릭한 위치를 표시할 마커입니다
     infowindow = new kakao.maps.InfoWindow({zindex:1}); // 클릭한 위치에 대한 주소를 표시할 인포윈도우입니다
 
 // 현재 지도 중심좌표로 주소를 검색해서 지도 좌측 상단에 표시합니다
-searchAddrFromCoords(map.getCenter(), displayCenterInfo);
+searchAddrFromCoords(map.getCenter());
 
 // 지도를 클릭했을 때 클릭 위치 좌표에 대한 주소정보를 표시하도록 이벤트를 등록합니다
 kakao.maps.event.addListener(map, 'click', function(mouseEvent) {
     searchDetailAddrFromCoords(mouseEvent.latLng, function(result, status) {
         if (status === kakao.maps.services.Status.OK) {
-            var detailAddr = !!result[0].road_address ? '<div>' + result[0].road_address.address_name + '</div>' : '';
-           
+            let detailAddr = !!result[0].road_address ? '<div>' + result[0].road_address.address_name + '</div>' : '';
+            // console.log(result[0].road_address.address_name);
+            let sa = result[0].road_address.address_name;
+            // console.log('SA : '+sa);
+
+
+
+            let content = '<div class="bAddr"> ' + detailAddr + '</div>';
+
+            const shopAddress = document.querySelector("#shopAddress");
             
-            let content = '<div class="bAddr" name="shopAddress" id="shopAddress"> ' + detailAddr + '</div>';
+            shopAddress.value=sa;
+            // ${'#shopAddress'}.val(sa);
+            console.log(shopAddress);
 
             // 마커를 클릭한 위치에 표시합니다 
             marker.setPosition(mouseEvent.latLng);
@@ -266,7 +273,7 @@ kakao.maps.event.addListener(map, 'click', function(mouseEvent) {
 
 // 중심 좌표나 확대 수준이 변경됐을 때 지도 중심 좌표에 대한 주소 정보를 표시하도록 이벤트를 등록합니다
 kakao.maps.event.addListener(map, 'idle', function() {
-    searchAddrFromCoords(map.getCenter(), displayCenterInfo);
+    searchAddrFromCoords(map.getCenter());
 });
 
 function searchAddrFromCoords(coords, callback) {
@@ -284,17 +291,18 @@ function displayCenterInfo(result, status) {
     if (status === kakao.maps.services.Status.OK) {
         var infoDiv = document.getElementById('centerAddr');
 
-        for(var i = 0; i < result.length; i++) {
-            // 행정동의 region_type 값은 'H' 이므로
-            if (result[i].region_type === 'H') {
-                infoDiv.innerHTML = result[i].address_name;
-                break;
-            }
-        }
+        // for(var i = 0; i < result.length; i++) {
+        //     // 행정동의 region_type 값은 'H' 이므로
+        //     if (result[i].region_type === 'H') {
+        //         infoDiv.innerHTML = result[i].address_name;
+        //         break;
+        //     }
+        // }
     }    
 }
 
-	</script>
+	</script> 
+ 
     
 
 </body>
