@@ -116,6 +116,12 @@
 		INSERT INTO SHOPFILE
 		VALUES (SHOPFILE_SEQ.NEXTVAL, #{shopNum}, #{fileName}, #{oriName})
 	</insert>
+	<delete id="setFileDelete" parameterType="ShopFileDTO">
+		DELETE SHOPFILE WHERE FILENUM = #{fileNum}
+	</delete>
+	<select id="getFileDetail" parameterType="ShopFileDTO" resultType="ShopFileDTO">
+		SELECT * FROM SHOPFILE WHERE FILENUM = #{fileNum}
+	</select>
 	<!-- ===================================menu -->
 	<insert id="setAddMenu" parameterType="ShopDTO"> INSERT INTO MENU VALUES
 		(MENU_SEQ.NEXTVAL, #{shopNum}, #{menuName}, #{menuPrice}) </insert>

@@ -44,7 +44,7 @@
                                         <h5 class="modal-title" id="exampleModalLabel">게시글 수정</h5>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
-                                        <form action="/shop/update" method="post">
+                                        <form action="/shop/update" method="post" enctype="multipart/form-data">
                                         
                                     <div class="modal-body">
                                             <input type="hidden" id="shopNum" name="shopNum" value="${detail.shopNum}">
@@ -76,16 +76,24 @@
                                           <div class="mt-3">
                                           <label for="recipient-name" class="col-form-label"></label>
                                             <textarea name = "contents" class="form-control mt-1" id="contents" rows="3">${detail.contents}</textarea>
-                                        </div>
+                                          </div>
                                           <div class="mb-3">
                                             <label for="recipient-name" class="col-form-label"></label>
                                             가게 제목 수정 <br><textarea name="title" rows="10" cols="57">${detail.title}</textarea>
                                           </div>
-                                     
-
-                                         
-                                       
-                                    </div>
+											<c:forEach items="${detail.shopFileDTOs}" var="fileDTO">
+												<div class="mb-3">
+													<span>${fileDTO.oriName}</span>
+													<button type="button" class="fileDelete" data-file-num="${fileDTO.fileNum}" style="color: black;"> Delete </button>
+												</div>
+											</c:forEach>
+			
+											<div id="addFiles" class="mb-3">
+                        <i class="fa-regular fa-image"></i>
+                        <label for="message-text" class="col-form-label"></label>
+                        <input type="file" name="files" id="fileAdd">파일
+                </div>
+							</div>
                                     
                                     <div class="modal-footer">
                                         <div class="dy flex" id="delete" onclick="location.href='/shop/delete?shopNum=${detail.getShopNum()}';">&ensp;가게 삭제</div>
@@ -97,42 +105,10 @@
                       </div>
                    </div>
 
-                   <!-- 이미지  -->
-                   <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal2" data-bs-whatever="@mdo">이미지 수정</button>
-
-                   <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">                     
-                           <div class="modal-dialog">
-                             <div class="modal-content">
-                               <div class="modal-header">
-                                   <h5 class="modal-title" id="exampleModalLabel">이미지 추가</h5>
-                                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                               </div>
-                            <form action="/shop/add" method="post">
-                                   
-                               <div class="modal-body">
-                                       <input type="hidden" id="shopNum" name="shopNum" value="${detail.shopNum}">
-
-                                            <div id="addFiles" class="mb-3">
-                                                    <i class="fa-regular fa-image"></i>
-                                                    <label for="message-text" class="col-form-label"></label>
-                                                    <input type="file" name="files" id="fileAdd">파일
-                                            </div>
-                               </div>
-                               
-                               <div class="modal-footer">
-                                   <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소하기</button>
-                                   <button type="submit" class="btn btn-primary">등록하기</button>
-                               </div>
-                          </form>
-                     </div>
-                 </div>
-              </div> 
-
 
 			<div style="border-bottom: solid 1px gainsboro;">
 				<div class="p-2 pt-3" style="font-size: 50px;">${detail.shopName}
 				</div>
-  
 			</div>
 
 			<div class="Information">
@@ -153,7 +129,7 @@
 				</div>
 
 				<c:forEach items="${detail.menuDTOs}" var="menuDTO">
-          <div class="d-flex q" id="menu" >대표메뉴 &ensp;&ensp;&nbsp;
+          <div class="d-flex q" id="menuDelete" >대표메뉴 &ensp;&ensp;&nbsp;
             <input type="hidden" id="shopNum" name="shopNum" value="${detail.shopNum}">
             <input type="hidden" id="menuNum" name="menuNum" value="${menuDTO.menuNum}">
 						<div class="flex q" id="realmenu">&ensp;&ensp;&ensp;${menuDTO.menuName}</div>

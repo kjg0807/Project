@@ -54,18 +54,22 @@
                                     
                                 </div>
                                 <div class="d-flex flex-row mb-3 mt-2">
-                                    <div class="p-2 b">#test</div>
-                                    <div class="p-2 b">#test</div>
-                                    <div class="p-2 b">#test</div>
-                                    <div class="p-2 b">#test</div>
+                                    <div class="p-2 b">SHOP NAME : #${list.shopName}</div>
+                                    <div class="p-2 b">SHOP ADDRESS : #${list.shopAddress}</div>
+                                    <div class="p-2 b">HIT : #${list.hit}</div>
+                                    <div class="p-2 b">BEST MENU : ${list.menuName}</div>
                                     <div class="p-2 b">#test</div>
                                 </div>
                             </div>
-                            <div class="p-2 flex-shrink-1">
+                            
+                            <!-- <div class="p-2 flex-shrink-1">
                               <div class="mt-2" id="img" style="height: 200px; width: 310px">
+                                <c:forEach items="${list.shopFileDTOs}" var="shopFileDTO">               
                                   <img src="../../../../resources/upload/shop/${shopFileDTO.fileName}" style="width: 300px;">
+                                 
+                              </c:forEach>
                               </div>
-                          </div>
+                          </div> -->
                         </div>
                     </div>
                 </div>
@@ -107,11 +111,15 @@
           </div>
           <div class="mb-3">
             <label for="message-text" class="col-form-label"> </label>
-           <input type="text" class="form-control" placeholder="식당의 상호명을 입력해주세요" name="shopName" id="shopName">
+            <input type="text" class="form-control" placeholder="식당의 상호명을 입력해주세요" name="shopName" id="shopName">
+          </div>
+          <div class="mb-3">
+            <label for="message-text" class="col-form-label"> </label>
+           <input type="text" class="form-control" placeholder="식당의 주소를 직접 입력해주세요" name="shopAddress">
           </div>
           <div class="mb-3" id="map" style="width:500px;height:400px;">
             <label for="message-text" class="col-form-label"> </label>
-            <input type="text" class="form-control" name="shopAddress" value="shopAddress" id="shopAddress" >
+            <input type="text" class="form-control" name="shopAddress" id="shopAddress" >
           </div>
           <div class="mb-3">
             <label for="message-text" class="col-form-label"> </label>

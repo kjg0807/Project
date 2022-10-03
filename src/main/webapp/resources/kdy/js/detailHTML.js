@@ -10,7 +10,7 @@ console.log(menu.vlaue);
 });
 
 
-const m = document.querySelector("#menu");
+const m = document.querySelector("#menuDelete");
 
 m.addEventListener("click", function(){
         alert("대표메뉴 한가지를 삭제합니다");

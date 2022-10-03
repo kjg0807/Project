@@ -1,7 +1,6 @@
 const addFiles=document.getElementById("addFiles");//div
 const fileAdd=document.getElementById("fileAdd");//fileAdd 버튼
 const fileDelete = document.querySelectorAll(".fileDelete"); // 클래스명 fileDelete forEach가능
-//const fileDelete = document.getElementsByClassName("fileDelete"); // forEach 불가능
 
 
 const shopAddres = document.querySelector("#shopAddress");
