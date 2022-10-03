@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib  uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -30,7 +31,7 @@
 				</td>
 				<td>${dto.userName}</td>
 				<td>${dto.partyRegdate}</td>
-				<td>${dto.partyTimeout}</td>	
+				<td><fmt:formatDate value="${dto.partyTimeout}" pattern="HH:mm:ss"/></td>	
 			</tr>
 		</c:forEach>
 	  </tbody>

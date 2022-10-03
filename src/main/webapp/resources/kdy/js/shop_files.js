@@ -4,6 +4,9 @@ const fileDelete = document.querySelectorAll(".fileDelete"); // 클래스명 fil
 //const fileDelete = document.getElementsByClassName("fileDelete"); // forEach 불가능
 
 
+const shopAddres = document.querySelector("#shopAddress");
+
+
 //---------------------Update시 file Delelte----------------
 try {
 fileDelete.forEach(function(f){
@@ -160,3 +163,48 @@ addFiles.addEventListener("click", function(event){
 } catch(e) {
  console.log(e);
 }
+
+const cccc = document.querySelector("#cccc");
+const ccccChildren = cccc.children;
+
+for(let i =0; i < ccccChildren.length; i++){
+    ccccChildren[i].addEventListener("click", function(){
+        location.href="../../shop/listHTML?categoryName=" + ccccChildren[i].getAttribute("data-miniCategory");
+    })
+}
+
+// const caNum = document.querySelector("#caNum");
+// const canumChildren = caNum.children;
+
+// for(let i=0; i<canumChildren.length; i++){
+//     canumChildren[i].addEventListener("click", function(){
+
+//     })
+// }
+
+const categoryNum = document.querySelector("#categoryNum");
+const shopPhone = document.querySelector("#shopPhone");
+const shopName = document.querySelector("#shopName");
+const shopAddress = document.querySelector("#shopAddress");
+const priceAvg = document.querySelector("#priceAvg");
+const delivery = document.querySelector("#delivery");
+const contents = document.querySelector("#contents");
+const title = document.querySelector("#title");
+const hit = document.querySelector("#hit");
+
+btn.addEventListener("click", function(){
+    console.log(categoryNum.value);
+    console.log(shopPhone.value);
+    console.log(shopName.value);
+    console.log(shopAddress.value);
+    console.log(priceAvg.value);
+    console.log(delivery.value);
+    console.log(contents.value);
+    console.log(title.value);
+    console.log(hit.value);
+
+})
+
+
+
+

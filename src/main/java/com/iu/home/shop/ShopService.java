@@ -1,8 +1,12 @@
 package com.iu.home.shop;
 
+import java.io.File;
+import java.nio.file.Path;
 import java.util.List;
+import java.util.UUID;
 
 import javax.servlet.ServletContext;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,19 +21,17 @@ public class ShopService {
 	@Autowired
 	private ShopDAO shopDAO;
 	@Autowired
-	private ShopFileManager ShopfileManager;
+	private ShopFileManager shopFileManager;
+	
 	
 	public int setAdd(ShopDTO shopDTO, MultipartFile[] files, ServletContext servletContext)throws Exception{
 		int result = shopDAO.setAdd(shopDTO);
-		
 		String path = "resources/upload/shop";
-		
 		for(MultipartFile multipartFile : files) {
 			if(multipartFile.isEmpty()) {
 				continue;
 			}
-	
-			String fileName = ShopfileManager.saveFile(path, servletContext, multipartFile);
+			String fileName = shopFileManager.saveFile(path, servletContext, multipartFile);
 			ShopFileDTO shopFileDTO = new ShopFileDTO();
 			shopFileDTO.setFileName(fileName);
 			shopFileDTO.setOriName(multipartFile.getOriginalFilename());
@@ -37,12 +39,7 @@ public class ShopService {
 			shopDAO.setAddFile(shopFileDTO);
 		}
 		return result;
-		
 	}
-	public int setAddMenu(ShopDTO shopDTO)throws Exception{
-		return shopDAO.setAddMenu(shopDTO);
-	}
-
 	public List<ShopDTO> getList(ShopPager shopPager) throws Exception{
 		// TODO Auto-generated method stub
 		Long totalCount = shopDAO.getCount(shopPager);
@@ -56,17 +53,19 @@ public class ShopService {
 	public int setUpdate(ShopDTO shopDTO)throws Exception{
 		return shopDAO.setUpdate(shopDTO);
 	}
-	public int setUpdateMenu(ShopDTO shopDTO)throws Exception{
-		return shopDAO.setAddMenu(shopDTO);
-	}
 	public int setDelete(ShopDTO shopDTO)throws Exception{
 		return shopDAO.setDelete(shopDTO);
+	}
+//						MENU
+	public int setAddMenu(ShopDTO shopDTO)throws Exception{
+		return shopDAO.setAddMenu(shopDTO);
+	}
+	public int setUpdateMenu(ShopDTO shopDTO)throws Exception{
+		return shopDAO.setUpdateMenu(shopDTO);
 	}
 	public int setDeleteMenu(ShopDTO shopDTO)throws Exception{
 		return shopDAO.setDeleteMenu(shopDTO);
 	}
-
-	
 	
 
 }

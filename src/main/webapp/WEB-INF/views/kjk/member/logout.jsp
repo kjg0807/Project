@@ -7,11 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form action="./join" id="joinform" method="post">
-		<input type="text" name=name>
-		<button type="submit">입장</button>
-	</form>
-	
 
 </body>
 </html>

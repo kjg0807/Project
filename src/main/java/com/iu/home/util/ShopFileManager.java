@@ -17,6 +17,7 @@ public class ShopFileManager {
 	
 	public boolean deleteFile(ServletContext servletContext, String path, ShopFileDTO shopFileDTO)throws Exception{
 		String realPath = servletContext.getRealPath(path);
+		System.out.println("실제경로"+realPath);
 		
 		File file = new File(realPath, shopFileDTO.getFileName());
 		

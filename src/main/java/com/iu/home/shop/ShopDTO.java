@@ -2,6 +2,7 @@ package com.iu.home.shop;
 
 import java.util.List;
 
+import com.iu.home.category.CategoryDTO;
 import com.iu.home.menu.MenuDTO;
 
 
@@ -16,11 +17,19 @@ public class ShopDTO extends MenuDTO{
 	private Long delivery;
 	private String contents;
 	private String title;
+	private Long hit;
 	private List<ShopFileDTO> shopFileDTOs;
 	private List<MenuDTO> menuDTOs;
+	private List<CategoryDTO> categoryDTOs;
 
 
 	
+	public Long getHit() {
+		return hit;
+	}
+	public void setHit(Long hit) {
+		this.hit = hit;
+	}
 	public Long getShopNum() {
 		return shopNum;
 	}
@@ -87,6 +96,13 @@ public class ShopDTO extends MenuDTO{
 	public void setMenuDTOs(List<MenuDTO> menuDTOs) {
 		this.menuDTOs = menuDTOs;
 	}
+	public List<CategoryDTO> getCategoryDTOs() {
+		return categoryDTOs;
+	}
+	public void setCategoryDTOs(List<CategoryDTO> categoryDTOs) {
+		this.categoryDTOs = categoryDTOs;
+	}
+
 
 	
 	

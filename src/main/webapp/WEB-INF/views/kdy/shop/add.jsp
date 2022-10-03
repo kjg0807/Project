@@ -51,13 +51,12 @@
 			</div>
 		
 		<div id="addFiles">
-			<i class="fa-regular fa-image" >
-			</i>
+			<i class="fa-regular fa-image"></i>
 				<button type="button" id="fileAdd">파일추가</button>
 		</div>
 		
 			<div class="mb-3">
-				<input type="submit" class="btn btn-secondary" value="등록" name="가게 등록">
+				<input type="button" class="btn btn-secondary" value="등록" name="가게 등록">
 			</div>
 			
 		</form>

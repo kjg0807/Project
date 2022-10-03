@@ -2,11 +2,19 @@ package com.iu.home.menu;
 
 public class MenuDTO {
 
+	private Long menuNum;
 	private Long shopNum;
 	private String menuName;
 	private String menuPrice;
 	
-
+	
+	
+	public Long getMenuNum() {
+		return menuNum;
+	}
+	public void setMenuNum(Long menuNum) {
+		this.menuNum = menuNum;
+	}
 	public Long getShopNum() {
 		return shopNum;
 	}
