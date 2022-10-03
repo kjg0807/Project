@@ -11,7 +11,7 @@
 		integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx"
 		 crossorigin="anonymous">
 <!-- <link rel="stylesheet" href="../../../resources/css/reviewsComment.css">  -->
-<link rel="stylesheet" href="../../../resources/css/imageModal.css">
+<link rel="stylesheet" href="../../../resources/hjs/css/imageModal.css">
 </head>
 <body>
 
@@ -249,6 +249,6 @@
     			 crossorigin="anonymous"></script>
 				 
 	
-<script src="/resources/js/ReviewsComment.js"></script>
+<script src="../../../resources/hjs/js/ReviewsComment.js"></script>
 </body>
 </html>

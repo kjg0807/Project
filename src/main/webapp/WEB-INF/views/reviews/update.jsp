@@ -37,10 +37,11 @@
 		  <textarea class="form-control" name="contents" id="contents" rows="5" placeholder="내용: ${dto.contents}"></textarea>
 		</div>
 		
+		<!-- <span class="form-control">안녕</span> -->
 		<c:forEach items="${reviewsDTO.reviewsFilesDTOs}" var="reviewsFileDTO">
 			 <div class="mb-3">
-			      <span class="form-control">${fileDTO.oriName}</span>
-			      <button type="button" class="fileDelete" data-file-num="${reviewsFileDTO.fileNum}">삭제</button>
+			      <span class="form-control">${reviewsFileDTO.oriName}</span>
+			      <button type="button" class="reviewsFileDelete" data-file-reviewNum="${reviewsFileDTO.filesNum}">파일삭제</button>
       		</div>
 		</c:forEach>
 
@@ -68,6 +69,6 @@
 <script type="text/javascript">
 	$("#contents").summernote();
 </script>
-<script src="../../../resources/js/reviewsFile.js"></script>
+<script src="../../../resources/hjs/js/reviewsFile.js"></script>
 </body>
 </html>

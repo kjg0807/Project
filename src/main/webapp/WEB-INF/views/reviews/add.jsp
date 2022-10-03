@@ -63,6 +63,6 @@
 <script type="text/javascript">
 	$("#contents").summernote();
 </script>
-<script src="/resources/js/reviewsFile.js"></script>			 
+<script src="../../../resources/hjs/js/reviewsFile.js"></script>			 
 </body>
 </html>
