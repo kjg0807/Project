@@ -1,11 +1,14 @@
 //reviewsFile.js
 const fileAdd = document.getElementById("fileAdd"); //  reviews/add.jsp에 있는 파일추가 div버튼 id
 const addFiles = document.getElementById("addFiles");   //  "
-const reviewsFileDelete = document.querySelectorAll(".reviewsFileDelete");  //forEach가능
+const reviewsFilesDelete = document.querySelectorAll("#reviewsFilesDelete");  //forEach가능
+
+//수정하기에 보이는 이미지 ID명
+const img = document.querySelectorAll("#img");
 
 
 
-//============================= Review 글쓰기할때 fileAdd   ========================
+//============================= Review Add할때 fileAdd   ========================
 
 let idx = 0;
 let count = 0;
@@ -139,10 +142,11 @@ try{
 
 //예외처리때문에 try catch 사용
 try{
-reviewsFileDelete.forEach(function(f){
+reviewsFilesDelete.forEach(function(f){
 
-    console.log(f);
     f.addEventListener("click", function(){
+
+
 
         console.log(f.parentNode);
 
@@ -154,7 +158,8 @@ reviewsFileDelete.forEach(function(f){
             return;
         }
          
-        let reviewNum = f.getAttribute("data-file-reviewNum");
+        let filesNum = f.getAttribute("data-file-filesNum");
+
 
         //1. XTMLHTTPRequest 생성
         const xhttp = new XMLHttpRequest();
@@ -162,14 +167,15 @@ reviewsFileDelete.forEach(function(f){
 
         //2. 메서드,URL 준비
         // 요청을 보낼 주소 작성
-        xhttp.open("POST", "./reviewsFileDelete");
+        xhttp.open("POST", "./reviewsFilesDelete");
 
 
         //3. enctype(헤더 정보) / GET 메서드일땐 필요없음
         xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 
         //4. 요청 발생, 전송(post일 경우 파라미터 추가)
-        xhttp.send("reviewNum="+reviewNum);
+        console.log(filesNum);
+        xhttp.send("filesNum="+filesNum);
 
 
         //5. 응답 처리
@@ -180,6 +186,7 @@ reviewsFileDelete.forEach(function(f){
                 if(result == 1){
                     alert("삭제 완료");
                     //
+                    console.log(f.parentNode);
                     f.parentNode.remove();
                     //파일을 삭제하면 총합 3개까지 다시 만들수 있도록 삭제한 수 만큼 총 파일수에서 --
                     count--;
@@ -194,3 +201,12 @@ reviewsFileDelete.forEach(function(f){
 }catch(e){
     console.log(e);
 }
+
+
+img.forEach(function(im, index){
+
+    const c2 = document.querySelector("#c2");
+
+    c2.src = im.src;
+
+});

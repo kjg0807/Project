@@ -17,7 +17,6 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.iu.home.reviewsComment.ReviewsCommentDTO;
-import com.iu.home.util.Pager;
 import com.iu.home.util.ReviewsCommentPager;
 import com.iu.home.util.ReviewsPager;
 
@@ -108,13 +107,18 @@ public class ReviewsController {
 	
 	
 	@PostMapping(value = "update")
-	public ModelAndView setReviewsUpdate(ReviewsDTO reviewsDTO) throws Exception{
+	public ModelAndView setReviewsUpdate(ReviewsDTO reviewsDTO, MultipartFile [] files, HttpSession session) throws Exception{
 		
 		System.out.println("리뷰 글 수정하기 POST 실행");
+		ReviewsFilesDTO reviewsFilesDTO = new ReviewsFilesDTO();
 		
 		ModelAndView mv = new ModelAndView();
 		
-		int result = reviewsService.setReviewsUpdate(reviewsDTO);
+		System.out.println("Controller 리뷰 넘버 : " + reviewsDTO.getReviewNum());
+		System.out.println("Controller 파일 넘버 : " + reviewsFilesDTO.getFilesNum());
+		
+		int result = reviewsService.setReviewsUpdate(reviewsDTO, files, session.getServletContext());
+		
 		
 		mv.addObject("dto", reviewsDTO);
 		mv.setViewName("redirect:./list");
@@ -155,7 +159,24 @@ public class ReviewsController {
 		return mv;
 	}
 	
-	@PostMapping("reviewsFilesDelete")
+//	@GetMapping(value = "delete")
+//	public String setReviewsDelete(ReviewsDTO reviewsDTO) throws Exception{
+//		System.out.println("리뷰 글 삭제 실행");
+//		
+//		int result = reviewsService.setReviewsDelete(reviewsDTO);
+//		
+//		if(result == 1) {
+//			System.out.println("삭제 성공");
+//		}else {
+//			System.out.println("삭제 실패");
+//		}
+//		
+//		return "redirect:./list";
+//	}
+	
+
+	
+	@PostMapping(value = "reviewsFilesDelete")
 	@ResponseBody
 	public int setReviewsFilesDelete(ReviewsFilesDTO reviewsFilesDTO, HttpSession session) throws Exception{
 		int result = reviewsService.setReviewsFilesDelete(reviewsFilesDTO, session.getServletContext());

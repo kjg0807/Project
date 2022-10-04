@@ -12,6 +12,7 @@
 		 crossorigin="anonymous">
 <!-- <link rel="stylesheet" href="../../../resources/css/reviewsComment.css">  -->
 <link rel="stylesheet" href="../../../resources/hjs/css/imageModal.css">
+<link rel="stylesheet" href="../../../resources/hjs/css/reviewsButton.css">
 </head>
 <body>
 
@@ -200,8 +201,11 @@
 				</tr>
 			</thead>
 		</table>
-		<button id="plus" class="btn btn-secondary disabled">더보기</button>
-		<button id="minus" class="btn btn-success disabled">닫기</button>
+
+			<button id="plus" class="btn btn-secondary disabled">더보기</button>
+
+			<button id="minus" class="btn btn-success disabled">닫기</button>
+
 	</div>
 	<!-- 댓글 끝 -->
 	<!----- 모달 ------>
@@ -237,9 +241,19 @@
 		</div>
    </div>
 
-<a href="./list">목록</a>
-<a href="./update?reviewNum=${dto.reviewNum}">수정</a>
+<!-- <a href="./list">목록</a>
+<a href="./update?reviewNum=${dto.reviewNum}">수정</a> -->
 <a href="./delete?reviewNum=${dto.reviewNum}">삭제</a>
+<br>
+<br>
+<br>
+<br>
+<br>
+<p>
+	<button onclick="location='./list'" class="btn btn-primary">목록으로</button>
+	<button onclick="location='./update?reviewNum=${dto.reviewNum}'" class="btn btn-primary">수정하기</button>
+	<button onclick="location='./delete?reviewNum=${dto.reviewNum}'" class="btn btn-primary">삭제</button>	 
+</p>
 <div  style="display: inline-block; margin: 0 5px;  float: right;">
 	<button onclick="location='/'" class="btn btn-primary">홈으로</button>
 </div>

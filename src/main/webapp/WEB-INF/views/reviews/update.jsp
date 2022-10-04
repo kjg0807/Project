@@ -21,40 +21,41 @@
 		</head>
 		<body>
 	<c:import url="../template/headerHTML.jsp"></c:import>
-<section class="container-fluid col-lg-6 mt-5">
 	<h1>리뷰 수정 페이지</h1>
+	<section class="container-fluid col-lg-6 mt-5">
 	
-	
-		<form action="./update" method="post">
-			<input type="hidden" name="reviewNum" readonly="readonly" value="${dto.reviewNum}">
-		<div class="mb-3">
-		  <label for="formGroupExampleInput" class="form-label">제목</label>
-		  <input type="text" class="form-control" name="title" placeholder="${dto.title}">
-		</div>
-		
-		<div class="mb-3">
-		  <label for="formGroupExampleInput2" class="form-label">글내용</label>
-		  <textarea class="form-control" name="contents" id="contents" rows="5" placeholder="내용: ${dto.contents}"></textarea>
-		</div>
-		
-		<!-- <span class="form-control">안녕</span> -->
-		<c:forEach items="${reviewsDTO.reviewsFilesDTOs}" var="reviewsFileDTO">
-			 <div class="mb-3">
-			      <span class="form-control">${reviewsFileDTO.oriName}</span>
-			      <button type="button" class="reviewsFileDelete" data-file-reviewNum="${reviewsFileDTO.filesNum}">파일삭제</button>
-      		</div>
-		</c:forEach>
+		<div class="row">
+			<form action="./update" method="post" enctype="multipart/form-data">
+				<input type="hidden" name="reviewNum" readonly="readonly" value="${dto.reviewNum}">
+			<div class="mb-3">
+			<label for="formGroupExampleInput" class="form-label">제목</label>
+			<input type="text" class="form-control" name="title" placeholder="${dto.title}">
+			</div>
+			
+			<div class="mb-3">
+			<label for="formGroupExampleInput2" class="form-label">글내용</label>
+			<textarea class="form-control" name="contents" id="contents" rows="5" placeholder="내용: ${dto.contents}"></textarea>
+			</div>
+			
+			<!-- <span class="form-control">안녕</span> -->
+			<c:forEach items="${dto.reviewsFilesDTOs}" var="reviewsFileDTO">
+				<div class="mb-3">
+					<!-- <span class="form-control">${reviewsFileDTO.oriName}</span> -->
+					<img src="../resources/upload/reviews/${reviewsFileDTO.fileName}" id="c2" class="img" width="150px" height="150px">
+					<button type="button" class="btn btn-danger" id="reviewsFilesDelete" data-file-filesNum="${reviewsFileDTO.filesNum}">파일삭제</button>
+				</div>
+			</c:forEach>
 
-		
-		<div id="fileAdd" class="mb-3">
-			<button id="addFiles" type="button" class="btn btn-secondary">파일추가</button>
+			
+			<div id="fileAdd" class="mb-3">
+				<button id="addFiles" type="button" class="btn btn-secondary">파일추가</button>
+			</div>
+			
+			<br>
+			
+			<button type="submit" class="btn btn-success">수정완료</button>
+			</form>
 		</div>
-		
-		<br>
-		
-		<button type="submit" class="btn btn-success">수정완료</button>
-	</form>
-
 <button onclick="location='./list'" class="btn btn-primary">리뷰 목록</button>
 <button onclick="location='/'" class="btn btn-primary">홈으로</button>	 
 	 </section>

@@ -42,7 +42,7 @@ public class FileManger {
 	
 	//Delete
 	
-	public boolean deleteReviewsFiles(ServletContext servletContext, String path, ReviewsFilesDTO reviewsFilesDTO) throws Exception{
+	public boolean reviewsFilesDelete(ServletContext servletContext, String path, ReviewsFilesDTO reviewsFilesDTO) throws Exception{
 		
 		String realPath = servletContext.getRealPath(path);
 		System.out.println(realPath);
