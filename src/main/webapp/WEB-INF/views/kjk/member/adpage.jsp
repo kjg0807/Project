@@ -38,8 +38,6 @@ a {
 						<td>생년월일</td>
 						<td>전화번호</td>
 						<td>성별</td>
-						<!-- <td>등급</td> -->
-						<td>메뉴</td>
 					</tr>
 					<%
 					try
@@ -55,10 +53,6 @@ a {
 							<td>${dto.birth}</td>
 							<td>${dto.phone}</td>
 							<td>${dto.gender}</td>
-							<%-- <td>${dto.classDTOs.get(0).className}</td> --%>
-							<td>
-								<a id="uplink" href="./adupdate?userid=${dto.userid}">수정</a> <a class="abc" href="./addelete?userid=${dto.userid}">삭제</a>
-							</td>
 						</tr>
 					</c:forEach>
 					<%
