@@ -61,12 +61,23 @@ public class PartyService {
 		return partyDAO.setPartyJoin(partyDTO);	
 	}
 	
-	public int setPartyAccept(PartyListDTO partyListDTO)throws Exception{
-		return partyDAO.setPartyAccept(partyListDTO);
+	public int setPartyAccept(PartyDTO partyDTO, String[] userName)throws Exception{
+		int result = 0;
+		for(int i=0; i<userName.length; i++) {
+			partyDTO.setUserName(userName[i]);
+			result = partyDAO.setPartyAccept(partyDTO);
+		}
+	
+		return result;
 	}
 	
-	public int setPartyCancel(PartyDTO partyDTO)throws Exception{
-		return partyDAO.setPartyCancel(partyDTO);
+	public int setPartyCancel(PartyDTO partyDTO, String[] userName)throws Exception{
+		int result = 0;
+		for(int i=0; i<userName.length; i++) {
+			partyDTO.setUserName(userName[i]);
+			result = partyDAO.setPartyCancel(partyDTO);
+		}
+		return result;
 	}
 	
 	public List<PartyDTO> getPartyRequest(PartyDTO partyDTO)throws Exception{
