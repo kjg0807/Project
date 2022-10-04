@@ -25,8 +25,8 @@ try{
 
 
         console.log("실행됨?")
-        if(count>2){
-            alert("이미지 첨부는 최대 3장만 가능합니다.");
+        if(count>3){
+            alert("이미지 첨부는 최대 4장만 가능합니다.");
             return;
         }
 
@@ -188,6 +188,7 @@ reviewsFilesDelete.forEach(function(f){
                     //
                     console.log(f.parentNode);
                     f.parentNode.remove();
+                    // f.previousSibling.remove();
                     //파일을 삭제하면 총합 3개까지 다시 만들수 있도록 삭제한 수 만큼 총 파일수에서 --
                     count--;
                 }else{

@@ -121,7 +121,7 @@ public class ReviewsController {
 		
 		
 		mv.addObject("dto", reviewsDTO);
-		mv.setViewName("redirect:./list");
+		mv.setViewName("redirect:./detail?reviewNum="+reviewsDTO.getReviewNum());
 		
 		if(result == 1) {
 			System.out.println("리뷰 글 수정하기가 성공하였습니다!!");

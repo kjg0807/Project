@@ -68,7 +68,7 @@ public class ReviewsService {
 		String path = "resources/upload/reviews";
 		
 		int result = reviewsDAO.setReviewsUpdate(reviewsDTO);
-		
+		System.out.println("result !!!!!  : "+result);
 		if(result < 1) {
 			return result;
 		}
@@ -83,7 +83,7 @@ public class ReviewsService {
 			ReviewsFilesDTO reviewsFilesDTO = new ReviewsFilesDTO();
 			reviewsFilesDTO.setFileName(fileName);
 			reviewsFilesDTO.setOriName(multipartFile.getOriginalFilename());
-			reviewsFilesDTO.setFilesNum(reviewsDTO.getReviewNum());
+			reviewsFilesDTO.setReviewNum(reviewsDTO.getReviewNum());
 			
 			System.out.println("Service 리뷰 넘버 : " + reviewsDTO.getReviewNum());
 			System.out.println("Service 파일 넘버 : " + reviewsFilesDTO.getFilesNum());
