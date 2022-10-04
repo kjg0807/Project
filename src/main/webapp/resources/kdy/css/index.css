@@ -1,0 +1,97 @@
+.file_box .upload-name {
+    display: inline-block;
+    height: 40px;
+    padding: 0 10px;
+    vertical-align: middle;
+    border: 1px solid #dddddd;
+    width: 78%;
+    color: #999999;
+  }
+  
+  .filebox label {
+    display: inline-block;
+    padding: 10px 20px;
+    color: #fff;
+    vertical-align: middle;
+    background-color: #999999;
+    cursor: pointer;
+    height: 40px;
+    margin-left: 10px;
+  }
+  
+  .file_box input[type="file"] {
+    position: absolute;
+    width: 0;
+    height: 0;
+    padding: 0;
+    overflow: hidden;
+    border: 0;
+  }
+  
+.realMain{
+    
+    background-color: #fff;
+}
+.shop_list:hover{
+    box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;}
+
+.mainList{
+    height: 90px;
+    /* border: solid 1px; */
+    font-weight: bold;
+    font-size: 35px;
+    margin: 0px auto 0px auto;
+    text-align: center;
+    line-height: 100px;
+}
+img{
+    object-fit: fill;
+}
+
+
+
+.a {
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    border-radius: 18px;
+    margin: 0px 5px 0px 5px;
+}
+
+.p{
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+
+}
+
+.a:hover, .b:hover{
+    background-color: rgba(211, 211, 211, 0.438);
+}
+.container{
+    margin: 0px, auto, 0px, auto;
+}
+
+.name{
+    color: gray;
+    font-weight: 900;
+}
+.contents{
+    margin: 6px;
+    font-size: 20px;
+    font-weight: 600;
+}
+.contents > .contents2{
+    font-size: 15px;
+    color: gray;
+}
+.b {
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    border-radius: 8px;
+    margin: 0px 5px 0px 5px;
+    font-size: 5;
+}
+#img{
+    width: 600px;
+    height: 300px;
+
+}
+.pagination a {
+    transition: background-color .3s;
+  }

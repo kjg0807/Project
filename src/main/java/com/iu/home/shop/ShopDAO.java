@@ -65,7 +65,9 @@ public class ShopDAO {
 //	                        HIT
 	public int setHitUpdate(ShopDTO shopDTO)throws Exception{
 		return sqlSession.update(NAMESPACE+"setHitUpdate", shopDTO);
-				
+	}
+	public List<ShopDTO> getHitList(ShopDTO shopDTO)throws Exception{
+		return sqlSession.selectList(NAMESPACE+"getHitList", shopDTO);
 	}
 
 

@@ -49,6 +49,10 @@ public class ShopService {
 		return shopDAO.getList(shopPager);
 	}
 	
+	public List<ShopDTO> getHitList(ShopDTO shopDTO)throws Exception{
+		return shopDAO.getHitList(shopDTO);
+	}
+	
 	public ShopDTO getDetail(ShopDTO shopDTO)throws Exception{
 		return shopDAO.getDetail(shopDTO);
 	}

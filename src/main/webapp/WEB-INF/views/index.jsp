@@ -12,6 +12,7 @@
         <!-- Favicon-->
         <link rel="stylesheet" href="../../resources/kdy/css/styles.css">
         <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/kdy/css/styles.css">
+        <link rel="stylesheet" href="../../resources/kdy/css/index.css">
         <!-- Bootstrap icons-->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
         <!-- Core theme CSS (includes Bootstrap)-->
@@ -175,6 +176,48 @@
                 </div>
                 <!-- <div style="border-bottom: solid 1px gainsboro; height: 200px;"><span>조회수 높은 식당 TOP10</span></div> -->
                 <div  style="border-bottom: solid 1px black; height: 100px;" id="hitList" class="mainList">조회수 높은 식당 TOP10</div>
+                        <c:forEach items="${requestScope.list}" var="list">
+
+                            <div class="shop_list"  onclick="location.href='/shop/detailHTML?shopNum=${list.getShopNum()}';">
+
+                                <div class="list" style="box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px" >
+
+                                    <div style="border-bottom: solid 1px gainsboro; height: 200px;" >
+
+                                        <div class="d-flex">
+
+                                            <div class="p-2 w-100" >
+
+                                                <div class="container2" style="padding: 12px;">
+                                                    <div class="name">${list.shopName}</div>
+                                                    <div class="contents">${list.title}</div>
+                                                    <div class="contents2">${list.shopAddress}</div>
+                                                    <c:forEach items="${list.categoryDTOs}" var="category">
+                                                    <div class="p-2 b" style="color: black;"># ${category.categoryName}</div>
+                                                    </c:forEach> 
+                                                </div>
+
+                                                <div class="d-flex flex-row mb-3 mt-2">
+                                                    <div class="p-2 b">SHOP NAME : ${list.shopName}</div>
+                                                    <div class="p-2 b">SHOP ADDRESS : ${list.shopAddress}</div>
+                                                    <div class="p-2 b">HIT : ${list.hit}</div>
+                                                    <div class="p-2 b">BEST MENU : ${list.menuName}</div>
+                                                </div>
+
+                                            </div>
+                                            
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+                            <div>
+                            <input name="shopNum" type="hidden" id="shopNum" value="${list.shopNum}">
+                            </div> 
+                    </c:forEach>
+                    
                 <div style="border-bottom: solid 1px black; height: 100px;" class="mainList">리뷰 많은 식당 TOP10</div>
                 
             </div>

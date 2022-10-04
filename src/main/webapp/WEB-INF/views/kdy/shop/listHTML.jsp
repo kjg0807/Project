@@ -41,8 +41,7 @@
                     <div class="p-2 a" data-miniCategory="아시안">아시안</div>
                 </div>
                 <div class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap" role="add">가게등록</div>
-         <c:forEach items="${requestScope.list}" var="list">
-                
+         <c:forEach items="${requestScope.list}" var="list">    
             <div class="shop_list"  onclick="location.href='/shop/detailHTML?shopNum=${list.getShopNum()}';">
                 <div class="list" style="box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px" >
                     <div style="border-bottom: solid 1px gainsboro; height: 200px;" >
