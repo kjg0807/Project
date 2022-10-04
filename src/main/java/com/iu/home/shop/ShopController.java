@@ -55,6 +55,7 @@ public class ShopController {
 		System.out.println();
 		System.out.println("getMenuName"+shopDTO.getMenuName());
 		ModelAndView mv = new ModelAndView();
+		shopService.setHitUpdate(shopDTO);
 		shopDTO = shopService.getDetail(shopDTO);
 		mv.setViewName("kdy/shop/detailHTML");
 		mv.addObject("detail", shopDTO);

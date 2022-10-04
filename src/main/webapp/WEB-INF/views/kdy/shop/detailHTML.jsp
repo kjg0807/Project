@@ -20,23 +20,15 @@
 <body>
 <c:import url="../../template/headerHTML.jsp"></c:import>
 
-
             <div class="d-flex" id="img1">
-    <c:forEach items="${detail.shopFileDTOs}" var="shopFileDTO">               
-        <img class="flex image" style="width: 380px; height: 380px;" src="../../../../resources/upload/shop/${shopFileDTO.fileName}">
-        <!-- <img src="../../../../resources/upload/shop"> -->
-    </c:forEach>
-   
-     </div>
+              <c:forEach items="${detail.shopFileDTOs}" var="shopFileDTO">               
+                  <img class="flex image" style="width: 380px; height: 380px;" src="../../../../resources/upload/shop/${shopFileDTO.fileName}">
+                  <!-- <img src="../../../../resources/upload/shop"> -->
+              </c:forEach>
+            </div>
 
     <main> 
- 
         <div class="container" style="margin-top: 200px;">
-			<!-- 확인 -->
-		
-			<!-- 수정 -->
-
-
                         <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">                     
                                 <div class="modal-dialog">
                                   <div class="modal-content">
@@ -46,18 +38,18 @@
                                     </div>
                                         <form action="/shop/update" method="post" enctype="multipart/form-data">
                                         
-                                    <div class="modal-body">
-                                            <input type="hidden" id="shopNum" name="shopNum" value="${detail.shopNum}">  
-                                            <div class="mb-3">
-                                              <label for="recipient-name" class="col-form-label"></label>
-                                              식당 이름 수정  <input type="text" class="form-control" name="shopName" value="${detail.shopName}">
-                                            </div>
+                                            <div class="modal-body">
+                                              <input type="hidden" id="shopNum" name="shopNum" value="${detail.shopNum}">  
+                                              <div class="mb-3">
+                                                <label for="recipient-name" class="col-form-label"></label>
+                                                식당 이름 수정  <input type="text" class="form-control" name="shopName" value="${detail.shopName}">
+                                              </div>
                                             
                                             <!-- <div class="mb-3">
                                               <label for="recipient-name" class="col-form-label"></label>
                                               식당의 카테고리 수정  <input type="text" class="form-control" name="categoryNum" value="${detail.categoryNum}">
                                             </div> -->
-                                            <div class="mb-3" id="caNum">
+                                            <div class="mb-3" id="caNumBer">
                                               <label for="message-text" class="col-form-label">category</label>
                                               <select  name="categoryNum" class="form-select" id="categoryNum">
                                                 <option class="categoryNums" value="1">한식</option>
@@ -100,47 +92,50 @@
                                             <label for="recipient-name" class="col-form-label"></label>
                                             가게 제목 수정 <br><textarea name="title" rows="10" cols="57">${detail.title}</textarea>
                                           </div>
-											<c:forEach items="${detail.shopFileDTOs}" var="fileDTO">
-												<div class="mb-3">
-                          <img class="flex image" style="width: 380px; height: 380px;" src="../../../../resources/upload/shop/${fileDTO.fileName}">
-													<button type="button" class="fileDelete" data-file-num="${fileDTO.fileNum}" style="color: red;"> Delete </button>
-												</div>
-											</c:forEach>
-<!-- 			
-											<div id="addFiles" class="mb-3">
-                        <i class="fa-regular fa-image"></i>
-                        <label for="message-text" class="col-for m-label"></label>
-                        <input type="file" name="files" id="fileAdd">파일
-                      </div> -->
+                                            <c:forEach items="${detail.shopFileDTOs}" var="fileDTO">
+                                              <div class="mb-3">
+                                                <img class="flex image" style="width: 380px; height: 380px;" src="../../../../resources/upload/shop/${fileDTO.fileName}">
+                                                <button type="button" class="fileDelete" data-file-num="${fileDTO.fileNum}" style="color: red;"> Delete </button>
+                                              </div>
+                                            </c:forEach>
+                                              <!--  <div id="addFiles" class="mb-3">
+                                                      <i class="fa-regular fa-image"></i>
+                                                      <label for="message-text" class="col-for m-label"></label>
+                                                      <input type="file" name="files" id="fileAdd">파일
+                                                    </div> -->
 
-                      <div id="addFiles">
-                        <button style="color: red;" type="button"name="files" id="fileAdd">파일추가</button>
-                      </div>
-							</div>
+                                            <div id="addFiles">
+                                              <button style="color: blue;" type="button"name="files" id="fileAdd">파일추가</button>
+                                            </div>
+
+                                        
+
+							                            </div>
                                     
-                                    <div class="modal-footer">
-                                        <div class="dy flex" id="shopDelete" style="color: red;" onclick="location.href='/shop/delete?shopNum=${detail.getShopNum()}';">&ensp;가게 삭제</div>
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소하기</button>
-                                        <button type="submit" class="btn btn-primary">등록하기</button>
+                                                <div class="modal-footer">
+                                                    <div class="dy flex" id="shopDelete" style="color: red;" onclick="location.href='/shop/delete?shopNum=${detail.getShopNum()}';">&ensp;가게 삭제</div>
+                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소하기</button>
+                                                    <button type="submit" class="btn btn-primary">등록하기</button>
+                                                </div>
+					                               </form>
                                     </div>
-					           </form>
-                          </div>
-                      </div>
-                   </div>
+                                </div>
+                            </div>
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal1" data-bs-whatever="@mdo">게시글 수정</button>
+                            <button type="hidden" class="btn btn-primary" id="menuAdd" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">대표메뉴 등록</button> 
 
-
-			<div style="border-bottom: solid 1px gainsboro;">
-				<div class="p-2 pt-3" style="font-size: 50px;">${detail.shopName}
-				</div>
-        <c:forEach items="${detail.categoryDTOs}" var="category">
-          <div style="color: gray;">&ensp;&ensp;${category.categoryName}</div>
-        </c:forEach>
-			</div>
-      <div>
-        <span class="cnt hit" style="font-size: 5px;">
-          <ion-icon name="eye-outline"></ion-icon>
-        </span>
-      </div>
+                                  <div style="border-bottom: solid 1px gainsboro;">
+                                    <div class="p-2 pt-3" style="font-size: 50px;">${detail.shopName}
+                                    </div>
+                                    <c:forEach items="${detail.categoryDTOs}" var="category">
+                                      <div style="color: gray;">&ensp;&ensp;${category.categoryName}</div>
+                                    </c:forEach>
+                                  </div>
+                                  <div>
+                                    <span class="cnt hit" style="font-size: 5px;">
+                                      <ion-icon name="eye-outline"></ion-icon>
+                                    </span>
+                                  </div>
     
 
 
@@ -180,8 +175,7 @@
 					</div>
 				</c:forEach> -->
         <!-- 대표메뉴 추가 -->
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal1" data-bs-whatever="@mdo">게시글 수정</button>
-				 <button type="hidden" class="btn btn-primary" id="menuAdd" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">대표메뉴 등록</button> 
+       
                     
                         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">                     
                                 <div class="modal-dialog">
@@ -333,6 +327,7 @@ function displayCenterInfo(result, status) {
     }    
 }
 	</script>
+  <!-- ===================================================================================================================================================== -->
   <script>
     // 마커를 클릭하면 장소명을 표출할 인포윈도우 입니다
 var infowindow = new kakao.maps.InfoWindow({zIndex:1});
@@ -361,8 +356,8 @@ function placesSearchCB (data, status, pagination) {
         var bounds = new kakao.maps.LatLngBounds();
 
         for (var i=0; i<data.length; i++) {
-            displayMarker(data[i]);    
-            bounds.extend(new kakao.maps.LatLng(data[i].y, data[i].x));
+            displayMarker(data[0]);    
+            bounds.extend(new kakao.maps.LatLng(data[0].y, data[0].x));
         }       
 
         // 검색된 장소 위치를 기준으로 지도 범위를 재설정합니다
@@ -382,8 +377,8 @@ function displayMarker(place) {
     // 마커에 클릭이벤트를 등록합니다
     kakao.maps.event.addListener(marker, 'click', function() {
         // 마커를 클릭하면 장소명이 인포윈도우에 표출됩니다
-        infowindow.setContent('<div style="padding:5px;font-size:12px;">' + place.place_name + '</div>');
-        infowindow.open(map, marker);
+        // infowindow.setContent('<div style="padding:5px;font-size:12px;">' + place.place_name + '</div>');
+        // infowindow.open(map, marker);
     });
 }
   </script> 

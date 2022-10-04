@@ -1,8 +1,6 @@
 const addFiles=document.getElementById("addFiles");//div
 const fileAdd=document.getElementById("fileAdd");//fileAdd 버튼
 const fileDelete = document.querySelectorAll(".fileDelete"); // 클래스명 fileDelete forEach가능
-
-
 const shopAddres = document.querySelector("#shopAddress");
 
 
@@ -150,12 +148,11 @@ try{
 
 //삭제버튼 누르면 삭제 
 addFiles.addEventListener("click", function(event){
+  
     let button1 = event.target;
     if(button1.classList[0]=='del') {
         document.getElementById("file"+button1.title).remove();
         count--;
-        
-
     }
 });
 
@@ -163,23 +160,9 @@ addFiles.addEventListener("click", function(event){
  console.log(e);
 }
 
-const cccc = document.querySelector("#cccc");
-const ccccChildren = cccc.children;
 
-for(let i =0; i < ccccChildren.length; i++){
-    ccccChildren[i].addEventListener("click", function(){
-        location.href="../../shop/listHTML?categoryName=" + ccccChildren[i].getAttribute("data-miniCategory");
-    })
-}
 
-const caNum = document.querySelector("#caNum");
-const canumChildren = caNum.children;
 
-for(let i=0; i<canumChildren.length; i++){
-    canumChildren[i].addEventListener("click", function(){
-
-    })
-}
 
 const categoryNum = document.querySelector("#categoryNum");
 const shopPhone = document.querySelector("#shopPhone");
