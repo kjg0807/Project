@@ -101,9 +101,11 @@
 		</collection>
 		
 	</resultMap>
-	<update id="setUpdate" parameterType="ShopDTO"> UPDATE SHOP SET
-		SHOPNAME=#{shopName},CATEGORYNUM=#{categoryNum}, SHOPPHONE=#{shopPhone},SHOPADDRESS=#{shopAddress},PRICEAVG=#{priceAvg},DELIVERY=#{delivery},CONTENTS=#{contents},TITLE=#{title}, 1
-		WHERE SHOPNUM=#{shopNum} </update>
+	<update id="setUpdate" parameterType="ShopDTO"> 
+	UPDATE SHOP SET SHOPNAME=#{shopName},CATEGORYNUM=#{categoryNum},SHOPPHONE=#{shopPhone},SHOPADDRESS=#{shopAddress},PRICEAVG=#{priceAvg},DELIVERY=#{delivery}
+								,CONTENTS=#{contents},TITLE=#{title}
+	WHERE SHOPNUM=#{shopNum} 
+	</update>
 		
 	<update id="setHitUpdate" parameterType="ShopDTO">
 	 UPDATE SHOP SET HIT= HIT +1 WHERE SHOPNUM=#{shopNum}

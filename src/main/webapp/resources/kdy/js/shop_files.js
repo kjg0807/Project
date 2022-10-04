@@ -49,16 +49,16 @@ fileDelete.forEach(function(f){
 
 }
 
-// for(fi of fileDelete) {
-//     console.log(fi);
-// }
+for(fi of fileDelete) {
+    console.log(fi);
+}
 
 //-----------------------file add----------------------------
 let count=0;
 let idx=0;
 
 function setCount(c){
-    if(c<=0){
+    if(c >= 0){
     count=c;
     }
 }
@@ -172,14 +172,14 @@ for(let i =0; i < ccccChildren.length; i++){
     })
 }
 
-// const caNum = document.querySelector("#caNum");
-// const canumChildren = caNum.children;
+const caNum = document.querySelector("#caNum");
+const canumChildren = caNum.children;
 
-// for(let i=0; i<canumChildren.length; i++){
-//     canumChildren[i].addEventListener("click", function(){
+for(let i=0; i<canumChildren.length; i++){
+    canumChildren[i].addEventListener("click", function(){
 
-//     })
-// }
+    })
+}
 
 const categoryNum = document.querySelector("#categoryNum");
 const shopPhone = document.querySelector("#shopPhone");

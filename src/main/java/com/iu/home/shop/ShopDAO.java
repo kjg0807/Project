@@ -62,6 +62,7 @@ public class ShopDAO {
 	public int setDeleteMenu(ShopDTO shopDTO)throws Exception{
 		return sqlSession.delete(NAMESPACE+"setDeleteMenu", shopDTO);
 	}
+//	                        HIT
 	public int setHitUpdate(ShopDTO shopDTO)throws Exception{
 		return sqlSession.update(NAMESPACE+"setHitUpdate", shopDTO);
 				

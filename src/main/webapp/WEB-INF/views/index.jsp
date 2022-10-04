@@ -173,6 +173,10 @@
                         </div>
                     </div> 
                 </div>
+                <!-- <div style="border-bottom: solid 1px gainsboro; height: 200px;"><span>조회수 높은 식당 TOP10</span></div> -->
+                <div  style="border-bottom: solid 1px black; height: 100px;" id="hitList" class="mainList">조회수 높은 식당 TOP10</div>
+                <div style="border-bottom: solid 1px black; height: 100px;" class="mainList">리뷰 많은 식당 TOP10</div>
+                
             </div>
 		<a href="./chat/chat">chat</a>
 		<a href="./party/list">list</a>

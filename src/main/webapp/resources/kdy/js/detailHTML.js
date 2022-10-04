@@ -1,6 +1,7 @@
 const shop = document.querySelector("#shopNum");
 const menu = document.querySelector("#menuNum");
 const md = document.querySelector("#deleteMenu");
+const sd = document.querySelector("#shopDelete");
 
 const btn = document.querySelector("#num");
 
@@ -11,6 +12,21 @@ console.log(menu.vlaue);
 
 
 const m = document.querySelector("#menuDelete");
+
+sd.addEventListener("click", function(){
+        md.click();
+})
+
+const caNum = document.querySelector("#caNum");
+const canumChildren = caNum.children;
+
+for(let i=0; i<canumChildren.length; i++){
+    canumChildren[i].addEventListener("click", function(){
+
+    })
+}
+
+
 
 m.addEventListener("click", function(){
         alert("대표메뉴 한가지를 삭제합니다");
@@ -39,3 +55,4 @@ m.addEventListener("click", function(){
 	
 // 	alert(`위도 : ${latlng.getLat()}, 경도 : ${latlng.getLng()}`);
 // });
+

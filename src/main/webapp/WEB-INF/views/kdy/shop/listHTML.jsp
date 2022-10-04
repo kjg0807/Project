@@ -40,6 +40,7 @@
                     <div class="p-2 a" data-miniCategory="양식">양식</div>
                     <div class="p-2 a" data-miniCategory="아시안">아시안</div>
                 </div>
+                <div class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap" role="add">가게등록</div>
          <c:forEach items="${requestScope.list}" var="list">
                 
             <div class="shop_list"  onclick="location.href='/shop/detailHTML?shopNum=${list.getShopNum()}';">
@@ -51,25 +52,26 @@
                                     <div class="name">${list.shopName}</div>
                                     <div class="contents">${list.title}</div>
                                     <div class="contents2">${list.shopAddress}</div>
+                                    <c:forEach items="${list.categoryDTOs}" var="category">
+                                      <div class="p-2 b" style="color: black;"># ${category.categoryName}</div>
+                                    </c:forEach>   
                                     
                                 </div>
                                 <div class="d-flex flex-row mb-3 mt-2">
-                                    <div class="p-2 b">SHOP NAME : #${list.shopName}</div>
-                                    <div class="p-2 b">SHOP ADDRESS : #${list.shopAddress}</div>
-                                    <div class="p-2 b">HIT : #${list.hit}</div>
+                                    <div class="p-2 b">SHOP NAME : ${list.shopName}</div>
+                                    <div class="p-2 b">SHOP ADDRESS : ${list.shopAddress}</div>
+                                    <div class="p-2 b">HIT : ${list.hit}</div>
                                     <div class="p-2 b">BEST MENU : ${list.menuName}</div>
-                                    <div class="p-2 b">#test</div>
-                                </div>
+                                  </div>
                             </div>
                             
-                            <!-- <div class="p-2 flex-shrink-1">
+                             <div class="p-2 flex-shrink-1">
                               <div class="mt-2" id="img" style="height: 200px; width: 310px">
                                 <c:forEach items="${list.shopFileDTOs}" var="shopFileDTO">               
-                                  <img src="../../../../resources/upload/shop/${shopFileDTO.fileName}" style="width: 300px;">
-                                 
-                              </c:forEach>
+                                  <img src="../../../../resources/upload/shop/${shopFileDTO.fileName[0]}" style="width: 300px;">
+                                </c:forEach>
                               </div>
-                          </div> -->
+                          </div>
                         </div>
                     </div>
                 </div>
@@ -79,7 +81,7 @@
             </div> 
       </c:forEach>
     
-		<div class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap" role="add">가게등록</div>
+	
 		<!-- <div id="map" style="width:500px;height:400px;"></div> -->
 		
 		<!--  -->
@@ -164,7 +166,7 @@
    
 
 </main>
-<div style="display: flex; margin: 5 5px;  justify-content: center;">
+<div style="display: flex; margin: 100px; height: 40px;  justify-content: center;">
   <nav aria-label="Page navigation example">
     <ul class="pagination">
        <c:if test="${shopPager.pre}">

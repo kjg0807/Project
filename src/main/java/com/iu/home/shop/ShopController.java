@@ -52,6 +52,7 @@ public class ShopController {
 	@GetMapping(value = "detailHTML")
 	public ModelAndView getDetail(ShopDTO shopDTO)throws Exception{
 		System.out.println("getDetail");
+		System.out.println();
 		System.out.println("getMenuName"+shopDTO.getMenuName());
 		ModelAndView mv = new ModelAndView();
 		shopDTO = shopService.getDetail(shopDTO);
@@ -82,7 +83,7 @@ public class ShopController {
 		mv.setViewName("redirect:./list");
 		return mv;
 	}
-//	--------------------------------------MENU
+//	------------------------------------------------------------------------------------------------------------------------MENU
 	@GetMapping(value = "addMenuHTML")
 	public ModelAndView setAddMenu(Long shopNum) throws Exception {
 		ModelAndView mv = new ModelAndView();
@@ -130,7 +131,7 @@ public class ShopController {
 		mv.setViewName("redirect:./detailHTML?menuNum="+shopDTO.getMenuNum()+"&shopNum="+shopDTO.getShopNum());
 		return mv;
 	}
-//	                    FILE
+//	------------------------------------------------------------------------------------------------------------------------FILE
 	@PostMapping("fileDelete")
 	@ResponseBody
 	public int setFileDelete(ShopFileDTO shopFileDTO, HttpSession session)throws Exception{

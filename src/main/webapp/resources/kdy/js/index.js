@@ -1,5 +1,8 @@
 const sn = document.querySelector("#searchNull");
 const s = document.querySelector("#search");
+// const ml = document.querySelector(".mainList");
+
+
 
 
 sn.addEventListener("click", function(){

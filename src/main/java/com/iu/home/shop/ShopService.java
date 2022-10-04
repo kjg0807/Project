@@ -51,6 +51,8 @@ public class ShopService {
 	
 	public ShopDTO getDetail(ShopDTO shopDTO)throws Exception{
 		return shopDAO.getDetail(shopDTO);
+	
+				
 	}
 	
 	public int setUpdate(ShopDTO shopDTO,  MultipartFile[] files, ServletContext servletContext)throws Exception{
