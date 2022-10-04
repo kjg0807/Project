@@ -31,7 +31,7 @@ a {
 					<h2>전체 회원 정보</h2>
 					<tr>
 						<td>아이디</td>
-						<td>이름</td>
+						<td>닉네임</td>
 						<td>비밀번호</td>
 						<td>이메일</td>
 						<td>나이</td>
@@ -52,7 +52,14 @@ a {
 							<td>${dto.age}</td>
 							<td>${dto.birth}</td>
 							<td>${dto.phone}</td>
-							<td>${dto.gender}</td>
+							<c:choose>
+								<c:when test="${dto.gender eq 1}">
+									<td>남</td>
+								</c:when>
+								<c:otherwise>
+									<td>여</td>
+								</c:otherwise>
+							</c:choose>
 						</tr>
 					</c:forEach>
 					<%
