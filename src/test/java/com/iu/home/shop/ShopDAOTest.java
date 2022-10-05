@@ -9,12 +9,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 public class ShopDAOTest {
 
-	@Autowired
-	private ShopDAO shopDAO;
-	
-	@Test
-	public void getList()throws Exception{
-		List<ShopDTO> ar = shopDAO.getList(1);
-		assertNotEquals(0, ar.size());
-	}
+//	@Autowired
+//	private ShopDAO shopDAO;
+//	
+//	@Test
+//	public void getList()throws Exception{
+//		List<ShopDTO> ar = shopDAO.getList(1);
+//		assertNotEquals(0, ar.size());
+//	}
 }

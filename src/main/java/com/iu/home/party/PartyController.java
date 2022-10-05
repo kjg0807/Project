@@ -84,16 +84,27 @@ public class PartyController {
 	@GetMapping(value = "partyRequest")
 	@ResponseBody
 	public List<PartyDTO> getPartyReqeust(PartyDTO partyDTO)throws Exception{
-//		ModelAndView mv = new ModelAndView();
-		
-		System.out.println(partyDTO.getPartyNum());
 		List<PartyDTO> ar = partyService.getPartyRequest(partyDTO);
-//		for(int i=0; i<ar.size(); i++) {
-//			System.out.println(ar);
-//		}
-//		Map<String, Object> map = new HashMap<String, Object>();
-//		map.put("partyRequest", ar);
-		
 		return ar;
+	}
+	
+	@PostMapping(value = "partyCancel")
+	public ModelAndView setPartyCancel(PartyDTO partyDTO, String[] userName)throws Exception{
+		ModelAndView mv = new ModelAndView();
+		int result = partyService.setPartyCancel(partyDTO, userName);
+		String jsonResult="{\"result\":\""+result+"\"}";
+		mv.addObject("result", jsonResult);
+		mv.setViewName("common/ajaxResult");
+		return mv;
+	}
+	
+	@PostMapping(value = "partyAccept")
+	public ModelAndView setPartyAccept(PartyDTO partyDTO, String [] userName)throws Exception{
+		ModelAndView mv = new ModelAndView();
+		int result = partyService.setPartyAccept(partyDTO, userName);
+		String jsonResult="{\"result\":\""+result+"\"}";
+		mv.addObject("result", jsonResult);
+		mv.setViewName("common/ajaxResult");
+		return mv;
 	}
 }
