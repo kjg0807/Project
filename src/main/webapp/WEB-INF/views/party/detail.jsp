@@ -56,7 +56,7 @@
 					<div class="modal-body">
 						<div class="mb-3">
 							<label for="recipient-name" class="col-form-label">닉네임</label>
-							<input class="form-control" type="text" id="joinUserName" placeholder="닉네임" >
+							<input class="form-control" type="text" id="joinUserName" placeholder="닉네임" value="${member.username}" readonly>
 						</div>
 						<div class="form-check">
 							<div>
