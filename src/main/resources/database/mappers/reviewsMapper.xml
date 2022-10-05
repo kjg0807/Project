@@ -65,11 +65,11 @@
 	<insert id="setReviewsAdd" parameterType="ReviewsDTO">
 		<selectKey order="BEFORE" keyProperty="reviewNum"
 			resultType="Long">
-			select userid from promembers where userid=#{userId}
+			select REVIEWS_SEQ.NEXTVAL from dual
 		</selectKey>
 		INSERT INTO REVIEWS (REVIEWNUM, SHOPNUM, USERID, TITLE, CONTENTS,
 		REVIEWDATE, HITS)
-		VALUES (REVIEWS_SEQ.NEXTVAL, #{shopNum}, #{userId} , #{title},
+		VALUES (#{reviewNum}, 1, 'asd', #{title},
 		#{contents}, SYSDATE, 0)
 	</insert>
 

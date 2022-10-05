@@ -31,7 +31,7 @@ public class MemberController
 	}
 
 	@PostMapping(value = "login")
-	public ModelAndView login(HttpSession session, HttpServletRequest request, MemberDTO memberDTO, Model model) throws Exception
+	public ModelAndView login1(HttpSession session, HttpServletRequest request, MemberDTO memberDTO, Model model) throws Exception
 	{
 		ModelAndView mv = new ModelAndView();
 		System.out.println("Login POST Test");
@@ -150,7 +150,7 @@ public class MemberController
 		int rs = memberService.setUpdate(memberDTO);
 		System.out.println(rs == 1);
 
-		return "redirect:./mypage?userid=" + memberDTO.getUserid();
+		return "redirect:./mypage?userid=" + memberDTO.getUserID();
 	}
 
 	@GetMapping(value = "delete")

@@ -84,9 +84,9 @@ email.value = se.substring(0, se.indexOf('@'));
 console.log("@ front email: "+ email.value);
 $("#emaill").val(email.value);
 
-emin.value = se.substring(se.indexOf('@'));
-console.log("@ back email: "+emin.value);
-$("#email2").val(emin.value);
+// emin.value = se.substring(se.indexOf('@'));
+// console.log("@ back email: "+emin.value);
+// $("#email2").val(emin.value);
 
 email.addEventListener("blur", em);
 function em() {

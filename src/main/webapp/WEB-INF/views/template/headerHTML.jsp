@@ -25,9 +25,9 @@
 					<li class="nav-item dropdown"><a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown"
 						aria-expanded="false"
 					>Shop</a>
-					<li class="nav-item"><a class="nav-link" href="../notice/list">공지사항</a></li>
-					<li class="nav-item"><a class="nav-link" href="../../qna/list">Q&A</a></li>
-					<li class="nav-item"><a class="nav-link" href="../reviews/list">리뷰</a></li>
+					<li class="nav-item"><a class="nav-link" href="/notice/list">공지사항</a></li>
+					<li class="nav-item"><a class="nav-link" href="/qna/list">Q&A</a></li>
+					<li class="nav-item"><a class="nav-link" href="/reviews/list">리뷰</a></li>
 				</ul>
 				<!-- login -->
 				<!-- 로그인 한 등급이 admin이면 실행 -->
@@ -43,7 +43,7 @@
 									<li class="nav-item"><b><a class="nav-link" href="#"> 관리자님 안녕하세요 </a></b></li>
 								</c:when>
 								<c:otherwise>
-									<li class="nav-item"><b><a class="nav-link" href="#">${member.username}님안녕하세요!</a></b></li>
+									<li class="nav-item"><b><a class="nav-link" href="#">'${member.userName}'님안녕하세요!</a></b></li>
 								</c:otherwise>
 							</c:choose>
 							<%
@@ -57,26 +57,36 @@
 							try
 							{
 							%>
-							<c:if test="${member.classDTOs.get(0).className eq 'admin'}">
+							<%-- <c:if test="${member.classDTOs.get(0).className eq 'admin'}">
 								<button class="btn btn-outline-dark" onclick="location.href='/kjk/member/adpage';" type="submit" style="width: auto; margin-left: 3px">관리자
 									페이지</button>
-							</c:if>
+							</c:if> --%>
+							<c:choose>
+								<c:when test="${member.classDTOs.get(0).className eq 'admin'}">
+									<button class="btn btn-outline-dark" onclick="location.href='/kjk/member/adpage';" type="submit" style="width: auto; margin-left: 3px">관리자
+										페이지</button>
+								</c:when>
+								<c:otherwise>
+									<button class="btn btn-outline-dark" onclick="location.href='/kjk/member/mypage';" type="submit" style="width: auto; margin-left: 3px">내
+										정보</button>
+								</c:otherwise>
+							</c:choose>
 							<%
 							} catch (Exception e)
 							{
 
 							}
 							%>
-							<button class="btn btn-outline-dark" onclick="location.href='/kjk/member/mypage';" type="submit" style="width: auto; margin-left: 3px">내
-								정보</button>
+							<!-- <button class="btn btn-outline-dark" onclick="location.href='/kjk/member/mypage';" type="submit" style="width: auto; margin-left: 3px">내
+								정보</button> -->
 							<button class="btn btn-outline-dark" onclick="location.href='/kjk/member/logout';" type="submit" style="width: auto; margin-left: 3px">
 								로그아웃</button>
 						</c:when>
 						<c:otherwise>
 							<button class="btn btn-outline-dark" onclick="location.href='/kjk/member/login';" type="submit" style="width: auto; margin-left: 3px;">
 								로그인</button>
-							<button class="btn btn-outline-dark" onclick="location.href='/kjk/member/join';" type="submit" style="width: auto; margin-left: 3px">회원 가입
-							</button>
+							<button class="btn btn-outline-dark" onclick="location.href='/kjk/member/join';" type="submit" style="width: auto; margin-left: 3px">회원
+								가입</button>
 						</c:otherwise>
 					</c:choose>
 				</ul>

@@ -6,24 +6,23 @@
 	<!-- id == DAO.method name -->
 	<select id="getLogin" parameterType="MemberDTO"
 		resultMap="getLoginResult">
-		select m.userid, m.username, c.classname, c.classnum
+		select m.userID, m.userName, c.classname, c.classnum
 		from
 		promembers m
 		LEFT join <!-- userclass 자동부여 만들고 inner -->
 		userclass uc
-		on m.userid = uc.userid
+		on m.userID = uc.userID
 		LEFT join <!-- class 자동부여 만들고 inner -->
 		class c
 		on
 		uc.classnum = c.classnum
-		where m.userid=#{userid} and
-		m.pwd=#{pwd}
-		<!-- sql문 에러 고치기 -->
+		where m.userID = #{userID} and
+		m.pwd = #{pwd}
 	</select>
 
 	<resultMap type="MemberDTO" id="getLoginResult">
-		<id column="userid" property="userid" />
-		<result column="username" property="username" />
+		<id column="userID" property="userID" />
+		<result column="USERName" property="userName" />
 		<collection property="classDTOs" javaType="List"
 			ofType="ClassDTO">
 			<id column="classnum" property="classNum" />
@@ -32,15 +31,16 @@
 	</resultMap>
 
 	<insert id="setJoin" parameterType="MemberDTO">
-		insert all into promembers values
-		(#{userid}, #{username}, #{pwd},
+		insert all into promembers
+		values
+		(#{userID}, #{userName}, #{pwd},
 		#{email},
-		#{age}, #{birth}, #{phone}, #{gender})
+		#{age}, #{birth},
+		#{phone}, #{gender})
 		into userclass
-		values(class_seq.nextval, #{userid}, 6)
+		values(class_seq.nextval, #{userID},
+		6)
 		select * from dual
-		<!-- insert into promembers values(#{userid}, #{username}, #{pwd}, #{email}, 
-			#{age}, #{birth}, #{phone}, #{gender}) -->
 	</insert>
 
 	<select id="getMyPage" parameterType="MemberDTO"
@@ -50,16 +50,16 @@
 		promembers m
 		LEFT join
 		userclass uc
-		on m.userid = uc.userid
+		on m.userID = uc.userID
 		LEFT join
 		class c on
 		uc.classnum =
 		c.classnum
-		where m.userid=#{userid}
+		where m.userID = #{userID}
 	</select>
 	<resultMap type="MemberDTO" id="getMyPageResult">
-		<id column="USERID" property="userid" />
-		<result column="userNAME" property="username" />
+		<id column="userID" property="userID" />
+		<result column="USERName" property="userName" />
 		<result column="pwd" property="pwd" />
 		<result column="EMAIL" property="email" />
 		<result column="age" property="age" />
@@ -77,12 +77,12 @@
 	<select id="adMyPage" parameterType="MemberDTO"
 		resultMap="aMyPage"> <!-- resultMap="aMyPage" -->
 		select * from
-		promembers order by userid asc
+		promembers order by userID asc
 	</select>
 
 	<resultMap type="MemberDTO" id="aMyPage">
-		<id column="userid" property="userid" />
-		<result column="username" property="username" />
+		<id column="userID" property="userID" />
+		<result column="USERSName" property="userName" />
 		<result column="pwd" property="pwd" />
 		<result column="email" property="email" />
 		<result column="age" property="age" />
@@ -97,20 +97,18 @@
 	</resultMap>
 
 	<update id="setUpdate" parameterType="MemberDTO">
-		<!-- update promembers set userid=#{userid}, username=#{username}, pwd=#{pwd}, 
-			email=#{email}, age=#{age}, birth=#{birth}, phone=#{phone}, gender=#{gender} 
-			where userid=#{userid} -->
 		update promembers set
-		userid=#{userid}, username = #{username}, pwd = #{pwd}, email = #{email}
-		, age = #{age}, birth=#{birth} ,phone = #{phone}, gender = #{gender}
-		where userid = #{userid}
+		userID = #{userID}, userName = #{userName}, pwd = #{pwd}, email =
+		#{email}, age = #{age}, birth=#{birth} ,phone = #{phone}, gender =
+		#{gender}
+		where userID = #{userID}
 	</update>
 
 	<delete id="setDelete" parameterType="MemberDTO">
 		delete
 		from promembers
 		where
-		userid = #{userid}
+		userID = #{userID}
 	</delete>
 
 </mapper>

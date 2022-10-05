@@ -45,8 +45,8 @@ a {
 					%>
 					<c:forEach items="${dto}" var="dto">
 						<tr>
-							<td>${dto.userid}</td>
-							<td>${dto.username}</td>
+							<td>${dto.userID}</td>
+							<td>${dto.userName}</td>
 							<td>${dto.pwd}</td>
 							<td>${dto.email}</td>
 							<td>${dto.age}</td>

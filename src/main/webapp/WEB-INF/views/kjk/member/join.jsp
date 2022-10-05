@@ -41,7 +41,7 @@
 						<!-- id -->
 						<div class="mb-3">
 							<label class="form-label">아이디</label>
-							<input type="text" class="form-control" name="userid" aria-describedby="emailHelp" id="id"
+							<input type="text" class="form-control" name="userID" aria-describedby="emailHelp" id="id"
 								placeholder="아이디 입력" onfocus="this.placeholder=''" onblur="this.placeholder='아이디 입력'">
 							<!-- id를 입력하고 나왔을 때 2글자 미만이면 메세지 출력 : id는 2글자 이상 -->
 							<div style="display: block; text-align: left; margin-left: 3%;">*ID는 변경이 불가합니다*</div>
@@ -67,7 +67,7 @@
 						<!-- name -->
 						<div class="mb-3">
 							<label class="form-label">닉네임</label>
-							<input type="text" class="form-control" name="username" aria-describedby="emailHelp"
+							<input type="text" class="form-control" name="userName" aria-describedby="emailHelp"
 								id="name" placeholder="닉네임 입력" onfocus="this.placeholder=''"
 								onblur="this.placeholder='닉네임 입력'">
 							<!-- 입력 후 최소 1글자 이상 -->

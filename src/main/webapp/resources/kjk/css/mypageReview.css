@@ -869,11 +869,12 @@ html {
     overflow: hidden;
     float: right;
     position: relative;
-    width: 156px;
-    height: 120px;
+    width: 186px;
+    height: 150px;
     margin-left: 40px;
     border-radius: 6px;
     background-color: #f3f3f3;
+    margin-bottom: 2%;
 }
 
 .item_issue .wrap_thumb:after {
@@ -905,7 +906,7 @@ html {
 
 .item_issue .cont_thumb .logo_cp .thumb_g {
     width: auto;
-    height: 80%
+    height: auto;
 }
 
 .item_issue .cont_thumb .txt_category {

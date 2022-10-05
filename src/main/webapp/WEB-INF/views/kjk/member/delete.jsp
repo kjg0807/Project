@@ -26,12 +26,12 @@
 				<section class="col-lg-6 container-fluid mt-4">
 					<div id="body-wrapper">
 						<div class="row" id="body-content">
-							<input type="hidden" name="userid" value="${dto.userid}">
+							<input type="hidden" name="userid" value="${dto.userID}">
 							<!-- 이름 입력 -->
 							<div class="mb-3">
 								<label class="form-label">이름</label>
-								<input type="hidden" name="username" id="user" value="${dto.username}">
-								<input type="text" class="form-control" name="userName" id="userName"
+								<input type="hidden" name="userName" id="user" value="${dto.userName}">
+								<input type="text" class="form-control" name="username" id="username"
 									placeholder="이름 입력" onfocus="this.placeholder=''" onblur="this.placeholder='이름 입력'">
 								<div style="font-size: small;">
 									<b>이름을 입력하세요.</b>

@@ -53,18 +53,17 @@
 									<td>메뉴</td>
 								</tr>
 								<tr>
-									<td>${dto.userid }</td>
-									<td>${dto.username }</td>
+									<td>${dto.userID }</td>
+									<td>${dto.userName }</td>
 									<td>${dto.email }</td>
 									<td>${dto.phone }</td>
 									<td>
-										<a href="./update?userid=${dto.userid}">수정</a> <a
-											href="./delete?userid=${dto.userid}">삭제</a>
+										<a href="./update?userid=${dto.userID}">수정</a> <a
+											href="./delete?userid=${dto.userID}">삭제</a>
 									</td>
 								</tr>
 							</table>
-							<div>
-								<br><br><br>
+							<div style="padding-top: 5%;">
 								<b>내가 쓴 리뷰</b>
 							</div>
 							<hr>
@@ -86,7 +85,7 @@
 													data-tiara-id="20221004153603915" data-tiara-type="harmony"
 													data-tiara-ordnum="1"
 													data-tiara-custom="contentUniqueKey=hamny-20221004153603915&amp;clusterId=5150091,5590543,5599922,1691287,191589&amp;clusterTitle=사회,[언론사픽] 주요뉴스,[품질검수] 뉴스 필터링,경기도 양평군,윤석열&amp;keywordType=NONE,NONE,NONE,NONE,NONE">
-													경찰 '양평 공흥지구' 수사 1년..尹 장모 조사는 아직
+													으에에에에ㅔ에에에에에에ㅔㅔ 내용은 아직
 												</a>
 												<p class="ppa">으에에에에ㅔ에에에에에에ㅔㅔ</p>
 											</strong>
