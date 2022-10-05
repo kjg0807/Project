@@ -24,6 +24,8 @@ const clos = document.querySelector(".close");
 const cat = document.querySelector("#cat");
 const cat2 = document.querySelector("#cat2");
 
+
+
 //page번호를 담는 변수
 let page = 1;
 //reviewNum 을 담는 변수
@@ -178,33 +180,51 @@ function getReviewsCommentList(p, rn){
     
                 tb.appendChild(tr);
    
-                
-                //더보기 버튼
-                if(page >= result.reviewsCommentPager.totalPage){
-                    plus.classList.add("disabled");
-                }else {
-                    plus.classList.remove("disabled");
-                }
-
-
-                //더보기로 늘어난 창 줄이기 버튼
-                if(page < result.reviewsCommentPager.perPage){
-                    minus.classList.add("disabled");
-                }else{
-                    minus.classList.remove("disabled");
-                }
-
-
-                // if(page >= result.reviewsCommentPager.totalPage){
+                console.log('more : ', page > result.reviewsCommentPager.totalPage)
+                // //더보기 버튼
+                // if(page > result.reviewsCommentPager.totalPage){
                 //     plus.classList.add("disabled");
+                // }else {
+                //     plus.classList.remove("disabled");
                 // }
 
+
+                // //더보기로 늘어난 창 줄이기 버튼
+
+                // //지금 페이지가 한페이지에 출력할 글의 갯수(perPage)보다 작다면 minus버튼 활성화
+                // //더보기로 끝까지 핀 전체 페이지가 현재페이지와 같으면 활성화
+                // if(page == result.reviewsCommentPager.totalPage){
+                //     minus.classList.add("disabled");
+                // }else{
+                //     minus.classList.remove("disabled");
+                // }
                 
     
                 reviewsCommentList.append(tb);
     
+                
+
     
-            }
+            }//for문 끝
+
+                //더보기 버튼
+                if(page >= result.reviewsCommentPager.totalPage){
+                    plus.classList.add("disabled");
+                    // minus.classList.remove("disabled");
+                }else {
+                    // minus.classList.add("disabled");
+                    plus.classList.remove("disabled");
+                }
+
+                if(page == result.reviewsCommentPager.totalPage){
+                    minus.classList.remove("disabled");
+                }else{
+                    minus.classList.add("disabled");
+                }
+
+                
+                
+
         }//if end
 
     });
@@ -221,14 +241,17 @@ plus.addEventListener("click", function(){
 
     getReviewsCommentList(page,reviewNum);
 });
-
 //----------------더보기 닫기---------------
 minus.addEventListener("click", function(){
-    page--;
+    page = 1;
     const reviewNum = btn.getAttribute("data-reviewNum");
     console.log("reviewNum : " , reviewNum);
 
+    console.log(getReviewsCommentList(page,reviewNum));
     getReviewsCommentList(page,reviewNum);
+    console.log("parendNode : " , reviewsCommentList.parentNode);
+    console.log("tb : " ,tb);
+    
 
 });
 

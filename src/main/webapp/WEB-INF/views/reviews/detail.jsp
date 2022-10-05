@@ -208,9 +208,8 @@
 			</thead>
 		</table>
 
-			<button id="plus" class="btn btn-secondary disabled">더보기</button>
-
-			<button id="minus" class="btn btn-success disabled">닫기</button>
+			<button id="plus" class="btn btn-primary">더보기</button>
+			<button id="minus" class="btn btn-success disabled" onclick="location.href='./detail?reviewNum=${dto.reviewNum}'">닫기</button>
 
 	</div>
 	<!-- 댓글 끝 -->
