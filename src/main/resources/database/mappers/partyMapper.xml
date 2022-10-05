@@ -69,8 +69,8 @@
     	SELECT * FROM PARTY WHERE PARTYNUM = #{partyNum}
     </select>
     
-    <update id="setPartyAccept" parameterType="PartyListDTO">
-    	UPDATE PARTY SET PARTYREQUEST = 1 WHERE USERID = #{userID}
+    <update id="setPartyAccept" parameterType="PartyDTO">
+    	UPDATE PARTY SET PARTYREQUEST = 1 WHERE  PARTYNUM = #{partyNum} AND USERNAME = #{userName}
     </update>
     
     <delete id="setPartyCancel" parameterType="PartyDTO">
