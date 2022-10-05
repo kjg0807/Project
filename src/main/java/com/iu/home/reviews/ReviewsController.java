@@ -52,6 +52,7 @@ public class ReviewsController {
 		System.out.println("리뷰 Detail 실행");
 		
 		reviewsDTO = reviewsService.getReviewsDetail(reviewsDTO);
+		reviewsService.setReviewsHitsUpdate(reviewsDTO);
 		
 		mv.addObject("dto", reviewsDTO);
 		mv.setViewName("reviews/detail");
@@ -267,6 +268,8 @@ public class ReviewsController {
 		
 		return result;
 	}
+	
+	
 	
 	
 

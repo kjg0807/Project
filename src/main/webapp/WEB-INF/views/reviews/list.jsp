@@ -11,6 +11,11 @@
 		integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx"
 		 crossorigin="anonymous">
 <c:import url="../template/headerHTML.jsp"></c:import>
+<!-- <style>
+	#tdiv{
+		cursor: pointer;
+	}
+</style> -->
 </head>
 <body>
 <section class="container-fluid col-lg-8 mt-5">
@@ -56,15 +61,14 @@
 		<tbody>
 			<c:forEach items="${requestScope.list}" var="dto">
 				
-				<tr>
-					<td>${pageScope.dto.reviewNum}</td>
-					
-					<td><a href="./detail?reviewNum=${pageScope.dto.reviewNum}">${pageScope.dto.userId}</a></td>
-
-					<td>${pageScope.dto.title}</td>
-					<td>${pageScope.dto.contents}</td>
-					<td>${pageScope.dto.reviewDate}</td>
-					<td>${pageScope.dto.hits}</td>
+				<tr id="tdiv">
+					<td class="tdpointer">${pageScope.dto.reviewNum}</td>
+					<td class="tdpointer">${pageScope.dto.userId}</td>
+							
+					<td class="tdpointer"><a href="./detail?reviewNum=${pageScope.dto.reviewNum}">${pageScope.dto.title}</a></td>
+					<td class="tdpointer">${pageScope.dto.contents}</td>
+					<td class="tdpointer">${pageScope.dto.reviewDate}</td>
+					<td class="tdpointer">${pageScope.dto.hits}</td>
 				</tr>
 			</c:forEach>
 		</tbody>

@@ -139,4 +139,8 @@ public class ReviewsService {
 		return reviewsCommentDAO.setReviewsCommentDelete(reviewsCommentDTO);
 	}
 	
+	public int setReviewsHitsUpdate(ReviewsDTO reviewsDTO) throws Exception{
+		return reviewsDAO.setReviewsHitsUpdate(reviewsDTO);
+	}
+	
 }

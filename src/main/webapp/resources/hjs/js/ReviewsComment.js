@@ -40,6 +40,11 @@ btn.addEventListener("click", function(){
     console.log(wv);
     console.log(cv);
 
+
+
+    //댓글달기
+
+
     // --ajax--
     
 
@@ -70,15 +75,21 @@ btn.addEventListener("click", function(){
             
             if(result == 1){
                 confirm("성공적인 답글 달기~!");
-                self.close();
+                // self.close();
 
                 for(let i=0; i<reviewsCommentList.children.length;){
+                    console.log("zzzzzzzzzzzzzzzz : ",reviewsCommentList.children[0]);
+                    // reviewsCommentList.children[0].remove();
                     reviewsCommentList.children[0].remove();
                 }
 
+                //댓글을 달면 1페이지로 보여줌
                 page = 1;
 
                 getReviewsCommentList(page, reviewNum);
+
+                writer.value='';
+                contents.value='';
 
             }else{
                 alert("답글 달기 실패~!!");
@@ -166,18 +177,27 @@ function getReviewsCommentList(p, rn){
                 tr.appendChild(td);
     
                 tb.appendChild(tr);
-    
+   
+                
+                //더보기 버튼
                 if(page >= result.reviewsCommentPager.totalPage){
                     plus.classList.add("disabled");
                 }else {
                     plus.classList.remove("disabled");
                 }
 
+
+                //더보기로 늘어난 창 줄이기 버튼
                 if(page < result.reviewsCommentPager.perPage){
                     minus.classList.add("disabled");
                 }else{
                     minus.classList.remove("disabled");
                 }
+
+
+                // if(page >= result.reviewsCommentPager.totalPage){
+                //     plus.classList.add("disabled");
+                // }
 
                 
     
@@ -428,3 +448,16 @@ function modalDisplay(text){
 // cat2.addEventListener("click", function(){
 //     cat.click();
 // });
+
+
+//리스트 테이블 tr을 눌렀을때 조회수 1씩 증가
+
+const trow = document.querySelectorAll("#trow");
+
+trow.forEach(function(tr, index){
+    console.log(tr);
+
+    tr.addEventListener("click", function(){
+        console.log("tr 클릭이벤트");
+    });
+});

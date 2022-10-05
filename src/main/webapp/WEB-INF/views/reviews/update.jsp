@@ -29,12 +29,12 @@
 				<input type="hidden" name="reviewNum" readonly="readonly" value="${dto.reviewNum}">
 			<div class="mb-3">
 			<label for="formGroupExampleInput" class="form-label">제목</label>
-			<input type="text" class="form-control" name="title" placeholder="${dto.title}">
+			<input type="text" class="form-control" name="title" placeholder="제목을 입력해주세요 : ">
 			</div>
 			
 			<div class="mb-3">
 			<label for="formGroupExampleInput2" class="form-label">글내용</label>
-			<textarea class="form-control" name="contents" id="contents" rows="5" placeholder="내용: ${dto.contents}"></textarea>
+			<textarea class="form-control" name="contents" id="contents" rows="5" placeholder="내용을 입력해주세요 : "></textarea>
 			</div>
 			
 			<!-- <span class="form-control">안녕</span> -->
@@ -71,5 +71,6 @@
 	$("#contents").summernote();
 </script>
 <script src="../../../resources/hjs/js/reviewsFile.js"></script>
+<script src="../../../resources/hjs/js/summernote.js"></script>
 </body>
 </html>

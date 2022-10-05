@@ -90,6 +90,10 @@
  	<delete id="setReviewsFilesDelete" parameterType="ReviewsFilesDTO">
 		DELETE REVIEWS_FILES WHERE FILESNUM = #{filesNum}
 	</delete>
+	
+	<update id="setReviewsHitsUpdate">
+		UPDATE REVIEWS SET HITS = HITS + 1 WHERE REVIEWNUM = #{reviewNum}
+	</update>
 	 
 	
 	

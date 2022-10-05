@@ -41,10 +41,10 @@
 		
 		
 	
+		<button type="submit" class="btn btn-success">추가완료</button>
+		
 	</form>
-			<button type="submit" class="btn btn-success">추가완료</button>
-	
-		<button onclick="location='/'" class="btn btn-primary">홈으로</button>
+	<button onclick="location='/'" class="btn btn-primary">홈으로</button>
 	
 		    			 </section>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"

@@ -13,6 +13,11 @@
 <!-- <link rel="stylesheet" href="../../../resources/css/reviewsComment.css">  -->
 <link rel="stylesheet" href="../../../resources/hjs/css/imageModal.css">
 <link rel="stylesheet" href="../../../resources/hjs/css/reviewsButton.css">
+<style>
+	.img{
+		cursor: pointer;
+	}
+</style>
 </head>
 <body>
 
@@ -113,9 +118,10 @@
 												</div>
 											</div>
 										</div>
+									</div>
 								<!-- Modal -->
 										<!--모달에 뜨는 닫기창-->
-										<span class="close">&times;</span>	
+										<span class="close"></span>	
 										<img class="modeal_contents" id="rvimg">
 									
 								</td>
@@ -124,7 +130,7 @@
 									Launch demo modal
 								</button>
 
-							</div>
+							
 						
 					</tr>
 					
@@ -264,5 +270,15 @@
 				 
 	
 <script src="../../../resources/hjs/js/ReviewsComment.js"></script>
+<script>
+	function clean(){
+		var clean = document.getElementsByClassName('clean');
+
+		//글을 쓸때마다 ''빈칸으로 만든다
+		for(var i=0; i<clean.length;i++){
+			clean[i].value='';
+		}
+	}
+</script>
 </body>
 </html>
