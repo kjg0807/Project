@@ -26,12 +26,12 @@ function id1() {
         const iidd = DBID[i].value;
         // console.log("DB값 나오냐: " + iidd);
         // console.log("입력 값:" + d);
-        // console.log("DB 입력과 저장된게 다르면");
-        // console.log(d != iidd);
-        // console.log("DB 입력과 저장된게 같으면");
-        // console.log(d == iidd);
-        // console.log("----------------------------------------------");
-        if (d != iidd) {
+        console.log("DB 입력과 저장된게 다르면");
+        console.log(d != iidd);
+        console.log("DB 입력과 저장된게 같으면");
+        console.log(d == iidd);
+        console.log("----------------------------------------------");
+        if ((d != iidd) == false) {
             document.getElementById("idText1").style.display = 'block';
             idcheck = false;
         }
