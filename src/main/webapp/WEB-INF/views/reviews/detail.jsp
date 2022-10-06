@@ -110,7 +110,7 @@
 														<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 													</div>
 																
-													<div class="modal-body">
+													<div class="modal-body" id="mb">
 														<img src="" class="img" id="c1">		
 														<!-- <img class="img" src="../resources/upload/reviews/">													 -->
 													</div>

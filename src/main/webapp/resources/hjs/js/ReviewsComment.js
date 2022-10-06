@@ -223,7 +223,6 @@ function getReviewsCommentList(p, rn){
                 }
 
                 
-                
 
         }//if end
 
@@ -241,6 +240,7 @@ plus.addEventListener("click", function(){
 
     getReviewsCommentList(page,reviewNum);
 });
+
 //----------------더보기 닫기---------------
 minus.addEventListener("click", function(){
     page = 1;
@@ -250,7 +250,8 @@ minus.addEventListener("click", function(){
     console.log(getReviewsCommentList(page,reviewNum));
     getReviewsCommentList(page,reviewNum);
     console.log("parendNode : " , reviewsCommentList.parentNode);
-    console.log("tb : " ,tb);
+
+    reviewsCommentList.tb.remove();
     
 
 });
