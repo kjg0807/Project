@@ -11,7 +11,14 @@
 >
 <c:import url="../template/headerHTML.jsp"></c:import>
 </head>
-
+<style>
+#conText {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	max-width: 200px;
+}
+</style>
 <body>
 	<section class="container-fluid col-lg-10 mt-5">
 		<h1>리뷰 목록</h1>
@@ -60,7 +67,7 @@
 						<td>${pageScope.dto.reviewNum}</td>
 						<td>${pageScope.dto.userId}</td>
 						<td>${pageScope.dto.title}</td>
-						<td>${pageScope.dto.contents}</td>
+						<td id="conText">${pageScope.dto.contents}</td>
 						<td>${pageScope.dto.reviewDate}</td>
 						<td>${pageScope.dto.hits}</td>
 
@@ -72,7 +79,9 @@
 							</c:when>
 							<c:otherwise>
 								<td>
-									<button class="btn btn-outline-dark" onclick="location.href='./detail?reviewNum=${pageScope.dto.reviewNum}'" type="submit" style="width: auto;">클릭</button>
+									<button class="btn btn-outline-dark" onclick="location.href='./detail?reviewNum=${pageScope.dto.reviewNum}'" type="submit"
+										style="width: auto;"
+									>클릭</button>
 								</td>
 							</c:otherwise>
 						</c:choose>

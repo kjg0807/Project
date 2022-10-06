@@ -33,7 +33,6 @@
 		<body>
 			<c:import url="../../template/headerHTML.jsp"></c:import>
 
-
 			<form action="../member/update" method="post" id="frm">
 				<br>
 				<h1 style="text-align: center;">정보 수정</h1>
@@ -42,7 +41,7 @@
 						<!-- id -->
 						<div class="mb-3">
 							<!-- <label class="form-label">아이디</label> -->
-							<p><b>아이디: ${dto.userid}</b></p>
+							<p><b>아이디: ${dto.userID}</b></p>
 							<input type="hidden" class="form-control" name="userID" id="id" value="${dto.userID}">
 							<!-- id를 입력하고 나왔을 때 2글자 미만이면 메세지 출력 : id는 2글자 이상 -->
 							<div id="idText" style="display: none; color: red;">ID는 2글자 이상 입력해야 합니다.</div>

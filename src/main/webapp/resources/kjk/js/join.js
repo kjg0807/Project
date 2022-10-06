@@ -9,7 +9,7 @@ phonecheck = true;
 
 id.addEventListener("blur", id1);
 function id1() {
-    console.log(id.value);
+    console.log("id: " + id.value);
     let d = id.value;
     if (d.length < 2) {
         document.getElementById("idText").style.display = 'block';
@@ -19,8 +19,27 @@ function id1() {
         document.getElementById("idText").style.display = 'none';
         idcheck = true;
     }
-    // let realid = document.getElementById("usid");
-    // realid.value = id.value;
+    const DBID = document.querySelectorAll("#DBuserID");
+
+    for (let i = 0; i < DBID.length; i++) {
+        // console.log("DB값 나오냐: " + DBID[i].value);
+        const iidd = DBID[i].value;
+        // console.log("DB값 나오냐: " + iidd);
+        // console.log("입력 값:" + d);
+        // console.log("DB 입력과 저장된게 다르면");
+        // console.log(d != iidd);
+        // console.log("DB 입력과 저장된게 같으면");
+        // console.log(d == iidd);
+        // console.log("----------------------------------------------");
+        if (d != iidd) {
+            document.getElementById("idText1").style.display = 'block';
+            idcheck = false;
+        }
+        else {
+            document.getElementById("idText1").style.display = 'none';
+            idcheck = true;
+        }
+    }
 }
 
 // pwd를 입력할 때마다 (1글자씩) 메세지를 출력 : pwd - 최소 6글자 이상

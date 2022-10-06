@@ -130,15 +130,16 @@ public class MemberController
 	}
 
 	@GetMapping(value = "update")
-	public void update(MemberDTO memberDTO, Model model) throws Exception
+	public void update(HttpSession session, Model model) throws Exception
 	{
 		System.out.println("Update GET Page");
 
+		MemberDTO memberDTO = (MemberDTO) session.getAttribute("member");
 		memberDTO = memberService.getMyPage(memberDTO);
 
-		// System.out.println(memberDTO.getUserid());
-		// System.out.println(memberDTO.getPwd());
-		// System.out.println(memberDTO.getGender());
+		System.out.println(memberDTO.getUserID());
+		System.out.println(memberDTO.getPwd());
+		System.out.println(memberDTO.getGender());
 
 		model.addAttribute("dto", memberDTO);
 	}
@@ -150,7 +151,7 @@ public class MemberController
 		int rs = memberService.setUpdate(memberDTO);
 		System.out.println(rs == 1);
 
-		return "redirect:./mypage?userid=" + memberDTO.getUserID();
+		return "redirect:./mypage?userID=" + memberDTO.getUserID();
 	}
 
 	@GetMapping(value = "delete")
@@ -171,5 +172,11 @@ public class MemberController
 		session.invalidate();
 
 		return "redirect:../../";
+	}
+
+	@GetMapping(value = "idCheck")
+	public void idCheck() throws Exception
+	{
+		System.out.println("GET idCheck");
 	}
 }

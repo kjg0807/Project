@@ -26,7 +26,7 @@
 				<section class="col-lg-6 container-fluid mt-4">
 					<div id="body-wrapper">
 						<div class="row" id="body-content">
-							<input type="hidden" name="userid" value="${dto.userID}">
+							<input type="hidden" name="userID" value="${dto.userID}">
 							<!-- 이름 입력 -->
 							<div class="mb-3">
 								<label class="form-label">이름</label>

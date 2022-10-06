@@ -98,9 +98,8 @@
 
 	<update id="setUpdate" parameterType="MemberDTO">
 		update promembers set
-		userID = #{userID}, userName = #{userName}, pwd = #{pwd}, email =
-		#{email}, age = #{age}, birth=#{birth} ,phone = #{phone}, gender =
-		#{gender}
+		userName = #{userName}, pwd = #{pwd}, email = #{email},
+		age = #{age}, birth=#{birth}, phone = #{phone}, gender = #{gender}
 		where userID = #{userID}
 	</update>
 

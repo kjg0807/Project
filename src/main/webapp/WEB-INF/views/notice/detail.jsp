@@ -15,12 +15,16 @@
 #context {
 	width: 200px;
 }
+
+textarea {
+	resize: none;
+}
 </style>
 
 <body>
 
-	<section class="container-fluid col-lg-6 mt-5">
-		<h1>공지사항 Detail Page</h1>
+	<section class="container-fluid col-lg-10 mt-5">
+		<h1 style="text-align: center;">공지사항 Detail Page</h1>
 
 		<table border="1" class="table table-striped table-hover">
 			<thead>
@@ -47,8 +51,13 @@
 			</tbody>
 		</table>
 
-		<a href="./list">리스트</a> <a href="./update?num=${dto.num}">수정하기</a> <a href="./delete?num=${dto.num}">삭제하기</a>
+		<!-- <a href="./update?num=${dto.num}">수정하기</a> <a href="./delete?num=${dto.num}">삭제하기</a> -->
 		<button onclick="location='/'" class="btn btn-primary">홈으로</button>
+		<div style="display: inline-flex; margin-left: 54%;">
+			<button style="margin-right: 2px;" onclick="location='./update?num=${dto.num}'" class="btn btn-primary">수정하기</button>
+			<button onclick="location='./delete?num=${dto.num}'" id="deleteBtn" class="btn btn-danger">삭제하기</button>
+			<!-- <button class="btn btn-danger" id="deleteBtn">asda</button> -->
+		</div>
 	</section>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"
