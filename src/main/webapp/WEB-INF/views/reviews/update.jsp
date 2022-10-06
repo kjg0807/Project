@@ -29,7 +29,7 @@
 				<input type="hidden" name="reviewNum" readonly="readonly" value="${dto.reviewNum}">
 			<div class="mb-3">
 			<label for="formGroupExampleInput" class="form-label">제목</label>
-			<input type="text" class="form-control" name="title" placeholder="제목을 입력해주세요 : ">
+			<input type="text" class="form-control" name="title" placeholder="${dto.title}">
 			</div>
 			
 			<div class="mb-3">

@@ -46,7 +46,7 @@
 
 </form>
 
-	<table border="1" class="table table-striped col-lg-16">
+	<table border="1" class="table table-striped table-hover col-lg-16">
 		<thead class="table-danger">
 			<tr>
 				<th>리뷰글번호</th>

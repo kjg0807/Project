@@ -21,7 +21,7 @@
 	
 		<div class="mb-3">
 		  <label for="formGroupExampleInput" class="form-label">제목</label>
-		  <input type="text" class="form-control" name="title" placeholder="${dto.title}">
+		  <input type="text" class="form-control" name="title" placeholder="제목을 입력하세요.">
 		</div>
 		
 		<div class="mb-3">
@@ -31,7 +31,7 @@
 		
 		<div class="mb-3">
 		  <label for="formGroupExampleInput2" class="form-label">글내용</label>
-		  <input type="text" class="form-control" name="contents" placeholder="${dto.contents}">
+		  <input type="text" class="form-control" name="contents" placeholder="내용을 입력하세요.">
 		</div>
 		
 		<br>
