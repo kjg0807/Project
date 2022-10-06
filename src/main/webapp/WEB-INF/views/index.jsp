@@ -90,7 +90,6 @@
                     
                     <div class="col mb-5" data-category="한식">
                         <div class="card h-100 categorykor" id="categoryName" name="categoryName">
-                            <input type="text" name="categoryName" value="한식">
                             <button type="submit" style="display: none;"></button>
                             <!-- Product image-->
                             <img class="card-img-top" src="../../resources/kdy/images/korea.jpg" alt="..." value="한식" />
@@ -176,8 +175,9 @@
                 </div>
                 <!-- <div style="border-bottom: solid 1px gainsboro; height: 200px;"><span>조회수 높은 식당 TOP10</span></div> -->
                 <div  style="border-bottom: solid 1px black; height: 100px;" id="hitList" class="mainList">조회수 높은 식당 TOP10</div>
-                        <c:forEach items="${requestScope.list}" var="list">
-
+                <div>
+                        <c:forEach items="${list}" var="list">
+                            <span>리스트다 인마</span>
                             <div class="shop_list"  onclick="location.href='/shop/detailHTML?shopNum=${list.getShopNum()}';">
 
                                 <div class="list" style="box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px" >
@@ -217,8 +217,11 @@
                             <input name="shopNum" type="hidden" id="shopNum" value="${list.shopNum}">
                             </div> 
                     </c:forEach>
-                    
-                <div style="border-bottom: solid 1px black; height: 100px;" class="mainList">리뷰 많은 식당 TOP10</div>
+                    <!-- 위로보내주는 버튼 -->
+                    <br>
+                    <button onclick="window.location.href='#top'" style="color: black; box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;">위로가기</button>
+
+                </div>
                 
             </div>
 		<a href="./chat/chat">chat</a>

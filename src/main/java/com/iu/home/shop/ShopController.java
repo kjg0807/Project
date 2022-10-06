@@ -20,13 +20,13 @@ import com.iu.home.menu.MenuDTO;
 import com.iu.home.util.ShopPager;
 
 @Controller
-@RequestMapping(value = "/*")
+@RequestMapping(value = "/shop/*")
 public class ShopController {
 	
 	@Autowired
 	private ShopService shopService;
 	
-	@PostMapping("/shop/add")
+	@PostMapping("add")
 	@ResponseBody
 	public ModelAndView setAdd(ShopDTO shopDTO, MultipartFile[] files,HttpSession session)throws Exception{
 		ModelAndView mv = new ModelAndView();	
@@ -39,7 +39,7 @@ public class ShopController {
 		return mv;		
 	}
 
-	@GetMapping(value = "/shop/listHTML")
+	@GetMapping(value = "listHTML")
 	public ModelAndView getList(ShopPager shopPager)throws Exception{
 		System.out.println("getList");
 		ModelAndView mv = new ModelAndView();
@@ -50,18 +50,7 @@ public class ShopController {
 		return mv;
 	}
 	
-	@GetMapping(value = "../index")
-	public ModelAndView getHitList(ShopDTO shopDTO)throws Exception{
-		System.out.println("getHitList");
-		ModelAndView mv = new ModelAndView();
-		List<ShopDTO> ar = shopService.getHitList(shopDTO);
-		mv.addObject("list", ar);
-		mv.setViewName("../index");
-		return mv;
-	}
-	
-	
-	@GetMapping(value = "/shop/detailHTML")
+	@GetMapping(value = "detailHTML")
 	public ModelAndView getDetail(ShopDTO shopDTO)throws Exception{
 		System.out.println("getDetail");
 		System.out.println();
@@ -93,7 +82,7 @@ public class ShopController {
 	public ModelAndView setDelete(ShopDTO shopDTO)throws Exception{
 		ModelAndView mv = new ModelAndView();
 		int result = shopService.setDelete(shopDTO);
-		mv.setViewName("redirect:./list");
+		mv.setViewName("redirect:./listHTML");
 		return mv;
 	}
 //	------------------------------------------------------------------------------------------------------------------------MENU

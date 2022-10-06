@@ -23,6 +23,8 @@ public class ShopService {
 	@Autowired
 	private ShopFileManager shopFileManager;
 	
+
+	
 	
 	public int setAdd(ShopDTO shopDTO, MultipartFile[] files, ServletContext servletContext)throws Exception{
 		int result = shopDAO.setAdd(shopDTO);

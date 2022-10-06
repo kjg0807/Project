@@ -26,11 +26,12 @@
                   <!-- <img src="../../../../resources/upload/shop"> -->
               </c:forEach>
             </div>
-
-    <main> 
-        <div class="container" style="margin-top: 200px;">
-                        <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">                     
-                                <div class="modal-dialog">
+            
+            <main> 
+              <div class="container" style="margin-top: 200px;">
+              
+                <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">                     
+                  <div class="modal-dialog">
                                   <div class="modal-content">
                                     <div class="modal-header">
                                         <h5 class="modal-title" id="exampleModalLabel">게시글 수정</h5>
@@ -70,7 +71,7 @@
                                           </div> -->
                                           <div class="mb-3">
                                             <label for="message-text" class="col-form-label"> </label>
-                                            가게 주소 수정<input type="text" class="form-control" value="${detail.shopAddress}" name="shopAddress">
+                                            가게 주소 수정<input type="text" class="form-control"   placeholder="${detail.shopAddress}" name="shopAddress">
                                           </div>
                                           <div class="mb-3" id="map" style="width:500px;height:400px;">
                                             <label for="message-text" class="col-form-label"> </label>
@@ -95,26 +96,29 @@
                                             <c:forEach items="${detail.shopFileDTOs}" var="fileDTO">
                                               <div class="mb-3">
                                                 <img class="flex image" style="width: 380px; height: 380px;" src="../../../../resources/upload/shop/${fileDTO.fileName}">
-                                                <button type="button" class="fileDelete" data-file-num="${fileDTO.fileNum}" style="color: red;"> Delete </button>
+                                                <button type="button" class="fileDelete" data-file-num="${fileDTO.fileNum}" style="color: red; box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;"> Delete </button>
                                               </div>
                                             </c:forEach>
-                                              <!--  <div id="addFiles" class="mb-3">
-                                                      <i class="fa-regular fa-image"></i>
-                                                      <label for="message-text" class="col-for m-label"></label>
-                                                      <input type="file" name="files" id="fileAdd">파일
-                                                    </div> -->
-
+                                            <!--  <div id="addFiles" class="mb-3">
+                                              <i class="fa-regular fa-image"></i>
+                                              <label for="message-text" class="col-for m-label"></label>
+                                              <input type="file" name="files" id="fileAdd">파일
+                                            </div> -->
+                                            
                                             <div id="addFiles">
                                               <button style="color: blue;" type="button"name="files" id="fileAdd">파일추가</button>
                                             </div>
+                                     
 
+                                              <button style="border-top: solid 1px gainsboro;  padding-bottom: 25px; padding-top: 25px;"  type="button" id="shopDelete" class="btn btn-danger" onclick="location.href='/shop/delete?shopNum=${detail.getShopNum()}';">가게 삭제</button> 
+                                     
                                         
 
 							                            </div>
                                     
                                                 <div class="modal-footer">
-                                                    <div class="dy flex" id="shopDelete" style="color: red;" onclick="location.href='/shop/delete?shopNum=${detail.getShopNum()}';">&ensp;가게 삭제</div>
-                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소하기</button>
+                                                   
+                                                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">취소하기</button>
                                                     <button type="submit" class="btn btn-primary">등록하기</button>
                                                 </div>
 					                               </form>
@@ -122,25 +126,27 @@
                                 </div>
                             </div>
                             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal1" data-bs-whatever="@mdo">게시글 수정</button>
-                            <button type="hidden" class="btn btn-primary" id="menuAdd" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">대표메뉴 등록</button> 
+                            <button type="button" class="btn btn-primary" id="menuAdd" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">메뉴 등록</button> 
+                           
+                           
 
-                                  <div style="border-bottom: solid 1px gainsboro;">
+                                  <div style="border-bottom: solid 1px gainsboro; padding-bottom: 50px; padding-top: 50px;">
+                                    <div>&ensp;&ensp;조회수 &ensp;&ensp;:&ensp;&ensp;${detail.hit}</div>
                                     <div class="p-2 pt-3" style="font-size: 50px;">${detail.shopName}
                                     </div>
                                     <c:forEach items="${detail.categoryDTOs}" var="category">
-                                      <div style="color: gray;">&ensp;&ensp;${category.categoryName}</div>
+                                      <div style="color: gray;">&ensp;&ensp;카테고리&ensp;&ensp;:&ensp;&ensp;${category.categoryName}</div>
                                     </c:forEach>
+                                    <div>
+                                      <button onclick="goBack()" style="color: black; box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;">《《《《《《</button>
+                                    </div>
                                   </div>
-                                  <div>
-                                    <span class="cnt hit" style="font-size: 5px;">
-                                      <ion-icon name="eye-outline"></ion-icon>
-                                    </span>
-                                  </div>
+                            
     
 
 
-			<div class="Information">
-
+			<div class="Information d-flex justify-content-between" style="border-bottom: solid 1px gainsboro; padding-top: 50px; padding-bottom: 50px;">
+        <div>
         <!-- <div id="map" style="width:1000px; height:1000px;"></div> -->
         <div class="flex-row">
 				<div class="d-flex q" id="address">주소 &ensp;&ensp;&ensp;&ensp;&nbsp;&nbsp;&ensp;&ensp;:
@@ -163,9 +169,9 @@
 						<div class="flex q" id="realmenu">&ensp;&ensp;&ensp;${menuDTO.menuName}</div>
 						<div class="flex q" id="realmenu">&ensp;&ensp;&ensp;${menuDTO.menuPrice}원</div>
 					</div>
-          <div class="dy flex" id="deleteMenu"  onclick="location.href='/shop/deleteMenu?menuNum=${menuDTO.menuNum}&shopNum=${detail.shopNum}';">&ensp;대표메뉴삭제</div>
+          <div class="dy flex btn btn-danger" id="deleteMenu" style="box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;" onclick="location.href='/shop/deleteMenu?menuNum=${menuDTO.menuNum}&shopNum=${detail.shopNum}';">&ensp;대표메뉴삭제</div>
 				</c:forEach>
-
+      </div>
       </div>
       <div class="side-wrap" id="map2" style="width:350px;height:350px;"></div>
         <!-- <c:forEach items="${detail.menuDTOs}" var="menuDTO">
@@ -181,7 +187,7 @@
                                 <div class="modal-dialog">
                                   <div class="modal-content">
                                     <div class="modal-header" >
-                                        <h5 class="modal-title" id="exampleModalLabel" type="hidden" id="menuAdd">대표메뉴 등록</h5>
+                                        <h5 class="modal-title" id="exampleModalLabel" type="hidden">대표메뉴 등록</h5>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                         <form action="./addMenuHTML" method="post">
@@ -202,8 +208,8 @@
                                     </div>
                                     
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소하기</button>
-                                        <button type="submit" class="btn btn-primary" id="num">등록하기</button>
+                                        <button type="button" class="btn btn-danger" style="box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;" data-bs-dismiss="modal">취소하기</button>
+                                        <button type="submit" class="btn btn-primary" style="box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;" id="menuAddNum">등록하기</button>
                                     </div>
 					           </form>
                           </div>
@@ -214,11 +220,13 @@
                 
          </div>
      </div>
+     <button onclick="window.location.href='#top'" style="color: black; box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;">위로가기</button>
 </main>
     
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
 <script src="../../../../resources/kdy/js/detailHTML.js"></script>
 <script type="text/javascript">
+
     $("#contents").summernote(
             {
                     height: 260,                
@@ -381,8 +389,12 @@ function displayMarker(place) {
         // infowindow.open(map, marker);
     });
 }
-  </script> 
-
+  </script>
+<script>
+  function goBack() {
+      window.history.back();
+  }
+  </script>
 <c:import url="../../template/footerHTML.jsp"></c:import>
 </body>
 </html>

@@ -87,7 +87,7 @@
 
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
-    <div class="modal-content">
+    <div class="modal-content" id="modal_size">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">++가게 등록++</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -118,7 +118,7 @@
             <label for="message-text" class="col-form-label"> </label>
            <input type="text" class="form-control" placeholder="식당의 주소를 직접 입력해주세요" name="shopAddress">
           </div>
-          <div class="mb-3" id="map" style="width:500px;height:400px;">
+          <div class="mb-3" id="map" style="width:550px;height: 300px;">
             <label for="message-text" class="col-form-label"> </label>
             <input type="text" class="form-control" name="shopAddress" id="shopAddress" >
           </div>
@@ -144,11 +144,9 @@
         </div> -->
         
 
-          <div id="addFiles" class="mb-3">
-            <i class="fa-regular fa-image"></i>
-            <label for="message-text" class="col-form-label"></label>
-              <input type="file" name="files" id="fileAdd">파일
-          </div>
+        <div id="addFiles">
+          <button style="color: blue;" type="button"name="files" id="fileAdd">파일추가</button>
+        </div>
 
         </div>
         <div class="modal-footer file_box" id="modal-footer">
