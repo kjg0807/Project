@@ -63,9 +63,36 @@ public class ReviewsService {
 	}
 	
 	//리뷰 수정
-	public int setReviewsUpdate(ReviewsDTO reviewsDTO) throws Exception{
+	public int setReviewsUpdate(ReviewsDTO reviewsDTO, MultipartFile [] files, ServletContext servletContext) throws Exception{
 		
-		return reviewsDAO.setReviewsUpdate(reviewsDTO);
+		String path = "resources/upload/reviews";
+		
+		int result = reviewsDAO.setReviewsUpdate(reviewsDTO);
+		System.out.println("result !!!!!  : "+result);
+		if(result < 1) {
+			return result;
+		}
+		
+		
+		for(MultipartFile multipartFile : files) {
+			if(multipartFile.isEmpty()) {
+				continue;
+			}
+			
+			String fileName = fileManager.saveFile(servletContext, path, multipartFile);
+			ReviewsFilesDTO reviewsFilesDTO = new ReviewsFilesDTO();
+			reviewsFilesDTO.setFileName(fileName);
+			reviewsFilesDTO.setOriName(multipartFile.getOriginalFilename());
+			reviewsFilesDTO.setReviewNum(reviewsDTO.getReviewNum());
+			
+			System.out.println("Service 리뷰 넘버 : " + reviewsDTO.getReviewNum());
+			System.out.println("Service 파일 넘버 : " + reviewsFilesDTO.getFilesNum());
+			
+			reviewsDAO.setReviewsAddFiles(reviewsFilesDTO);
+			
+		}
+		
+		return result;
 	}
 	
 	//리뷰 삭제
@@ -79,12 +106,12 @@ public class ReviewsService {
 		
 		reviewsFilesDTO = reviewsDAO.getReviewsFilesDetail(reviewsFilesDTO);
 		
-		int result = reviewsDAO.setReviewsDelete(reviewsFilesDTO);
+		int result = reviewsDAO.setReviewsFilesDelete(reviewsFilesDTO);
 		
 		String path = "resources/upload/reviews";
 		
 		if(result > 0) {
-			fileManager.deleteReviewsFiles(servletContext, path, reviewsFilesDTO);
+			fileManager.reviewsFilesDelete(servletContext, path, reviewsFilesDTO);
 		}
 		return result;
 	}
@@ -110,6 +137,10 @@ public class ReviewsService {
 	
 	public int setReviewsCommentDelete(ReviewsCommentDTO reviewsCommentDTO) throws Exception{
 		return reviewsCommentDAO.setReviewsCommentDelete(reviewsCommentDTO);
+	}
+	
+	public int setReviewsHitsUpdate(ReviewsDTO reviewsDTO) throws Exception{
+		return reviewsDAO.setReviewsHitsUpdate(reviewsDTO);
 	}
 	
 }

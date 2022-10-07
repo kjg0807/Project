@@ -24,6 +24,8 @@ const clos = document.querySelector(".close");
 const cat = document.querySelector("#cat");
 const cat2 = document.querySelector("#cat2");
 
+
+
 //page번호를 담는 변수
 let page = 1;
 //reviewNum 을 담는 변수
@@ -40,51 +42,91 @@ btn.addEventListener("click", function(){
     console.log(wv);
     console.log(cv);
 
-    // --ajax--
+
+    if(contents.value == ""){
+        alert("내용을 입력 해주세요.");
+    }else{
+        
     
 
-    //1. XMLHTTPREQUEST 생성
 
-    const xhttp = new XMLHttpRequest();
+        //댓글달기
 
-    //2. 메서드 , URL준비
-    //요청을 보낼 주소 작성
-    xhttp.open("POST", "reviewsCommentAdd");
 
-    //3. enctype
-    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        // --ajax--
+        
 
-    //4. 요청발생
+        //1. XMLHTTPREQUEST 생성
 
-    xhttp.send("reviewNum="+reviewNum+"&writer="+wv+"&contents="+cv);
+        const xhttp = new XMLHttpRequest();
 
-    //5. 응답처리
+        //2. 메서드 , URL준비
+        //요청을 보낼 주소 작성
+        xhttp.open("POST", "reviewsCommentAdd");
 
-    xhttp.onreadystatechange=function(){
-        if(this.readyState==4 && this.status == 200){
-            let result = xhttp.responseText.trim();
+        //3. enctype
+        xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 
-            //응답은 responseText에 담긴다
+        //4. 요청발생
 
-            console.log(result);
-            
-            if(result == 1){
-                confirm("성공적인 답글 달기~!");
-                self.close();
+        xhttp.send("reviewNum="+reviewNum+"&writer="+wv+"&contents="+cv);
 
-                for(let i=0; i<reviewsCommentList.children.length;){
-                    reviewsCommentList.children[0].remove();
+        //5. 응답처리
+
+        xhttp.onreadystatechange=function(){
+            if(this.readyState==4 && this.status == 200){
+                let result = xhttp.responseText.trim();
+
+                //응답은 responseText에 담긴다
+
+                console.log(result);
+
+                    
+                if(result == 1){
+                    confirm("성공적인 답글 달기~!");
+                    // self.close();
+                        
+                    for(let i=0; i<reviewsCommentList.children.length;){
+                        console.log("zzzzzzzzzzzzzzzz : ",reviewsCommentList.children[0]);
+                        // reviewsCommentList.children[0].remove();
+                        reviewsCommentList.children[0].remove();
+                        }
+
+                        //댓글을 달면 1페이지로 보여줌
+                        page = 1;
+                        
+                        getReviewsCommentList(page, reviewNum);
+                        
+                        writer.value='';
+                        contents.value='';
+                        
+                }else{
+                    alert("답글 달기 실패~!!");
                 }
+                
+                // if(!contents){
+                //     alert("내용을 입력해주세요.");
+                // }else if(result == 1){
+                //     alert("댓글이 성공적으로 달렸습니다.");
 
-                page = 1;
+                //     for(let i=0; i<reviewsCommentList.children.length;){
+                //         console.log("코맨트 배열 자식들 : " , reviewsCommentList.children[0]);
+                //         reviewsCommentList.children[0].remove();
+                //     }
 
-                getReviewsCommentList(page, reviewNum);
 
-            }else{
-                alert("답글 달기 실패~!!");
+                //     page= 1;
+
+                //     getReviewsCommentList(page,reviewNum);
+
+                //     writer.value = '';
+                //     contents.value = '';
+                // }else{
+                //     alert("댓글 작성을 실패하였습니다.");
+                // }
             }
         }
-    }
+    }//첫 if/else문 끝
 });
 
 function getReviewsCommentList(p, rn){
@@ -166,25 +208,51 @@ function getReviewsCommentList(p, rn){
                 tr.appendChild(td);
     
                 tb.appendChild(tr);
-    
-                if(page >= result.reviewsCommentPager.totalPage){
-                    plus.classList.add("disabled");
-                }else {
-                    plus.classList.remove("disabled");
-                }
+   
+                console.log('more : ', page > result.reviewsCommentPager.totalPage)
+                // //더보기 버튼
+                // if(page > result.reviewsCommentPager.totalPage){
+                //     plus.classList.add("disabled");
+                // }else {
+                //     plus.classList.remove("disabled");
+                // }
 
-                if(page < result.reviewsCommentPager.perPage){
-                    minus.classList.add("disabled");
-                }else{
-                    minus.classList.remove("disabled");
-                }
 
+                // //더보기로 늘어난 창 줄이기 버튼
+
+                // //지금 페이지가 한페이지에 출력할 글의 갯수(perPage)보다 작다면 minus버튼 활성화
+                // //더보기로 끝까지 핀 전체 페이지가 현재페이지와 같으면 활성화
+                // if(page == result.reviewsCommentPager.totalPage){
+                //     minus.classList.add("disabled");
+                // }else{
+                //     minus.classList.remove("disabled");
+                // }
                 
     
                 reviewsCommentList.append(tb);
     
+                
+
     
-            }
+            }//for문 끝
+
+                //더보기 버튼
+                if(page >= result.reviewsCommentPager.totalPage){
+                    plus.classList.add("disabled");
+                    // minus.classList.remove("disabled");
+                }else {
+                    // minus.classList.add("disabled");
+                    plus.classList.remove("disabled");
+                }
+
+                if(page == result.reviewsCommentPager.totalPage){
+                    minus.classList.remove("disabled");
+                }else{
+                    minus.classList.add("disabled");
+                }
+
+                
+
         }//if end
 
     });
@@ -204,11 +272,16 @@ plus.addEventListener("click", function(){
 
 //----------------더보기 닫기---------------
 minus.addEventListener("click", function(){
-    page--;
+    page = 1;
     const reviewNum = btn.getAttribute("data-reviewNum");
     console.log("reviewNum : " , reviewNum);
 
+    console.log(getReviewsCommentList(page,reviewNum));
     getReviewsCommentList(page,reviewNum);
+    console.log("parendNode : " , reviewsCommentList.parentNode);
+
+    reviewsCommentList.tb.remove();
+    
 
 });
 
@@ -428,3 +501,16 @@ function modalDisplay(text){
 // cat2.addEventListener("click", function(){
 //     cat.click();
 // });
+
+
+//리스트 테이블 tr을 눌렀을때 조회수 1씩 증가
+
+const trow = document.querySelectorAll("#trow");
+
+trow.forEach(function(tr, index){
+    console.log(tr);
+
+    tr.addEventListener("click", function(){
+        console.log("tr 클릭이벤트");
+    });
+});

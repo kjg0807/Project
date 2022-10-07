@@ -26,7 +26,7 @@
 	
 		<div class="mb-3">
 		  <label for="formGroupExampleInput" class="form-label">제목</label>
-		  <input type="text" class="form-control" name="title" placeholder="제목 : ${dto.title}">
+		  <input type="text" class="form-control" name="title" placeholder="제목을 입력하세요.">
 		</div>
 		
 		<div class="mb-3">
@@ -63,6 +63,6 @@
 <script type="text/javascript">
 	$("#contents").summernote();
 </script>
-<script src="/resources/js/reviewsFile.js"></script>			 
+<script src="../../../resources/hjs/js/reviewsFile.js"></script>			 
 </body>
 </html>

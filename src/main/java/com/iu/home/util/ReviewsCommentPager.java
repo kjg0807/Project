@@ -12,8 +12,13 @@ public class ReviewsCommentPager {
 	private Long lastRow;
 	private Long reviewNum;
 	
+	//현재페이지
 	private Long page;
+	
+	//perPage : 한페이지에(JSP) 출력할 글의 갯수
 	private Long perPage;
+	
+	
 	private Long totalPage;
 	
 	

@@ -31,15 +31,13 @@ a {
 					<h2>전체 회원 정보</h2>
 					<tr>
 						<td>아이디</td>
-						<td>이름</td>
+						<td>닉네임</td>
 						<td>비밀번호</td>
 						<td>이메일</td>
 						<td>나이</td>
 						<td>생년월일</td>
 						<td>전화번호</td>
 						<td>성별</td>
-						<!-- <td>등급</td> -->
-						<td>메뉴</td>
 					</tr>
 					<%
 					try
@@ -47,18 +45,21 @@ a {
 					%>
 					<c:forEach items="${dto}" var="dto">
 						<tr>
-							<td>${dto.userid}</td>
-							<td>${dto.username}</td>
+							<td>${dto.userID}</td>
+							<td>${dto.userName}</td>
 							<td>${dto.pwd}</td>
 							<td>${dto.email}</td>
 							<td>${dto.age}</td>
 							<td>${dto.birth}</td>
 							<td>${dto.phone}</td>
-							<td>${dto.gender}</td>
-							<%-- <td>${dto.classDTOs.get(0).className}</td> --%>
-							<td>
-								<a id="uplink" href="./adupdate?userid=${dto.userid}">수정</a> <a class="abc" href="./addelete?userid=${dto.userid}">삭제</a>
-							</td>
+							<c:choose>
+								<c:when test="${dto.gender eq 1}">
+									<td>남</td>
+								</c:when>
+								<c:otherwise>
+									<td>여</td>
+								</c:otherwise>
+							</c:choose>
 						</tr>
 					</c:forEach>
 					<%

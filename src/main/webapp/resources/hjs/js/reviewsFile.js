@@ -1,11 +1,14 @@
 //reviewsFile.js
 const fileAdd = document.getElementById("fileAdd"); //  reviews/add.jsp에 있는 파일추가 div버튼 id
 const addFiles = document.getElementById("addFiles");   //  "
-const fileDelete = document.querySelectorAll(".fileDelete");
+const reviewsFilesDelete = document.querySelectorAll("#reviewsFilesDelete");  //forEach가능
+
+//수정하기에 보이는 이미지 ID명
+const img = document.querySelectorAll("#img");
 
 
 
-//============================= Review 글쓰기할때 fileAdd   ========================
+//============================= Review Add할때 fileAdd   ========================
 
 let idx = 0;
 let count = 0;
@@ -22,8 +25,8 @@ try{
 
 
         console.log("실행됨?")
-        if(count>2){
-            alert("이미지 첨부는 최대 3장만 가능합니다.");
+        if(count>3){
+            alert("이미지 첨부는 최대 4장만 가능합니다.");
             return;
         }
 
@@ -86,7 +89,7 @@ try{
 
         //자식 Element 삭제 버튼 만들기
         let button = document.createElement("button");      //<button>
-        let buttonText = document.createTextNode("싹제");
+        let buttonText = document.createTextNode("삭제");
         button.appendChild(buttonText);                    //<button>싹제</button>
         let buttonAttr = document.createAttribute("type");  //<button type="">싹제</button>
         buttonAttr.value = "button";                        
@@ -128,3 +131,83 @@ try{
 
 }
 
+
+
+
+
+//---------------------리뷰 수정할때 파일 수정/삭제---------------------
+
+
+//배열(forEach)로 생성
+
+//예외처리때문에 try catch 사용
+try{
+reviewsFilesDelete.forEach(function(f){
+
+    f.addEventListener("click", function(){
+
+
+
+        console.log(f.parentNode);
+
+        let check = window.confirm("삭제를 원하십니까??");
+
+
+        //삭제를 원하지 않다면 return;
+        if(!check){
+            return;
+        }
+         
+        let filesNum = f.getAttribute("data-file-filesNum");
+
+
+        //1. XTMLHTTPRequest 생성
+        const xhttp = new XMLHttpRequest();
+
+
+        //2. 메서드,URL 준비
+        // 요청을 보낼 주소 작성
+        xhttp.open("POST", "./reviewsFilesDelete");
+
+
+        //3. enctype(헤더 정보) / GET 메서드일땐 필요없음
+        xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+        //4. 요청 발생, 전송(post일 경우 파라미터 추가)
+        console.log(filesNum);
+        xhttp.send("filesNum="+filesNum);
+
+
+        //5. 응답 처리
+        xhttp.onreadystatechange = function(){
+            if(xhttp.status == 200 && xhttp.readyState == 4){
+                //결과를 responseText에 담는다
+                let result = xhttp.responseText.trim();
+                if(result == 1){
+                    alert("삭제 완료");
+                    //
+                    console.log(f.parentNode);
+                    f.parentNode.remove();
+                    // f.previousSibling.remove();
+                    //파일을 삭제하면 총합 3개까지 다시 만들수 있도록 삭제한 수 만큼 총 파일수에서 --
+                    count--;
+                }else{
+                    alert("삭제 실패");
+                }
+            }
+        }
+
+    });
+});
+}catch(e){
+    console.log(e);
+}
+
+
+img.forEach(function(im, index){
+
+    const c2 = document.querySelector("#c2");
+
+    c2.src = im.src;
+
+});

@@ -11,7 +11,13 @@
 		integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx"
 		 crossorigin="anonymous">
 <!-- <link rel="stylesheet" href="../../../resources/css/reviewsComment.css">  -->
-<link rel="stylesheet" href="../../../resources/css/imageModal.css">
+<link rel="stylesheet" href="../../../resources/hjs/css/imageModal.css">
+<link rel="stylesheet" href="../../../resources/hjs/css/reviewsButton.css">
+<style>
+	.img{
+		cursor: pointer;
+	}
+</style>
 </head>
 <body>
 
@@ -103,8 +109,8 @@
 														<!-- <h5 class="modal-title" id="exampleModalLabel">Modal title</h5> -->
 														<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 													</div>
-																
-													<div class="modal-body">
+																      
+													<div class="modal-body" id="mb">
 														<img src="" class="img" id="c1">		
 														<!-- <img class="img" src="../resources/upload/reviews/">													 -->
 													</div>
@@ -112,9 +118,10 @@
 												</div>
 											</div>
 										</div>
+									</div>
 								<!-- Modal -->
 										<!--모달에 뜨는 닫기창-->
-										<span class="close">&times;</span>	
+										<span class="close"></span>	
 										<img class="modeal_contents" id="rvimg">
 									
 								</td>
@@ -123,7 +130,7 @@
 									Launch demo modal
 								</button>
 
-							</div>
+							
 						
 					</tr>
 					
@@ -175,7 +182,7 @@
 			<input type="text" class="form-label" id="writer" placeholder="작성자 :">
 		</div>
 		
-		<div class="mb-3">
+		<div class="mb-3 col-lg-4">
 			<label for="contents" class="form-label">내 용</label>
 			<textarea id="contents" class="form-label" rows="3" cols="50" placeholder="내 용 :"></textarea>
 			<!-- <input type="text" class="form-label" id="contents" placeholder="내용 :"> -->
@@ -200,8 +207,10 @@
 				</tr>
 			</thead>
 		</table>
-		<button id="plus" class="btn btn-secondary disabled">더보기</button>
-		<button id="minus" class="btn btn-success disabled">닫기</button>
+
+			<button id="plus" class="btn btn-primary">더보기</button>
+			<button id="minus" class="btn btn-success disabled" onclick="location.href='./detail?reviewNum=${dto.reviewNum}'">닫기</button>
+
 	</div>
 	<!-- 댓글 끝 -->
 	<!----- 모달 ------>
@@ -237,9 +246,19 @@
 		</div>
    </div>
 
-<a href="./list">목록</a>
-<a href="./update?reviewNum=${dto.reviewNum}">수정</a>
+<!-- <a href="./list">목록</a>
+<a href="./update?reviewNum=${dto.reviewNum}">수정</a> -->
 <a href="./delete?reviewNum=${dto.reviewNum}">삭제</a>
+<br>
+<br>
+<br>
+<br>
+<br>
+<p>
+	<button onclick="location='./list'" class="btn btn-primary">목록으로</button>
+	<button onclick="location='./update?reviewNum=${dto.reviewNum}'" class="btn btn-primary">수정하기</button>
+	<button onclick="location='./delete?reviewNum=${dto.reviewNum}'" class="btn btn-primary">삭제</button>	 
+</p>
 <div  style="display: inline-block; margin: 0 5px;  float: right;">
 	<button onclick="location='/'" class="btn btn-primary">홈으로</button>
 </div>
@@ -249,6 +268,16 @@
     			 crossorigin="anonymous"></script>
 				 
 	
-<script src="/resources/js/ReviewsComment.js"></script>
+<script src="../../../resources/hjs/js/ReviewsComment.js"></script>
+<script>
+	function clean(){
+		var clean = document.getElementsByClassName('clean');
+
+		//글을 쓸때마다 ''빈칸으로 만든다
+		for(var i=0; i<clean.length;i++){
+			clean[i].value='';
+		}
+	}
+</script>
 </body>
 </html>
