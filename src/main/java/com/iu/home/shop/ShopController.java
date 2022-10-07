@@ -2,7 +2,7 @@ package com.iu.home.shop;
 
 import java.util.List;
 
-import javax.servlet.ServletContext;
+import javax.servlet.ServletContext;import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,11 +49,14 @@ public class ShopController {
 		mv.setViewName("kdy/shop/listHTML");
 		return mv;
 	}
+	
 	@GetMapping(value = "detailHTML")
 	public ModelAndView getDetail(ShopDTO shopDTO)throws Exception{
 		System.out.println("getDetail");
+		System.out.println();
 		System.out.println("getMenuName"+shopDTO.getMenuName());
 		ModelAndView mv = new ModelAndView();
+		shopService.setHitUpdate(shopDTO);
 		shopDTO = shopService.getDetail(shopDTO);
 		mv.setViewName("kdy/shop/detailHTML");
 		mv.addObject("detail", shopDTO);
@@ -64,24 +67,25 @@ public class ShopController {
 	public void setUpdate(ShopDTO shopDTO, Model model)throws Exception{
 		shopDTO = shopService.getDetail(shopDTO);
 		model.addAttribute("detail", shopDTO);
-		
 	}
+	
 	@PostMapping(value = "update")
-	public ModelAndView setUpdate(ShopDTO shopDTO)throws Exception{
+	public ModelAndView setUpdate(ShopDTO shopDTO, MultipartFile[] files, HttpSession session)throws Exception{
 		ModelAndView mv = new ModelAndView();
-		int result = shopService.setUpdate(shopDTO);
+		int result = shopService.setUpdate(shopDTO, files, session.getServletContext());
 		mv.setViewName("redirect:./detailHTML?shopNum="+shopDTO.getShopNum());
 		return mv;
 	}
+	
 
 	@GetMapping("delete")
 	public ModelAndView setDelete(ShopDTO shopDTO)throws Exception{
 		ModelAndView mv = new ModelAndView();
 		int result = shopService.setDelete(shopDTO);
-		mv.setViewName("redirect:./list");
+		mv.setViewName("redirect:./listHTML");
 		return mv;
 	}
-//	--------------------------------------MENU
+//	------------------------------------------------------------------------------------------------------------------------MENU
 	@GetMapping(value = "addMenuHTML")
 	public ModelAndView setAddMenu(Long shopNum) throws Exception {
 		ModelAndView mv = new ModelAndView();
@@ -128,6 +132,13 @@ public class ShopController {
 		int result = shopService.setDeleteMenu(shopDTO);
 		mv.setViewName("redirect:./detailHTML?menuNum="+shopDTO.getMenuNum()+"&shopNum="+shopDTO.getShopNum());
 		return mv;
+	}
+//	------------------------------------------------------------------------------------------------------------------------FILE
+	@PostMapping("fileDelete")
+	@ResponseBody
+	public int setFileDelete(ShopFileDTO shopFileDTO, HttpSession session)throws Exception{
+		int result = shopService.setFileDelete(shopFileDTO, session.getServletContext());
+		return result;
 	}
 	
 	

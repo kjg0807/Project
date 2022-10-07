@@ -23,7 +23,7 @@ button {
 }
 
 
-#address, #phone, #priceAvg, #delivery, #menu{
+#address, #phone, #priceAvg, #delivery, #menuDelete{
     color: gray;
     font-size: 15px;
 }

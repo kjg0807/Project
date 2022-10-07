@@ -1,41 +1,47 @@
 const shop = document.querySelector("#shopNum");
 const menu = document.querySelector("#menuNum");
 const md = document.querySelector("#deleteMenu");
-
-const btn = document.querySelector("#num");
-
-btn.addEventListener("click", function(){
-console.log(shop.vlaue);
-console.log(menu.vlaue);
-});
+const sd = document.querySelector("#shopDelete");
 
 
-const m = document.querySelector("#menu");
+const m = document.querySelector("#menuDelete");
+
+sd.addEventListener("click", function(){
+      alert("가게를 삭제합니다");
+      
+})
+
+const caNumBer = document.querySelector("#caNumBer");
+const caNumBerChildren = caNumBer.children;
+for(let i=0; i<caNumBerChildren.length; i++){
+    caNumBerChildren[i].addEventListener("click", function(){
+    })
+}
 
 m.addEventListener("click", function(){
         alert("대표메뉴 한가지를 삭제합니다");
         md.click();
 })
 
-// //지도 설정
-// const mapContainer = document.getElementById('map'),
-// 	mapOption = { 
-// 	    center: new kakao.maps.LatLng(36.5,127.5),	
-// 	    level: 13					
-// 	};
-    
-// //설정한 지도 생성
-// const map = new kakao.maps.Map(mapContainer, mapOption);
-
-// const marker = new kakao.maps.Marker();
+const menuAddNum = document.querySelector("#menuAddNum");
+const menuAdd = document.querySelector("#menuAdd");
+const realMenu = document.querySelector("#realMenu");
 
 
-// kakao.maps.event.addListener(map, 'click', (mouseEvent) => {
+menuAdd.addEventListener("click", function(){
+        if(realMenu.value.length > 0){
+                alert("이미 대표메뉴가 등록되어있습니다!");
+        }
+})
 
-// 	const latlng = mouseEvent.latLng;
 
-// 	marker.setPosition(latlng);
-// 	marker.setMap(map);
-	
-// 	alert(`위도 : ${latlng.getLat()}, 경도 : ${latlng.getLng()}`);
-// });
+
+
+menuAddNum.addEventListener("click", function(){
+        alert("대표메뉴가 등록되었습니다!!");
+           
+        
+})
+
+
+

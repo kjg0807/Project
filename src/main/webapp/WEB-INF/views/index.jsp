@@ -12,6 +12,7 @@
         <!-- Favicon-->
         <link rel="stylesheet" href="../../resources/kdy/css/styles.css">
         <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/kdy/css/styles.css">
+        <link rel="stylesheet" href="../../resources/kdy/css/index.css">
         <!-- Bootstrap icons-->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
         <!-- Core theme CSS (includes Bootstrap)-->
@@ -20,7 +21,7 @@
     <body>
         <c:import url="./template/headerHTML.jsp"></c:import>
         <header class="bg-dark py-5">
-            <img src="../../resources/kdy/images/allfood.webp" id="allf" alt="">
+          
             <div class="container px-4 px-lg-5 my-5">
                <div class="text-center text-white">
                   <h1 class="display-4 fw-bolder">Shop in style</h1>
@@ -93,7 +94,6 @@
                     
                     <div class="col mb-5" data-category="한식">
                         <div class="card h-100 categorykor" id="categoryName" name="categoryName">
-                            <input type="text" name="categoryName" value="한식">
                             <button type="submit" style="display: none;"></button>
                             <!-- Product image-->
                             <img class="card-img-top" src="../../resources/kdy/images/korea.jpg" alt="..." value="한식" />
@@ -177,6 +177,56 @@
                         </div>
                     </div> 
                 </div>
+                <!-- <div style="border-bottom: solid 1px gainsboro; height: 200px;"><span>조회수 높은 식당 TOP10</span></div> -->
+                <div  style="border-bottom: solid 1px black; height: 100px;" id="hitList" class="mainList">조회수 높은 식당 TOP5</div>
+                <div>
+                        <c:forEach items="${list}" var="list">
+
+                            <div class="shop_list"  onclick="location.href='/shop/detailHTML?shopNum=${list.getShopNum()}';">
+
+                                <div class="list" style="box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px" >
+
+                                    <div style="border-bottom: solid 1px gainsboro; height: 200px;" >
+
+                                        <div class="d-flex">
+
+                                            <div class="p-2 w-100" style="height: 150px;">
+
+                                                <div class="container2" style="padding: 12px;">
+                                                    <div class="name">${list.shopName}</div>
+                                                    <div class="contents">${list.title}</div>
+                                                    <div class="contents2">${list.shopAddress}</div>
+                                                    <c:forEach items="${list.categoryDTOs}" var="category">
+                                                    <div class="p-2 b" style="color: black;"># ${category.categoryName}</div>
+                                                    </c:forEach> 
+                                                </div>
+
+                                                <div class="d-flex flex-row mb-3 mt-2">
+                                                    <div class="p-2 b">SHOP NAME : ${list.shopName}</div>
+                                                    <div class="p-2 b">SHOP ADDRESS : ${list.shopAddress}</div>
+                                                    <div class="p-2 b">HIT : ${list.hit}</div>
+                                                    <div class="p-2 b">BEST MENU : ${list.menuName}</div>
+                                                </div>
+
+                                            </div>
+                                            
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+                            <div>
+                            <input name="shopNum" type="hidden" id="shopNum" value="${list.shopNum}">
+                            </div> 
+                    </c:forEach>
+                    <!-- 위로보내주는 버튼 -->
+                    <br>
+                    <button onclick="window.location.href='#top'" style="color: black; box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;">위로가기</button>
+
+                </div>
+                
             </div>
 		<a href="./chat/chat">chat</a>
 		<a href="./party/list">list</a>

@@ -23,6 +23,8 @@ public class ShopService {
 	@Autowired
 	private ShopFileManager shopFileManager;
 	
+
+	
 	
 	public int setAdd(ShopDTO shopDTO, MultipartFile[] files, ServletContext servletContext)throws Exception{
 		int result = shopDAO.setAdd(shopDTO);
@@ -40,6 +42,7 @@ public class ShopService {
 		}
 		return result;
 	}
+	
 	public List<ShopDTO> getList(ShopPager shopPager) throws Exception{
 		// TODO Auto-generated method stub
 		Long totalCount = shopDAO.getCount(shopPager);
@@ -47,12 +50,38 @@ public class ShopService {
 		shopPager.getRowNum();
 		return shopDAO.getList(shopPager);
 	}
+	
+	public List<ShopDTO> getHitList(ShopDTO shopDTO)throws Exception{
+		return shopDAO.getHitList(shopDTO);
+	}
+	
 	public ShopDTO getDetail(ShopDTO shopDTO)throws Exception{
 		return shopDAO.getDetail(shopDTO);
 	}
-	public int setUpdate(ShopDTO shopDTO)throws Exception{
-		return shopDAO.setUpdate(shopDTO);
+	public int setHitUpdate(ShopDTO shopDTO)throws Exception{
+		return shopDAO.setHitUpdate(shopDTO);
 	}
+	
+	public int setUpdate(ShopDTO shopDTO,  MultipartFile[] files, ServletContext servletContext)throws Exception{
+		String path = "resources/upload/shop";
+		int result = shopDAO.setUpdate(shopDTO);
+		if(result<1) {
+			return result;
+		}
+		for(MultipartFile multipartFile : files) {
+			if(multipartFile.isEmpty()) {
+				continue;
+			}
+			String fileName = shopFileManager.saveFile(path, servletContext, multipartFile);
+			ShopFileDTO shopFileDTO = new ShopFileDTO();
+			shopFileDTO.setFileName(fileName);
+			shopFileDTO.setOriName(multipartFile.getOriginalFilename());
+			shopFileDTO.setShopNum(shopDTO.getShopNum());
+			shopDAO.setAddFile(shopFileDTO);
+		}
+		return result;
+	}
+	
 	public int setDelete(ShopDTO shopDTO)throws Exception{
 		return shopDAO.setDelete(shopDTO);
 	}
@@ -60,11 +89,23 @@ public class ShopService {
 	public int setAddMenu(ShopDTO shopDTO)throws Exception{
 		return shopDAO.setAddMenu(shopDTO);
 	}
+	
 	public int setUpdateMenu(ShopDTO shopDTO)throws Exception{
 		return shopDAO.setUpdateMenu(shopDTO);
 	}
+	
 	public int setDeleteMenu(ShopDTO shopDTO)throws Exception{
 		return shopDAO.setDeleteMenu(shopDTO);
+	}
+//                     FILE
+	public int setFileDelete(ShopFileDTO shopFileDTO, ServletContext servletContext)throws Exception{
+		shopFileDTO = shopDAO.getFileDetail(shopFileDTO);
+		int result = shopDAO.setFileDelete(shopFileDTO);
+		String path = "resources/upload/shop";
+		if (result > 0) {
+			shopFileManager.deleteFile(servletContext, path, shopFileDTO);
+		}
+		return result;
 	}
 	
 

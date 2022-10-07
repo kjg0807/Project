@@ -46,6 +46,12 @@ public class ShopDAO {
 	public int setAddFile(ShopFileDTO shopFileDTO) throws Exception{
 		return sqlSession.insert(NAMESPACE+"setAddFile", shopFileDTO);
 	}
+	public ShopFileDTO getFileDetail(ShopFileDTO shopFileDTO)throws Exception{
+		return sqlSession.selectOne(NAMESPACE+"getFileDetail", shopFileDTO);
+	}
+	public int setFileDelete(ShopFileDTO shopFileDTO)throws Exception{
+		return sqlSession.delete(NAMESPACE+"setFileDelete", shopFileDTO);
+	}
 	//=============================menu
 	public int setAddMenu(ShopDTO shopDTO) throws Exception{
 		return sqlSession.insert(NAMESPACE+"setAddMenu", shopDTO);
@@ -55,6 +61,13 @@ public class ShopDAO {
 	}
 	public int setDeleteMenu(ShopDTO shopDTO)throws Exception{
 		return sqlSession.delete(NAMESPACE+"setDeleteMenu", shopDTO);
+	}
+//	                        HIT
+	public int setHitUpdate(ShopDTO shopDTO)throws Exception{
+		return sqlSession.update(NAMESPACE+"setHitUpdate", shopDTO);
+	}
+	public List<ShopDTO> getHitList(ShopDTO shopDTO)throws Exception{
+		return sqlSession.selectList(NAMESPACE+"getHitList", shopDTO);
 	}
 
 

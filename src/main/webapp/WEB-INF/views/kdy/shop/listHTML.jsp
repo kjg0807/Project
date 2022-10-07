@@ -27,9 +27,7 @@
 <main class="realMain" id="realMain">
         
   <div class="container">
-    <!-- <div class="mb-3">
-      <div id="map" style="width:500px;height:400px;"></div>
-    </div> -->
+ 
             <div class="c1">
                 맛집 리뷰
             </div>
@@ -42,8 +40,8 @@
                     <div class="p-2 a" data-miniCategory="양식">양식</div>
                     <div class="p-2 a" data-miniCategory="아시안">아시안</div>
                 </div>
-         <c:forEach items="${requestScope.list}" var="list">
-                
+                <div class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap" role="add">가게등록</div>
+         <c:forEach items="${requestScope.list}" var="list">    
             <div class="shop_list"  onclick="location.href='/shop/detailHTML?shopNum=${list.getShopNum()}';">
                 <div class="list" style="box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px" >
                     <div style="border-bottom: solid 1px gainsboro; height: 200px;" >
@@ -53,19 +51,23 @@
                                     <div class="name">${list.shopName}</div>
                                     <div class="contents">${list.title}</div>
                                     <div class="contents2">${list.shopAddress}</div>
+                                    <c:forEach items="${list.categoryDTOs}" var="category">
+                                      <div class="p-2 b" style="color: black;"># ${category.categoryName}</div>
+                                    </c:forEach>   
                                     
                                 </div>
                                 <div class="d-flex flex-row mb-3 mt-2">
-                                    <div class="p-2 b">#test</div>
-                                    <div class="p-2 b">#test</div>
-                                    <div class="p-2 b">#test</div>
-                                    <div class="p-2 b">#test</div>
-                                    <div class="p-2 b">#test</div>
-                                </div>
+                                    <div class="p-2 b">SHOP NAME : ${list.shopName}</div>
+                                    <div class="p-2 b">SHOP ADDRESS : ${list.shopAddress}</div>
+                                    <div class="p-2 b">HIT : ${list.hit}</div>
+                                  </div>
                             </div>
-                            <div class="p-2 flex-shrink-1">
+                            
+                             <div class="p-2 flex-shrink-1">
                               <div class="mt-2" id="img" style="height: 200px; width: 310px">
-                                  <img src="../../../../resources/upload/shop/${shopFileDTO.fileName}" style="width: 300px;">
+                                <c:forEach items="${list.shopFileDTOs}" var="shopFileDTO">               
+                                  <img src="../../../../resources/upload/shop/${shopFileDTO.fileName[0]}" style="width: 300px;">
+                                </c:forEach>
                               </div>
                           </div>
                         </div>
@@ -77,20 +79,20 @@
             </div> 
       </c:forEach>
     
-		<div class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap" role="add">가게등록</div>
+	
 		<!-- <div id="map" style="width:500px;height:400px;"></div> -->
 		
 		<!--  -->
 
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
-    <div class="modal-content">
+    <div class="modal-content" id="modal_size">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">++가게 등록++</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form action="/shop/add" method="post" enctype="multipart/form-data">
+        <form action="/shop/add" method="post" enctype="multipart/form-data" id="listAddForm">
 
           <div class="mb-3" id="caNum">
             <label for="message-text" class="col-form-label">category</label>
@@ -109,15 +111,16 @@
           </div>
           <div class="mb-3">
             <label for="message-text" class="col-form-label"> </label>
-           <input type="text" class="form-control" placeholder="식당의 상호명을 입력해주세요" name="shopName" id="shopName">
+            <input type="text" class="form-control" placeholder="식당의 상호명을 입력해주세요" name="shopName" id="shopName">
           </div>
-          <!-- <div class="mb-3">
+          <div class="mb-3">
             <label for="message-text" class="col-form-label"> </label>
-           <input type="text" class="form-control" placeholder="식당의 주소를 입력해주세요" name="shopAddress" id="shopAddress">
-          </div> -->
-            <div class="mb-3" id="map" style="width:500px;height:400px;">
-            	<input type="text" class="form-control" placeholder="식당의 주소를 입력해주세요" name="shopAddress" id="shopAddress">
-            </div>
+           <input type="text" class="form-control" placeholder="식당의 주소를 직접 입력해주세요" name="shopAddress">
+          </div>
+          <div class="mb-3" id="map" style="width:550px;height: 300px;">
+            <label for="message-text" class="col-form-label"> </label>
+            <input type="text" class="form-control" name="shopAddress" id="shopAddress" >
+          </div>
           <div class="mb-3">
             <label for="message-text" class="col-form-label"> </label>
             <input type="text" class="form-control" placeholder="식당의 가격대를 입력해주세요" name="priceAvg" id="priceAvg">
@@ -134,22 +137,20 @@
           <label for="recipient-name" class="col-form-label"></label>
           <input type="text" class="form-control" placeholder="제목을 입력해주세요" name="title" id="title">
         </div>
-        <div class="mb-3">
+        <!-- <div class="mb-3">
           <label for="recipient-name" class="col-form-label"></label>
           <input type="text" class="form-control" placeholder="hit" name="hit" id="hit">
-        </div>
+        </div> -->
         
 
-          <div id="addFiles" class="mb-3">
-            <i class="fa-regular fa-image"></i>
-            <label for="message-text" class="col-form-label"></label>
-              <input type="file" name="files" id="fileAdd">파일
-          </div>
+        <div id="addFiles">
+          <button style="color: blue;" type="button"name="files" id="fileAdd">파일추가</button>
+        </div>
 
         </div>
         <div class="modal-footer file_box" id="modal-footer">
           <button type="button" class="btn btn-secondary upload-name" data-bs-dismiss="modal" id="close">취소</button>
-          <button type="submit" class="btn btn-primary" id="btn">등록</button>
+          <button type="submit" class="btn btn-primary" id="listAddButton">등록</button>
           
         </div>
         </form>
@@ -161,7 +162,7 @@
    
 
 </main>
-<div style="display: flex; margin: 5 5px;  justify-content: center;">
+<div style="display: flex; margin: 100px; height: 40px;  justify-content: center;">
   <nav aria-label="Page navigation example">
     <ul class="pagination">
        <c:if test="${shopPager.pre}">
@@ -186,6 +187,7 @@
   <c:import url="../../template/footerHTML.jsp"></c:import>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
   <script src="../../../../resources/kdy/js/shop_files.js"></script>
+  <script src="../../../../resources/kdy/js/list.js"></script>
 
     <script type="text/javascript">
       $("#contents").summernote(
@@ -238,20 +240,32 @@ var map = new kakao.maps.Map(mapContainer, mapOption);
 // 주소-좌표 변환 객체를 생성합니다
 var geocoder = new kakao.maps.services.Geocoder();
 
+
+
 var marker = new kakao.maps.Marker(), // 클릭한 위치를 표시할 마커입니다
     infowindow = new kakao.maps.InfoWindow({zindex:1}); // 클릭한 위치에 대한 주소를 표시할 인포윈도우입니다
 
 // 현재 지도 중심좌표로 주소를 검색해서 지도 좌측 상단에 표시합니다
-searchAddrFromCoords(map.getCenter(), displayCenterInfo);
+searchAddrFromCoords(map.getCenter());
 
 // 지도를 클릭했을 때 클릭 위치 좌표에 대한 주소정보를 표시하도록 이벤트를 등록합니다
 kakao.maps.event.addListener(map, 'click', function(mouseEvent) {
     searchDetailAddrFromCoords(mouseEvent.latLng, function(result, status) {
         if (status === kakao.maps.services.Status.OK) {
-            var detailAddr = !!result[0].road_address ? '<div>' + result[0].road_address.address_name + '</div>' : '';
-           
+            let detailAddr = !!result[0].road_address ? '<div>' + result[0].road_address.address_name + '</div>' : '';
+            // console.log(result[0].road_address.address_name);
+            let sa = result[0].road_address.address_name;
+            // console.log('SA : '+sa);
+
+
+
+            let content = '<div class="bAddr"> ' + detailAddr + '</div>';
+
+            const shopAddress = document.querySelector("#shopAddress");
             
-            let content = '<div class="bAddr" name="shopAddress" id="shopAddress"> ' + detailAddr + '</div>';
+            shopAddress.value=sa;
+            // ${'#shopAddress'}.val(sa);
+            console.log(shopAddress);
 
             // 마커를 클릭한 위치에 표시합니다 
             marker.setPosition(mouseEvent.latLng);
@@ -266,7 +280,7 @@ kakao.maps.event.addListener(map, 'click', function(mouseEvent) {
 
 // 중심 좌표나 확대 수준이 변경됐을 때 지도 중심 좌표에 대한 주소 정보를 표시하도록 이벤트를 등록합니다
 kakao.maps.event.addListener(map, 'idle', function() {
-    searchAddrFromCoords(map.getCenter(), displayCenterInfo);
+    searchAddrFromCoords(map.getCenter());
 });
 
 function searchAddrFromCoords(coords, callback) {
@@ -284,17 +298,18 @@ function displayCenterInfo(result, status) {
     if (status === kakao.maps.services.Status.OK) {
         var infoDiv = document.getElementById('centerAddr');
 
-        for(var i = 0; i < result.length; i++) {
-            // 행정동의 region_type 값은 'H' 이므로
-            if (result[i].region_type === 'H') {
-                infoDiv.innerHTML = result[i].address_name;
-                break;
-            }
-        }
+        // for(var i = 0; i < result.length; i++) {
+        //     // 행정동의 region_type 값은 'H' 이므로
+        //     if (result[i].region_type === 'H') {
+        //         infoDiv.innerHTML = result[i].address_name;
+        //         break;
+        //     }
+        // }
     }    
 }
 
-	</script>
+	</script> 
+ 
     
 
 </body>

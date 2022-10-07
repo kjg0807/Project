@@ -1,9 +1,6 @@
 const addFiles=document.getElementById("addFiles");//div
 const fileAdd=document.getElementById("fileAdd");//fileAdd 버튼
 const fileDelete = document.querySelectorAll(".fileDelete"); // 클래스명 fileDelete forEach가능
-//const fileDelete = document.getElementsByClassName("fileDelete"); // forEach 불가능
-
-
 const shopAddres = document.querySelector("#shopAddress");
 
 
@@ -50,16 +47,16 @@ fileDelete.forEach(function(f){
 
 }
 
-// for(fi of fileDelete) {
-//     console.log(fi);
-// }
+for(fi of fileDelete) {
+    console.log(fi);
+}
 
 //-----------------------file add----------------------------
 let count=0;
 let idx=0;
 
 function setCount(c){
-    if(c<=0){
+    if(c >= 0){
     count=c;
     }
 }
@@ -151,12 +148,11 @@ try{
 
 //삭제버튼 누르면 삭제 
 addFiles.addEventListener("click", function(event){
+  
     let button1 = event.target;
     if(button1.classList[0]=='del') {
         document.getElementById("file"+button1.title).remove();
         count--;
-        
-
     }
 });
 
@@ -164,46 +160,8 @@ addFiles.addEventListener("click", function(event){
  console.log(e);
 }
 
-const cccc = document.querySelector("#cccc");
-const ccccChildren = cccc.children;
 
-for(let i =0; i < ccccChildren.length; i++){
-    ccccChildren[i].addEventListener("click", function(){
-        location.href="../../shop/listHTML?categoryName=" + ccccChildren[i].getAttribute("data-miniCategory");
-    })
-}
 
-// const caNum = document.querySelector("#caNum");
-// const canumChildren = caNum.children;
-
-// for(let i=0; i<canumChildren.length; i++){
-//     canumChildren[i].addEventListener("click", function(){
-
-//     })
-// }
-
-const categoryNum = document.querySelector("#categoryNum");
-const shopPhone = document.querySelector("#shopPhone");
-const shopName = document.querySelector("#shopName");
-const shopAddress = document.querySelector("#shopAddress");
-const priceAvg = document.querySelector("#priceAvg");
-const delivery = document.querySelector("#delivery");
-const contents = document.querySelector("#contents");
-const title = document.querySelector("#title");
-const hit = document.querySelector("#hit");
-
-btn.addEventListener("click", function(){
-    console.log(categoryNum.value);
-    console.log(shopPhone.value);
-    console.log(shopName.value);
-    console.log(shopAddress.value);
-    console.log(priceAvg.value);
-    console.log(delivery.value);
-    console.log(contents.value);
-    console.log(title.value);
-    console.log(hit.value);
-
-})
 
 
 
