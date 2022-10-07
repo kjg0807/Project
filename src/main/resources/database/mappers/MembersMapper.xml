@@ -6,7 +6,7 @@
 	<!-- id == DAO.method name -->
 	<select id="getLogin" parameterType="MemberDTO"
 		resultMap="getLoginResult">
-		select m.userid, m.username, c.classname, c.classnum
+		select m.userid, m.username, m.gender, m.age, c.classname, c.classnum
 		from
 		promembers m
 		LEFT join <!-- userclass 자동부여 만들고 inner -->
@@ -24,6 +24,8 @@
 	<resultMap type="MemberDTO" id="getLoginResult">
 		<id column="userid" property="userid" />
 		<result column="username" property="username" />
+		<result column="gender" property="gender"/>
+		<result column="age" property="age"/>
 		<collection property="classDTOs" javaType="List"
 			ofType="ClassDTO">
 			<id column="classnum" property="classNum" />

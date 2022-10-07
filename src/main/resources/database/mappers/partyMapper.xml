@@ -43,6 +43,7 @@
     	SELECT * FROM 
     		(SELECT ROWNUM R, P.* FROM
     			(SELECT * FROM PARTYLIST
+    			WHERE PARTYTITLE LIKE '%'||#{search}||'%'	
     			ORDER BY PARTYNUM DESC) P
     				) WHERE R BETWEEN #{startRow} AND #{lastRow}
     </select>

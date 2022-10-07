@@ -43,6 +43,7 @@ public class PartyController {
 	public ModelAndView getPartyDetail(PartyListDTO partyListDTO, HttpSession session)throws Exception{
 		ModelAndView mv = new ModelAndView();
 		partyListDTO = partyService.getPartyDetail(partyListDTO);
+		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
 		mv.addObject("member", (MemberDTO)session.getAttribute("member"));
 		mv.addObject("partyListDTO", partyListDTO);
 		mv.setViewName("party/detail");
@@ -51,9 +52,10 @@ public class PartyController {
 	}
 	
 	@GetMapping(value = "add")
-	public String setPartyAdd(PartyListDTO partyListDTO)throws Exception{
+	public String setPartyAdd(PartyListDTO partyListDTO, HttpSession session)throws Exception{
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("partyListDTO", partyListDTO);
+		mv.addObject("member", session.getAttribute("member"));
 		return "party/add";
 	}
 	
