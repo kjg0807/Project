@@ -26,7 +26,7 @@
 	    <label class="visually-hidden" for="kind">Kind</label>
 	    <select name="kind" class="form-select" id="kind">
 	      <option selected>선택하세요</option>
-	      <option class="kinds" value="userId">닉네임</option>
+	      <option class="kinds" value="userID">닉네임</option>
 	      <option class="kinds" value="title">제목</option>
 	      <option class="kinds" value="contents">내용</option>
 	    </select>
@@ -63,7 +63,7 @@
 				
 				<tr id="tdiv">
 					<td>${pageScope.dto.reviewNum}</td>
-					<td>${pageScope.dto.userId}</td>
+					<td>${pageScope.dto.userID}</td>
 							
 					<td><a href="./detail?reviewNum=${pageScope.dto.reviewNum}">${pageScope.dto.title}</a></td>
 					<td>${pageScope.dto.contents}</td>

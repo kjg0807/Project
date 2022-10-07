@@ -73,6 +73,9 @@ public class ReviewsController {
 		ModelAndView mv = new ModelAndView();
 		
 		
+		System.out.println("userID : " + reviewsDTO.getUserID());
+		System.out.println("TITLE : " + reviewsDTO.getTitle());
+		System.out.println("CONTENTS : " + reviewsDTO.getContents());
 		int result = reviewsService.setReviewsAdd(reviewsDTO, files, session.getServletContext());
 		
 		System.out.println("리뷰 Add Post 실행");

@@ -3,19 +3,48 @@ package com.iu.home.reviews;
 import java.sql.Date;
 import java.util.List;
 
+import com.iu.home.member.ClassDTO;
+import com.iu.home.member.MemberDTO;
+import com.iu.home.member.UserClassDTO;
+
 public class ReviewsDTO{
 	
 	private Long reviewNum;
 	private Long shopNum;
-	private String userId;
+	private String userID;
 	private String title;
 	private String writer;
 	private String contents;
 	private Date reviewDate;
 	private Long hits;
 	private List<ReviewsFilesDTO> reviewsFilesDTOs;
+	private List<MemberDTO> memberDTOs;
+	private List<UserClassDTO> userClassDTOs;
+	private List<ClassDTO> classDTOs;
 	
 	
+	
+	
+	
+	
+	public List<UserClassDTO> getUserClassDTOs() {
+		return userClassDTOs;
+	}
+	public void setUserClassDTOs(List<UserClassDTO> userClassDTOs) {
+		this.userClassDTOs = userClassDTOs;
+	}
+	public List<ClassDTO> getClassDTOs() {
+		return classDTOs;
+	}
+	public void setClassDTOs(List<ClassDTO> classDTOs) {
+		this.classDTOs = classDTOs;
+	}
+	public List<MemberDTO> getMemberDTOs() {
+		return memberDTOs;
+	}
+	public void setMemberDTOs(List<MemberDTO> memberDTOs) {
+		this.memberDTOs = memberDTOs;
+	}
 	public Long getReviewNum() {
 		return reviewNum;
 	}
@@ -28,11 +57,11 @@ public class ReviewsDTO{
 	public void setShopNum(Long shopNum) {
 		this.shopNum = shopNum;
 	}
-	public String getUserId() {
-		return userId;
+	public String getUserID() {
+		return userID;
 	}
-	public void setUserId(String userId) {
-		this.userId = userId;
+	public void setUserID(String userID) {
+		this.userID = userID;
 	}
 
 	public String getTitle() {
