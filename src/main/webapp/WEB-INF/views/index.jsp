@@ -70,8 +70,12 @@
             </div>
          </header>
         <!-- Section-->
-        <section class="py-5 nn">
-            <div class="container px-4 px-lg-5 mt-5">
+        <section class="" style="margin-top: 0px;">
+            <div class="container px-4 px-lg-5 mt-2">
+                <div class="d-flex justify-content-between pt-4 pb-3">
+                    <div style="color: orange;"><b>믿고 보는 맛집 리스트</b></div>
+                    <div>음식 더보기</div>
+                </div>
                 <div  class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center" id="tttt">
 
                     <div class="col mb-5" data-category="">

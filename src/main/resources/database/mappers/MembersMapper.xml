@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- namespace의 값은 사용할 DAO의 풀 패키지명 -->
+<mapper namespace="com.iu.home.member.MemberDAO">
+	<!-- id == DAO.method name -->
+	<select id="getLogin" parameterType="MemberDTO"
+		resultMap="getLoginResult">
+		select m.userid, m.username, m.gender, m.age, c.classname, c.classnum
+		from
+		promembers m
+		LEFT join <!-- userclass 자동부여 만들고 inner -->
+		userclass uc
+		on m.userid = uc.userid
+		LEFT join <!-- class 자동부여 만들고 inner -->
+		class c
+		on
+		uc.classnum = c.classnum
+		where m.userid=#{userid} and
+		m.pwd=#{pwd}
+		<!-- sql문 에러 고치기 -->
+	</select>
+
+	<resultMap type="MemberDTO" id="getLoginResult">
+		<id column="userid" property="userid" />
+		<result column="username" property="username" />
+		<result column="gender" property="gender"/>
+		<result column="age" property="age"/>
+		<collection property="classDTOs" javaType="List"
+			ofType="ClassDTO">
+			<id column="classnum" property="classNum" />
+			<result column="classname" property="className" />
+		</collection>
+	</resultMap>
+
+	<insert id="setJoin" parameterType="MemberDTO">
+		insert all into promembers values
+		(#{userid}, #{username}, #{pwd},
+		#{email},
+		#{age}, #{birth}, #{phone}, #{gender})
+		into userclass
+		values(class_seq.nextval, #{userid}, 6)
+		select * from dual
+		<!-- insert into promembers values(#{userid}, #{username}, #{pwd}, #{email}, 
+			#{age}, #{birth}, #{phone}, #{gender}) -->
+	</insert>
+
+	<select id="getMyPage" parameterType="MemberDTO"
+		resultMap="getMyPageResult">
+		select m.*, c.className, c.classNum
+		from
+		promembers m
+		LEFT join
+		userclass uc
+		on m.userid = uc.userid
+		LEFT join
+		class c on
+		uc.classnum =
+		c.classnum
+		where m.userid=#{userid}
+	</select>
+	<resultMap type="MemberDTO" id="getMyPageResult">
+		<id column="USERID" property="userid" />
+		<result column="userNAME" property="username" />
+		<result column="pwd" property="pwd" />
+		<result column="EMAIL" property="email" />
+		<result column="age" property="age" />
+		<result column="birth" property="birth" />
+		<result column="phone" property="phone" />
+		<result column="gender" property="gender" />
+		<collection property="classDTOs" javaType="List"
+			ofType="ClassDTO">
+			<id column="classnum" property="classNum" />
+			<result column="classname" property="className" />
+		</collection>
+	</resultMap>
+
+
+	<select id="adMyPage" parameterType="MemberDTO"
+		resultMap="aMyPage"> <!-- resultMap="aMyPage" -->
+		select * from
+		promembers order by userid asc
+	</select>
+
+	<resultMap type="MemberDTO" id="aMyPage">
+		<id column="userid" property="userid" />
+		<result column="username" property="username" />
+		<result column="pwd" property="pwd" />
+		<result column="email" property="email" />
+		<result column="age" property="age" />
+		<result column="birth" property="birth" />
+		<result column="PHONE" property="phone" />
+		<result column="gender" property="gender" />
+		<collection property="classDTOs" javaType="List"
+			ofType="ClassDTO">
+			<id column="classnum" property="classNum" />
+			<result column="classname" property="className" />
+		</collection>
+	</resultMap>
+
+	<update id="setUpdate" parameterType="MemberDTO">
+		<!-- update promembers set userid=#{userid}, username=#{username}, pwd=#{pwd}, 
+			email=#{email}, age=#{age}, birth=#{birth}, phone=#{phone}, gender=#{gender} 
+			where userid=#{userid} -->
+		update promembers set
+		userid=#{userid}, username = #{username}, pwd = #{pwd}, email = #{email}
+		, age = #{age}, birth=#{birth} ,phone = #{phone}, gender = #{gender}
+		where userid = #{userid}
+	</update>
+
+	<delete id="setDelete" parameterType="MemberDTO">
+		delete
+		from promembers
+		where
+		userid = #{userid}
+	</delete>
+
+</mapper>

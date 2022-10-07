@@ -2,10 +2,11 @@
 const jm = document.querySelector("#joinModal");
 const ja = document.getElementById("joinAge");
 const jb = document.querySelector("#joinbtn");
-const jn = document.querySelector("#joinNum")
-const ju = document.querySelector("#joinUserName")
-const jg = document.getElementsByName("genderRadio")
-const jc = document.querySelector("#joinComment")
+const jn = document.querySelector("#joinNum");
+const ju = document.querySelector("#joinUserName");
+const jsn = document.querySelector("#joinShopNum");
+const jg = document.getElementsByName("genderRadio");
+const jc = document.querySelector("#joinComment");
 
 const pm = document.querySelector("#partyMember");
 const pb = document.querySelector("#partybtn");
@@ -33,14 +34,15 @@ jb.addEventListener("click",function(){
             gender = jg[i].value
         }
     }
-    
+
     const xhttp = new XMLHttpRequest();
 
     xhttp.open("POST",  "./partyJoin");
 
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 
-    xhttp.send("partyNum="+jn.value+"&userName="+ju.value+"&partyAge="+ja.value+"&partyGender="+gender+"&partyComment="+jc.value);
+    xhttp.send("partyNum="+jn.value+"&userName="+ju.value+"&partyAge="+ja.value+"&partyGender="+gender+"&partyComment="+jc.value
+    +"&shopNum="+jsn.value);
 
     xhttp.onreadystatechange=function(){
         if(this.readyState==4 && this.status==200){
@@ -61,9 +63,7 @@ jb.addEventListener("click",function(){
 //파티목록 ===
 let pn = jn.value;
 
-pb.addEventListener("click", function(){
-    getRequestList(pn);
-})
+getRequestList(pn);
 
 function getRequestList(pn){
     const xhttp = new XMLHttpRequest();
@@ -89,13 +89,13 @@ function getRequestList(pn){
                 puttype = document.createAttribute("type");
                 puttype.value = "checkbox";
 
-                putid = document.createAttribute("id");
-                putid.value = "partyID"+i;
+                putid = document.createAttribute("class");
+                putid.value = "partyID";
 
                 putvalue = document.createAttribute("username");
                 putvalue.value = ar[i].userName;
 
-                putnum = document.createAttribute("partnum");
+                putnum = document.createAttribute("partynum");
                 putnum.value = pn;
 
                 tdput.setAttributeNode(putnum);
@@ -153,31 +153,76 @@ function getRequestList(pn){
 reject.addEventListener("click", function(){
     let check = window.confirm("삭제 하시겠습니까?");
     if(check==true){
-        for(let i=0; i<10; i++){
-            const pid = document.querySelector("#partyID"+i)
-            if(pid != null){
-                if(pid.checked){
-                    let uv = pid.getAttribute("username");
-
-                    const xhttp = new XMLHttpRequest();
-
-                    xhttp.open("POST",  "./partyCancel");
-
-                    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-
-                    xhttp.send("partyNum="+pn+"&userName="+uv);
-
-                    xhttp.onreadystatechange=function(){
-                        if(this.readyState==4 && this.status==200){
-                            let result = xhttp.responseText.trim();
-                            if(result == 1){
-
-                            }
-                        }
-                        
-                }
+        const pid = document.getElementsByClassName('partyID');
+        let uv = "";
+        let cn = 0;
+        for(let i=0; i<pid.length; i++){
+            console.log(pid[i].checked+" : "+i);
+            if(pid[i].checked){
+                uvs = pid[i].getAttribute("username");
+                uv = uv+("&userName="+uvs);
+                cn++;
             }
         }
-    }
 
+        const xhttp = new XMLHttpRequest();
+
+        xhttp.open("POST",  "./partyCancel");
+
+        xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+        xhttp.send("partyNum="+pn+uv);
+
+        xhttp.onreadystatechange=function(){
+            if(this.readyState==4 && this.status==200){
+                result = JSON.parse(xhttp.responseText.trim());
+                if(result.result == 1){
+                    alert(cn+"건 삭제 완료")
+                    window.location.reload();
+                }else{
+                    alert("오류 발생")
+                }
+            }
+            
+        }     
+    }
+})
+
+
+accept.addEventListener("click", function(){
+    let check = window.confirm("승인 하시겠습니까?");
+    if(check==true){
+        const pid = document.getElementsByClassName('partyID');
+        let uv = "";
+        let cn = 0;
+        for(let i=0; i<pid.length; i++){
+            console.log(pid[i].checked+" : "+i);
+            if(pid[i].checked){
+                uvs = pid[i].getAttribute("username");
+                uv = uv+("&userName="+uvs);
+                cn++;
+            }
+        }
+
+        const xhttp = new XMLHttpRequest();
+
+        xhttp.open("POST",  "./partyAccept");
+
+        xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+        xhttp.send("partyNum="+pn+uv);
+
+        xhttp.onreadystatechange=function(){
+            if(this.readyState==4 && this.status==200){
+                result = JSON.parse(xhttp.responseText.trim());
+                if(result.result == 1){
+                    alert(cn+"건 승인 완료")
+                    window.location.reload();
+                }else{
+                    alert("오류 발생")
+                }
+            }
+            
+        }     
+    }
 })
