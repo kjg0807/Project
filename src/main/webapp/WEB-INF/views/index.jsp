@@ -174,10 +174,10 @@
                     </div> 
                 </div>
                 <!-- <div style="border-bottom: solid 1px gainsboro; height: 200px;"><span>조회수 높은 식당 TOP10</span></div> -->
-                <div  style="border-bottom: solid 1px black; height: 100px;" id="hitList" class="mainList">조회수 높은 식당 TOP10</div>
+                <div  style="border-bottom: solid 1px black; height: 100px;" id="hitList" class="mainList">조회수 높은 식당 TOP5</div>
                 <div>
                         <c:forEach items="${list}" var="list">
-                            <span>리스트다 인마</span>
+
                             <div class="shop_list"  onclick="location.href='/shop/detailHTML?shopNum=${list.getShopNum()}';">
 
                                 <div class="list" style="box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px" >
@@ -186,7 +186,7 @@
 
                                         <div class="d-flex">
 
-                                            <div class="p-2 w-100" >
+                                            <div class="p-2 w-100" style="height: 150px;">
 
                                                 <div class="container2" style="padding: 12px;">
                                                     <div class="name">${list.shopName}</div>

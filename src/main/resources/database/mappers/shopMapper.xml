@@ -53,7 +53,7 @@
         CATEGORY C
         ON C.CATEGORYNUM = S.CATEGORYNUM
 		ORDER BY S.HIT DESC)SN)
-		WHERE R BETWEEN 1 AND 10 
+		WHERE R BETWEEN 1 AND 5
 	</select>
 	
 	<select id="getCount" resultType="Long"

@@ -60,7 +60,6 @@
                                     <div class="p-2 b">SHOP NAME : ${list.shopName}</div>
                                     <div class="p-2 b">SHOP ADDRESS : ${list.shopAddress}</div>
                                     <div class="p-2 b">HIT : ${list.hit}</div>
-                                    <div class="p-2 b">BEST MENU : ${list.menuName}</div>
                                   </div>
                             </div>
                             
@@ -93,7 +92,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form action="/shop/add" method="post" enctype="multipart/form-data">
+        <form action="/shop/add" method="post" enctype="multipart/form-data" id="listAddForm">
 
           <div class="mb-3" id="caNum">
             <label for="message-text" class="col-form-label">category</label>
@@ -151,7 +150,7 @@
         </div>
         <div class="modal-footer file_box" id="modal-footer">
           <button type="button" class="btn btn-secondary upload-name" data-bs-dismiss="modal" id="close">취소</button>
-          <button type="submit" class="btn btn-primary" id="btn">등록</button>
+          <button type="submit" class="btn btn-primary" id="listAddButton">등록</button>
           
         </div>
         </form>

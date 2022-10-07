@@ -14,3 +14,15 @@ for(let i=0; i<canumChildren.length; i++){
     canumChildren[i].addEventListener("click", function(){
     })
 }
+
+function listAddCheck(){
+    const listAddForm = document.querySelector("#listAddForm");
+    const listAddButton = document.querySelector("#listAddButton");
+
+    const shopName = document.querySelector("#shpName");
+    const shopAddress = document.querySelector("#shopAddress");
+    const priceAvg = document.querySelector("#priceAvg");
+    const delivery = document.querySelector("#delivery");
+    const contents = document.querySelector("#contents");
+    const title = document.querySelector("#title");
+}
