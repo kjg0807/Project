@@ -69,8 +69,7 @@ select {
 				<div class="mb-3">
 					<label class="form-label">아이디</label>
 					<input type="text" class="form-control id_input" name="userID" aria-describedby="emailHelp" id="id" placeholder="아이디 입력"
-						onfocus="this.placeholder=''" onblur="this.placeholder='아이디 입력'" size="15"
-					>
+						onfocus="this.placeholder=''" onblur="this.placeholder='아이디 입력'" size="15">
 					<%
 					while (rs.next())
 					{
