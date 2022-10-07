@@ -1,5 +1,7 @@
+<%@page import="com.iu.home.member.MemberDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -90,6 +92,7 @@
 		$('#chatting').val("");
 	}
 </script>
+
 <body>
 	<div id="container" class="container">
 		<h1>채팅</h1>
@@ -100,8 +103,15 @@
 			<table class="inputTable">
 				<tr>
 					<th>사용자명</th>
-					<th><input type="text" name="userName" id="userName"></th>
-					<th><button onclick="chatName()" id="startBtn">이름 등록</button></th>
+					<c:choose>
+						<c:when test="${not empty member.username }">
+							<th><input type="text" name="userName" id="userName" value="${member.username }" ></th>
+							<th><button onclick="chatName()" id="startBtn">이름 등록</button></th>
+						</c:when>
+						<c:otherwise>
+							<input type="text" value="로그인 정보가 없습니다" readonly="readonly">
+						</c:otherwise>
+					</c:choose>
 				</tr>
 			</table>
 		</div>

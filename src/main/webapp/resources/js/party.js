@@ -2,10 +2,11 @@
 const jm = document.querySelector("#joinModal");
 const ja = document.getElementById("joinAge");
 const jb = document.querySelector("#joinbtn");
-const jn = document.querySelector("#joinNum")
-const ju = document.querySelector("#joinUserName")
-const jg = document.getElementsByName("genderRadio")
-const jc = document.querySelector("#joinComment")
+const jn = document.querySelector("#joinNum");
+const ju = document.querySelector("#joinUserName");
+const jsn = document.querySelector("#joinShopNum");
+const jg = document.getElementsByName("genderRadio");
+const jc = document.querySelector("#joinComment");
 
 const pm = document.querySelector("#partyMember");
 const pb = document.querySelector("#partybtn");
@@ -33,14 +34,15 @@ jb.addEventListener("click",function(){
             gender = jg[i].value
         }
     }
-    
+
     const xhttp = new XMLHttpRequest();
 
     xhttp.open("POST",  "./partyJoin");
 
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 
-    xhttp.send("partyNum="+jn.value+"&userName="+ju.value+"&partyAge="+ja.value+"&partyGender="+gender+"&partyComment="+jc.value);
+    xhttp.send("partyNum="+jn.value+"&userName="+ju.value+"&partyAge="+ja.value+"&partyGender="+gender+"&partyComment="+jc.value
+    +"&shopNum="+jsn.value);
 
     xhttp.onreadystatechange=function(){
         if(this.readyState==4 && this.status==200){

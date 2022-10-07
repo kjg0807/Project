@@ -29,7 +29,7 @@
 					<li class="nav-item"><a class="nav-link" href="../../qna/list">Q&A</a></li>
 					<li class="nav-item"><a class="nav-link" href="../reviews/list">리뷰</a></li>
 				</ul>
-				<form class="d-flex" action="../member/login">
+				<form class="d-flex" action="../kjk/member/login">
 					<button class="btn btn-outline-dark" type="submit">
 						<!-- <i class="bi-cart-fill me-1"></i> -->
 						Login

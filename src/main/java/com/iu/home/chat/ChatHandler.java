@@ -21,14 +21,7 @@ public class ChatHandler extends TextWebSocketHandler {
 	public void afterConnectionEstablished(WebSocketSession session) throws Exception {
 		super.afterConnectionEstablished(session);
 		sessionMap.put(session.getId(), session);
-		// 채팅방에 접속한 사용자 세션을 리스트에 저장
-//		sessionList.add(session);
-//		// 모든 세션에 채팅 전달
-//		for (int i = 0; i < sessionList.size(); i++) {
-//			WebSocketSession s = sessionList.get(i);
-//		
-//			s.sendMessage(new TextMessage(/*session.getId() + */"님이 입장 했습니다."));
-//		}
+		
 	}
 
 	// 클라이언트에서 send를 이용해서 메시지 발송을 한 경우 이벤트 핸들링
@@ -40,12 +33,8 @@ public class ChatHandler extends TextWebSocketHandler {
 			WebSocketSession wss = sessionMap.get(key);
 				wss.sendMessage(new TextMessage(msg));
 		}
-//		// 모든 세션에 채팅 전달
-//		for (int i = 0; i < sessionList.size(); i++) {
-//			WebSocketSession s = sessionList.get(i);
-//			s.sendMessage(new TextMessage(/*session.getId() + " : " + */message.getPayload()));
-//		}
 	}
+		
 
 	// 클라이언트에서 연결을 종료할 경우 발생하는 이벤트
 	@Override
@@ -53,15 +42,7 @@ public class ChatHandler extends TextWebSocketHandler {
 		sessionMap.remove(session.getId());
 		super.afterConnectionClosed(session, status);
 		
-		
-//		// 채팅방에서 퇴장한 사용자 세션을 리스트에서 제거
-//		sessionList.remove(session);
-//
-//		// 모든 세션에 채팅 전달
-//		for (int i = 0; i < sessionList.size(); i++) {
-//			WebSocketSession s = sessionList.get(i);
-//			s.sendMessage(new TextMessage(/*session.getId() + */"님이 퇴장 했습니다."));
-//		}
+	
 
 	}
 

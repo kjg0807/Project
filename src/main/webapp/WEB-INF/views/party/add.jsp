@@ -13,9 +13,9 @@
 	
 	<div class="row">
 		<form action="./add" method="post" enctype="multipart/form-data">
-			  <input type="hidden" name="userName" value = "${partyDTO.userName}" class="form-control" >
-			  <input type="hidden" name="userID" value = "${partyDTO.userID}" class="form-control">
-			  <input type="hidden" name="shopNum" value = "${partyDTO.shopNum}" class="form-control">
+			  <input type="hidden" name="userName" value = "${member.userName}" class="form-control" >
+			  <input type="hidden" name="userID" value = "${member.userID}" class="form-control">
+			  <input type="hidden" name="shopNum" value = "${partyListDTO.shopNum}" class="form-control">
 			  	
 			<div class="mb-3">
 			  <label for="title" class="form-label">Title</label>

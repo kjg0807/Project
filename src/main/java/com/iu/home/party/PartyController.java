@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.iu.home.member.MemberDTO;
 import com.iu.home.util.Pager;
 
 @Controller
@@ -27,11 +28,11 @@ public class PartyController {
 	
 	// PartyList===============================================================================
 	@GetMapping(value="list")
-	public ModelAndView getPartyList(Pager pager)throws Exception{
+	public ModelAndView getPartyList(Pager pager, HttpSession session)throws Exception{
 		ModelAndView mv = new ModelAndView();
 		
 		List<PartyListDTO> ar = partyService.getPartyList(pager);
-		
+		mv.addObject("member", (MemberDTO)session.getAttribute("member"));
 		mv.addObject("list", ar);
 		mv.addObject("pager", pager);
 		mv.setViewName("party/list");
@@ -39,10 +40,11 @@ public class PartyController {
 	}
 	
 	@GetMapping(value = "detail")
-	public ModelAndView getPartyDetail(PartyListDTO partyListDTO)throws Exception{
+	public ModelAndView getPartyDetail(PartyListDTO partyListDTO, HttpSession session)throws Exception{
 		ModelAndView mv = new ModelAndView();
 		partyListDTO = partyService.getPartyDetail(partyListDTO);
-
+		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
+		mv.addObject("member", (MemberDTO)session.getAttribute("member"));
 		mv.addObject("partyListDTO", partyListDTO);
 		mv.setViewName("party/detail");
 		
@@ -50,9 +52,10 @@ public class PartyController {
 	}
 	
 	@GetMapping(value = "add")
-	public String setPartyAdd(PartyListDTO partyListDTO)throws Exception{
+	public String setPartyAdd(PartyListDTO partyListDTO, HttpSession session)throws Exception{
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("partyListDTO", partyListDTO);
+		mv.addObject("member", session.getAttribute("member"));
 		return "party/add";
 	}
 	
