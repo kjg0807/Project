@@ -22,17 +22,17 @@
 	
 		<div class="mb-3">
 		  <label for="formGroupExampleInput" class="form-label">제목</label>
-		  <input type="text" class="form-control" name="title" placeholder="${dto.title}">
+		  <input type="text" class="form-control" name="title" placeholder="제목을 입력하세요.">
 		</div>
 		
 		<div class="mb-3">
 		  <label for="formGroupExampleInput2" class="form-label">작성자</label>
-		  <input type="text" class="form-control" name="writer" placeholder="${dto.writer}">
+		  <input type="text" class="form-control" name="writer" placeholder="작성자 : ">
 		</div>
 		
 		<div class="mb-3">
 		  <label for="formGroupExampleInput2" class="form-label">글내용</label>
-		  <input type="text" class="form-control" name="contents" placeholder="${dto.contents}">
+		  <input type="text" class="form-control" name="contents" placeholder="내용을 입력하세요.">
 		</div>
 		
 		<br>
@@ -41,10 +41,10 @@
 		
 		
 	
+		<button type="submit" class="btn btn-success">추가완료</button>
+		
 	</form>
-			<button type="submit" class="btn btn-success">추가완료</button>
-	
-		<button onclick="location='/'" class="btn btn-primary">홈으로</button>
+	<button onclick="location='/'" class="btn btn-primary">홈으로</button>
 	
 		    			 </section>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"

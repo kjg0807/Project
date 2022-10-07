@@ -76,7 +76,14 @@ public class ReviewsDAO implements ReviewsIntDAO{
 	@Override
 	public int setReviewsFilesDelete(ReviewsFilesDTO reviewsFilesDTO) throws Exception {
 	
-		return sqlSession.delete(NAMESPACE, reviewsFilesDTO);
+		return sqlSession.delete(NAMESPACE+"setReviewsFilesDelete", reviewsFilesDTO);
+	}
+
+
+	@Override
+	public int setReviewsHitsUpdate(ReviewsDTO reviewsDTO) throws Exception {
+		
+		return sqlSession.update(NAMESPACE+"setReviewsHitsUpdate", reviewsDTO);
 	}
 
 	

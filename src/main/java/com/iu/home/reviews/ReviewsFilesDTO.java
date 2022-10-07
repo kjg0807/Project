@@ -1,6 +1,5 @@
 package com.iu.home.reviews;
 
-import java.util.List;
 
 public class ReviewsFilesDTO extends ReviewsDTO{
 	
@@ -8,9 +7,7 @@ public class ReviewsFilesDTO extends ReviewsDTO{
 	private String fileName;
 	private String oriName;
 	private Long reviewNum;
-	
-	
-	
+
 	public Long getFilesNum() {
 		return filesNum;
 	}
