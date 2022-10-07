@@ -47,4 +47,9 @@ public class MemberService
 	{
 		return memberDAO.setDelete(memberDTO);
 	}
+
+	public int idCheck(String userID) throws Exception
+	{
+		return memberDAO.idCheck(userID);
+	}
 }

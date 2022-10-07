@@ -31,7 +31,7 @@
 							<div class="mb-3">
 								<label class="form-label">이름</label>
 								<input type="hidden" name="userName" id="user" value="${dto.userName}">
-								<input type="text" class="form-control" name="username" id="username"
+								<input type="text" class="form-control" name="userName" id="userName"
 									placeholder="이름 입력" onfocus="this.placeholder=''" onblur="this.placeholder='이름 입력'">
 								<div style="font-size: small;">
 									<b>이름을 입력하세요.</b>

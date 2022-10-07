@@ -19,27 +19,43 @@ function id1() {
         document.getElementById("idText").style.display = 'none';
         idcheck = true;
     }
-    const DBID = document.querySelectorAll("#DBuserID");
-
-    for (let i = 0; i < DBID.length; i++) {
-        // console.log("DB값 나오냐: " + DBID[i].value);
-        const iidd = DBID[i].value;
-        // console.log("DB값 나오냐: " + iidd);
-        // console.log("입력 값:" + d);
-        console.log("DB 입력과 저장된게 다르면");
-        console.log(d != iidd);
-        console.log("DB 입력과 저장된게 같으면");
-        console.log(d == iidd);
-        console.log("----------------------------------------------");
-        if ((d != iidd) == false) {
-            document.getElementById("idText1").style.display = 'block';
-            idcheck = false;
-        }
-        else {
-            document.getElementById("idText1").style.display = 'none';
-            idcheck = true;
-        }
-    }
+    // 입력한 ID와 DB ID 비교
+    // var idck = 0;
+    // $(function () {
+    //     //idck 버튼을 클릭했을 때 
+    //     $("#idck").click(function () {
+    //         //userid 를 param.
+    //         var userid = $("#userID").val();
+    //         $.ajax({
+    //             async: true,
+    //             type: 'POST',
+    //             data: userid,
+    //             url: "idcheck.do",
+    //             dataType: "json",
+    //             contentType: "application/json; charset=UTF-8",
+    //             success: function (data) {
+    //                 if (data.cnt > 0) {
+    //                     alert("아이디가 존재합니다. 다른 아이디를 입력해주세요.");
+    //                     //아이디가 존제할 경우 빨깡으로 , 아니면 파랑으로 처리하는 디자인
+    //                     $("#divInputId").addClass("has-error")
+    //                     $("#divInputId").removeClass("has-success")
+    //                     $("#userid").focus();
+    //                 } else {
+    //                     alert("사용가능한 아이디입니다.");
+    //                     //아이디가 존제할 경우 빨깡으로 , 아니면 파랑으로 처리하는 디자인
+    //                     $("#divInputId").addClass("has-success")
+    //                     $("#divInputId").removeClass("has-error")
+    //                     $("#userpwd").focus();
+    //                     //아이디가 중복하지 않으면  idck = 1 
+    //                     idck = 1;
+    //                 }
+    //             },
+    //             error: function (error) {
+    //                 alert("error : " + error);
+    //             }
+    //         });
+    //     });
+    // });
 }
 
 // pwd를 입력할 때마다 (1글자씩) 메세지를 출력 : pwd - 최소 6글자 이상
@@ -308,4 +324,8 @@ btn.addEventListener("click", function () {
     if ((id || pwd || name1 || email || phone || age || birth || gender) == "") {
         alert("빈칸이 존재합니다.");
     }
+    // if (idck == 0) {
+    //     alert('아이디 중복체크를 해주세요');
+    //     return false;
+    // }
 });

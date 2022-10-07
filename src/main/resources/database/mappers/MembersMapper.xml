@@ -17,7 +17,8 @@
 		on
 		uc.classnum = c.classnum
 		where m.userID = #{userID} and
-		m.pwd = #{pwd}
+		m.pwd =
+		#{pwd}
 	</select>
 
 	<resultMap type="MemberDTO" id="getLoginResult">
@@ -99,8 +100,10 @@
 	<update id="setUpdate" parameterType="MemberDTO">
 		update promembers set
 		userName = #{userName}, pwd = #{pwd}, email = #{email},
-		age = #{age}, birth=#{birth}, phone = #{phone}, gender = #{gender}
-		where userID = #{userID}
+		age = #{age},
+		birth=#{birth}, phone = #{phone}, gender = #{gender}
+		where userID =
+		#{userID}
 	</update>
 
 	<delete id="setDelete" parameterType="MemberDTO">
@@ -109,5 +112,10 @@
 		where
 		userID = #{userID}
 	</delete>
+
+	<!-- ID Check -->
+	<select id="idCheck" parameterType="MemberDTO">
+		select userid from promembers where userid = #{userID}
+	</select>
 
 </mapper>

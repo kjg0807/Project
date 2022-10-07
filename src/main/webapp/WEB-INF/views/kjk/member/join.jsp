@@ -23,14 +23,6 @@
 <!-- jquery -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
-<%!// 변수 선언
-	Connection conn = null;
-	Statement stmt = null;
-	ResultSet rs = null;
-	String uid = "hr";
-	String pwd = "hr";
-	String url = "jdbc:oracle:thin:@localhost:1521:XE";
-	String sql = "select * from promembers";%>
 <style>
 .emcs {
 	display: flex;
@@ -46,18 +38,6 @@ select {
 </style>
 
 <body>
-	<%
-	try
-	{
-		// 데이터베이스를 접속하기 위한 드라이버 SW 로드
-		Class.forName("oracle.jdbc.driver.OracleDriver");
-		// 데이터베이스에 연결하는 작업 수행
-		conn = DriverManager.getConnection(url, uid, pwd);
-		// 쿼리를 생성gkf 객체 생성
-		stmt = conn.createStatement();
-		// 쿼리 생성
-		rs = stmt.executeQuery(sql);
-	%>
 	<c:import url="../../template/headerHTML.jsp"></c:import>
 
 	<form action="../member/join" method="post" id="frm">
@@ -68,41 +48,11 @@ select {
 				<!-- id -->
 				<div class="mb-3">
 					<label class="form-label">아이디</label>
-					<input type="text" class="form-control id_input" name="userID" aria-describedby="emailHelp" id="id" placeholder="아이디 입력"
-						onfocus="this.placeholder=''" onblur="this.placeholder='아이디 입력'" size="15">
-					<%
-					while (rs.next())
-					{
-					%>
-					<input type="text" id="DBuserID" value="<%=rs.getString("userid")%>">
-					<%
-					}
-					} catch (Exception e)
-					{
-					e.printStackTrace();
-					} finally
-					{
-					try
-					{
-					if (rs != null)
-					{
-						rs.close();
-					}
-					if (stmt != null)
-					{
-						stmt.close();
-					}
-					if (conn != null)
-					{
-						conn.close();
-					}
-					} catch (Exception e)
-					{
-					e.printStackTrace();
-					}
-					}
-					%>
-					<button type="button" class="btn btn-outline-dark" id="idchecka">ID 중복 확인</button>
+					<input type="text" class="form-control input_id" name="userID" aria-describedby="emailHelp" id="id" placeholder="아이디 입력"
+						onfocus="this.placeholder=''" onblur="this.placeholder='아이디 입력'" size="15"
+					>
+					<!-- <button id="idck"></button>
+					<font id="checkId" size="2"></font> -->
 					<!-- id를 입력하고 나왔을 때 2글자 미만이면 메세지 출력 : id는 2글자 이상 -->
 					<div style="display: block; text-align: left; margin-left: 3%;">*ID는 변경이 불가능합니다*</div>
 					<div id="idText" style="display: none; color: red;">ID는 2글자 이상 입력해야 합니다.</div>
@@ -214,7 +164,7 @@ select {
 
 	<c:import url="../../template/footerHTML.jsp"></c:import>
 	<script src="/resources/kjk/js/join.js"></script>
-	<script src="/resources/kjk/js/joinCheck.js"></script>
+	<script src = "js/jquery-3.6.0.min.js"></script>
 </body>
 
 </html>
