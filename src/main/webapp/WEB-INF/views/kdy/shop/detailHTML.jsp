@@ -134,9 +134,7 @@
                                     <div>&ensp;&ensp;조회수 &ensp;&ensp;:&ensp;&ensp;${detail.hit}</div>
                                     <div class="p-2 pt-3" style="font-size: 50px;">${detail.shopName}
                                     </div>
-                                    <c:forEach items="${detail.categoryDTOs}" var="category">
-                                      <div style="color: gray;">&ensp;&ensp;카테고리&ensp;&ensp;:&ensp;&ensp;${category.categoryName}</div>
-                                    </c:forEach>
+                    
                                     <div>
                                       <button onclick="goBack()" style="color: black; box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;">《《《《《《</button>
                                     </div>
