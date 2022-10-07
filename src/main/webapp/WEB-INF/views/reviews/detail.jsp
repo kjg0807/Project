@@ -182,7 +182,7 @@
 			<input type="text" class="form-label" id="writer" placeholder="작성자 :">
 		</div>
 		
-		<div class="mb-3">
+		<div class="mb-3 col-lg-4">
 			<label for="contents" class="form-label">내 용</label>
 			<textarea id="contents" class="form-label" rows="3" cols="50" placeholder="내 용 :"></textarea>
 			<!-- <input type="text" class="form-label" id="contents" placeholder="내용 :"> -->

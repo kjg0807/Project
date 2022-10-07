@@ -43,61 +43,90 @@ btn.addEventListener("click", function(){
     console.log(cv);
 
 
-
-    //댓글달기
-
-
-    // --ajax--
+    if(contents.value == ""){
+        alert("내용을 입력 해주세요.");
+    }else{
+        
     
 
-    //1. XMLHTTPREQUEST 생성
 
-    const xhttp = new XMLHttpRequest();
+        //댓글달기
 
-    //2. 메서드 , URL준비
-    //요청을 보낼 주소 작성
-    xhttp.open("POST", "reviewsCommentAdd");
 
-    //3. enctype
-    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        // --ajax--
+        
 
-    //4. 요청발생
+        //1. XMLHTTPREQUEST 생성
 
-    xhttp.send("reviewNum="+reviewNum+"&writer="+wv+"&contents="+cv);
+        const xhttp = new XMLHttpRequest();
 
-    //5. 응답처리
+        //2. 메서드 , URL준비
+        //요청을 보낼 주소 작성
+        xhttp.open("POST", "reviewsCommentAdd");
 
-    xhttp.onreadystatechange=function(){
-        if(this.readyState==4 && this.status == 200){
-            let result = xhttp.responseText.trim();
+        //3. enctype
+        xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 
-            //응답은 responseText에 담긴다
+        //4. 요청발생
 
-            console.log(result);
-            
-            if(result == 1){
-                confirm("성공적인 답글 달기~!");
-                // self.close();
+        xhttp.send("reviewNum="+reviewNum+"&writer="+wv+"&contents="+cv);
 
-                for(let i=0; i<reviewsCommentList.children.length;){
-                    console.log("zzzzzzzzzzzzzzzz : ",reviewsCommentList.children[0]);
-                    // reviewsCommentList.children[0].remove();
-                    reviewsCommentList.children[0].remove();
+        //5. 응답처리
+
+        xhttp.onreadystatechange=function(){
+            if(this.readyState==4 && this.status == 200){
+                let result = xhttp.responseText.trim();
+
+                //응답은 responseText에 담긴다
+
+                console.log(result);
+
+                    
+                if(result == 1){
+                    confirm("성공적인 답글 달기~!");
+                    // self.close();
+                        
+                    for(let i=0; i<reviewsCommentList.children.length;){
+                        console.log("zzzzzzzzzzzzzzzz : ",reviewsCommentList.children[0]);
+                        // reviewsCommentList.children[0].remove();
+                        reviewsCommentList.children[0].remove();
+                        }
+
+                        //댓글을 달면 1페이지로 보여줌
+                        page = 1;
+                        
+                        getReviewsCommentList(page, reviewNum);
+                        
+                        writer.value='';
+                        contents.value='';
+                        
+                }else{
+                    alert("답글 달기 실패~!!");
                 }
+                
+                // if(!contents){
+                //     alert("내용을 입력해주세요.");
+                // }else if(result == 1){
+                //     alert("댓글이 성공적으로 달렸습니다.");
 
-                //댓글을 달면 1페이지로 보여줌
-                page = 1;
+                //     for(let i=0; i<reviewsCommentList.children.length;){
+                //         console.log("코맨트 배열 자식들 : " , reviewsCommentList.children[0]);
+                //         reviewsCommentList.children[0].remove();
+                //     }
 
-                getReviewsCommentList(page, reviewNum);
 
-                writer.value='';
-                contents.value='';
+                //     page= 1;
 
-            }else{
-                alert("답글 달기 실패~!!");
+                //     getReviewsCommentList(page,reviewNum);
+
+                //     writer.value = '';
+                //     contents.value = '';
+                // }else{
+                //     alert("댓글 작성을 실패하였습니다.");
+                // }
             }
         }
-    }
+    }//첫 if/else문 끝
 });
 
 function getReviewsCommentList(p, rn){
