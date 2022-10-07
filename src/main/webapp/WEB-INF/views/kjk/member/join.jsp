@@ -51,8 +51,8 @@ select {
 					<input type="text" class="form-control input_id" name="userID" aria-describedby="emailHelp" id="id" placeholder="아이디 입력"
 						onfocus="this.placeholder=''" onblur="this.placeholder='아이디 입력'" size="15"
 					>
-					<!-- <button id="idck"></button>
-					<font id="checkId" size="2"></font> -->
+					<button type="button" id="idck" class="form-control btn btn-outline-dark" onclick="checkId()">ID 중복 체크</button>
+					<span class="id_ok" style="display: none;">사용 가능한 아이디입니다.</span> <span class="id_already" style="display: none;">누군가 이 아이디를 사용하고 있어요.</span>
 					<!-- id를 입력하고 나왔을 때 2글자 미만이면 메세지 출력 : id는 2글자 이상 -->
 					<div style="display: block; text-align: left; margin-left: 3%;">*ID는 변경이 불가능합니다*</div>
 					<div id="idText" style="display: none; color: red;">ID는 2글자 이상 입력해야 합니다.</div>
@@ -164,7 +164,7 @@ select {
 
 	<c:import url="../../template/footerHTML.jsp"></c:import>
 	<script src="/resources/kjk/js/join.js"></script>
-	<script src = "js/jquery-3.6.0.min.js"></script>
+	<script src="http://code.jquery.com/jquery-latest.js"></script>
 </body>
 
 </html>

@@ -19,44 +19,29 @@ function id1() {
         document.getElementById("idText").style.display = 'none';
         idcheck = true;
     }
-    // 입력한 ID와 DB ID 비교
-    // var idck = 0;
-    // $(function () {
-    //     //idck 버튼을 클릭했을 때 
-    //     $("#idck").click(function () {
-    //         //userid 를 param.
-    //         var userid = $("#userID").val();
-    //         $.ajax({
-    //             async: true,
-    //             type: 'POST',
-    //             data: userid,
-    //             url: "idcheck.do",
-    //             dataType: "json",
-    //             contentType: "application/json; charset=UTF-8",
-    //             success: function (data) {
-    //                 if (data.cnt > 0) {
-    //                     alert("아이디가 존재합니다. 다른 아이디를 입력해주세요.");
-    //                     //아이디가 존제할 경우 빨깡으로 , 아니면 파랑으로 처리하는 디자인
-    //                     $("#divInputId").addClass("has-error")
-    //                     $("#divInputId").removeClass("has-success")
-    //                     $("#userid").focus();
-    //                 } else {
-    //                     alert("사용가능한 아이디입니다.");
-    //                     //아이디가 존제할 경우 빨깡으로 , 아니면 파랑으로 처리하는 디자인
-    //                     $("#divInputId").addClass("has-success")
-    //                     $("#divInputId").removeClass("has-error")
-    //                     $("#userpwd").focus();
-    //                     //아이디가 중복하지 않으면  idck = 1 
-    //                     idck = 1;
-    //                 }
-    //             },
-    //             error: function (error) {
-    //                 alert("error : " + error);
-    //             }
-    //         });
-    //     });
-    // });
 }
+function checkId() {
+    var id = $('#id').val(); //id값이 "id"인 입력란의 값을 저장
+    $.ajax({
+        url: 'idCheck', //Controller에서 요청 받을 주소
+        type: 'post', //POST 방식으로 전달
+        data: { id: id },
+        success: function (cnt) { //컨트롤러에서 넘어온 cnt값을 받는다 
+            if (cnt == 0) { //cnt가 1이 아니면(=0일 경우) -> 사용 가능한 아이디 
+                document.getElementsByClassName("id_ok").style.display = 'block';
+                document.getElementsByClassName("id_already").style.display = 'none';
+            } else { // cnt가 1일 경우 -> 이미 존재하는 아이디
+                document.getElementsByClassName("id_ok").style.display = 'none';
+                document.getElementsByClassName("id_already").style.display = 'block';
+                alert("아이디를 다시 입력해주세요");
+                $('#id').val('');
+            }
+        },
+        error: function () {
+            alert("에러입니다");
+        }
+    });
+};
 
 // pwd를 입력할 때마다 (1글자씩) 메세지를 출력 : pwd - 최소 6글자 이상
 const pwd = document.getElementById("pwd");

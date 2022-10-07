@@ -114,8 +114,12 @@
 	</delete>
 
 	<!-- ID Check -->
-	<select id="idCheck" parameterType="MemberDTO">
-		select userid from promembers where userid = #{userID}
+	<select id="idCheck" parameterType="MemberDTO" resultMap="check">
+		select
+		userID from promembers where userID = #{userID}
 	</select>
+	<resultMap type="MemberDTO" id="check">
+		<id column="userid" property="userID" />
+	</resultMap>
 
 </mapper>

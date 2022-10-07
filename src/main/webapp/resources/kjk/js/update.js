@@ -274,6 +274,7 @@ btn.addEventListener("click", function () {
     console.log(ebm == 1);
     if ((idcheck && pwdcheck && namecheck && emailcheck && phonecheck && agecheck && birthcheck && gendercheck) == true) {
         frm.submit();
+        alert("바뀌지 않으면 새로고침하세요.");
     }
     else{
         alert("이유가 뭐저ㅣ");
