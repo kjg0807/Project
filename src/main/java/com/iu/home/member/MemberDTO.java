@@ -4,8 +4,8 @@ import java.util.List;
 
 public class MemberDTO
 {
-	private String userid;
-	private String username;
+	private String userID;
+	private String userName;
 	private String pwd;
 	private String email;
 	private Long age;
@@ -46,24 +46,24 @@ public class MemberDTO
 		this.classDTOs = classDTOs;
 	}
 
-	public String getUserid()
+	public String getUserID()
 	{
-		return userid;
+		return userID;
 	}
 
-	public void setUserid(String userid)
+	public void setUserID(String userID)
 	{
-		this.userid = userid;
+		this.userID = userID;
 	}
 
-	public String getUsername()
+	public String getUserName()
 	{
-		return username;
+		return userName;
 	}
 
-	public void setUsername(String username)
+	public void setUserName(String userName)
 	{
-		this.username = username;
+		this.userName = userName;
 	}
 
 	public String getPwd()

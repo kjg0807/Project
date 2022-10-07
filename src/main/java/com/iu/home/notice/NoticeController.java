@@ -55,6 +55,7 @@ public class NoticeController {
 	@GetMapping(value = "add")
 	public String setNoticeAdd() throws Exception{
 		System.out.println("공지사항 Add Get 실행");
+		
 		return "notice/add";
 	}
 	
