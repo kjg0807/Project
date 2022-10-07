@@ -6,7 +6,7 @@
 	<!-- id == DAO.method name -->
 	<select id="getLogin" parameterType="MemberDTO"
 		resultMap="getLoginResult">
-		select m.userID, m.userName, c.classname, c.classnum
+		select *
 		from
 		promembers m
 		LEFT join <!-- userclass 자동부여 만들고 inner -->
