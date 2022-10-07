@@ -14,7 +14,7 @@
 <body>
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
 		<div class="container px-4 px-lg-5">
-			<a class="navbar-brand" href="../">Home</a>
+			<a class="navbar-brand" href="../../">Home</a>
 			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
 				aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
 			>
@@ -25,17 +25,72 @@
 					<li class="nav-item dropdown"><a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown"
 						aria-expanded="false"
 					>Shop</a>
-					<li class="nav-item"><a class="nav-link" href="../notice/list">공지사항</a></li>
-					<li class="nav-item"><a class="nav-link" href="../../qna/list">Q&A</a></li>
-					<li class="nav-item"><a class="nav-link" href="../reviews/list">리뷰</a></li>
+					<li class="nav-item"><a class="nav-link" href="/notice/list">공지사항</a></li>
+					<li class="nav-item"><a class="nav-link" href="/qna/list">Q&A</a></li>
+					<li class="nav-item"><a class="nav-link" href="/reviews/list">리뷰</a></li>
 				</ul>
-				<form class="d-flex" action="../kjk/member/login">
-					<button class="btn btn-outline-dark" type="submit">
-						<!-- <i class="bi-cart-fill me-1"></i> -->
-						Login
-						<!-- <span class="badge bg-dark text-white ms-1 rounded-pill">0</span> -->
-					</button>
-				</form>
+				<!-- login -->
+				<!-- 로그인 한 등급이 admin이면 실행 -->
+				<ul class="navbar-nav mb-2 mb-lg-0 ms-lg-4">
+					<c:choose>
+						<c:when test="${member != null }">
+							<%
+							try
+							{
+							%>
+							<c:choose>
+								<c:when test="${member.classDTOs.get(0).className eq 'admin'}">
+									<li class="nav-item"><b><a class="nav-link" href="#"> 관리자님 안녕하세요 </a></b></li>
+								</c:when>
+								<c:otherwise>
+									<li class="nav-item"><b><a class="nav-link" href="#">'${member.userName}'님안녕하세요!</a></b></li>
+								</c:otherwise>
+							</c:choose>
+							<%
+							} catch (Exception e)
+							{
+
+							}
+							%>
+							<c:catch></c:catch>
+							<%
+							try
+							{
+							%>
+							<%-- <c:if test="${member.classDTOs.get(0).className eq 'admin'}">
+								<button class="btn btn-outline-dark" onclick="location.href='/kjk/member/adpage';" type="submit" style="width: auto; margin-left: 3px">관리자
+									페이지</button>
+							</c:if> --%>
+							<c:choose>
+								<c:when test="${member.classDTOs.get(0).className eq 'admin'}">
+									<button class="btn btn-outline-dark" onclick="location.href='/kjk/member/adpage';" type="submit" style="width: auto; margin-left: 3px">관리자
+										페이지</button>
+								</c:when>
+								<c:otherwise>
+									<button class="btn btn-outline-dark" onclick="location.href='/kjk/member/mypage';" type="submit" style="width: auto; margin-left: 3px">내
+										정보</button>
+								</c:otherwise>
+							</c:choose>
+							<%
+							} catch (Exception e)
+							{
+
+							}
+							%>
+							<!-- <button class="btn btn-outline-dark" onclick="location.href='/kjk/member/mypage';" type="submit" style="width: auto; margin-left: 3px">내
+								정보</button> -->
+							<button class="btn btn-outline-dark" onclick="location.href='/kjk/member/logout';" type="submit" style="width: auto; margin-left: 3px">
+								로그아웃</button>
+						</c:when>
+						<c:otherwise>
+							<button class="btn btn-outline-dark" onclick="location.href='/kjk/member/login';" type="submit" style="width: auto; margin-left: 3px;">
+								로그인</button>
+							<button class="btn btn-outline-dark" onclick="location.href='/kjk/member/join';" type="submit" style="width: auto; margin-left: 3px">회원
+								가입</button>
+						</c:otherwise>
+					</c:choose>
+				</ul>
+				<!-- login -->
 			</div>
 		</div>
 	</nav>
