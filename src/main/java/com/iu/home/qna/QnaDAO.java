@@ -75,6 +75,13 @@ public class QnaDAO implements QnaIntDAO{
 		
 		return sqlSession.insert(NAMESPACE+"setStepUpdate", qnaDTO);
 	}
+
+
+	@Override
+	public int setQnaHitsUpdate(QnaDTO qnaDTO) throws Exception {
+		
+		return sqlSession.update(NAMESPACE+"setQnaHitsUpdate", qnaDTO);
+	}
 	
 	
 

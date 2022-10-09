@@ -65,4 +65,8 @@
 	<update id="setStepUpdate" parameterType="QnaDTO">
 		UPDATE QNA_1 SET STEP=STEP+1 WHERE REF = #{ref} AND STEP > #{step}
 	</update>	
+	
+	<update id="setQnaHitsUpdate">
+		UPDATE QNA_1 SET HIT = HIT + 1 WHERE NUM = #{num}
+	</update>
  </mapper>

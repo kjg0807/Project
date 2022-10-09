@@ -127,12 +127,13 @@
                             </div>
                             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal1" data-bs-whatever="@mdo">게시글 수정</button>
                             <button type="button" class="btn btn-primary" id="menuAdd" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">메뉴 등록</button> 
-                           <!-- 게시글 수정 넘 확인
-                           <c:choose>
-                            <c:when test="${detail.shopNum}">
 
-                            </c:when>
-                           </c:choose> -->
+                            <!-- <div style="display: inline-block; margin: 0 5px;  float: right;">
+                              <button type="submit" class="btn btn-success">글쓰기</button>
+                            </div> -->
+                            <div style="display: inline-block; margin:0 5px; float: right;">
+                              <button onclick="location='../../reviews/add?shopNum=${detail.shopNum}'" class="btn btn-primary">리뷰남기기</button>
+                            </div>
                            
 
                                   <div style="border-bottom: solid 1px gainsboro; padding-bottom: 50px; padding-top: 50px;">
@@ -225,6 +226,35 @@
          </div>
      </div>
      <button onclick="window.location.href='#top'" style="color: black; box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;">위로가기</button>
+
+     <!-- <table border="1" class="table table-striped table-hover col-lg-16">
+      <thead class="table-danger">
+        <tr>
+          <th>리뷰글번호</th>
+          <th>닉네임</th>
+          <th>제목</th>
+          <th>내용</th>
+          <th>작성날짜</th>
+          <th>조회수</th>
+          <th>자세히 보기</th>
+        </tr>
+      </thead>
+      
+      <tbody>
+        <c:forEach items="${requestScope.list}" var="dto">
+          
+          <tr id="tdiv">
+            <td>${pageScope.dto.reviewNum}</td>
+            <td>${pageScope.dto.userID}</td>
+            <td>${pageScope.dto.title}</td>
+            <td>${pageScope.dto.contents}</td>
+            <td>${pageScope.dto.reviewDate}</td>
+            <td>${pageScope.dto.hits}</td>
+            </tr>
+        </c:forEach>
+      </tbody>
+    </table> -->
+
 </main>
     
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
