@@ -227,6 +227,35 @@
          </div>
      </div>
      <button onclick="window.location.href='#top'" style="color: black; box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;">위로가기</button>
+
+     <!-- <table border="1" class="table table-striped table-hover col-lg-16">
+      <thead class="table-danger">
+        <tr>
+          <th>리뷰글번호</th>
+          <th>닉네임</th>
+          <th>제목</th>
+          <th>내용</th>
+          <th>작성날짜</th>
+          <th>조회수</th>
+          <th>자세히 보기</th>
+        </tr>
+      </thead>
+      
+      <tbody>
+        <c:forEach items="${requestScope.list}" var="dto">
+          
+          <tr id="tdiv">
+            <td>${pageScope.dto.reviewNum}</td>
+            <td>${pageScope.dto.userID}</td>
+            <td>${pageScope.dto.title}</td>
+            <td>${pageScope.dto.contents}</td>
+            <td>${pageScope.dto.reviewDate}</td>
+            <td>${pageScope.dto.hits}</td>
+            </tr>
+        </c:forEach>
+      </tbody>
+    </table> -->
+
 </main>
     
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
