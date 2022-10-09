@@ -42,4 +42,9 @@ public class NoticeService {
 	public int setNoticeDelete(NoticeDTO noticeDTO) throws Exception{
 		return noticeDAO.setNoticeDelete(noticeDTO);
 	}
+	
+	//공지사항 조회수
+	public int setNoticeHitsUpdate(NoticeDTO noticeDTO) throws Exception{
+		return noticeDAO.setNoticeHitsUpdate(noticeDTO);
+	}
 }

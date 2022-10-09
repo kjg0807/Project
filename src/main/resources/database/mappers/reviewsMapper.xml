@@ -7,7 +7,7 @@
 <sql id="search">
 		WHERE
      			 <choose>
-     			 		<when test="kind == 'userId'">USERID</when>
+     			 		<when test="kind == 'userID'">USERID</when>
      					<when test="kind == 'title'">TITLE</when>
      					<!-- <when test="kind == 'contents'">CONTENTS</when> -->
      					<otherwise>CONTENTS</otherwise>
@@ -41,7 +41,7 @@
 	<resultMap type="ReviewsDTO" id="getReviewsDetailResult">
 		<id column="reviewNum" property="reviewNum"/>
 		<result column="shopNum" property="shopNum"/>
-		<result column="userId" property="userId"/>
+		<result column="userID" property="userID"/>
 	
 		<result column="title" property="title"/>
 		<result column="contents" property="contents"/>
@@ -63,7 +63,7 @@
 			SELECT REVIEWS_SEQ.NEXTVAL FROM DUAL
 		</selectKey>
 		INSERT INTO REVIEWS (REVIEWNUM, SHOPNUM, USERID, TITLE, CONTENTS, REVIEWDATE, HITS)
-		VALUES 				(#{reviewNum}, 5, 'id1' , #{title}, #{contents}, SYSDATE, 0)
+		VALUES 				(#{reviewNum}, #{shopNum}, #{userID}, #{title}, #{contents}, SYSDATE, 0)
 	</insert>
 	
 	<update id="setReviewsUpdate" parameterType="ReviewsDTO">

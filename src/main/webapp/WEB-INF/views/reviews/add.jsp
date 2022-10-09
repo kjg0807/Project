@@ -23,7 +23,17 @@
 	
 
 	<form action="./add" method="post" enctype="multipart/form-data">
-	
+
+		<!--param.으로 하면 get으로 넘어간 파라미터 번호가 post할때 같이 넘어감-->
+		<div class="mb-3">
+			<input type="hidden" name="shopNum" value="${param.shopNum}">
+		</div>
+
+		<!-- <div class="mb-3">
+			<label for="formGroupExampleInput" class="form-label"></label>
+			<input type="hidden" class="form-control" name="shopNum" value="${dto.shopNum}">
+		</div> -->
+
 		<div class="mb-3">
 		  <label for="formGroupExampleInput" class="form-label">제목</label>
 		  <input type="text" class="form-control" name="title" placeholder="제목을 입력하세요.">
@@ -39,20 +49,63 @@
 		<br>
 		
 		<div id="fileAdd" class="mb-3">
-			<button id="addFiles" type="button" class="btn btn-secondary">파일추가</button>
+			<button id="addFiles" type="button" class="btn btn-secondary">
+				<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-images" viewBox="0 0 16 16">
+					<path d="M4.502 9a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"/>
+					<path d="M14.002 13a2 2 0 0 1-2 2h-10a2 2 0 0 1-2-2V5A2 2 0 0 1 2 3a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v8a2 2 0 0 1-1.998 2zM14 2H4a1 1 0 0 0-1 1h9.002a2 2 0 0 1 2 2v7A1 1 0 0 0 15 11V3a1 1 0 0 0-1-1zM2.002 4a1 1 0 0 0-1 1v8l2.646-2.354a.5.5 0 0 1 .63-.062l2.66 1.773 3.71-3.71a.5.5 0 0 1 .577-.094l1.777 1.947V5a1 1 0 0 0-1-1h-10z"/>
+				</svg>	
+			파일추가
+			</button>
 		</div>
 
 		<div style="display: inline-block; margin: 0 5px;  float: right;">
-			<button type="submit" class="btn btn-success">글쓰기</button>
+			<button type="submit" class="btn btn-success">
+				<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
+					<path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"/>
+				</svg>
+				작성완료
+			</button>
+
 		</div>
 		
 	</form>
 	
-<a href="./list">리스트</a>
-<a href="./update?reviewNum=${dto.reviewNum}">수정</a>
-<a href="./delete?reviewNum=${dto.reviewNum}">삭제</a>
+<!-- <a href="./list">리스트</a> -->
+<!-- <a href="./update?reviewNum=${dto.reviewNum}">수정</a>
+<a href="./delete?reviewNum=${dto.reviewNum}">삭제</a> -->
+<p>
+	<div>
+		<button onclick="location='./list'" class="btn btn-primary">
+			<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
+				<path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
+			</svg>
+		목록
+		</button>	
+	</div>
+</p>
+<p>
+	<div>
+		<button onclick="location='./update?reviewNum=${dto.reviewNum}'" class="btn btn-primary">수정</button>	
+	</div>
+</p>
+<p>
+	<div>
+		<button onclick="location='./delete?reviewNum=${dto.reviewNum}'" class="btn btn-primary">
+			<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+				<path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+				<path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+			</svg>
+			삭제
+		</button>	
+	</div>
+</p>
 <div>
-<button onclick="location='/'" class="btn btn-primary">홈으로</button>	
+	<button onclick="location='/'" class="btn btn-primary">
+		<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house-door" viewBox="0 0 16 16">
+			<path d="M8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4.5a.5.5 0 0 0 .5-.5v-4h2v4a.5.5 0 0 0 .5.5H14a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146zM2.5 14V7.707l5.5-5.5 5.5 5.5V14H10v-4a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v4H2.5z"/>
+		</svg>
+		홈으로
+	</button>	
 </div>
 
 </section>

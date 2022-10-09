@@ -2,6 +2,7 @@ package com.iu.home.notice;
 
 import java.util.List;
 
+import com.iu.home.reviews.ReviewsDTO;
 import com.iu.home.util.Pager;
 import com.iu.home.util.ReviewsPager;
 
@@ -27,5 +28,8 @@ public interface NoticeIntDAO {
 	
 	//Notice count
 	public Long getCount(ReviewsPager reviewsPager) throws Exception;
+	
+	//Notice Hit
+	public int setNoticeHitsUpdate(NoticeDTO noticeDTO) throws Exception;
 
 }
