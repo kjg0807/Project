@@ -86,6 +86,7 @@
             </div>
             <div>
               <input name="shopNum" type="hidden" id="shopNum" value="${list.shopNum}">
+              <input name="userID" type="hidden" id="userID" value="${list.userID}">
             </div> 
       </c:forEach>
     

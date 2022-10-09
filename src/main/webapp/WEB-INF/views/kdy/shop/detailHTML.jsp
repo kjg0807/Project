@@ -127,11 +127,17 @@
                             </div>
                             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal1" data-bs-whatever="@mdo">게시글 수정</button>
                             <button type="button" class="btn btn-primary" id="menuAdd" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">메뉴 등록</button> 
-                           
+                           <!-- 게시글 수정 넘 확인
+                           <c:choose>
+                            <c:when test="${detail.shopNum}">
+
+                            </c:when>
+                           </c:choose> -->
                            
 
                                   <div style="border-bottom: solid 1px gainsboro; padding-bottom: 50px; padding-top: 50px;">
                                     <div>&ensp;&ensp;조회수 &ensp;&ensp;:&ensp;&ensp;${detail.hit}</div>
+                                    <div>&ensp;&ensp;작성자 &ensp;&ensp;:&ensp;&ensp;${detail.userID}</div>
                                     <div class="p-2 pt-3" style="font-size: 50px;">${detail.shopName}
                                     </div>
                     

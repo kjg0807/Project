@@ -27,6 +27,7 @@ public class ShopService {
 	
 	
 	public int setAdd(ShopDTO shopDTO, MultipartFile[] files, ServletContext servletContext)throws Exception{
+		
 		int result = shopDAO.setAdd(shopDTO);
 		String path = "resources/upload/shop";
 		for(MultipartFile multipartFile : files) {

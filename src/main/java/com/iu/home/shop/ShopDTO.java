@@ -3,6 +3,7 @@ package com.iu.home.shop;
 import java.util.List;
 
 import com.iu.home.category.CategoryDTO;
+import com.iu.home.member.MemberDTO;
 import com.iu.home.menu.MenuDTO;
 import com.iu.home.reviews.ReviewsDTO;
 import com.iu.home.reviews.ReviewsFilesDTO;
@@ -20,14 +21,28 @@ public class ShopDTO extends MenuDTO{
 	private String shopContents;
 	private String shopTitle;
 	private Long hit;
+	private String userID;
 	private List<ShopFileDTO> shopFileDTOs;
 	private List<MenuDTO> menuDTOs;
 	private List<CategoryDTO> categoryDTOs;
 	private List<ReviewsDTO> reviewsDTOs;
+	private List<MemberDTO> memberDTOs;
 
 
 
 	
+	public String getUserID() {
+		return userID;
+	}
+	public void setUserID(String userID) {
+		this.userID = userID;
+	}
+	public List<MemberDTO> getMemberDTOs() {
+		return memberDTOs;
+	}
+	public void setMemberDTOs(List<MemberDTO> memberDTOs) {
+		this.memberDTOs = memberDTOs;
+	}
 	public String getShopContents() {
 		return shopContents;
 	}

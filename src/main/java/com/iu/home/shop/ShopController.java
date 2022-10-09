@@ -31,6 +31,9 @@ public class ShopController {
 	@ResponseBody
 	public ModelAndView setAdd(ShopDTO shopDTO, MultipartFile[] files,HttpSession session)throws Exception{
 		ModelAndView mv = new ModelAndView();	
+		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
+		shopDTO.setUserID(memberDTO.getUserID());
+		System.out.println("memberUserId" + memberDTO.getUserID());
 		int result = shopService.setAdd(shopDTO, files, session.getServletContext());
 		mv.addObject("result", result);
 		mv.setViewName("redirect:./listHTML");
