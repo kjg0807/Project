@@ -76,6 +76,7 @@
 					<td>${pageScope.dto.contents}</td>
 					<td>${pageScope.dto.reviewDate}</td>
 					<td>${pageScope.dto.hits}</td>
+					<input type="hidden" name="userID" id="userID" value="${param.member}">
 
 					<c:choose>
 							<c:when test="${member == null}">
@@ -154,6 +155,9 @@
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
     			 integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" 
     			 crossorigin="anonymous"></script>
+
     			 <c:import url="../template/footerHTML.jsp"></c:import>
+
+
 </body>
 </html>

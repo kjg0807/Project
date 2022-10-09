@@ -31,7 +31,11 @@ public class ReviewsController {
 	
 	//리뷰 리스트
 	@GetMapping(value = "list")
-	public ModelAndView getReviewsList(ReviewsPager reviewsPager) throws Exception{
+	public ModelAndView getReviewsList(ReviewsPager reviewsPager, HttpSession session, ReviewsDTO reviewsDTO) throws Exception{
+		
+		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
+		
+		reviewsDTO.setUserID(memberDTO.getUserID());
 		
 		ModelAndView mv = new ModelAndView();
 		
@@ -56,6 +60,7 @@ public class ReviewsController {
 		reviewsDTO = reviewsService.getReviewsDetail(reviewsDTO);
 		reviewsService.setReviewsHitsUpdate(reviewsDTO);
 		
+		
 		mv.addObject("dto", reviewsDTO);
 		mv.setViewName("reviews/detail");
 		
@@ -64,11 +69,19 @@ public class ReviewsController {
 	
 	//리뷰 Add
 	@GetMapping(value = "add")
-	public String setReviewsAdd(ReviewsDTO reviewsDTO, Long shopNum) throws Exception{
+	public String setReviewsAdd(ReviewsDTO reviewsDTO, Long shopNum, HttpSession session) throws Exception{
+		
+		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
+		
 		System.out.println("리뷰 Add Get 실행");
 		System.out.println("SHOPNUM GET : " + reviewsDTO.getShopNum());
 		
-		return "reviews/add";
+		if(memberDTO != null) {
+			return "reviews/add";
+		}else {
+			return "redirect:../kjk/member/login";
+		}
+		
 	}
 	
 	@PostMapping(value = "add")

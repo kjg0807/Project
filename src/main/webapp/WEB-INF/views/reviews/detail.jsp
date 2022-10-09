@@ -179,7 +179,7 @@
 	<div class="row">
 		<div class="mb-3">
 			<label for="writer" class="form-label">작성자</label>
-			<input type="text" class="form-label" id="writer" placeholder="작성자 :">
+			<input type="text" class="form-label" id="writer" placeholder="${dto.userID}" readonly disabled>
 		</div>
 		
 		<div class="mb-3 col-lg-4">
@@ -229,7 +229,7 @@
 						<input type="hidden" id="num">
 						<div class="mb-3">
 							<label for="recipient-name" class="col-form-label">작성자</label>
-							<input type="text" class="form-control" id="updateWriter" value="${dto.writer}">
+							<input type="text" class="form-control" id="updateWriter" value="${dto.userID}" readonly disabled>
 						</div>
 						<div class="mb-3">
 							<label for="message-text" class="col-form-label">내용</label>
@@ -238,8 +238,8 @@
 					</form>
 				</div>
 				<div class="modal-footer">
-					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
 					<button type="button" id="update" data-bs-dismiss="modal" class="btn btn-primary">수정하기</button>
+					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
 				</div>
 				</div>
 			</div>
