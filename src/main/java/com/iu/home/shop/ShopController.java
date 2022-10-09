@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.iu.home.member.MemberDTO;
 import com.iu.home.menu.MenuDTO;
 import com.iu.home.util.ShopPager;
 
@@ -30,13 +31,23 @@ public class ShopController {
 	@ResponseBody
 	public ModelAndView setAdd(ShopDTO shopDTO, MultipartFile[] files,HttpSession session)throws Exception{
 		ModelAndView mv = new ModelAndView();	
+		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
+		shopDTO.setUserID(memberDTO.getUserID());
+		System.out.println("memberUserId" + memberDTO.getUserID());
 		int result = shopService.setAdd(shopDTO, files, session.getServletContext());
 		mv.addObject("result", result);
 		mv.setViewName("redirect:./listHTML");
 //		System.out.println("postadd");
 //		System.out.println("files"+files);
 //		System.out.println("파일은~"+files);
-		return mv;		
+//		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
+//		if (memberDTO != null) {
+//			
+			return mv;		
+//		}else {
+//			return "redirect:../kjk/member/login.js";
+//		}
+		
 	}
 
 	@GetMapping(value = "listHTML")

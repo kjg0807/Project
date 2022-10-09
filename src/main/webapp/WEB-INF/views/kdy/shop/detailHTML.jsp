@@ -87,11 +87,11 @@
                                           </div>
                                           <div class="mt-3">
                                           <label for="recipient-name" class="col-form-label"></label>
-                                            <textarea name = "contents" class="form-control mt-1" id="contents" rows="3">${detail.contents}</textarea>
+                                            <textarea name = "shopContents" class="form-control mt-1" id="shopContents" rows="3">${detail.shopContents}</textarea>
                                           </div>
                                           <div class="mb-3">
                                             <label for="recipient-name" class="col-form-label"></label>
-                                            가게 제목 수정 <br><textarea name="title" rows="10" cols="57">${detail.title}</textarea>
+                                            가게 제목 수정 <br><textarea name="shopTitle" rows="10" cols="57">${detail.shopTitle}</textarea>
                                           </div>
                                             <c:forEach items="${detail.shopFileDTOs}" var="fileDTO">
                                               <div class="mb-3">
@@ -138,11 +138,10 @@
 
                                   <div style="border-bottom: solid 1px gainsboro; padding-bottom: 50px; padding-top: 50px;">
                                     <div>&ensp;&ensp;조회수 &ensp;&ensp;:&ensp;&ensp;${detail.hit}</div>
+                                    <div>&ensp;&ensp;작성자 &ensp;&ensp;:&ensp;&ensp;${detail.userID}</div>
                                     <div class="p-2 pt-3" style="font-size: 50px;">${detail.shopName}
                                     </div>
-                                    <c:forEach items="${detail.categoryDTOs}" var="category">
-                                      <div style="color: gray;">&ensp;&ensp;카테고리&ensp;&ensp;:&ensp;&ensp;${category.categoryName}</div>
-                                    </c:forEach>
+                    
                                     <div>
                                       <button onclick="goBack()" style="color: black; box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;">《《《《《《</button>
                                     </div>
@@ -262,7 +261,7 @@
 <script src="../../../../resources/kdy/js/detailHTML.js"></script>
 <script type="text/javascript">
 
-    $("#contents").summernote(
+    $("#shopContents").summernote(
             {
                     height: 260,                
                     minHeight: null,           
@@ -270,7 +269,7 @@
                     focus: true 
 
                 });
-                $('#contents').summernote({
+                $('#shopContents').summernote({
     height : 350,
     toolbar: [
         ['style', ['style']],

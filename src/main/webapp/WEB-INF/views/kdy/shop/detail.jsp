@@ -34,7 +34,7 @@
 	  <label for="exampleFormControlTextarea1" class="form-label"><b>내용</b></label>
 		<tbody>
 			<tr>
-				<br><td>${requestScope.detail.contents}</td>
+				<br><td>${requestScope.detail.shopContents}</td>
 			</tr>
 		</tbody>
 		

@@ -18,14 +18,14 @@
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="../../resources/kdy/css/styles.css" rel="stylesheet" />
     </head>
-    <body>
+    <body >
         <c:import url="./template/headerHTML.jsp"></c:import>
         <header class="bg-dark py-5">
           
             <div class="container px-4 px-lg-5 my-5">
                <div class="text-center text-white">
                   <h1 class="display-4 fw-bolder">Shop in style</h1>
-                  <p class="lead fw-normal text-white-50 mb-0">With this shop hompeage template</p>
+                  <p class="lead fw-normal text-white-50 mb-0" style="color: orange;">믿고보는 맛집 리스트</p>
                   
                   <!-- <fieldset class="main-search" style= "margin-top: 35px;">
                     <label for="main-search" class="search-word">
@@ -79,7 +79,7 @@
                 <div  class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center" id="tttt">
 
                     <div class="col mb-5" data-category="">
-                        <div class="card h-100 cs" id="al">
+                        <div class="card h-100 cs" id="al"style="box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;">
                             <!-- Product image-->
                             <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
                             <!-- Product details-->
@@ -93,7 +93,7 @@
                     </div>
                     
                     <div class="col mb-5" data-category="한식">
-                        <div class="card h-100 categorykor" id="categoryName" name="categoryName">
+                        <div class="card h-100 categorykor" id="categoryName" name="categoryName" style="box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;">
                             <button type="submit" style="display: none;"></button>
                             <!-- Product image-->
                             <img class="card-img-top" src="../../resources/kdy/images/korea.jpg" alt="..." value="한식" />
@@ -107,7 +107,7 @@
                     </div>
 
                     <div class="col mb-5" data-category="중식">
-                        <div class="card h-100 cs">
+                        <div class="card h-100 cs" style="box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;">
                             <!-- Product image-->
                             <img class="card-img-top" src="../../resources/kdy/images/china.jpg" alt="..." />
                             <!-- Product details-->
@@ -121,7 +121,7 @@
                     </div>
 
                     <div class="col mb-5" data-category="일식">
-                        <div class="card h-100 cs" >
+                        <div class="card h-100 cs"style="box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;">
                             <!-- Product image-->
                             <img class="card-img-top" src="../../resources/kdy/images/jap.jpg" alt="..." />
                             <!-- Product details-->
@@ -135,7 +135,7 @@
                     </div>
 
                     <div class="col mb-5" data-category="분식">
-                        <div class="card h-100 cs">
+                        <div class="card h-100 cs"style="box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;">
                             <!-- Product image-->
                             <img class="card-img-top" src="../../resources/kdy/images/bun.jpg" alt="..." />
                             <!-- Product details-->
@@ -149,7 +149,7 @@
                     </div>
 
                     <div class="col mb-5" data-category="양식">
-                        <div class="card h-100 cs">
+                        <div class="card h-100 cs" style="box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;">
                             <!-- Product image-->
                             <img class="card-img-top" src="../../resources/kdy/images/yang.jpg" alt="..." />
                             <!-- Product details-->
@@ -163,7 +163,7 @@
                     </div> 
                     
                     <div class="col mb-5" data-category="아시안">
-                        <div class="card h-100 cs" >
+                        <div class="card h-100 cs" style="box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;">
                             <!-- Product image-->
                             <img class="card-img-top" src="../../resources/kdy/images/ssal.jpg" alt="..." />
                             <!-- Product details-->
@@ -194,8 +194,8 @@
 
                                                 <div class="container2" style="padding: 12px;">
                                                     <div class="name">${list.shopName}</div>
-                                                    <div class="contents">${list.title}</div>
-                                                    <div class="contents2">${list.shopAddress}</div>
+                                                    <div class="shopContents">${list.shopTitle}</div>
+                                                    <div class="shopContents2">${list.shopAddress}</div>
                                                     <c:forEach items="${list.categoryDTOs}" var="category">
                                                     <div class="p-2 b" style="color: black;"># ${category.categoryName}</div>
                                                     </c:forEach> 

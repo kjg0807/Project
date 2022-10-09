@@ -40,7 +40,7 @@
 		가게 배달비 수정 : <input type="text" class="form-control" name="delivery" value="${detail.delivery}">
 	</div>
 	<div class="mb-3">
-		가게 소개글 수정 :<br><textarea name="contents" rows="10" cols="60">${detail.contents}</textarea>
+		가게 소개글 수정 :<br><textarea name="shopContents" rows="10" cols="60">${detail.shopContents}</textarea>
 	</div>
 	
 	<div class="mb-3">

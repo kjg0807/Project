@@ -40,8 +40,18 @@
                     <div class="p-2 a" data-miniCategory="양식">양식</div>
                     <div class="p-2 a" data-miniCategory="아시안">아시안</div>
                 </div>
-                <div class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap" role="add">가게등록</div>
-         <c:forEach items="${requestScope.list}" var="list">    
+
+
+                <c:choose>
+                  <c:when test="${member == null}">
+                    <div class="btn btn-secondary" data-bs-toggle="modal" data-bs-whatever="@getbootstrap" id="add">가게등록</div>
+                  </c:when>
+                <c:otherwise>
+                  <div class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap" role="add" id="add">가게등록</div>
+                </c:otherwise>
+                </c:choose>
+        
+                <c:forEach items="${requestScope.list}" var="list">    
             <div class="shop_list"  onclick="location.href='/shop/detailHTML?shopNum=${list.getShopNum()}';">
                 <div class="list" style="box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px" >
                     <div style="border-bottom: solid 1px gainsboro; height: 200px;" >
@@ -49,8 +59,8 @@
                             <div class="p-2 w-100" >
                                 <div class="container2" style="padding: 12px;">
                                     <div class="name">${list.shopName}</div>
-                                    <div class="contents">${list.title}</div>
-                                    <div class="contents2">${list.shopAddress}</div>
+                                    <div class="shopContents">${list.shopTitle}</div>
+                                    <div class="shopContents2">${list.shopAddress}</div>
                                     <c:forEach items="${list.categoryDTOs}" var="category">
                                       <div class="p-2 b" style="color: black;"># ${category.categoryName}</div>
                                     </c:forEach>   
@@ -76,6 +86,7 @@
             </div>
             <div>
               <input name="shopNum" type="hidden" id="shopNum" value="${list.shopNum}">
+              <input name="userID" type="hidden" id="userID" value="${list.userID}">
             </div> 
       </c:forEach>
     
@@ -83,6 +94,8 @@
 		<!-- <div id="map" style="width:500px;height:400px;"></div> -->
 		
 		<!--  -->
+
+
 
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -117,10 +130,10 @@
             <label for="message-text" class="col-form-label"> </label>
            <input type="text" class="form-control" placeholder="식당의 주소를 직접 입력해주세요" name="shopAddress">
           </div>
-          <div class="mb-3" id="map" style="width:550px;height: 300px;">
+          <!-- <div class="mb-3" id="map" style="width:550px;height: 300px; ">
             <label for="message-text" class="col-form-label"> </label>
             <input type="text" class="form-control" name="shopAddress" id="shopAddress" >
-          </div>
+          </div> -->
           <div class="mb-3">
             <label for="message-text" class="col-form-label"> </label>
             <input type="text" class="form-control" placeholder="식당의 가격대를 입력해주세요" name="priceAvg" id="priceAvg">
@@ -131,11 +144,11 @@
           </div>
           <div class="mt-1">
             <div ><label  for="exampleFormControlInput1">글내용</label></div>
-            <textarea name = "contents" class="form-control mt-1" id="contents" rows="3"></textarea>
+            <textarea name = "shopContents" class="form-control mt-1" id="shopContents" rows="3"></textarea>
         </div>
         <div class="mb-3">
           <label for="recipient-name" class="col-form-label"></label>
-          <input type="text" class="form-control" placeholder="제목을 입력해주세요" name="title" id="title">
+          <input type="text" class="form-control" placeholder="제목을 입력해주세요" name="shopTitle" id="shopTitle">
         </div>
         <!-- <div class="mb-3">
           <label for="recipient-name" class="col-form-label"></label>
@@ -159,6 +172,29 @@
   </div>
  </div>
 		<!--  -->
+    <!-- map modal -->
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal1">
+     맵api
+    </button>
+    
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="mb-3" id="map" style="width:550px;height: 300px;"></div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
    
 
 </main>
@@ -190,7 +226,7 @@
   <script src="../../../../resources/kdy/js/list.js"></script>
 
     <script type="text/javascript">
-      $("#contents").summernote(
+      $("#shopContents").summernote(
               {
                       height: 260,                
                       minHeight: null,           
@@ -198,7 +234,7 @@
                       focus: true 
 
                   });
-                  $('#contents').summernote({
+                  $('#shopContents').summernote({
       height : 350,
       toolbar: [
           ['style', ['style']],
@@ -228,89 +264,95 @@
 
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=abf31ecaa88152d20b1faa70bc69a3d1&libraries=services,clusterer,drawing"></script>
 <script>
-	var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+
+
+var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
     mapOption = {
         center: new kakao.maps.LatLng(37.480324403851085, 126.88364153429607), // 지도의 중심좌표
         level: 1 // 지도의 확대 레벨
     };  
 
+
 // 지도를 생성합니다    
 var map = new kakao.maps.Map(mapContainer, mapOption); 
+
+//setTimeout(function(){ map.relayout(); }, 1);
 
 // 주소-좌표 변환 객체를 생성합니다
 var geocoder = new kakao.maps.services.Geocoder();
 
 
-
 var marker = new kakao.maps.Marker(), // 클릭한 위치를 표시할 마커입니다
-    infowindow = new kakao.maps.InfoWindow({zindex:1}); // 클릭한 위치에 대한 주소를 표시할 인포윈도우입니다
+infowindow = new kakao.maps.InfoWindow({zindex:1}); // 클릭한 위치에 대한 주소를 표시할 인포윈도우입니다
 
 // 현재 지도 중심좌표로 주소를 검색해서 지도 좌측 상단에 표시합니다
 searchAddrFromCoords(map.getCenter());
 
 // 지도를 클릭했을 때 클릭 위치 좌표에 대한 주소정보를 표시하도록 이벤트를 등록합니다
 kakao.maps.event.addListener(map, 'click', function(mouseEvent) {
-    searchDetailAddrFromCoords(mouseEvent.latLng, function(result, status) {
-        if (status === kakao.maps.services.Status.OK) {
-            let detailAddr = !!result[0].road_address ? '<div>' + result[0].road_address.address_name + '</div>' : '';
-            // console.log(result[0].road_address.address_name);
-            let sa = result[0].road_address.address_name;
-            // console.log('SA : '+sa);
-
-
-
-            let content = '<div class="bAddr"> ' + detailAddr + '</div>';
-
-            const shopAddress = document.querySelector("#shopAddress");
+  searchDetailAddrFromCoords(mouseEvent.latLng, function(result, status) {
+    if (status === kakao.maps.services.Status.OK) {
+      let detailAddr = !!result[0].road_address ? '<div>' + result[0].road_address.address_name + '</div>' : '';
+      // console.log(result[0].road_address.address_name);
+      let sa = result[0].road_address.address_name;
+      // console.log('SA : '+sa);
+      
+      
+      
+      let content = '<div class="bAddr"> ' + detailAddr + '</div>';
+      
+      const shopAddress = document.querySelector("#shopAddress");
             
-            shopAddress.value=sa;
-            // ${'#shopAddress'}.val(sa);
-            console.log(shopAddress);
-
-            // 마커를 클릭한 위치에 표시합니다 
-            marker.setPosition(mouseEvent.latLng);
-            marker.setMap(map);
-
-            // 인포윈도우에 클릭한 위치에 대한 법정동 상세 주소정보를 표시합니다
-            infowindow.setContent(content);
-            infowindow.open(map, marker);
-        }   
-    });
+      shopAddress.value=sa;
+      // ${'#shopAddress'}.val(sa);
+      console.log(shopAddress);
+      
+      // 마커를 클릭한 위치에 표시합니다 
+      marker.setPosition(mouseEvent.latLng);
+      marker.setMap(map);
+      
+      // 인포윈도우에 클릭한 위치에 대한 법정동 상세 주소정보를 표시합니다
+      infowindow.setContent(content);
+      infowindow.open(map, marker);
+    }   
+  });
 });
+
 
 // 중심 좌표나 확대 수준이 변경됐을 때 지도 중심 좌표에 대한 주소 정보를 표시하도록 이벤트를 등록합니다
 kakao.maps.event.addListener(map, 'idle', function() {
-    searchAddrFromCoords(map.getCenter());
+  searchAddrFromCoords(map.getCenter());
 });
 
 function searchAddrFromCoords(coords, callback) {
-    // 좌표로 행정동 주소 정보를 요청합니다
-    geocoder.coord2RegionCode(coords.getLng(), coords.getLat(), callback);         
+  // 좌표로 행정동 주소 정보를 요청합니다
+  geocoder.coord2RegionCode(coords.getLng(), coords.getLat(), callback);         
 }
 
 function searchDetailAddrFromCoords(coords, callback) {
-    // 좌표로 법정동 상세 주소 정보를 요청합니다
-    geocoder.coord2Address(coords.getLng(), coords.getLat(), callback);
+  // 좌표로 법정동 상세 주소 정보를 요청합니다
+  geocoder.coord2Address(coords.getLng(), coords.getLat(), callback);
 }
 
 // 지도 좌측상단에 지도 중심좌표에 대한 주소정보를 표출하는 함수입니다
 function displayCenterInfo(result, status) {
-    if (status === kakao.maps.services.Status.OK) {
-        var infoDiv = document.getElementById('centerAddr');
-
-        // for(var i = 0; i < result.length; i++) {
-        //     // 행정동의 region_type 값은 'H' 이므로
-        //     if (result[i].region_type === 'H') {
-        //         infoDiv.innerHTML = result[i].address_name;
-        //         break;
-        //     }
-        // }
-    }    
+  if (status === kakao.maps.services.Status.OK) {
+    var infoDiv = document.getElementById('centerAddr');
+    
+    
+  }    
 }
 
-	</script> 
- 
-    
+const add = document.getElementById("add");
+add.addEventListener("click", function(){
+
+  map = new kakao.maps.Map(mapContainer, mapOption); 
+});
+
+
+</script> 
+
+
 
 </body>
 </html>

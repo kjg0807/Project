@@ -43,11 +43,11 @@
 			</div>
 		
 			<div class="mb-3">
-			<textarea class="form-control" name="contents" placeholder="가게를 소개해주세요" rows="3"></textarea>
+			<textarea class="form-control" name="shopContents" placeholder="가게를 소개해주세요" rows="3"></textarea>
 			</div>
 			
 			<div class="mb-3">
-			<textarea class="form-control" name="title" placeholder="제목을 입력하세요" rows="3"></textarea>
+			<textarea class="form-control" name="shopTitle" placeholder="제목을 입력하세요" rows="3"></textarea>
 			</div>
 		
 		<div id="addFiles">
@@ -64,7 +64,7 @@
 		</section>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
 <script type="text/javascript">
-		$("#contents").summernote();
+		$("#shopContents").summernote();
 	</script>
 	<script src="/resources/js/shop_files.js"></script>
 

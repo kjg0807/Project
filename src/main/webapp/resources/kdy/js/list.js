@@ -23,6 +23,12 @@ function listAddCheck(){
     const shopAddress = document.querySelector("#shopAddress");
     const priceAvg = document.querySelector("#priceAvg");
     const delivery = document.querySelector("#delivery");
-    const contents = document.querySelector("#contents");
-    const title = document.querySelector("#title");
+    const shopContents = document.querySelector("#shopContents");
+    const shopTitle = document.querySelector("#shopTitle");
 }
+
+const add = document.querySelector("#add");
+
+add.addEventListener("click", function(){
+   alert("로그인이 필요합니다.")
+})

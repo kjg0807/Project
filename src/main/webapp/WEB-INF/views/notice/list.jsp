@@ -31,8 +31,8 @@
 				<label class="visually-hidden" for="kind">Kind</label>
 				<select name="kind" class="form-select" id="kind">
 					<option selected>선택하세요</option>
-					<option class="kinds" value="contents">내용</option>
-					<option class="kinds" value="title">제목</option>
+					<option class="kinds" value="shopContents">내용</option>
+					<option class="kinds" value="shopTitle">제목</option>
 					<option class="kinds" value="writer">글쓴이</option>
 				</select>
 			</div>
@@ -76,10 +76,10 @@
 						<tr>
 							<td>${pageScope.dto.num}</td>
 							<td>
-								${pageScope.dto.title}</a>
+								${pageScope.dto.ShopTitle}</a>
 							</td>
 							<td>${pageScope.dto.writer}</td>
-							<td id="conText">${pageScope.dto.contents}</td>
+							<td id="conText">${pageScope.dto.shopContents}</td>
 							<td>${pageScope.dto.regDate}</td>
 							<td>${pageScope.dto.hit}</td>
 							<c:choose>
