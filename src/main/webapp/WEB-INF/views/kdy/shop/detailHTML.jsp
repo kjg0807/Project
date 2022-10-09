@@ -87,11 +87,11 @@
                                           </div>
                                           <div class="mt-3">
                                           <label for="recipient-name" class="col-form-label"></label>
-                                            <textarea name = "contents" class="form-control mt-1" id="contents" rows="3">${detail.contents}</textarea>
+                                            <textarea name = "shopContents" class="form-control mt-1" id="shopContents" rows="3">${detail.shopContents}</textarea>
                                           </div>
                                           <div class="mb-3">
                                             <label for="recipient-name" class="col-form-label"></label>
-                                            가게 제목 수정 <br><textarea name="title" rows="10" cols="57">${detail.title}</textarea>
+                                            가게 제목 수정 <br><textarea name="shopTitle" rows="10" cols="57">${detail.shopTitle}</textarea>
                                           </div>
                                             <c:forEach items="${detail.shopFileDTOs}" var="fileDTO">
                                               <div class="mb-3">
@@ -225,7 +225,7 @@
 <script src="../../../../resources/kdy/js/detailHTML.js"></script>
 <script type="text/javascript">
 
-    $("#contents").summernote(
+    $("#shopContents").summernote(
             {
                     height: 260,                
                     minHeight: null,           
@@ -233,7 +233,7 @@
                     focus: true 
 
                 });
-                $('#contents').summernote({
+                $('#shopContents').summernote({
     height : 350,
     toolbar: [
         ['style', ['style']],

@@ -40,8 +40,18 @@
                     <div class="p-2 a" data-miniCategory="양식">양식</div>
                     <div class="p-2 a" data-miniCategory="아시안">아시안</div>
                 </div>
-                <div class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap" role="add" id="add">가게등록</div>
-         <c:forEach items="${requestScope.list}" var="list">    
+
+
+                <c:choose>
+                  <c:when test="${member == null}">
+                    <div class="btn btn-secondary" data-bs-toggle="modal" data-bs-whatever="@getbootstrap" id="add">가게등록</div>
+                  </c:when>
+                <c:otherwise>
+                  <div class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap" role="add" id="add">가게등록</div>
+                </c:otherwise>
+                </c:choose>
+        
+                <c:forEach items="${requestScope.list}" var="list">    
             <div class="shop_list"  onclick="location.href='/shop/detailHTML?shopNum=${list.getShopNum()}';">
                 <div class="list" style="box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px" >
                     <div style="border-bottom: solid 1px gainsboro; height: 200px;" >
@@ -49,8 +59,8 @@
                             <div class="p-2 w-100" >
                                 <div class="container2" style="padding: 12px;">
                                     <div class="name">${list.shopName}</div>
-                                    <div class="contents">${list.title}</div>
-                                    <div class="contents2">${list.shopAddress}</div>
+                                    <div class="shopContents">${list.shopTitle}</div>
+                                    <div class="shopContents2">${list.shopAddress}</div>
                                     <c:forEach items="${list.categoryDTOs}" var="category">
                                       <div class="p-2 b" style="color: black;"># ${category.categoryName}</div>
                                     </c:forEach>   
@@ -133,11 +143,11 @@
           </div>
           <div class="mt-1">
             <div ><label  for="exampleFormControlInput1">글내용</label></div>
-            <textarea name = "contents" class="form-control mt-1" id="contents" rows="3"></textarea>
+            <textarea name = "shopContents" class="form-control mt-1" id="shopContents" rows="3"></textarea>
         </div>
         <div class="mb-3">
           <label for="recipient-name" class="col-form-label"></label>
-          <input type="text" class="form-control" placeholder="제목을 입력해주세요" name="title" id="title">
+          <input type="text" class="form-control" placeholder="제목을 입력해주세요" name="shopTitle" id="shopTitle">
         </div>
         <!-- <div class="mb-3">
           <label for="recipient-name" class="col-form-label"></label>
@@ -215,7 +225,7 @@
   <script src="../../../../resources/kdy/js/list.js"></script>
 
     <script type="text/javascript">
-      $("#contents").summernote(
+      $("#shopContents").summernote(
               {
                       height: 260,                
                       minHeight: null,           
@@ -223,7 +233,7 @@
                       focus: true 
 
                   });
-                  $('#contents').summernote({
+                  $('#shopContents').summernote({
       height : 350,
       toolbar: [
           ['style', ['style']],

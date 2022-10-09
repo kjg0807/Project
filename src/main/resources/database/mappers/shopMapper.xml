@@ -21,14 +21,14 @@
 			SELECT SHOP_SEQ.NEXTVAL FROM DUAL
 		</selectKey>
 		INSERT INTO SHOP VALUES
-		(#{shopNum},#{categoryNum},#{shopPhone},#{shopName},#{shopAddress},#{priceAvg},#{delivery},#{contents},#{title}, 0)
+		(#{shopNum},#{categoryNum},#{shopPhone},#{shopName},#{shopAddress},#{priceAvg},#{delivery},#{shopContents},#{shopTitle}, 0)
 	</insert>
 	
 	<select id="getList" resultType="ShopDTO"
 		parameterType="ShopPager">
       	SELECT * FROM 
-        (SELECT ROWNUM R, SN.MENUNAME,SN.SHOPNUM, SN.SHOPNAME, SN.SHOPADDRESS, SN.SHOPPHONE, SN.PRICEAVG, SN.DELIVERY, SN.CONTENTS, SN.TITLE ,SN.HIT, SN.MENUNUM, SN.CATEGORYNAME  FROM
-		(SELECT S.*, M.MENUNAME, M.MENUPRICE, M.MENUNUM, C.CATEGORYNUM, C.CATEGORYNAME FROM
+        (SELECT ROWNUM R, SN.MENUNAME,SN.SHOPNUM, SN.SHOPNAME, SN.SHOPADDRESS, SN.SHOPPHONE, SN.PRICEAVG, SN.DELIVERY, SN.SHOPCONTENTS, SN.SHOPTITLE ,SN.HIT, SN.MENUNUM, SN.CATEGORYNAME,SN.CONTENTS, SN.TITLE, SN.USERID, SN.REVIEWNUM, SN.REVIEWDATE, SN.HITS   FROM
+		(SELECT S.*, M.MENUNAME, M.MENUPRICE, M.MENUNUM, C.CATEGORYNUM, C.CATEGORYNAME, RE.REVIEWNUM,RE.CONTENTS, RE.TITLE, RE.USERID, RE.REVIEWDATE, RE.HITS FROM
 		SHOP S 
         LEFT JOIN 
         MENU M 
@@ -36,6 +36,9 @@
         INNER JOIN
         CATEGORY C
         ON C.CATEGORYNUM = S.CATEGORYNUM
+        LEFT JOIN
+        REVIEWS RE
+        ON S.SHOPNUM = RE.SHOPNUM
 		<include refid="search"/> AND CATEGORYNAME LIKE '%'||#{categoryName}||'%'
 		ORDER BY S.SHOPNUM DESC)SN)
 		WHERE R BETWEEN #{startRow} AND #{lastRow} 
@@ -43,7 +46,7 @@
 	
 	<select id="getHitList" resultType="ShopDTO">
 		SELECT * FROM 
-        (SELECT ROWNUM R, SN.MENUNAME,SN.SHOPNUM, SN.SHOPNAME, SN.SHOPADDRESS, SN.SHOPPHONE, SN.PRICEAVG, SN.DELIVERY, SN.CONTENTS, SN.TITLE ,SN.HIT, SN.MENUNUM, SN.CATEGORYNAME  FROM
+        (SELECT ROWNUM R, SN.MENUNAME,SN.SHOPNUM, SN.SHOPNAME, SN.SHOPADDRESS, SN.SHOPPHONE, SN.PRICEAVG, SN.DELIVERY, SN.SHOPCONTENTS, SN.SHOPTITLE ,SN.HIT, SN.MENUNUM, SN.CATEGORYNAME  FROM
 		(SELECT S.*, M.MENUNAME, M.MENUPRICE, M.MENUNUM, C.CATEGORYNUM, C.CATEGORYNAME FROM
 		SHOP S 
         LEFT JOIN 
@@ -55,6 +58,24 @@
 		ORDER BY S.HIT DESC)SN)
 		WHERE R BETWEEN 1 AND 5
 	</select>
+	
+<!-- 	<select id="getReviewsList" resultType="ReviewsDTO">
+		    SELECT * FROM 
+        (SELECT ROWNUM R, SN.MENUNAME,SN.SHOPNUM, SN.SHOPNAME, SN.SHOPADDRESS, SN.SHOPPHONE, SN.PRICEAVG, SN.DELIVERY, SN.CONTENTS, SN.TITLE ,SN.HIT, SN.MENUNUM, SN.CATEGORYNAME, SN.REVIEWNUM, SN.USERID, SN.REVIEWDATE, SN.HITS FROM
+		(SELECT S.*, M.MENUNAME, M.MENUPRICE, M.MENUNUM, C.CATEGORYNUM, C.CATEGORYNAME, RE.REVIEWNUM, RE.USERID, RE.REVIEWDATE, RE.HITS FROM
+		SHOP S 
+        LEFT JOIN 
+        MENU M 
+		ON S.SHOPNUM = M.SHOPNUM
+        INNER JOIN
+        CATEGORY C
+        ON C.CATEGORYNUM = S.CATEGORYNUM
+        LEFT JOIN
+        REVIEWS RE
+        ON S.SHOPNUM = RE.SHOPNUM
+		ORDER BY RE.HITS DESC)SN)
+		WHERE R BETWEEN 1 AND 5;
+	</select> -->
 	
 	<select id="getCount" resultType="Long"
 		parameterType="ShopPager">
@@ -75,15 +96,6 @@
         CATEGORY CA
         ON S.CATEGORYNUM = CA.CATEGORYNUM
         WHERE S.SHOPNUM=#{shopNum}
-        <!-- SELECT S.*, SF.*, M.* FROM 
-	    SHOP S 
-	    LEFT JOIN 
-	    SHOPFILE SF 
-	    ON S.SHOPNUM = SF.SHOPNUM 
-	    LEFT JOIN 
-	    MENU M 
-	    ON S.SHOPNUM = M.SHOPNUM
-        WHERE S.SHOPNUM=#{shopNum} -->
 	</select>
 	
 	<resultMap type="ShopDTO" id="getDetailMap">
@@ -94,8 +106,8 @@
 		<result column="SHOPADDRESS" property="shopAddress" />
 		<result column="PRICEAVG" property="priceAvg" />
 		<result column="DELIVERY" property="delivery" />
-		<result column="CONTENTS" property="contents" />
-		<result column="TITLE" property="title" />
+		<result column="SHOPCONTENTS" property="shopContents" />
+		<result column="SHOPTITLE" property="shopTitle" />
 		<result column="HIT" property="hit"/>
 		
 		<collection property="shopFileDTOs" javaType="List" ofType="ShopFileDTO">
@@ -111,14 +123,28 @@
 		</collection>
 		
 		<collection property="categoryDTOs" javaType="List" ofType="CategoryDTO">
-			<id column="CATEGORY" property="categoryNum"/>
+			<id column="CATEGORYNUM" property="categoryNum"/>
 			<result column="CATEGORYNAME" property="categoryName"/>
+		</collection>
+		
+		<collection property="reviewsDTOs" javaType="List" ofType="ReviewsDTO">
+			<id column="REVIEWNUM" property="reviewNum"/>
+			<result column="SHOPNUM" property="shopNum"/>	
+			<result column="USERID" property="userID"/>	
+			<result column="TITLE" property="title"/>	
+			<result column="WRITER" property="writer"/>	
+			<result column="CONTENTS" property="contents"/>	
+			<result column="REVIEWDATE" property="reviewDate"/>	
+			<result column="HITS" property="hits"/>	
+			<collection property="reviewsFilesDTOs" javaType="List" ofType="ReviewsFilesDTO">
+				
+			</collection>
 		</collection>
 		
 	</resultMap>
 	<update id="setUpdate" parameterType="ShopDTO"> 
 	UPDATE SHOP SET SHOPNAME=#{shopName},CATEGORYNUM=#{categoryNum},SHOPPHONE=#{shopPhone},SHOPADDRESS=#{shopAddress},PRICEAVG=#{priceAvg},DELIVERY=#{delivery}
-								,CONTENTS=#{contents},TITLE=#{title}
+								,SHOPCONTENTS=#{shopContents},SHOPTITLE=#{shopTitle}
 	WHERE SHOPNUM=#{shopNum} 
 	</update>
 		

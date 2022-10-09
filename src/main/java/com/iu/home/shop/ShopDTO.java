@@ -4,6 +4,8 @@ import java.util.List;
 
 import com.iu.home.category.CategoryDTO;
 import com.iu.home.menu.MenuDTO;
+import com.iu.home.reviews.ReviewsDTO;
+import com.iu.home.reviews.ReviewsFilesDTO;
 
 
 public class ShopDTO extends MenuDTO{
@@ -15,15 +17,35 @@ public class ShopDTO extends MenuDTO{
 	private String shopAddress;
 	private Long priceAvg;
 	private Long delivery;
-	private String contents;
-	private String title;
+	private String shopContents;
+	private String shopTitle;
 	private Long hit;
 	private List<ShopFileDTO> shopFileDTOs;
 	private List<MenuDTO> menuDTOs;
 	private List<CategoryDTO> categoryDTOs;
+	private List<ReviewsDTO> reviewsDTOs;
+
 
 
 	
+	public String getShopContents() {
+		return shopContents;
+	}
+	public void setShopContents(String shopContents) {
+		this.shopContents = shopContents;
+	}
+	public String getShopTitle() {
+		return shopTitle;
+	}
+	public void setShopTitle(String shopTitle) {
+		this.shopTitle = shopTitle;
+	}
+	public List<ReviewsDTO> getReviewsDTOs() {
+		return reviewsDTOs;
+	}
+	public void setReviewsDTOs(List<ReviewsDTO> reviewsDTOs) {
+		this.reviewsDTOs = reviewsDTOs;
+	}
 	public Long getHit() {
 		return hit;
 	}
@@ -72,18 +94,7 @@ public class ShopDTO extends MenuDTO{
 	public void setDelivery(Long delivery) {
 		this.delivery = delivery;
 	}
-	public String getContents() {
-		return contents;
-	}
-	public void setContents(String contents) {
-		this.contents = contents;
-	}
-	public String getTitle() {
-		return title;
-	}
-	public void setTitle(String title) {
-		this.title = title;
-	}
+
 	public List<ShopFileDTO> getShopFileDTOs() {
 		return shopFileDTOs;
 	}
