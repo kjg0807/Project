@@ -6,6 +6,7 @@ import java.util.List;
 import com.iu.home.member.ClassDTO;
 import com.iu.home.member.MemberDTO;
 import com.iu.home.member.UserClassDTO;
+import com.iu.home.shop.ShopDTO;
 
 public class ReviewsDTO{
 	
@@ -21,12 +22,19 @@ public class ReviewsDTO{
 	private List<MemberDTO> memberDTOs;
 	private List<UserClassDTO> userClassDTOs;
 	private List<ClassDTO> classDTOs;
+	private List<ShopDTO> shopDTOs;
 	
 	
 	
 	
 	
 	
+	public List<ShopDTO> getShopDTOs() {
+		return shopDTOs;
+	}
+	public void setShopDTOs(List<ShopDTO> shopDTOs) {
+		this.shopDTOs = shopDTOs;
+	}
 	public List<UserClassDTO> getUserClassDTOs() {
 		return userClassDTOs;
 	}

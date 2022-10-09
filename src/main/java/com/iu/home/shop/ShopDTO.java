@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.iu.home.category.CategoryDTO;
 import com.iu.home.menu.MenuDTO;
+import com.iu.home.reviews.ReviewsDTO;
 
 
 public class ShopDTO extends MenuDTO{
@@ -21,9 +22,18 @@ public class ShopDTO extends MenuDTO{
 	private List<ShopFileDTO> shopFileDTOs;
 	private List<MenuDTO> menuDTOs;
 	private List<CategoryDTO> categoryDTOs;
+	private List<ReviewsDTO> reviewsDTOs;
+	
+	
 
 
 	
+	public List<ReviewsDTO> getReviewsDTOs() {
+		return reviewsDTOs;
+	}
+	public void setReviewsDTOs(List<ReviewsDTO> reviewsDTOs) {
+		this.reviewsDTOs = reviewsDTOs;
+	}
 	public Long getHit() {
 		return hit;
 	}

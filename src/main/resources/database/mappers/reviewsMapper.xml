@@ -63,7 +63,7 @@
 			SELECT REVIEWS_SEQ.NEXTVAL FROM DUAL
 		</selectKey>
 		INSERT INTO REVIEWS (REVIEWNUM, SHOPNUM, USERID, TITLE, CONTENTS, REVIEWDATE, HITS)
-		VALUES 				(#{reviewNum}, 5, #{userID}, #{title}, #{contents}, SYSDATE, 0)
+		VALUES 				(#{reviewNum}, #{shopNum}, #{userID}, #{title}, #{contents}, SYSDATE, 0)
 	</insert>
 	
 	<update id="setReviewsUpdate" parameterType="ReviewsDTO">

@@ -44,6 +44,7 @@ public class NoticeController {
 		ModelAndView mv = new ModelAndView();
 		System.out.println("공지사항 Detail Get 실행");
 		noticeDTO = noticeService.getNoticeDetail(noticeDTO);
+		noticeService.setNoticeHitsUpdate(noticeDTO);
 		
 		mv.addObject("dto", noticeDTO);
 		mv.setViewName("notice/detail");

@@ -40,7 +40,7 @@
 		</selectKey>
 		INSERT INTO NOTICE_1 VALUES
 		(NOTICE_1_SEQ.NEXTVAL, #{title}, #{writer},
-		#{contents}, SYSDATE, NOTICE_HIT_SEQ.NEXTVAL)
+		#{contents}, SYSDATE, 0)
 	</insert>
 
 	<update id="setNoticeUpdate" parameterType="NoticeDTO">
@@ -58,5 +58,9 @@
 		SELECT COUNT(num) FROM NOTICE_1
 		<include refid="search"></include>
 	</select>
+	
+	<update id="setNoticeHitsUpdate">
+		UPDATE NOTICE_1 SET HIT = HIT + 1 WHERE NUM = #{num}
+	</update>
 
 </mapper>

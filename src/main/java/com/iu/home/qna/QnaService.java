@@ -60,4 +60,10 @@ public class QnaService {
 		
 		return result;
 	}
+	
+	//qna 조회수
+	
+	public int setQnaHitsUpdate(QnaDTO qnaDTO) throws Exception{
+		return qnaDAO.setQnaHitsUpdate(qnaDTO);
+	}
 }

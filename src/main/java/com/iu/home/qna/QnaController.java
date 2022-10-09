@@ -42,6 +42,7 @@ public class QnaController {
 		
 		ModelAndView mv = new ModelAndView();
 		qnaDTO = qnaService.getQnaDetail(qnaDTO);
+		qnaService.setQnaHitsUpdate(qnaDTO);
 		
 		mv.addObject("dto", qnaDTO);
 		mv.setViewName("qna/detail");

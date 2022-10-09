@@ -31,7 +31,7 @@
 				글번호 : ${dto.reviewNum}
 			</div>
 			<div class="col-lg-4 border border-danger">
-				닉네임 : ${dto.userId}
+				닉네임 : ${dto.userID}
 			</div>
 			<div class="col-lg-6 border border-danger">
 				제목 : ${dto.title}
@@ -81,7 +81,7 @@
 			<tbody>
 					<tr>
 						<td>${dto.reviewNum}</td>
-						<td>${dto.userId}</td>
+						<td>${dto.userID}</td>
 						<td>${dto.title}</td>
 						<td>${dto.contents}</td>
 						<td>${dto.reviewDate}</td>
@@ -163,7 +163,7 @@
 		<tbody>
 				<tr>
 					<td>${requestScope.dto.getReviewNum()}</td>
-					<td>${requestScope.dto.userId}</td>
+					<td>${requestScope.dto.userID}</td>
 					<td>${requestScope.dto.title}</td>
 					<td>${requestScope.dto.contents}</td>
 					<td>${requestScope.dto.reviewDate}</td>
@@ -179,7 +179,7 @@
 	<div class="row">
 		<div class="mb-3">
 			<label for="writer" class="form-label">작성자</label>
-			<input type="text" class="form-label" id="writer" placeholder="작성자 :">
+			<input type="text" class="form-label" id="writer" placeholder="${dto.userID}" readonly disabled>
 		</div>
 		
 		<div class="mb-3 col-lg-4">
@@ -229,7 +229,7 @@
 						<input type="hidden" id="num">
 						<div class="mb-3">
 							<label for="recipient-name" class="col-form-label">작성자</label>
-							<input type="text" class="form-control" id="updateWriter" value="${dto.writer}">
+							<input type="text" class="form-control" id="updateWriter" value="${dto.userID}" readonly disabled>
 						</div>
 						<div class="mb-3">
 							<label for="message-text" class="col-form-label">내용</label>
@@ -238,8 +238,8 @@
 					</form>
 				</div>
 				<div class="modal-footer">
-					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
 					<button type="button" id="update" data-bs-dismiss="modal" class="btn btn-primary">수정하기</button>
+					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
 				</div>
 				</div>
 			</div>
@@ -248,7 +248,7 @@
 
 <!-- <a href="./list">목록</a>
 <a href="./update?reviewNum=${dto.reviewNum}">수정</a> -->
-<a href="./delete?reviewNum=${dto.reviewNum}">삭제</a>
+<!-- <a href="./delete?reviewNum=${dto.reviewNum}">삭제</a> -->
 <br>
 <br>
 <br>
@@ -256,8 +256,16 @@
 <br>
 <p>
 	<button onclick="location='./list'" class="btn btn-primary">목록으로</button>
+
 	<button onclick="location='./update?reviewNum=${dto.reviewNum}'" class="btn btn-primary">수정하기</button>
-	<button onclick="location='./delete?reviewNum=${dto.reviewNum}'" class="btn btn-primary">삭제</button>	 
+
+	<button onclick="location='./delete?reviewNum=${dto.reviewNum}'" class="btn btn-primary">
+		<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+			<path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+			<path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+		</svg>
+		삭제
+	</button>	 
 </p>
 <div  style="display: inline-block; margin: 0 5px;  float: right;">
 	<button onclick="location='/'" class="btn btn-primary">홈으로</button>
