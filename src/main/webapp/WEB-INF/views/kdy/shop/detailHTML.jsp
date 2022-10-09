@@ -225,10 +225,8 @@
                 
          </div>
      </div>
-     <button onclick="window.location.href='#top'" style="color: black; box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;">위로가기</button>
-
-     <table border="1" class="table table-striped table-hover col-lg-16">
-      <thead class="table-danger">
+     <table border="1" class="table table-striped table-hover col-lg-12">
+      <thead class="table-white">
         <tr>
           <th>리뷰글번호</th>
           <th>닉네임</th>
@@ -241,7 +239,7 @@
       </thead>
       
       <tbody>
-        <c:forEach items="${requestScope.detail}" var="dto">
+        <c:forEach items="${requestScope.list}" var="dto">
           <tr id="tdiv">
             <td>${pageScope.dto.reviewNum}</td>
             <td>${pageScope.dto.userID}</td>
@@ -249,10 +247,17 @@
             <td>${pageScope.dto.contents}</td>
             <td>${pageScope.dto.reviewDate}</td>
             <td>${pageScope.dto.hits}</td>
+            <td>${dto.reviewNum}</td>
+            <td>${dto.userID}</td>
+            <td>${dto.title}</td>
+            <td>${dto.contents}</td>
+            <td>${dto.reviewDate}</td>
           </tr>
         </c:forEach>
       </tbody>
     </table>
+     <button onclick="window.location.href='#top'" style="color: black; box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;">위로가기</button>
+
 
 </main>
     
