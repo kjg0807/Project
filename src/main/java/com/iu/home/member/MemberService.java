@@ -48,10 +48,13 @@ public class MemberService
 		return memberDAO.setDelete(memberDTO);
 	}
 
-	public int idCheck(String string) throws Exception
+	public int idCheck(MemberDTO memberDTO) throws Exception
 	{
-		int cnt = memberDAO.idCheck(string);
-		System.out.println("service cnt: " + cnt);
-		return cnt;
+		return memberDAO.idCheck(memberDTO);
+	}
+
+	public int checkId(String a) throws Exception
+	{
+		return memberDAO.checkId(a);
 	}
 }

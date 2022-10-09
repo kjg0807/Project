@@ -114,12 +114,28 @@
 	</delete>
 
 	<!-- ID Check -->
-	<select id="idCheck" parameterType="MemberDTO" resultMap="check">
+	<!-- <select id="idCheck" parameterType="MemberDTO" resultMap="check"> select 
+		userID from promembers where userID = #{userID} </select> <resultMap type="MemberDTO" 
+		id="check"> <id column="userid" property="userID" /> </resultMap> -->
+	<select id="checkId" parameterType="MemberDTO" resultMap="idch">
 		select
-		userID from promembers where userID = #{userID}
+		count(*) from
+		promembers where userid = #{userID}
 	</select>
-	<resultMap type="MemberDTO" id="check">
-		<id column="userid" property="userID" />
+	<resultMap type="MemberDTO" id="idch">
+		<id column="userID" property="userID" />
+		<result column="USERSName" property="userName" />
+		<result column="pwd" property="pwd" />
+		<result column="email" property="email" />
+		<result column="age" property="age" />
+		<result column="birth" property="birth" />
+		<result column="PHONE" property="phone" />
+		<result column="gender" property="gender" />
+		<collection property="classDTOs" javaType="List"
+			ofType="ClassDTO">
+			<id column="classnum" property="classNum" />
+			<result column="classname" property="className" />
+		</collection>
 	</resultMap>
 
 </mapper>

@@ -59,7 +59,7 @@ a:hover {
 							<td>${dto.email }</td>
 							<td>${dto.phone }</td>
 							<td>
-								<a href="./update?userid=${dto.userID}">수정</a> <a href="./delete?userid=${dto.userID}">삭제</a>
+								<a href="./update?userid=${dto.userID}">정보 수정</a> | <a href="./delete?userid=${dto.userID}">회원 탈퇴</a>
 							</td>
 						</tr>
 					</table>

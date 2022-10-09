@@ -7,8 +7,7 @@ namecheck = true;
 emailcheck = true;
 phonecheck = true;
 
-id.addEventListener("blur", id1);
-function id1() {
+id.addEventListener("blur", function () {
     console.log("id: " + id.value);
     let d = id.value;
     if (d.length < 2) {
@@ -19,29 +18,43 @@ function id1() {
         document.getElementById("idText").style.display = 'none';
         idcheck = true;
     }
-}
-function checkId() {
-    var id = $('#id').val(); //id값이 "id"인 입력란의 값을 저장
+    //아이디 중복 확인
+});
+
+const idchecked = document.getElementById("idchecked");
+idchecked.addEventListener("click", function () {
+    //ID중복 확인 통신을 위해 입력값을 가져오기
+    const id = $("#id").val();
+
+    //ajax 호출.
+    //클라이언트에서 서버와 비동기 통신을 진행하는 ajax함수.
     $.ajax({
-        url: 'idCheck', //Controller에서 요청 받을 주소
-        type: 'post', //POST 방식으로 전달
-        data: { id: id },
-        success: function (cnt) { //컨트롤러에서 넘어온 cnt값을 받는다 
-            if (cnt == 0) { //cnt가 1이 아니면(=0일 경우) -> 사용 가능한 아이디 
-                document.getElementsByClassName("id_ok").style.display = 'block';
-                document.getElementsByClassName("id_already").style.display = 'none';
-            } else { // cnt가 1일 경우 -> 이미 존재하는 아이디
-                document.getElementsByClassName("id_ok").style.display = 'none';
-                document.getElementsByClassName("id_already").style.display = 'block';
-                alert("아이디를 다시 입력해주세요");
-                $('#id').val('');
+        type: 'post', // 서버에 전송하는 http방식
+        url: '/kjk/member/join', // 서버 요청 url
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        dataType: 'text', //서버로 부터 응답받을 데이터의 형태 
+        data: id, // 서버로 전송할 데이터 // 위에서 지정한 const id 
+        success: function (result) { // 매개변수에 통신성공시 데이터가 저장된다.
+            //서버와 통신성공시 실행할 내용 작성.
+            console.log('통신 성공!' + result);
+            if (result === 'available') {
+                $('#id').css('background-color', 'aqua');
+                $('#idChk').html('<b style="font-size: 14px; color: green">[아이디 사용이 가능하다.]</b>');
+                idcheck = true;
+            } else {
+                $('#id').css('background-color', 'red');
+                $('#idChk').html('<b style="font-size: 14px; color: red">[아이디 중복!.]</b>');
+                idcheck = false;
             }
         },
-        error: function () {
-            alert("에러입니다");
+        error: function (status, error) { //통신에 실패했을때
+            console.log('통신실패');
+            console.log(status, error);
         }
-    });
-};
+    }); // end ajax(아이디 중복 확인)
+})
 
 // pwd를 입력할 때마다 (1글자씩) 메세지를 출력 : pwd - 최소 6글자 이상
 const pwd = document.getElementById("pwd");
@@ -271,13 +284,26 @@ gender.addEventListener("blur", function () {
 });
 
 // id, pwd, name, email, phone의 각 조건을 검사 후 조건이 맞을때만 회원가입 - button
-const btn = document.getElementById("btn");
+const btn = document.getElementById("btn1");
 const frm = document.getElementById("frm");
+const idL = id.value.length;
+const pwdL = id.value.length;
+const nameL = id.value.length;
+const emailL = id.value.length;
+const phL = id.value.length;
+const agL = id.value.length;
+const brL = id.value.length;
+const genL = id.value.length;
 
 btn.addEventListener("click", function () {
     console.log(idcheck && pwdcheck && namecheck && emailcheck && phonecheck && agecheck && brithcheck && gendercheck);
+    if ((idL || pwdL || nameL || emailL || phL || agL || brL || genL) == 0) {
+        alert("빈칸이 존재합니다.");
+        return;
+    }
     if ((idcheck && pwdcheck && namecheck && emailcheck && phonecheck && agecheck && brithcheck && gendercheck) == true) {
         frm.submit();
+        alert("회원가입에 성공했습니다.");
     }
     else if (idcheck == false) {
         alert("아이디가 조건에 맞지 않습니다.");
@@ -304,13 +330,6 @@ btn.addEventListener("click", function () {
         alert("성별이 조건에 맞지 않습니다.");
     }
     else {
-        alert("새로고침 후 다시");
+        alert("회원가입에 실패했습니다. 다시 시도해주세요");
     }
-    if ((id || pwd || name1 || email || phone || age || birth || gender) == "") {
-        alert("빈칸이 존재합니다.");
-    }
-    // if (idck == 0) {
-    //     alert('아이디 중복체크를 해주세요');
-    //     return false;
-    // }
 });

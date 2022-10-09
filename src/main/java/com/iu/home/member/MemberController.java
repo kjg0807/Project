@@ -74,7 +74,7 @@ public class MemberController
 	}
 
 	@GetMapping(value = "join")
-	public String join()
+	public String join() throws Exception
 	{
 		System.out.println("Join GET Test");
 
@@ -82,9 +82,9 @@ public class MemberController
 	}
 
 	@PostMapping(value = "join")
-	public ModelAndView join(MemberDTO memberDTO) throws Exception
+	public ModelAndView join(MemberDTO memberDTO, ModelAndView mv) throws Exception
 	{
-		ModelAndView mv = new ModelAndView();
+		mv = new ModelAndView();
 		System.out.println("Join POST Test");
 		// System.out.println(memberDTO);
 		// System.out.println(memberDTO.getUserid());
@@ -97,7 +97,7 @@ public class MemberController
 		mv.addObject("join", memberDTO);
 		mv.setViewName("redirect:./login");
 
-		// return "redirect:./login";
+		// return "redirect:./login";;
 		return mv;
 	}
 
@@ -179,12 +179,22 @@ public class MemberController
 		return "redirect:../../";
 	}
 
-	@PostMapping("idcheck")
-	@ResponseBody
-	public int idcheck(@RequestParam("id") String id) throws Exception
-	{
-		System.out.println("controller idCheck: " + memberService.idCheck(id));
-		int cnt = memberService.idCheck(id);
-		return cnt;
+	@PostMapping(value = "checkId")
+	public String checkId(@RequestBody String a) throws Exception
+	{ // 받을 데이터타입이 텍스트라 스트링으로함 반드시 리퀘스트바디를 붙힐것! ajax 통신시
+		System.out.println("/user/checkId : post");
+		System.out.println("param : " + a);
+
+		int checkNum = memberService.checkId(a);
+
+		if (checkNum == 1)
+		{
+			System.out.println("아이디가 중복되었다.");
+			return "duplicated";
+		} else
+		{
+			System.out.println("아이디 사용 가능");
+			return "available";
+		}
 	}
 }
