@@ -38,7 +38,7 @@
 					<td>${dto.title}</td>
 					<td>${dto.writer}</td>
 					<td id="context">
-						<textarea name="" id="" cols="50" style="height: 200px;" rows="10" disabled>${dto.contents}</textarea>
+						<textarea style="border:none" name="" id="" cols="50" style="height: 200px;" rows="10" disabled>${dto.contents}</textarea>
 					</td>
 					<td>${dto.regDate}</td>
 					<td>${dto.hit}</td>
@@ -47,9 +47,17 @@
 		</table>
 
 
-		<a href="./list">리스트</a> <a href="./update?num=${dto.num}">수정</a> <a href="./delete?num=${dto.num}">삭제</a> <a href="./reply?num=${qnaDTO.num}"
-			class="btn btn-default" role="button"
-		>답글입력</a>
+		<!-- <a href="./list">리스트</a> <a href="./update?num=${dto.num}">수정</a>
+		<a href="./delete?num=${dto.num}">삭제</a> 
+		<a href="./reply?num=${qnaDTO.num}" class="btn btn-default" role="button">답글입력</a> -->
+
+		<button onclick="'./list'">목록</button>
+		<button onclick="location='./update?num=${dto.num}'" class="btn btn-primary">수정</button>
+		<button onclick="location='./delete?num=${dto.num}'" class="btn btn-primary">삭제</button>
+		<br>
+		<br>
+		<button onclick="location='./reply?num=${qnaDTO.num}'" class="btn btn-secondary btn-sm">답글 달기</button>
+
 
 	</section>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"

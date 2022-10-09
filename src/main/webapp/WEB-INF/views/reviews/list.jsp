@@ -55,6 +55,7 @@
 				<th>내용</th>
 				<th>작성날짜</th>
 				<th>조회수</th>
+				<th>자세히 보기</th>
 			</tr>
 		</thead>
 		
@@ -65,10 +66,24 @@
 					<td>${pageScope.dto.reviewNum}</td>
 					<td>${pageScope.dto.userID}</td>
 							
-					<td><a href="./detail?reviewNum=${pageScope.dto.reviewNum}">${pageScope.dto.title}</a></td>
+					<!-- <td><a href="./detail?reviewNum=${pageScope.dto.reviewNum}">${pageScope.dto.title}</a></td> -->
+					<td>${pageScope.dto.title}</td>
 					<td>${pageScope.dto.contents}</td>
 					<td>${pageScope.dto.reviewDate}</td>
 					<td>${pageScope.dto.hits}</td>
+
+					<c:choose>
+							<c:when test="${member == null}">
+								<td>
+									<button style="width: auto;" class="btn" id="detailList">자세히</button>
+								</td>
+							</c:when>
+							<c:otherwise>
+								<td>
+									<button class="btn btn-outline-dark" onclick="location.href='./detail?reviewNum=${pageScope.dto.reviewNum}';" type="submit" style="width: auto;">클릭</button>
+								</td>
+							</c:otherwise>
+						</c:choose>
 				</tr>
 			</c:forEach>
 		</tbody>

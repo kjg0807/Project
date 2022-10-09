@@ -23,7 +23,17 @@
 	
 
 	<form action="./add" method="post" enctype="multipart/form-data">
-	
+
+		<div class="mb-3">
+			<input type="text" name="shopNum" value="${param.shopNum}">
+		</div>
+		<!--param.으로 하면 get으로 넘어간 파라미터 번호가 post할때 같이 넘어감-->
+
+		<!-- <div class="mb-3">
+			<label for="formGroupExampleInput" class="form-label"></label>
+			<input type="hidden" class="form-control" name="shopNum" value="${dto.shopNum}">
+		</div> -->
+
 		<div class="mb-3">
 		  <label for="formGroupExampleInput" class="form-label">제목</label>
 		  <input type="text" class="form-control" name="title" placeholder="제목을 입력하세요.">
@@ -48,11 +58,26 @@
 		
 	</form>
 	
-<a href="./list">리스트</a>
-<a href="./update?reviewNum=${dto.reviewNum}">수정</a>
-<a href="./delete?reviewNum=${dto.reviewNum}">삭제</a>
+<!-- <a href="./list">리스트</a> -->
+<!-- <a href="./update?reviewNum=${dto.reviewNum}">수정</a>
+<a href="./delete?reviewNum=${dto.reviewNum}">삭제</a> -->
+<p>
+	<div>
+		<button onclick="location='./list'" class="btn btn-primary">리스트</button>	
+	</div>
+</p>
+<p>
+	<div>
+		<button onclick="location='./update?reviewNum=${dto.reviewNum}'" class="btn btn-primary">수정</button>	
+	</div>
+</p>
+<p>
+	<div>
+		<button onclick="location='./delete?reviewNum=${dto.reviewNum}'" class="btn btn-primary">삭제</button>	
+	</div>
+</p>
 <div>
-<button onclick="location='/'" class="btn btn-primary">홈으로</button>	
+	<button onclick="location='/'" class="btn btn-primary">홈으로</button>	
 </div>
 
 </section>

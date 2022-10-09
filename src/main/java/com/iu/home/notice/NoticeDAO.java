@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.iu.home.reviews.ReviewsDTO;
 import com.iu.home.util.Pager;
 import com.iu.home.util.ReviewsPager;
 
@@ -53,6 +54,12 @@ public class NoticeDAO implements NoticeIntDAO{
 	public Long getCount(ReviewsPager reviewsPager) throws Exception {
 		
 		return sqlSession.selectOne(NAMESPACE+"getCount", reviewsPager);
+	}
+
+	@Override
+	public int setNoticeHitsUpdate(NoticeDTO noticeDTO) throws Exception {
+		
+		return sqlSession.update(NAMESPACE+"setNoticeHitsUpdate", noticeDTO);
 	}
 	
 

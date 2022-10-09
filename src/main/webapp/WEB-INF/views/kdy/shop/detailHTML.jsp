@@ -127,7 +127,13 @@
                             </div>
                             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal1" data-bs-whatever="@mdo">게시글 수정</button>
                             <button type="button" class="btn btn-primary" id="menuAdd" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">메뉴 등록</button> 
-                           
+
+                            <!-- <div style="display: inline-block; margin: 0 5px;  float: right;">
+                              <button type="submit" class="btn btn-success">글쓰기</button>
+                            </div> -->
+                            <div style="display: inline-block; margin:0 5px; float: right;">
+                              <button onclick="location='../../reviews/add?shopNum=${detail.shopNum}'" class="btn btn-primary">리뷰남기기</button>
+                            </div>
                            
 
                                   <div style="border-bottom: solid 1px gainsboro; padding-bottom: 50px; padding-top: 50px;">

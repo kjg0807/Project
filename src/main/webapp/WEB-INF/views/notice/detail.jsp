@@ -43,7 +43,7 @@ textarea {
 					<td>${requestScope.dto.getTitle()}</td>
 					<td>${requestScope.dto.writer}</td>
 					<td id="context">
-						<textarea name="" id="" cols="50" style="height: 200px;" rows="10" disabled>${requestScope.dto.contents}</textarea>
+						<textarea style="border:none" name="" id="" cols="50" style="height: 200px;" rows="10" disabled>${requestScope.dto.contents}</textarea>
 					</td>
 					<td>${requestScope.dto.regDate}</td>
 					<td>${requestScope.dto.hit}</td>

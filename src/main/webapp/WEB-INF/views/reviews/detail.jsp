@@ -31,7 +31,7 @@
 				글번호 : ${dto.reviewNum}
 			</div>
 			<div class="col-lg-4 border border-danger">
-				닉네임 : ${dto.userId}
+				닉네임 : ${dto.userID}
 			</div>
 			<div class="col-lg-6 border border-danger">
 				제목 : ${dto.title}
@@ -81,7 +81,7 @@
 			<tbody>
 					<tr>
 						<td>${dto.reviewNum}</td>
-						<td>${dto.userId}</td>
+						<td>${dto.userID}</td>
 						<td>${dto.title}</td>
 						<td>${dto.contents}</td>
 						<td>${dto.reviewDate}</td>
@@ -163,7 +163,7 @@
 		<tbody>
 				<tr>
 					<td>${requestScope.dto.getReviewNum()}</td>
-					<td>${requestScope.dto.userId}</td>
+					<td>${requestScope.dto.userID}</td>
 					<td>${requestScope.dto.title}</td>
 					<td>${requestScope.dto.contents}</td>
 					<td>${requestScope.dto.reviewDate}</td>

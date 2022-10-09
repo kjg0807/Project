@@ -26,5 +26,7 @@ public interface QnaIntDAO {
 	
 	public int setStepUpdate(QnaDTO qnaDTO) throws Exception;
 	
+	public int setQnaHitsUpdate(QnaDTO qnaDTO) throws Exception;
+	
 
 }

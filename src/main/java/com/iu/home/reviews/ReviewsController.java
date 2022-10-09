@@ -16,7 +16,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.iu.home.member.MemberDTO;
 import com.iu.home.reviewsComment.ReviewsCommentDTO;
+import com.iu.home.shop.ShopDTO;
 import com.iu.home.util.ReviewsCommentPager;
 import com.iu.home.util.ReviewsPager;
 
@@ -62,17 +64,21 @@ public class ReviewsController {
 	
 	//리뷰 Add
 	@GetMapping(value = "add")
-	public String setReviewsAdd(ReviewsDTO reviewsDTO) throws Exception{
+	public String setReviewsAdd(ReviewsDTO reviewsDTO, Long shopNum) throws Exception{
 		System.out.println("리뷰 Add Get 실행");
+		System.out.println("SHOPNUM GET : " + reviewsDTO.getShopNum());
 		
 		return "reviews/add";
 	}
 	
 	@PostMapping(value = "add")
-	public ModelAndView setReviewsAdd(ReviewsDTO reviewsDTO, MultipartFile [] files, HttpSession session) throws Exception{
+	public ModelAndView setReviewsAdd(ReviewsDTO reviewsDTO, Long shopNum, MultipartFile [] files, HttpSession session) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		
+		MemberDTO memberDTO = (MemberDTO) session.getAttribute("member");
+		reviewsDTO.setUserID(memberDTO.getUserID());
 		
+		System.out.println("SHOPNUM : " + reviewsDTO.getShopNum());
 		System.out.println("userID : " + reviewsDTO.getUserID());
 		System.out.println("TITLE : " + reviewsDTO.getTitle());
 		System.out.println("CONTENTS : " + reviewsDTO.getContents());
@@ -81,6 +87,7 @@ public class ReviewsController {
 		System.out.println("리뷰 Add Post 실행");
 		mv.addObject("result", result);
 		mv.addObject("dto", reviewsDTO);
+		mv.addObject("detail", reviewsDTO);
 		mv.setViewName("redirect:./list");
 		
 		if(result == 1) {
@@ -125,7 +132,8 @@ public class ReviewsController {
 		
 		
 		mv.addObject("dto", reviewsDTO);
-		mv.setViewName("redirect:./detail?reviewNum="+reviewsDTO.getReviewNum());
+//		mv.setViewName("redirect:./detail?reviewNum="+reviewsDTO.getReviewNum());
+		mv.setViewName("redirect:./list");
 		
 		if(result == 1) {
 			System.out.println("리뷰 글 수정하기가 성공하였습니다!!");
