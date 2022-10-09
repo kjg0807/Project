@@ -227,7 +227,7 @@
      </div>
      <button onclick="window.location.href='#top'" style="color: black; box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;">위로가기</button>
 
-     <!-- <table border="1" class="table table-striped table-hover col-lg-16">
+     <table border="1" class="table table-striped table-hover col-lg-16">
       <thead class="table-danger">
         <tr>
           <th>리뷰글번호</th>
@@ -241,8 +241,7 @@
       </thead>
       
       <tbody>
-        <c:forEach items="${requestScope.list}" var="dto">
-          
+        <c:forEach items="${requestScope.detail}" var="dto">
           <tr id="tdiv">
             <td>${pageScope.dto.reviewNum}</td>
             <td>${pageScope.dto.userID}</td>
@@ -250,10 +249,10 @@
             <td>${pageScope.dto.contents}</td>
             <td>${pageScope.dto.reviewDate}</td>
             <td>${pageScope.dto.hits}</td>
-            </tr>
+          </tr>
         </c:forEach>
       </tbody>
-    </table> -->
+    </table>
 
 </main>
     
