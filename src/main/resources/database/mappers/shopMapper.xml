@@ -167,6 +167,8 @@
 				<result column="CLASSNUM" property="classNum"/>
 			</collection>
 			
+			
+			
 		</collection>
 		
 	</resultMap>
