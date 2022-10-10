@@ -1,3 +1,4 @@
+<%@page import="org.springframework.jdbc.support.JdbcUtils"%>
 <%@page import="com.iu.home.member.MemberDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -26,7 +27,7 @@
 <style>
 .emcs {
 	display: flex;
-	input: read-only;
+	/* input: read-only; */
 	background-color: #dedede;
 }
 
@@ -36,11 +37,23 @@ select {
 	vertical-align: middle
 }
 </style>
+<%
+Class.forName("oracle.jdbc.driver.OracleDriver");
+String url = "jdbc:oracle:thin:@localhost:1521:xe";
+String user = "hr";
+String password = "hr";
+Connection conn = DriverManager.getConnection(url, user, password);
 
+//db에 접근해서 sql실행하고 
+Statement stmt = conn.createStatement();
+String sql = "select userid from promembers";
+// stmt.executeQuery(sql);
+ResultSet rs = stmt.executeQuery(sql);
+%>
 <body>
 	<c:import url="../../template/headerHTML.jsp"></c:import>
 
-	<form action="../member/join" method="post" id="frm">
+	<form action="../member/join" method="post" id="frm" name="myform">
 		<br>
 		<h1 style="text-align: center;">회원 가입</h1>
 		<section class="col-lg-6 container-fluid mt-4">
@@ -48,16 +61,32 @@ select {
 				<!-- id -->
 				<div class="mb-3">
 					<label class="form-label">아이디</label>
-					<input type="text" class="form-control input_id" name="userID" aria-describedby="emailHelp" id="id" placeholder="아이디 입력"
-						onfocus="this.placeholder=''" onblur="this.placeholder='아이디 입력'" size="15"
+					<input type="text" class="form-control" name="userID" aria-describedby="emailHelp" id="id" placeholder="아이디 입력"
+						onfocus="this.placeholder=''" onblur="this.placeholder='아이디 입력'"
 					>
-					<!-- <button id="idck"></button>
-					<font id="checkId" size="2"></font> -->
+					<button type="button" id="idchecked" class="btn btn-outline-dark">ID 중복 체크</button>
 					<!-- id를 입력하고 나왔을 때 2글자 미만이면 메세지 출력 : id는 2글자 이상 -->
-					<div style="display: block; text-align: left; margin-left: 3%;">*ID는 변경이 불가능합니다*</div>
 					<div id="idText" style="display: none; color: red;">ID는 2글자 이상 입력해야 합니다.</div>
-					<div id="idText1" style="display: none; color: red;">ID가 중복됩니다.</div>
+					<div id="idChk"></div>
+					[
+					<%
+					int i = 0;
+					while (rs.next())
+					{
+						String userid = rs.getString("userID");
+						if (i > 0)
+						{
+							out.print(",");
+						}
+					%>
+					<%=userid%>
+					<%
+					i++;
+					} //while end
+					%>
+					]
 				</div>
+
 				<!-- password 1 -->
 				<div class="mb-3">
 					<label class="form-label">비밀번호</label>
@@ -154,7 +183,7 @@ select {
 
 				<!-- id, pwd, name, email, phone의 각 조건을 검사 후 조건이 맞을때만 회원가입 -->
 				<div>
-					<button type="button" id="btn" class="btn btn-primary">회원 가입</button>
+					<button type="button" id="btn1" class="btn btn-primary">회원 가입</button>
 					<button type="reset" class="btn btn-primary">초기화</button>
 				</div>
 			</div>
@@ -164,7 +193,8 @@ select {
 
 	<c:import url="../../template/footerHTML.jsp"></c:import>
 	<script src="/resources/kjk/js/join.js"></script>
-	<script src = "js/jquery-3.6.0.min.js"></script>
+	<script src="http://code.jquery.com/jquery-latest.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </body>
 
 </html>

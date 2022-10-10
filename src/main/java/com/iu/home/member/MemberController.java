@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -73,7 +74,7 @@ public class MemberController
 	}
 
 	@GetMapping(value = "join")
-	public String join()
+	public String join() throws Exception
 	{
 		System.out.println("Join GET Test");
 
@@ -81,9 +82,9 @@ public class MemberController
 	}
 
 	@PostMapping(value = "join")
-	public ModelAndView join(MemberDTO memberDTO) throws Exception
+	public ModelAndView join(MemberDTO memberDTO, ModelAndView mv) throws Exception
 	{
-		ModelAndView mv = new ModelAndView();
+		mv = new ModelAndView();
 		System.out.println("Join POST Test");
 		// System.out.println(memberDTO);
 		// System.out.println(memberDTO.getUserid());
@@ -96,7 +97,7 @@ public class MemberController
 		mv.addObject("join", memberDTO);
 		mv.setViewName("redirect:./login");
 
-		// return "redirect:./login";
+		// return "redirect:./login";;
 		return mv;
 	}
 
@@ -121,12 +122,13 @@ public class MemberController
 		System.out.println("Adpage GEt");
 		ModelAndView mv = new ModelAndView();
 		List<MemberDTO> ar = memberService.adMyPage(memberDTO);
-		for (MemberDTO memberDTO2 : ar)
-		{
-			// System.out.println(memberDTO2.getPwd());
-			// System.out.println(memberDTO2.getEmail());
-			// System.out.println(memberDTO2.getPhone());
-		}
+		// for (MemberDTO memberDTO2 : ar)
+		// {
+		// System.out.println(memberDTO2.getPwd());
+		// System.out.println(memberDTO2.getEmail());
+		// System.out.println(memberDTO2.getPhone());
+		// System.out.println(memberDTO2.getUserName());
+		// }
 		mv.addObject("dto", ar);
 		mv.setViewName("kjk/member/adpage");
 
@@ -178,17 +180,22 @@ public class MemberController
 		return "redirect:../../";
 	}
 
-	@RequestMapping("/idcheck.do")
-	@ResponseBody
-	public Map<Object, Object> idcheck(@RequestBody String userID) throws Exception
-	{
+	@PostMapping(value = "checkId")
+	public String checkId(@RequestBody String a) throws Exception
+	{ // 받을 데이터타입이 텍스트라 스트링으로함 반드시 리퀘스트바디를 붙힐것! ajax 통신시
+		System.out.println("/user/checkId : post");
+		System.out.println("param : " + a);
 
-		int count = 0;
-		Map<Object, Object> map = new HashMap<Object, Object>();
+		int checkNum = memberService.checkId(a);
 
-		count = memberService.idCheck(userID);
-		map.put("cnt", count);
-
-		return map;
+		if (checkNum == 1)
+		{
+			System.out.println("아이디가 중복되었다.");
+			return "duplicated";
+		} else
+		{
+			System.out.println("아이디 사용 가능");
+			return "available";
+		}
 	}
 }

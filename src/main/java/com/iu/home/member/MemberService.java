@@ -48,8 +48,13 @@ public class MemberService
 		return memberDAO.setDelete(memberDTO);
 	}
 
-	public int idCheck(String userID) throws Exception
+	public int idCheck(MemberDTO memberDTO) throws Exception
 	{
-		return memberDAO.idCheck(userID);
+		return memberDAO.idCheck(memberDTO);
+	}
+
+	public int checkId(String a) throws Exception
+	{
+		return memberDAO.checkId(a);
 	}
 }

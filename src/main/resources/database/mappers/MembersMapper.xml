@@ -83,7 +83,7 @@
 
 	<resultMap type="MemberDTO" id="aMyPage">
 		<id column="userID" property="userID" />
-		<result column="USERSName" property="userName" />
+		<result column="USERName" property="userName" />
 		<result column="pwd" property="pwd" />
 		<result column="email" property="email" />
 		<result column="age" property="age" />
@@ -114,8 +114,13 @@
 	</delete>
 
 	<!-- ID Check -->
-	<select id="idCheck" parameterType="MemberDTO">
-		select userid from promembers where userid = #{userID}
+	<!-- <select id="idCheck" parameterType="MemberDTO" resultMap="check"> select 
+		userID from promembers where userID = #{userID} </select> <resultMap type="MemberDTO" 
+		id="check"> <id column="userid" property="userID" /> </resultMap> -->
+	<select id="checkId" parameterType="MemberDTO">
+		select
+		count(*) from
+		promembers where userid = #{userID}
 	</select>
 
 </mapper>

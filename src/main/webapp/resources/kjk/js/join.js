@@ -7,8 +7,7 @@ namecheck = true;
 emailcheck = true;
 phonecheck = true;
 
-id.addEventListener("blur", id1);
-function id1() {
+id.addEventListener("blur", function () {
     console.log("id: " + id.value);
     let d = id.value;
     if (d.length < 2) {
@@ -19,44 +18,43 @@ function id1() {
         document.getElementById("idText").style.display = 'none';
         idcheck = true;
     }
-    // 입력한 ID와 DB ID 비교
-    // var idck = 0;
-    // $(function () {
-    //     //idck 버튼을 클릭했을 때 
-    //     $("#idck").click(function () {
-    //         //userid 를 param.
-    //         var userid = $("#userID").val();
-    //         $.ajax({
-    //             async: true,
-    //             type: 'POST',
-    //             data: userid,
-    //             url: "idcheck.do",
-    //             dataType: "json",
-    //             contentType: "application/json; charset=UTF-8",
-    //             success: function (data) {
-    //                 if (data.cnt > 0) {
-    //                     alert("아이디가 존재합니다. 다른 아이디를 입력해주세요.");
-    //                     //아이디가 존제할 경우 빨깡으로 , 아니면 파랑으로 처리하는 디자인
-    //                     $("#divInputId").addClass("has-error")
-    //                     $("#divInputId").removeClass("has-success")
-    //                     $("#userid").focus();
-    //                 } else {
-    //                     alert("사용가능한 아이디입니다.");
-    //                     //아이디가 존제할 경우 빨깡으로 , 아니면 파랑으로 처리하는 디자인
-    //                     $("#divInputId").addClass("has-success")
-    //                     $("#divInputId").removeClass("has-error")
-    //                     $("#userpwd").focus();
-    //                     //아이디가 중복하지 않으면  idck = 1 
-    //                     idck = 1;
-    //                 }
-    //             },
-    //             error: function (error) {
-    //                 alert("error : " + error);
-    //             }
-    //         });
-    //     });
-    // });
-}
+    //아이디 중복 확인
+});
+
+const idchecked = document.getElementById("idchecked");
+idchecked.addEventListener("click", function () {
+    //ID중복 확인 통신을 위해 입력값을 가져오기
+    const id = $("#id").val();
+
+    //ajax 호출.
+    //클라이언트에서 서버와 비동기 통신을 진행하는 ajax함수.
+    $.ajax({
+        type: 'post', // 서버에 전송하는 http방식
+        url: '/kjk/member/join', // 서버 요청 url
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        dataType: 'text', //서버로 부터 응답받을 데이터의 형태 
+        data: id, // 서버로 전송할 데이터 // 위에서 지정한 const id 
+        success: function (result) { // 매개변수에 통신성공시 데이터가 저장된다.
+            //서버와 통신성공시 실행할 내용 작성.
+            console.log('통신 성공!' + result);
+            if (result === 'available') {
+                $('#id').css('background-color', 'aqua');
+                $('#idChk').html('<b style="font-size: 14px; color: green">[아이디 사용이 가능하다.]</b>');
+                idcheck = true;
+            } else {
+                $('#id').css('background-color', 'red');
+                $('#idChk').html('<b style="font-size: 14px; color: red">[아이디 중복!.]</b>');
+                idcheck = false;
+            }
+        },
+        error: function (status, error) { //통신에 실패했을때
+            console.log('통신실패');
+            console.log(status, error);
+        }
+    }); // end ajax(아이디 중복 확인)
+})
 
 // pwd를 입력할 때마다 (1글자씩) 메세지를 출력 : pwd - 최소 6글자 이상
 const pwd = document.getElementById("pwd");
@@ -286,13 +284,54 @@ gender.addEventListener("blur", function () {
 });
 
 // id, pwd, name, email, phone의 각 조건을 검사 후 조건이 맞을때만 회원가입 - button
-const btn = document.getElementById("btn");
+const btn = document.getElementById("btn1");
 const frm = document.getElementById("frm");
 
 btn.addEventListener("click", function () {
     console.log(idcheck && pwdcheck && namecheck && emailcheck && phonecheck && agecheck && brithcheck && gendercheck);
+    console.log(id.value.length);
+    console.log(pwd.value.length);
+    console.log(name1.value.length);
+    console.log(sendEmail.value.length);
+    console.log(phone.value.length);
+    console.log(age.value.length);
+    console.log(birth.value.length);
+    console.log(gender.value.length);
+    if (id.value.length == 0) {
+        alert("아이디가 빈칸입니다.");
+        return;
+    }
+    else if (pwd.value.length == 0) {
+        alert("비밀번호가 빈칸입니다.");
+        return;
+    }
+    else if (name1.value.length == 0) {
+        alert("닉네임이 빈칸입니다.");
+        return;
+    }
+    else if (sendEmail.value.length == 0) {
+        alert("이메일이 빈칸입니다.");
+        return;
+    }
+    else if (phone.value.length == 0) {
+        alert("전화번호가 빈칸입니다.");
+        return;
+    }
+    else if (age.value.length == 0) {
+        alert("나이가 빈칸입니다.");
+        return;
+    }
+    else if (birth.value.length == 0) {
+        alert("생년월일이 빈칸입니다.");
+        return;
+    }
+    else if (gender.value.length == 0) {
+        alert("성별이 빈칸입니다.");
+        return;
+    }
     if ((idcheck && pwdcheck && namecheck && emailcheck && phonecheck && agecheck && brithcheck && gendercheck) == true) {
         frm.submit();
+        alert("회원가입에 성공했습니다.");
     }
     else if (idcheck == false) {
         alert("아이디가 조건에 맞지 않습니다.");
@@ -319,13 +358,6 @@ btn.addEventListener("click", function () {
         alert("성별이 조건에 맞지 않습니다.");
     }
     else {
-        alert("새로고침 후 다시");
+        alert("회원가입에 실패했습니다. 다시 시도해주세요");
     }
-    if ((id || pwd || name1 || email || phone || age || birth || gender) == "") {
-        alert("빈칸이 존재합니다.");
-    }
-    // if (idck == 0) {
-    //     alert('아이디 중복체크를 해주세요');
-    //     return false;
-    // }
 });
