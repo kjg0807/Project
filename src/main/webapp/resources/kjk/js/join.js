@@ -286,19 +286,47 @@ gender.addEventListener("blur", function () {
 // id, pwd, name, email, phone의 각 조건을 검사 후 조건이 맞을때만 회원가입 - button
 const btn = document.getElementById("btn1");
 const frm = document.getElementById("frm");
-const idL = id.value.length;
-const pwdL = id.value.length;
-const nameL = id.value.length;
-const emailL = id.value.length;
-const phL = id.value.length;
-const agL = id.value.length;
-const brL = id.value.length;
-const genL = id.value.length;
 
 btn.addEventListener("click", function () {
     console.log(idcheck && pwdcheck && namecheck && emailcheck && phonecheck && agecheck && brithcheck && gendercheck);
-    if ((idL || pwdL || nameL || emailL || phL || agL || brL || genL) == 0) {
-        alert("빈칸이 존재합니다.");
+    console.log(id.value.length);
+    console.log(pwd.value.length);
+    console.log(name1.value.length);
+    console.log(sendEmail.value.length);
+    console.log(phone.value.length);
+    console.log(age.value.length);
+    console.log(birth.value.length);
+    console.log(gender.value.length);
+    if (id.value.length == 0) {
+        alert("아이디가 빈칸입니다.");
+        return;
+    }
+    else if (pwd.value.length == 0) {
+        alert("비밀번호가 빈칸입니다.");
+        return;
+    }
+    else if (name1.value.length == 0) {
+        alert("닉네임이 빈칸입니다.");
+        return;
+    }
+    else if (sendEmail.value.length == 0) {
+        alert("이메일이 빈칸입니다.");
+        return;
+    }
+    else if (phone.value.length == 0) {
+        alert("전화번호가 빈칸입니다.");
+        return;
+    }
+    else if (age.value.length == 0) {
+        alert("나이가 빈칸입니다.");
+        return;
+    }
+    else if (birth.value.length == 0) {
+        alert("생년월일이 빈칸입니다.");
+        return;
+    }
+    else if (gender.value.length == 0) {
+        alert("성별이 빈칸입니다.");
         return;
     }
     if ((idcheck && pwdcheck && namecheck && emailcheck && phonecheck && agecheck && brithcheck && gendercheck) == true) {

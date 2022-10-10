@@ -27,7 +27,7 @@
 <style>
 .emcs {
 	display: flex;
-	input: read-only;
+	/* input: read-only; */
 	background-color: #dedede;
 }
 

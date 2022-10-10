@@ -122,12 +122,13 @@ public class MemberController
 		System.out.println("Adpage GEt");
 		ModelAndView mv = new ModelAndView();
 		List<MemberDTO> ar = memberService.adMyPage(memberDTO);
-		for (MemberDTO memberDTO2 : ar)
-		{
-			// System.out.println(memberDTO2.getPwd());
-			// System.out.println(memberDTO2.getEmail());
-			// System.out.println(memberDTO2.getPhone());
-		}
+		// for (MemberDTO memberDTO2 : ar)
+		// {
+		// System.out.println(memberDTO2.getPwd());
+		// System.out.println(memberDTO2.getEmail());
+		// System.out.println(memberDTO2.getPhone());
+		// System.out.println(memberDTO2.getUserName());
+		// }
 		mv.addObject("dto", ar);
 		mv.setViewName("kjk/member/adpage");
 
