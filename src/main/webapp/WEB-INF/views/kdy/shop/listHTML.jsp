@@ -120,14 +120,17 @@
           </div>
           <div class="mb-3">
             <label for="message-text" class="col-form-label"></label>
+            <div id="inputShopPhoneResult" style="color: red;"></div>
             <input type="text" class="form-control" placeholder="식당의 전화번호를 입력해주세요" name="shopPhone" id="shopPhone">
           </div>
           <div class="mb-3">
             <label for="message-text" class="col-form-label"> </label>
+            <div id="inputShopNameResult"  style="color: red;"></div>
             <input type="text" class="form-control" placeholder="식당의 상호명을 입력해주세요" name="shopName" id="shopName">
           </div>
           <div class="mb-3">
             <label for="message-text" class="col-form-label"> </label>
+            <div id="inputShopAddressResult"  style="color: red;"></div>
            <input type="text" class="form-control" placeholder="식당의 주소를 직접 입력해주세요" name="shopAddress">
           </div>
           <!-- <div class="mb-3" id="map" style="width:550px;height: 300px; ">
@@ -136,6 +139,7 @@
           </div> -->
           <div class="mb-3">
             <label for="message-text" class="col-form-label"> </label>
+            <div id="inputPriceAvgResult"  style="color: red;"></div>
             <input type="text" class="form-control" placeholder="식당의 가격대를 입력해주세요" name="priceAvg" id="priceAvg">
           </div>
           <div class="mb-3">
@@ -144,10 +148,12 @@
           </div>
           <div class="mt-1">
             <div ><label  for="exampleFormControlInput1">글내용</label></div>
+            <div id="inputShopContentsResult"  style="color: red;"></div>
             <textarea name = "shopContents" class="form-control mt-1" id="shopContents" rows="3"></textarea>
         </div>
         <div class="mb-3">
           <label for="recipient-name" class="col-form-label"></label>
+          <div id="inputShopTitleResult"  style="color: red;"></div>
           <input type="text" class="form-control" placeholder="제목을 입력해주세요" name="shopTitle" id="shopTitle">
         </div>
         <!-- <div class="mb-3">
@@ -163,7 +169,7 @@
         </div>
         <div class="modal-footer file_box" id="modal-footer">
           <button type="button" class="btn btn-secondary upload-name" data-bs-dismiss="modal" id="close">취소</button>
-          <button type="submit" class="btn btn-primary" id="listAddButton">등록</button>
+          <button type="button" class="btn btn-primary" id="listAddButton">등록</button>
           
         </div>
         </form>
@@ -262,7 +268,7 @@
 			}
 		</script>
 
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=abf31ecaa88152d20b1faa70bc69a3d1&libraries=services,clusterer,drawing"></script>
+<!-- <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=abf31ecaa88152d20b1faa70bc69a3d1&libraries=services,clusterer,drawing"></script>
 <script>
 
 
@@ -350,7 +356,10 @@ add.addEventListener("click", function(){
 });
 
 
-</script> 
+</script>  -->
+<script>
+  listAddCheck();
+</script>
 
 
 
