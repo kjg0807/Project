@@ -13,6 +13,7 @@ import com.iu.home.reviewsComment.ReviewsCommentDTO;
 import com.iu.home.util.FileManger;
 import com.iu.home.util.Pager;
 import com.iu.home.util.ReviewsCommentPager;
+import com.iu.home.util.ReviewsDetailPager;
 import com.iu.home.util.ReviewsPager;
 
 @Service
@@ -33,6 +34,15 @@ public class ReviewsService {
 		
 		return reviewsDAO.getReviewsList(reviewsPager);
 	}
+	
+	//SHOP detailHTML에서 ReviewList 페이징
+//	public List<ReviewsDTO> getReviewsShopDetailList(ReviewsDetailPager reviewsDetailPager) throws Exception{
+//		Long totalCount = reviewsDAO.getReviewsShopDetailCount(reviewsDetailPager);
+//		reviewsDetailPager.getNum(totalCount);
+//		reviewsDetailPager.getRowNum();
+//		
+//		return reviewsDAO.getReviewsShopDetailList(reviewsDetailPager);
+//	}
 	
 	//리뷰 상세
 	public ReviewsDTO getReviewsDetail(ReviewsDTO reviewsDTO) throws Exception{

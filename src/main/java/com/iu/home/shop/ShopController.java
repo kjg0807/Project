@@ -18,6 +18,11 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.iu.home.member.MemberDTO;
 import com.iu.home.menu.MenuDTO;
+import com.iu.home.reviews.ReviewsDAO;
+import com.iu.home.reviews.ReviewsDTO;
+import com.iu.home.reviews.ReviewsService;
+import com.iu.home.util.ReviewsDetailPager;
+import com.iu.home.util.ReviewsPager;
 import com.iu.home.util.ShopPager;
 
 @Controller
@@ -26,6 +31,8 @@ public class ShopController {
 	
 	@Autowired
 	private ShopService shopService;
+	@Autowired
+	private ReviewsService reviewsService;
 	
 	@PostMapping("add")
 	@ResponseBody
@@ -62,15 +69,19 @@ public class ShopController {
 	}
 	
 	@GetMapping(value = "detailHTML")
-	public ModelAndView getDetail(ShopDTO shopDTO)throws Exception{
+	public ModelAndView getDetail(ShopDTO shopDTO, ReviewsDTO reviewsDTO, ReviewsPager reviewsPager)throws Exception{
 		System.out.println("getDetail");
 		System.out.println();
 		System.out.println("getMenuName"+shopDTO.getMenuName());
 		ModelAndView mv = new ModelAndView();
 		shopService.setHitUpdate(shopDTO);
+		List<ReviewsDTO> ar = reviewsService.getReviewsList(reviewsPager);
+		
 		shopDTO = shopService.getDetail(shopDTO);
 		mv.setViewName("kdy/shop/detailHTML");
 		mv.addObject("detail", shopDTO);
+		mv.addObject("reviewsPager", reviewsPager);
+		mv.addObject("list", ar);
 		return mv;
 	}
 	

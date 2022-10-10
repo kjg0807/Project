@@ -28,6 +28,19 @@
 			WHERE RN BETWEEN #{startRow} AND #{lastRow}
 	</select>
 	
+<!-- 	<select id="getReviewsShopDetailList" resultType="ReviewsDTO" parameterType="ReviewsDetailPager">
+		SELECT * FROM
+			(
+				SELECT ROWNUM RN, N.* FROM
+					(
+						SELECT * FROM REVIEWS 
+							<include refid="search"></include>
+							ORDER BY REVIEWNUM DESC
+						)N
+				)
+			WHERE RN BETWEEN #{startRow} AND #{lastRow}
+	</select> -->
+	
 	<select id="getReviewsDetail" parameterType="ReviewsDTO" resultMap="getReviewsDetailResult">
 		SELECT R.*, RF.*
 			FROM REVIEWS R
@@ -78,6 +91,11 @@
 		SELECT COUNT(REVIEWNUM) FROM REVIEWS
 			<include refid="search"></include>
 	</select>
+	
+<!-- 	<select id="getReviewsShopDetailCount" resultType="Long" parameterType="ReviewsDetailPager">
+		SELECT COUNT(REVIEWNUM) FROM REVIEWS
+			<include refid="search"></include>
+	</select> -->
 	
  	<select id="getReviewsFilesDetail" parameterType="ReviewsFilesDTO" resultType="ReviewsFilesDTO">
 		SELECT * FROM REVIEWS_FILES WHERE FILESNUM = #{filesNum}

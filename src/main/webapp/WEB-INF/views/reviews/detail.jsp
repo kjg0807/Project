@@ -13,6 +13,7 @@
 <!-- <link rel="stylesheet" href="../../../resources/css/reviewsComment.css">  -->
 <link rel="stylesheet" href="../../../resources/hjs/css/imageModal.css">
 <link rel="stylesheet" href="../../../resources/hjs/css/reviewsButton.css">
+<c:import url="../template/headerHTML.jsp"></c:import>
 <style>
 	.img{
 		cursor: pointer;
@@ -21,7 +22,7 @@
 </head>
 <body>
 
-<section class="container-fluid col-lg-6 mt-5">
+<section class="container-fluid col-lg-10 mt-5">
 	<div class="row mt-5 bg-light">
 		<h1>리뷰 detail 페이지</h1>
 	</div>
@@ -208,8 +209,16 @@
 			</thead>
 		</table>
 
-			<button id="plus" class="btn btn-primary">더보기</button>
-			<button id="minus" class="btn btn-success disabled" onclick="location.href='./detail?reviewNum=${dto.reviewNum}'">닫기</button>
+			<div class="d-grid gap-2 col-6 mx-auto">
+				<button id="plus" class="btn btn-primary">더보기</button>
+		  	</div>
+			<!-- <button id="plus" class="btn btn-primary">더보기</button> -->
+			<br>
+			<br>
+
+			<div>
+				<button id="minus" class="btn btn-success disabled" onclick="location.href='./detail?reviewNum=${dto.reviewNum}'">닫기</button>
+			</div>
 
 	</div>
 	<!-- 댓글 끝 -->
@@ -255,21 +264,41 @@
 <br>
 <br>
 <p>
-	<button onclick="location='./list'" class="btn btn-primary">목록으로</button>
+	<div  style="display: inline-block; margin: 0 5px;">
+		<button onclick="location='./list'" class="btn btn-primary">
+			<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
+				<path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
+			</svg>
+			목록
+		</button>
+	</div>
 
-	<button onclick="location='./update?reviewNum=${dto.reviewNum}'" class="btn btn-primary">수정하기</button>
+	<div  style="display: inline-block; margin: 0 5px;">
+		<button onclick="location='./update?reviewNum=${dto.reviewNum}'" class="btn btn-primary">수정하기</button>
+	</div>
 
-	<button onclick="location='./delete?reviewNum=${dto.reviewNum}'" class="btn btn-primary">
-		<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
-			<path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
-			<path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
-		</svg>
-		삭제
-	</button>	 
+
+	<div  style="display: inline-block; margin: 0 5px;">
+		<button onclick="location='./delete?reviewNum=${dto.reviewNum}'" class="btn btn-primary">
+			<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+				<path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+				<path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+			</svg>
+			삭제
+		</button>	 
+	</div>
+
+
+	<div style="display: inline-block; margin: 0 5px;  float: right;">
+		<button onclick="location='/'" class="btn btn-primary">
+			<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house-door" viewBox="0 0 16 16">
+				<path d="M8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4.5a.5.5 0 0 0 .5-.5v-4h2v4a.5.5 0 0 0 .5.5H14a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146zM2.5 14V7.707l5.5-5.5 5.5 5.5V14H10v-4a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v4H2.5z"/>
+			</svg>
+			홈으로
+		</button>
+	</div>
+
 </p>
-<div  style="display: inline-block; margin: 0 5px;  float: right;">
-	<button onclick="location='/'" class="btn btn-primary">홈으로</button>
-</div>
 		</section>
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
     			 integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" 
@@ -277,6 +306,7 @@
 				 
 	
 <script src="../../../resources/hjs/js/ReviewsComment.js"></script>
+
 <script>
 	function clean(){
 		var clean = document.getElementsByClassName('clean');
@@ -287,5 +317,6 @@
 		}
 	}
 </script>
+<c:import url="../template/footerHTML.jsp"></c:import>
 </body>
 </html>

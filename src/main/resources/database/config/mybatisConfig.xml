@@ -25,6 +25,7 @@
 		<typeAlias type="com.iu.home.util.ReviewsPager" alias="ReviewsPager"/>
 		<typeAlias type="com.iu.home.util.ReviewsCommentPager" alias="ReviewsCommentPager"/>
 		<typeAlias type="com.iu.home.reviewsComment.ReviewsCommentDTO" alias="ReviewsCommentDTO"/>
+		<typeAlias type="com.iu.home.util.ReviewsDetailPager" alias="reviewsDetailPager"/>
 		
 		
 		
