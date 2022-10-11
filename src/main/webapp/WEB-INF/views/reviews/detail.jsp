@@ -190,7 +190,7 @@
 		</div>
 		
 		<div class="mb-3">
-			<button type="button" id="btn" data-reviewNum="${dto.reviewNum}">댓글 작성</button>
+			<button type="button" id="btn" class="btn btn-secondary" data-reviewNum="${dto.reviewNum}">댓글 작성</button>
 		</div>
 	</div>
 	
