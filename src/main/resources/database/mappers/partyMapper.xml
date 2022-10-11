@@ -6,7 +6,22 @@
 <mapper namespace="com.iu.home.party.PartyDAO">
 	
 	
+	
 	<!-- partyList======================================================================================= -->
+	
+	<sql id="search">
+		WHERE
+		   <choose>
+		         <when test="kind == 'title'">PARTYTITLE</when>
+		         <when test="kind == 'writer'">USERNAME</when>
+		         <otherwise>PARTYCONTENTS</otherwise>
+		   </choose> 
+		LIKE '%'||#{search}||'%'	
+			<if test="shopNum	 != null">
+				AND SHOPNUM = #{shopNum}
+			</if>
+	</sql>
+	
 	<insert id="setPartyFileAdd" parameterType="PartyFileDTO">
 		INSERT INTO PARTYFILE
 			VALUES(PARTYFILE_SEQ.NEXTVAL, #{fileName}, #{oriName}, #{partyNum})
@@ -14,7 +29,7 @@
 	
 	<update id="setPartyUpdate" parameterType="PartyListDTO">
 		UPDATE PARTYLIST SET PARTYTITLE=#{partyTitle}, PARTYCONTENTS=#{partyContents}, PARTYREGDATE=sysdate, 
-			PARTYTIMEOUT=sysdate+(#{partyHH}*60)+#{partymm}/(24*60) WHERE USERID=#{userID}
+			PARTYTIMEOUT=sysdate+(#{partyHH}*60)+#{partymm}/(24*60) WHERE USERID=#{userID} PARTYNUM=#{partyNum}
 	</update>
 	
 	<select id="getPartyDetail" parameterType="PartyListDTO" resultMap="getPartyFile">
@@ -43,7 +58,7 @@
     	SELECT * FROM 
     		(SELECT ROWNUM R, P.* FROM
     			(SELECT * FROM PARTYLIST
-    			WHERE PARTYTITLE LIKE '%'||#{search}||'%'	
+    			<include refid="search"></include>
     			ORDER BY PARTYNUM DESC) P
     				) WHERE R BETWEEN #{startRow} AND #{lastRow}
     </select>
@@ -54,7 +69,9 @@
     
     <insert id="setPartyAdd" parameterType="PartyListDTO">
     	INSERT INTO PARTYLIST VALUES (
-    		PARTY_SEQ.NEXTVAL, #{userID}, #{userName}, #{shopNum}, #{partyTitle}, #{partyContents}, sysdate, sysdate+(#{partyHH}*60)+#{partymm}/(24*60))
+    		PARTY_SEQ.NEXTVAL, #{userID}, #{userName}, #{shopNum}, #{partyTitle}, #{partyContents}, sysdate,
+    		TO_DATE(#{partyTimeout}||' '|| #{partyHH}||':'||#{partymm}||':00', 'YY:MM:DD HH24:MI:SS')
+    		)
     </insert>
    
    <!-- partyList======================================================================================= -->

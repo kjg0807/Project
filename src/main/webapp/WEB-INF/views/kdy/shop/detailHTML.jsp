@@ -233,6 +233,7 @@
                    </div>
             
       
+
                   </div>
                   <div style="border-bottom: solid 1px gainsboro;">
                     식당 소개
@@ -244,6 +245,13 @@
                     <br>
                     <br>
                  </div>
+
+                
+         </div>
+         <div style="display: inline-block; margin:0 5px; float: right;">
+          <button onclick="location='../../party/list?shopNum=${detail.shopNum}'" class="btn btn-primary">파티모집</button>
+        </div>
+
      </div>
      <br>
      <br>
