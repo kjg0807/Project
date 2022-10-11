@@ -44,13 +44,8 @@ public class MemberDAO
 		return sqlSession.delete(NAMESPACE + "setDelete", memberDTO);
 	}
 
-	public int idCheck(MemberDTO memberDTO) throws Exception
+	public int checkId(MemberDTO memberDTO) throws Exception
 	{
-		return sqlSession.selectOne(NAMESPACE + "idCheck", memberDTO);
-	}
-
-	public int checkId(String a) throws Exception
-	{
-		return sqlSession.selectOne(NAMESPACE + "checkId", a);
+		return sqlSession.selectOne(NAMESPACE + "checkId", memberDTO);
 	}
 }

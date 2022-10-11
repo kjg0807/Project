@@ -289,14 +289,10 @@ const frm = document.getElementById("frm");
 
 btn.addEventListener("click", function () {
     console.log(idcheck && pwdcheck && namecheck && emailcheck && phonecheck && agecheck && brithcheck && gendercheck);
-    console.log(id.value.length);
-    console.log(pwd.value.length);
-    console.log(name1.value.length);
-    console.log(sendEmail.value.length);
-    console.log(phone.value.length);
-    console.log(age.value.length);
-    console.log(birth.value.length);
-    console.log(gender.value.length);
+    if(id.value == pwd.value){
+        alert("아이디와 비밀번호가 동일합니다.");
+        return;
+    }
     if (id.value.length == 0) {
         alert("아이디가 빈칸입니다.");
         return;
@@ -335,29 +331,38 @@ btn.addEventListener("click", function () {
     }
     else if (idcheck == false) {
         alert("아이디가 조건에 맞지 않습니다.");
+        return;
     }
     else if (pwdcheck == false) {
         alert("비밀번호가 조건에 맞지 않습니다.");
+        return;
     }
     else if (namecheck == false) {
         alert("닉네임이 조건에 맞지 않습니다.");
+        return;
     }
     else if (emailcheck == false) {
         alert("이메일이 조건에 맞지 않습니다.");
+        return;
     }
     else if (phonecheck == false) {
         alert("전화번호가 조건에 맞지 않습니다.");
+        return;
     }
     else if (agecheck == false) {
         alert("나이가 조건에 맞지 않습니다.");
+        return;
     }
     else if (birthcheck == false) {
         alert("생년월일이 조건에 맞지 않습니다.");
+        return;
     }
     else if (gendercheck == false) {
         alert("성별이 조건에 맞지 않습니다.");
+        return;
     }
     else {
         alert("회원가입에 실패했습니다. 다시 시도해주세요");
+        return;
     }
 });

@@ -37,19 +37,12 @@ select {
 	vertical-align: middle
 }
 </style>
-<%
-Class.forName("oracle.jdbc.driver.OracleDriver");
-String url = "jdbc:oracle:thin:@localhost:1521:xe";
-String user = "hr";
-String password = "hr";
-Connection conn = DriverManager.getConnection(url, user, password);
+<script>
+	function check(){
+		window.open("./checkId", "_blank", "width=600,height=600");
+	}
+</script>
 
-//db에 접근해서 sql실행하고 
-Statement stmt = conn.createStatement();
-String sql = "select userid from promembers";
-// stmt.executeQuery(sql);
-ResultSet rs = stmt.executeQuery(sql);
-%>
 <body>
 	<c:import url="../../template/headerHTML.jsp"></c:import>
 
@@ -61,30 +54,13 @@ ResultSet rs = stmt.executeQuery(sql);
 				<!-- id -->
 				<div class="mb-3">
 					<label class="form-label">아이디</label>
-					<input type="text" class="form-control" name="userID" aria-describedby="emailHelp" id="id" placeholder="아이디 입력"
-						onfocus="this.placeholder=''" onblur="this.placeholder='아이디 입력'"
+					<input type="text" class="form-control" name="userID" aria-describedby="emailHelp" id="id" placeholder="아이디 입력" onfocus="this.placeholder=''"
+						onblur="this.placeholder='아이디 입력'"
 					>
-					<button type="button" id="idchecked" class="btn btn-outline-dark">ID 중복 체크</button>
+					<button type="button" id="idchecked" class="btn btn-outline-dark" onclick="check();">ID 중복 체크</button>
 					<!-- id를 입력하고 나왔을 때 2글자 미만이면 메세지 출력 : id는 2글자 이상 -->
 					<div id="idText" style="display: none; color: red;">ID는 2글자 이상 입력해야 합니다.</div>
-					<div id="idChk"></div>
-					[
-					<%
-					int i = 0;
-					while (rs.next())
-					{
-						String userid = rs.getString("userID");
-						if (i > 0)
-						{
-							out.print(",");
-						}
-					%>
-					<%=userid%>
-					<%
-					i++;
-					} //while end
-					%>
-					]
+					
 				</div>
 
 				<!-- password 1 -->

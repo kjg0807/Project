@@ -10,6 +10,10 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
+import com.iu.home.reviews.ReviewsDAO;
+import com.iu.home.reviews.ReviewsDTO;
+import com.iu.home.util.ReviewsPager;
+
 @Service
 @Repository("myservice")
 public class MemberService
@@ -17,6 +21,8 @@ public class MemberService
 	@Autowired
 	@Qualifier("mydao")
 	private MemberDAO memberDAO;
+	@Autowired
+	private ReviewsDAO reviewsDAO;
 
 	public MemberDTO getLogin(MemberDTO memberDTO) throws Exception
 	{
@@ -48,13 +54,13 @@ public class MemberService
 		return memberDAO.setDelete(memberDTO);
 	}
 
-	public int idCheck(MemberDTO memberDTO) throws Exception
+	public int checkId(MemberDTO memberDTO) throws Exception
 	{
-		return memberDAO.idCheck(memberDTO);
+		return memberDAO.checkId(memberDTO);
 	}
 
-	public int checkId(String a) throws Exception
+	public List<ReviewsDTO> getReview(ReviewsPager reviewsPager) throws Exception
 	{
-		return memberDAO.checkId(a);
+		return reviewsDAO.getReviewsList(reviewsPager);
 	}
 }

@@ -1,3 +1,7 @@
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.Statement"%>
+<%@page import="java.sql.Connection"%>
+<%@page import="java.sql.DriverManager"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
@@ -6,15 +10,27 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/styles.css">
-<%-- <script type="text/javascript" src="${pageContext.request.contextPath}/js/test.js"></script> --%>
+<link rel="stylesheet" type="text/css" href="../../../resources/kdy/css/styles.css">
 
 </head>
+<%
+Class.forName("oracle.jdbc.driver.OracleDriver");
+String url = "jdbc:oracle:thin:@localhost:1521:xe";
+String user = "hr";
+String password = "hr";
+Connection conn = DriverManager.getConnection(url, user, password); //db에 접근해서 sql실행하고
+
+Statement stmt = conn.createStatement();
+String sql = "select * from reviews";
+stmt.executeQuery(sql);
+ResultSet rs = stmt.executeQuery(sql);
+%>
 <body>
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
 		<div class="container px-4 px-lg-5">
-			<img src="../../../resources/kdy/images/realLodo.jpg" style="width: 89px; height: 50px; margin: 0px 90px 0px 0px;" href="../../" alt="">
-			<a class="navbar-brand" href="../../">Home</a>
+			<img src="../../../resources/kdy/images/realLodo.jpg" style="width: 89px; height: 50px; margin: 0px 90px 0px 0px;" href="../../" alt=""> <a
+				class="navbar-brand" href="../../"
+			>Home</a>
 			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
 				aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
 			>
@@ -56,22 +72,27 @@
 							<%
 							try
 							{
+								while (rs.next())
+								{
+									String reviewID = rs.getString("userID");
 							%>
-							<%-- <c:if test="${member.classDTOs.get(0).className eq 'admin'}">
-								<button class="btn btn-outline-dark" onclick="location.href='/kjk/member/adpage';" type="submit" style="width: auto; margin-left: 3px">관리자
-									페이지</button>
-							</c:if> --%>
 							<c:choose>
 								<c:when test="${member.classDTOs.get(0).className eq 'admin'}">
 									<button class="btn btn-outline-dark" onclick="location.href='/kjk/member/adpage';" type="submit" style="width: auto; margin-left: 3px">관리자
 										페이지</button>
 								</c:when>
 								<c:otherwise>
-									<button class="btn btn-outline-dark" onclick="location.href='/kjk/member/mypage';" type="submit" style="width: auto; margin-left: 3px">내
-										정보</button>
+									<form action="/kjk/member/mypage" method="post">
+										<input type="hidden" value="<%=reviewID%>" name="reID">
+										<input type="hidden" value="${dto.userID}" name="dtoID">
+
+										<button class="btn btn-outline-dark" onclick="location.href='/kjk/member/mypage';" type="submit" style="width: auto; margin-left: 3px">내
+											정보</button>
+									</form>
 								</c:otherwise>
 							</c:choose>
 							<%
+							}
 							} catch (Exception e)
 							{
 
