@@ -114,14 +114,14 @@
                                      
                                         
 
-							                            </div>
+                                                 </div>
                                     
                                                 <div class="modal-footer">
                                                    
                                                     <button type="button" class="btn btn-danger" data-bs-dismiss="modal">취소하기</button>
                                                     <button type="submit" class="btn btn-primary">등록하기</button>
                                                 </div>
-					                               </form>
+                                              </form>
                                     </div>
                                 </div>
                             </div>
@@ -150,41 +150,41 @@
     
 
 
-			<div class="Information d-flex justify-content-between" style="border-bottom: solid 1px gainsboro; padding-top: 50px; padding-bottom: 50px;">
+         <div class="Information d-flex justify-content-between" style="border-bottom: solid 1px gainsboro; padding-top: 50px; padding-bottom: 50px;">
         <div>
         <!-- <div id="map" style="width:1000px; height:1000px;"></div> -->
         <div class="flex-row">
-				<div class="d-flex q" id="address">주소 &ensp;&ensp;&ensp;&ensp;&nbsp;&nbsp;&ensp;&ensp;:
-					<div class="flex q" id="realAddress">&ensp;&ensp;&ensp;${detail.shopAddress}</div>
-				</div>
-				<div class="d-flex q" id="phone">전화번호 &ensp;&ensp;&ensp;&nbsp;:
-					<div class="flex q" id="realPhone">&ensp;&ensp;&ensp;${detail.shopPhone}</div>
-				</div>
-				<div class="d-flex q" id="priceAvg">가격대 &ensp;&ensp;&ensp;&ensp;&ensp;&nbsp;:
-					<div class="flex q" id="realpriceAvg">&ensp;&ensp;&ensp;${detail.priceAvg}원</div>
-				</div>
-				<div class="d-flex q" id="delivery">배달비 &ensp;&ensp;&ensp;&ensp;&ensp;&nbsp;:
-					<div class="flex q" id="realdelivery">&ensp;&ensp;&ensp;${detail.delivery}원</div>
-				</div>
+            <div class="d-flex q" id="address">주소 &ensp;&ensp;&ensp;&ensp;&nbsp;&nbsp;&ensp;&ensp;:
+               <div class="flex q" id="realAddress">&ensp;&ensp;&ensp;${detail.shopAddress}</div>
+            </div>
+            <div class="d-flex q" id="phone">전화번호 &ensp;&ensp;&ensp;&nbsp;:
+               <div class="flex q" id="realPhone">&ensp;&ensp;&ensp;${detail.shopPhone}</div>
+            </div>
+            <div class="d-flex q" id="priceAvg">가격대 &ensp;&ensp;&ensp;&ensp;&ensp;&nbsp;:
+               <div class="flex q" id="realpriceAvg">&ensp;&ensp;&ensp;${detail.priceAvg}원</div>
+            </div>
+            <div class="d-flex q" id="delivery">배달비 &ensp;&ensp;&ensp;&ensp;&ensp;&nbsp;:
+               <div class="flex q" id="realdelivery">&ensp;&ensp;&ensp;${detail.delivery}원</div>
+            </div>
 
-				<c:forEach items="${detail.menuDTOs}" var="menuDTO">
+            <c:forEach items="${detail.menuDTOs}" var="menuDTO">
           <div class="d-flex q" id="menuDelete" >대표메뉴 &ensp;&ensp;&nbsp;
             <input type="hidden" id="shopNum" name="shopNum" value="${detail.shopNum}">
             <input type="hidden" id="menuNum" name="menuNum" value="${menuDTO.menuNum}">
-						<div class="flex q" id="realmenu">&ensp;&ensp;&ensp;${menuDTO.menuName}</div>
-						<div class="flex q" id="realmenu">&ensp;&ensp;&ensp;${menuDTO.menuPrice}원</div>
-					</div>
+                  <div class="flex q" id="realmenu">&ensp;&ensp;&ensp;${menuDTO.menuName}</div>
+                  <div class="flex q" id="realmenu">&ensp;&ensp;&ensp;${menuDTO.menuPrice}원</div>
+               </div>
           <div class="dy flex btn btn-danger" id="deleteMenu" style="box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;" onclick="location.href='/shop/deleteMenu?menuNum=${menuDTO.menuNum}&shopNum=${detail.shopNum}';">&ensp;대표메뉴삭제</div>
-				</c:forEach>
+            </c:forEach>
       </div>
       </div>
       <div class="side-wrap" id="map2" style="width:350px;height:350px;"></div>
         <!-- <c:forEach items="${detail.menuDTOs}" var="menuDTO">
           <div class="d-flex q" id="menu" onclick="">대표메뉴 &ensp;&ensp;&nbsp;:
             <div class="flex q" id="realmenu">&ensp;&ensp;&ensp;${menuDTO.menuName}</div>
-						<div class="flex q" id="realmenu">&ensp;&ensp;&ensp;${menuDTO.menuPrice}원</div>
-					</div>
-				</c:forEach> -->
+                  <div class="flex q" id="realmenu">&ensp;&ensp;&ensp;${menuDTO.menuPrice}원</div>
+               </div>
+            </c:forEach> -->
         <!-- 대표메뉴 추가 -->
        
                     
@@ -216,7 +216,7 @@
                                         <button type="button" class="btn btn-danger" style="box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;" data-bs-dismiss="modal">취소하기</button>
                                         <button type="submit" class="btn btn-primary" style="box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;" id="menuAddNum">등록하기</button>
                                     </div>
-					           </form>
+                          </form>
                           </div>
                       </div>
                    </div>
@@ -284,30 +284,31 @@
             <td>${pageScope.dto.reviewDate}</td>
             <td>${pageScope.dto.hits}</td>
             <c:choose>
-							<c:when test="${member == null}">
-								<td>
-									<button style="width: auto;" class="btn" id="detailList">
-										<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle" viewBox="0 0 16 16">
-											<path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-											<path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
-										</svg>
-										자세히
-									</button>
-								</td>
-							</c:when>
 
-							<c:otherwise>
-								<td>
-									<button class="btn btn-outline-dark" onclick="location.href='../../reviews/detail?reviewNum=${pageScope.dto.reviewNum}';" type="submit" style="width: auto;">
-										<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle" viewBox="0 0 16 16">
-											<path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-											<path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
-										</svg>
-										자세히
-									</button>
-								</td>
-							</c:otherwise>
-						</c:choose>
+                     <c:when test="${member == null}">
+                        <td>
+                           <button style="width: auto;" class="btn" id="detailList">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle" viewBox="0 0 16 16">
+                                 <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                                 <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+                              </svg>
+                              자세히
+                           </button>
+                        </td>
+                     </c:when>
+
+                     <c:otherwise>
+                        <td>
+                           <button class="btn btn-outline-dark" onclick="location.href='../../reviews/detail?reviewNum=${pageScope.dto.reviewNum}';" type="submit" style="width: auto;">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle" viewBox="0 0 16 16">
+                                 <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                                 <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+                              </svg>
+                              자세히
+                           </button>
+                        </td>
+                     </c:otherwise>
+                  </c:choose>
           </tr>
         </c:forEach>
       </tbody>
@@ -318,17 +319,20 @@
           <!--이전 버튼-->
           <c:if test="${reviewsPager.pre}">
             <li class="page-item">
-              <a class="page-link" href="./detailHTML??page=${reviewsPager.startNum-1}&kind=${reviewsPager.kind}&search=${reviewsPager.search}" aria-label="Previous">
+
+              <a class="page-link" href="../../shop/detailHTML?page=${reviewsPager.startNum-1}&kind=${reviewsPager.kind}&search=${reviewsPager.search}" aria-label="Previous">
                 <span aria-hidden="true">&laquo;</span>
               </a>
             </li>
           </c:if>
           
           <c:forEach begin="${reviewsPager.startNum}" end="${reviewsPager.lastNum}" var="i">
-                <li class="page-item"><a class="page-link" href="./detailHTML??page=${i}&kind=${reviewsPager.kind}&search=${reviewsPager.search}">${i}</a></li>
+
+                <li class="page-item"><a class="page-link" href="../../shop/detailHTML?page=${i}&kind=${reviewsPager.kind}&search=${reviewsPager.search}">${i}</a></li>
           </c:forEach>
         <li class="page-item ${reviewsPager.next?'':'disabled'}">
-            <a class="page-link" href="./detailHTML??page=${reviewsPager.lastNum+1}&kind=${reviewsPager.kind}&search=${reviewsPager.search}" aria-label="Next">
+            <a class="page-link" href="../../shop/detailHTML?page=${reviewsPager.lastNum+1}&kind=${reviewsPager.kind}&search=${reviewsPager.search}" aria-label="Next">
+
               <span aria-hidden="true">&raquo;</span>
             </a>
           </li>
@@ -372,7 +376,7 @@
    
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=abf31ecaa88152d20b1faa70bc69a3d1&libraries=services,clusterer,drawing"></script>
 <script>
-	var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+   var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
     mapOption = {
         center: new kakao.maps.LatLng(37.480324403851085, 126.88364153429607), // 지도의 중심좌표
         level: 2 // 지도의 확대 레벨
@@ -451,7 +455,7 @@ function displayCenterInfo(result, status) {
         // }
     }    
 }
-	</script>
+   </script>
   <!-- ===================================================================================================================================================== -->
   <script>
     // 마커를 클릭하면 장소명을 표출할 인포윈도우 입니다
