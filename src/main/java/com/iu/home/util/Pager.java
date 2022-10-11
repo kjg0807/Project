@@ -14,6 +14,8 @@ public class Pager {
 	private boolean pre;
 	private boolean next;
 	private String search;
+	private String kind;
+	private Long shopNum;
 	
 	public Pager() {
 		this.perPage=10L;
@@ -139,6 +141,23 @@ public class Pager {
 
 	public void setSearch(String search) {
 		this.search = search;
+	}
+
+	public String getKind() {
+		return kind;
+	}
+
+	public void setKind(String kind) {
+		this.kind = kind;
+	}
+
+	public Long getShopNum() {
+		
+		return shopNum;
+	}
+
+	public void setShopNum(Long shopNum) {
+		this.shopNum = shopNum;
 	}
 
 

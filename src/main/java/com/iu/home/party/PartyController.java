@@ -30,9 +30,9 @@ public class PartyController {
 	@GetMapping(value="list")
 	public ModelAndView getPartyList(Pager pager, HttpSession session)throws Exception{
 		ModelAndView mv = new ModelAndView();
-		
 		List<PartyListDTO> ar = partyService.getPartyList(pager);
 		mv.addObject("member", (MemberDTO)session.getAttribute("member"));
+
 		mv.addObject("list", ar);
 		mv.addObject("pager", pager);
 		mv.setViewName("party/list");
@@ -43,7 +43,6 @@ public class PartyController {
 	public ModelAndView getPartyDetail(PartyListDTO partyListDTO, HttpSession session)throws Exception{
 		ModelAndView mv = new ModelAndView();
 		partyListDTO = partyService.getPartyDetail(partyListDTO);
-		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
 		mv.addObject("member", (MemberDTO)session.getAttribute("member"));
 		mv.addObject("partyListDTO", partyListDTO);
 		mv.setViewName("party/detail");
@@ -54,6 +53,7 @@ public class PartyController {
 	@GetMapping(value = "add")
 	public String setPartyAdd(PartyListDTO partyListDTO, HttpSession session)throws Exception{
 		ModelAndView mv = new ModelAndView();
+
 		mv.addObject("partyListDTO", partyListDTO);
 		mv.addObject("member", session.getAttribute("member"));
 		return "party/add";
@@ -62,9 +62,11 @@ public class PartyController {
 	@PostMapping(value = "add")
 	public ModelAndView setPartyAdd(PartyListDTO partyListDTO, MultipartFile [] files, HttpSession session)throws Exception{
 		ModelAndView mv = new ModelAndView();
-		System.out.println(partyListDTO.getShopNum());
+		System.out.println(partyListDTO.getPartyTimeout());
+		System.out.println(partyListDTO.getPartymm());
+		System.out.println(partyListDTO.getPartyHH());
 		int result = partyService.setPartyAdd(partyListDTO, files, session.getServletContext());
-		mv.setViewName("redirect:./list");
+		mv.setViewName("redirect:./list?shopNum="+partyListDTO.getShopNum());
 		return mv;
 	}
 	
@@ -74,8 +76,7 @@ public class PartyController {
 	@ResponseBody
 	public ModelAndView setPartyJoin(PartyDTO partyDTO)throws Exception{
 		ModelAndView mv = new ModelAndView();
-		System.out.println(partyDTO.getPartyNum());
-		System.out.println(partyDTO.getUserName());
+
 		int result = partyService.setPartyJoin(partyDTO);
 		String jsonResult="{\"result\":\""+result+"\"}";
 		mv.addObject("result", jsonResult);

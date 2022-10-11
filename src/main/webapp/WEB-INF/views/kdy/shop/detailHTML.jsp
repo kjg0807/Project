@@ -224,6 +224,9 @@
       
                 
          </div>
+         <div style="display: inline-block; margin:0 5px; float: right;">
+          <button onclick="location='../../party/list?shopNum=${detail.shopNum}'" class="btn btn-primary">파티모집</button>
+        </div>
      </div>
      <br>
      <br>
