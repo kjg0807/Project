@@ -3,7 +3,7 @@ package com.iu.home.member;
 public class UserClassDTO
 {
 	private Long num;
-	private String userId;
+	private String userID;
 	private Long classNum;
 
 	public Long getNum()
@@ -16,14 +16,14 @@ public class UserClassDTO
 		this.num = num;
 	}
 
-	public String getUserId()
+	public String getUserID()
 	{
-		return userId;
+		return userID;
 	}
 
-	public void setUserId(String userId)
+	public void setUserID(String userID)
 	{
-		this.userId = userId;
+		this.userID = userID;
 	}
 
 	public Long getClassNum()
