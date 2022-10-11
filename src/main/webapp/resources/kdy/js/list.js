@@ -1,27 +1,29 @@
-const add = document.querySelector("#add");
-    
-add.addEventListener("click", function(){
-   alert("로그인이 필요합니다.")
-})
-
-function listAddCheck(){
 const cccc = document.querySelector("#cccc");
 const ccccChildren = cccc.children;
-
 for(let i =0; i < ccccChildren.length; i++){
     ccccChildren[i].addEventListener("click", function(){
         location.href="../../shop/listHTML?categoryName=" + ccccChildren[i].getAttribute("data-miniCategory");
     })
 }
 
+const add = document.querySelector("#add");
+add.addEventListener("click", function(){
+   alert("로그인이 필요합니다.")
+})
 
+const detailHTMLList = document.getElementById("detailHTMLList");
+detailHTMLList.addEventListener("click", function(){
+    alert("로그인이 필요한 서비스입니다")
+    return;
+})
+
+function listAddCheck(){
 const caNum = document.querySelector("#caNum");
 const canumChildren = caNum.children;
-for(let i=0; i<canumChildren.length; i++){
-    canumChildren[i].addEventListener("click", function(){
-    })
-}
-
+    for(let i=0; i<canumChildren.length; i++){
+        canumChildren[i].addEventListener("click", function(){
+        })
+    }
     const listAddForm = document.querySelector("#listAddForm");
     const listAddButton = document.querySelector("#listAddButton");
 
@@ -30,7 +32,7 @@ for(let i=0; i<canumChildren.length; i++){
     const shopAddress = document.querySelector("#shopAddress");
     const priceAvg = document.querySelector("#priceAvg");
     const delivery = document.querySelector("#delivery");
-    const shopContents = document.querySelector("#shopContents");
+    // const shopContents = document.querySelector("#shopContents");
     const shopTitle = document.querySelector("#shopTitle");
 
     const inputShopPhoneResult = document.getElementById("inputShopPhoneResult");
@@ -38,7 +40,7 @@ for(let i=0; i<canumChildren.length; i++){
     const inputShopAddressResult = document.getElementById("inputShopAddressResult");
     const inputPriceAvgResult = document.getElementById("inputPriceAvgResult");
     const inputDeliveryResult = document.getElementById("inputDeliveryResult");
-    const inputShopContentsResult = document.getElementById("inputShopContentsResult");
+    // const inputShopContentsResult = document.getElementById("inputShopContentsResult");
     const inputShopTitleResult = document.getAnimations("inputShopTitleResult");
 
     let shopPhoneCheck = false;
@@ -49,7 +51,7 @@ for(let i=0; i<canumChildren.length; i++){
     let shopContentsCheck = false;
     let shopTitleCheck = false;
 
-    shopPhone.addEventListener("click", function(){
+    shopPhone.addEventListener("blur", function(){
         if(shopPhone.value.length>1){
             inputShopPhoneResult.innerHTML="";
             shopPhoneCheck = true;
@@ -58,7 +60,7 @@ for(let i=0; i<canumChildren.length; i++){
             shopPhoneCheck = false;
         }
     })
-    shopName.addEventListener("click", function(){
+    shopName.addEventListener("blur", function(){
         if(shopName.value.length>1){
             inputShopNameResult.innerHTML="";
             shopNameCheck = true;
@@ -67,7 +69,7 @@ for(let i=0; i<canumChildren.length; i++){
             shopNameCheck = false;
         }
     })
-    shopAddress.addEventListener("click", function(){
+    shopAddress.addEventListener("blur", function(){
         if(shopAddress.value.length>1){
             inputShopAddressResult.innerHTML="";
             shopAddressCheck = true;
@@ -76,7 +78,7 @@ for(let i=0; i<canumChildren.length; i++){
             shopAddressCheck = false;
         }
     })
-    priceAvg.addEventListener("click", function(){
+    priceAvg.addEventListener("blur", function(){
         if(priceAvg.value.length>1){
             inputPriceAvgResult.innerHTML="";
             priceAvgCheck = true;
@@ -85,16 +87,16 @@ for(let i=0; i<canumChildren.length; i++){
             priceAvgCheck = false;
         }
     })
-    shopContents.addEventListener("click", function(){
-        if(shopContents.value.length>1){
-            inputShopContentsResult.innerHTML="";
-            shopContentsCheck = true;
-        }else{
-            inputShopContentsResult = "!!필수!!식당에 대해 소개해주세요.";
-            shopContentsCheck = false;
-        }
-    })
-    shopTitle.addEventListener("click", function(){
+    // shopContents.addEventListener("blur", function(){
+    //     if(shopContents.value.length>1){
+    //         inputShopContentsResult.innerHTML="";
+    //         shopContentsCheck = true;
+    //     }else{
+    //         inputShopContentsResult = "!!필수!!식당에 대해 소개해주세요.";
+    //         shopContentsCheck = false;
+    //     }
+    // })
+    shopTitle.addEventListener("blur", function(){
         if(shopTitle.value.length>1){
             inputShopTitleResult.innerHTML="";
             shopTitleCheck = true;
@@ -105,11 +107,19 @@ for(let i=0; i<canumChildren.length; i++){
     })
 
     listAddButton.addEventListener("click", function(){
-        if(shopPhoneCheck&&shopNameCheck&&shopAddressCheck&&priceAvgCheck&&shopContentsCheck&&shopTitleCheck){
+        console.log(shopPhoneCheck);
+        console.log(shopNameCheck);
+        console.log(shopAddressCheck);
+        console.log(priceAvgCheck);
+        // console.log(shopContentsCheck);
+        console.log(shopTitleCheck);
+        if(shopPhoneCheck&&shopNameCheck&&shopAddressCheck&&priceAvgCheck&&shopTitleCheck){
             alert("축하합니다 게시글이 등록되었습니다 ")
+            listAddForm.submit();
+            listAddButton.submit();
+
         }else{
             alert("필수 입력사항을 확인해보세요!!")
         }
     })
-
 }

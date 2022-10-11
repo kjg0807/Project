@@ -71,12 +71,12 @@
                                           </div> -->
                                           <div class="mb-3">
                                             <label for="message-text" class="col-form-label"> </label>
-                                            가게 주소 수정<input type="text" class="form-control"   placeholder="${detail.shopAddress}" name="shopAddress">
+                                            가게 주소 수정<input type="text" class="form-control"   value="${detail.shopAddress}" name="shopAddress">
                                           </div>
-                                          <div class="mb-3" id="map" style="width:500px;height:400px;">
+<!--                                           <div class="mb-3" id="map" style="width:500px;height:400px;">
                                             <label for="message-text" class="col-form-label"> </label>
                                             <input type="text" class="form-control" name="shopAddress" id="shopAddress" >
-                                          </div>
+                                          </div> -->
                                           <div class="mb-3">
                                             <label   for="recipient-name" class="col-form-label"></label>
                                             가게 평균가격 수정  <input type="text" class="form-control" name="priceAvg" value="${detail.priceAvg}">
@@ -137,16 +137,26 @@
                            
 
                                   <div style="border-bottom: solid 1px gainsboro; padding-bottom: 50px; padding-top: 50px;">
-                                    <div>&ensp;&ensp;조회수 &ensp;&ensp;:&ensp;&ensp;${detail.hit}</div>
-                                    <div>&ensp;&ensp;작성자 &ensp;&ensp;:&ensp;&ensp;${detail.userID}</div>
-                                    <div class="p-2 pt-3" style="font-size: 50px;">${detail.shopName}
+                                    <div class="p-2 pt-3" style="font-size: 50px;">${detail.shopName}</div>
+                                    <div class="d-flex">
+                                    <div >&ensp;&ensp;<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-wechat" viewBox="0 0 16 16">
+                                      <path d="M11.176 14.429c-2.665 0-4.826-1.8-4.826-4.018 0-2.22 2.159-4.02 4.824-4.02S16 8.191 16 10.411c0 1.21-.65 2.301-1.666 3.036a.324.324 0 0 0-.12.366l.218.81a.616.616 0 0 1 .029.117.166.166 0 0 1-.162.162.177.177 0 0 1-.092-.03l-1.057-.61a.519.519 0 0 0-.256-.074.509.509 0 0 0-.142.021 5.668 5.668 0 0 1-1.576.22ZM9.064 9.542a.647.647 0 1 0 .557-1 .645.645 0 0 0-.646.647.615.615 0 0 0 .09.353Zm3.232.001a.646.646 0 1 0 .546-1 .645.645 0 0 0-.644.644.627.627 0 0 0 .098.356Z"/>
+                                      <path d="M0 6.826c0 1.455.781 2.765 2.001 3.656a.385.385 0 0 1 .143.439l-.161.6-.1.373a.499.499 0 0 0-.032.14.192.192 0 0 0 .193.193c.039 0 .077-.01.111-.029l1.268-.733a.622.622 0 0 1 .308-.088c.058 0 .116.009.171.025a6.83 6.83 0 0 0 1.625.26 4.45 4.45 0 0 1-.177-1.251c0-2.936 2.785-5.02 5.824-5.02.05 0 .1 0 .15.002C10.587 3.429 8.392 2 5.796 2 2.596 2 0 4.16 0 6.826Zm4.632-1.555a.77.77 0 1 1-1.54 0 .77.77 0 0 1 1.54 0Zm3.875 0a.77.77 0 1 1-1.54 0 .77.77 0 0 1 1.54 0Z"/>
+                                      </svg> &ensp;${detail.hit}
                                     </div>
+                                   
+                                    <c:forEach items="${detail.memberDTOs}" var="memberDTO">
+                                      <div>&ensp;&ensp;<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
+                                        <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"/>
+                                        </svg> &ensp;${memberDTO.userID}님
+                                      </div>
+                                    </c:forEach> 
+                                  </div>         
                     
                                     <div>
                                       <button onclick="goBack()" style="color: black; box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;">《《《《《《</button>
                                     </div>
                                   </div>
-                            
     
 
 
@@ -179,6 +189,7 @@
       </div>
       </div>
       <div class="side-wrap" id="map2" style="width:350px;height:350px;"></div>
+
         <!-- <c:forEach items="${detail.menuDTOs}" var="menuDTO">
           <div class="d-flex q" id="menu" onclick="">대표메뉴 &ensp;&ensp;&nbsp;:
             <div class="flex q" id="realmenu">&ensp;&ensp;&ensp;${menuDTO.menuName}</div>
@@ -186,7 +197,7 @@
                </div>
             </c:forEach> -->
         <!-- 대표메뉴 추가 -->
-       
+
                     
                         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">                     
                                 <div class="modal-dialog">
@@ -222,14 +233,21 @@
                    </div>
             
       
-                
-         </div>
+                  </div>
+                  <div style="border-bottom: solid 1px gainsboro;">
+                    식당 소개
+                    <br>
+                    <br>
+                    <br>
+                    <>${detail.shopContents}
+                   <br>
+                    <br>
+                    <br>
+                 </div>
      </div>
      <br>
      <br>
      <br>
-
-
      <form action="../../reviews/list" class="row row-cols-lg-auto g-3 align-items-center">
       <div class="col-12">
          <label class="visually-hidden" for="kind">Kind</label>
