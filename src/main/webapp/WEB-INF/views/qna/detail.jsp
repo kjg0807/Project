@@ -16,7 +16,7 @@
 }
 </style>
 <body>
-	<section class="container-fluid col-lg-6 mt-5">
+	<section class="container-fluid col-lg-10 mt-5">
 
 		<h1>Q&A Detail Page</h1>
 

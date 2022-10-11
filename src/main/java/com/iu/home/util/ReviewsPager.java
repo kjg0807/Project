@@ -32,7 +32,7 @@ public class ReviewsPager {
 	
 
 	public ReviewsPager() {
-		this.perpage = 10L;
+		this.perpage = 5L;
 		this.perBlock = 5L;
 	}
 	
@@ -124,7 +124,7 @@ public class ReviewsPager {
 	}
 	public Long getPerpage() {
 		if(this.perpage==null) {
-			this.perpage = 10L;
+			this.perpage = 5L;
 		}
 		return perpage;
 	}

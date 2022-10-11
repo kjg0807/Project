@@ -90,10 +90,10 @@
             </div> 
       </c:forEach>
     
-	
-		<!-- <div id="map" style="width:500px;height:400px;"></div> -->
-		
-		<!--  -->
+   
+      <!-- <div id="map" style="width:500px;height:400px;"></div> -->
+      
+      <!--  -->
 
 
 
@@ -177,7 +177,7 @@
     </div>
   </div>
  </div>
-		<!--  -->
+      <!--  -->
     <!-- map modal -->
     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal1">
      맵api
@@ -257,16 +257,16 @@
    }); </script>
 
         <script>
-			let k = '${param.kind}'; 
-			const kinds = document.getElementsByClassName("kinds");
+         let k = '${param.kind}'; 
+         const kinds = document.getElementsByClassName("kinds");
 
-			for(let i=0; i<kinds.length; i++){
-				if(kinds[i].value == k){
-					kinds[i].selected=true;
-					break;
-				}
-			}
-		</script>
+         for(let i=0; i<kinds.length; i++){
+            if(kinds[i].value == k){
+               kinds[i].selected=true;
+               break;
+            }
+         }
+      </script>
 
 <!-- <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=abf31ecaa88152d20b1faa70bc69a3d1&libraries=services,clusterer,drawing"></script>
 <script>

@@ -20,6 +20,7 @@ import com.iu.home.member.MemberDTO;
 import com.iu.home.reviewsComment.ReviewsCommentDTO;
 import com.iu.home.shop.ShopDTO;
 import com.iu.home.util.ReviewsCommentPager;
+import com.iu.home.util.ReviewsDetailPager;
 import com.iu.home.util.ReviewsPager;
 
 @Controller
@@ -49,6 +50,48 @@ public class ReviewsController {
 		
 		return mv;
 	}
+	
+	//shop 디테일 리뷰리스트
+//	@GetMapping(value = "list2")
+//	public ModelAndView getReviewsShopDetailList(ReviewsDetailPager reviewsDetailPager, HttpSession session, ReviewsDTO reviewsDTO) throws Exception{
+//		
+//		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
+//		
+//		reviewsDTO.setUserID(memberDTO.getUserID());
+//		
+//		ModelAndView mv = new ModelAndView();
+//		
+//		System.out.println("리뷰 List 실행");
+//		
+//		List<ReviewsDTO> ar = reviewsService.getReviewsShopDetailList(reviewsDetailPager);
+//		
+//		mv.addObject("reviewsDetailPager", reviewsDetailPager);
+//		mv.addObject("detailList", ar);
+//		mv.setViewName("reviews/list2");
+//		
+//		return mv;
+//	}
+	
+	
+	//리뷰리스트 (Model)
+//	public String getReviewsList(ReviewsPager reviewsPager, HttpSession session, ReviewsDTO reviewsDTO, Model model) throws Exception{
+//		
+//		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
+//		
+//		reviewsDTO.setUserID(memberDTO.getUserID());
+//		
+//		
+//		
+//		System.out.println("리뷰 List 실행");
+//		
+//		List<ReviewsDTO> ar = reviewsService.getReviewsList(reviewsPager);
+//		
+//		
+//		model.addAttribute("reviewsPager", reviewsPager);
+//		model.addAttribute("list", ar);
+//		
+//		return "reviews/list";
+//	}
 	
 	//리뷰 디테일
 	@GetMapping(value = "detail")
@@ -101,7 +144,9 @@ public class ReviewsController {
 		mv.addObject("result", result);
 		mv.addObject("dto", reviewsDTO);
 		mv.addObject("detail", reviewsDTO);
-		mv.setViewName("redirect:./list");
+//		mv.setViewName("redirect:../kdy/shop/detailHTML?shopNum="+reviewsDTO.getShopNum());
+//		mv.setViewName("redirect:./list");
+		mv.setViewName("redirect:../shop/detailHTML?shopNum="+reviewsDTO.getShopNum());
 		
 		if(result == 1) {
 			System.out.println("리뷰 글이 작성되었습니다!!");

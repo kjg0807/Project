@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.iu.home.util.Pager;
+import com.iu.home.util.ReviewsDetailPager;
 import com.iu.home.util.ReviewsPager;
 
 @Repository
@@ -85,6 +86,22 @@ public class ReviewsDAO implements ReviewsIntDAO{
 		
 		return sqlSession.update(NAMESPACE+"setReviewsHitsUpdate", reviewsDTO);
 	}
+
+
+	
+	//SHOP 디테일페이지에 뿌리는 리뷰리스트 페이징처리
+//	@Override
+//	public List<ReviewsDTO> getReviewsShopDetailList(ReviewsDetailPager reviewsDetailPager) throws Exception {
+//		
+//		return sqlSession.selectList(NAMESPACE+"getReviewsShopDetailList", reviewsDetailPager);
+//	}
+//
+//
+//	@Override
+//	public Long getReviewsShopDetailCount(ReviewsDetailPager reviewsDetailPager) throws Exception {
+//		
+//		return sqlSession.selectOne(NAMESPACE+"getReviewsShopDetailCount", reviewsDetailPager);
+//	}
 
 	
 	

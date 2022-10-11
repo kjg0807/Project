@@ -27,7 +27,7 @@ import com.iu.home.util.ShopPager;
 @Controller
 @RequestMapping(value = "/shop/*")
 public class ShopController {
-   
+
    @Autowired
    private ShopService shopService;
    @Autowired
