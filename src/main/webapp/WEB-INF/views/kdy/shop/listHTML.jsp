@@ -19,7 +19,6 @@
        <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
        <!-- <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c971ac6c7712b0e728a1ba2df98cf0fd"></script>
        <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c971ac6c7712b0e728a1ba2df98cf0fd&libraries=services"></script> -->
-       <link rel="stylesheet" href="../../../../resources/kdy/css/button.css">
 
        
   </head>
@@ -32,7 +31,7 @@
             <div class="c1">
                 맛집 리뷰
             </div>
-                <div class="d-flex flex-row mb-3" id="cccc">
+                <div class="d-flex flex-row mb-3" id="cccc"   style="cursor: pointer;">
                     <div class="p-2 a" data-miniCategory="">전체</div>
                     <div class="p-2 a" data-miniCategory="한식">한식</div>
                     <div class="p-2 a" data-miniCategory="중식">중식</div>
@@ -44,59 +43,102 @@
 
 
                 <c:choose>
-                  <c:when test="${member == null}">
-                    <div class="btn btn-secondary" data-bs-toggle="modal" data-bs-whatever="@getbootstrap" id="add">가게등록</div>
+                  <c:when  test="${member == null}">
+                    <div class="btn btn-secondary" data-bs-toggle="modal" data-bs-whatever="@getbootstrap" id="add"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
+                      <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"/>
+                    </svg> &ensp;&ensp;가게등록</div>
                   </c:when>
                 <c:otherwise>
-                  <div class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap" role="add" id="add">가게등록</div>
+                  <div class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap" role="add" onclick="listAddCheck();">가게등록</div>
                 </c:otherwise>
                 </c:choose>
         
                 <c:forEach items="${requestScope.list}" var="list">    
-            <div class="shop_list"  onclick="location.href='/shop/detailHTML?shopNum=${list.getShopNum()}';">
-                <div class="list" style="box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px" >
-                    <div style="border-bottom: solid 1px gainsboro; height: 200px;" >
-                        <div class="d-flex">
-                            <div class="p-2 w-100" >
-                                <div class="container2" style="padding: 12px;">
-                                    <div class="name">${list.shopName}</div>
-                                    <div class="shopContents">${list.shopTitle}</div>
-                                    <div class="shopContents2">${list.shopAddress}</div>
-                                    <c:forEach items="${list.categoryDTOs}" var="category">
-                                      <div class="p-2 b" style="color: black;"># ${category.categoryName}</div>
-                                    </c:forEach>   
-                                    
-                                </div>
-                                <div class="d-flex flex-row mb-3 mt-2">
-                                    <div class="p-2 b">SHOP NAME : ${list.shopName}</div>
-                                    <div class="p-2 b">SHOP ADDRESS : ${list.shopAddress}</div>
-                                    <div class="p-2 b">HIT : ${list.hit}</div>
+                  <c:choose>
+                    <c:when test="${member == null}">
+                    
+                        <div class="shop_list" id="detailHTMLList">
+                          <div class="list" style="box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px" >
+                              <div style="border-bottom: solid 1px gainsboro; height: 200px;" >
+                                  <div class="d-flex">
+                                      <div class="p-2 w-100" >
+                                          <div class="container2" style="padding: 12px;">
+                                              <div class="name">${list.shopName}</div>
+                                              <div class="shopContents">${list.shopTitle}</div>
+                                              <div class="shopContents2"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt-fill" viewBox="0 0 16 16">
+                                                <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/>
+                                              </svg>&ensp;&ensp;${list.shopAddress}</div>
+                                              <c:forEach items="${list.categoryDTOs}" var="category">
+                                                <div class="p-2 b" style="color: black;"># ${category.categoryName}</div>
+                                              </c:forEach>   
+                                              
+                                          </div>
+                                          <div class="d-flex flex-row mb-3 mt-2" style="cursor: pointer;">
+                                              <div class="p-2 b">SHOP NAME : ${list.shopName}</div>
+                                              <div class="p-2 b"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt-fill" viewBox="0 0 16 16">
+                                                <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/>
+                                              </svg>&ensp;&ensp;${list.shopAddress}</div>
+                                              <div class="p-2 b"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-wechat" viewBox="0 0 16 16">
+                                                <path d="M11.176 14.429c-2.665 0-4.826-1.8-4.826-4.018 0-2.22 2.159-4.02 4.824-4.02S16 8.191 16 10.411c0 1.21-.65 2.301-1.666 3.036a.324.324 0 0 0-.12.366l.218.81a.616.616 0 0 1 .029.117.166.166 0 0 1-.162.162.177.177 0 0 1-.092-.03l-1.057-.61a.519.519 0 0 0-.256-.074.509.509 0 0 0-.142.021 5.668 5.668 0 0 1-1.576.22ZM9.064 9.542a.647.647 0 1 0 .557-1 .645.645 0 0 0-.646.647.615.615 0 0 0 .09.353Zm3.232.001a.646.646 0 1 0 .546-1 .645.645 0 0 0-.644.644.627.627 0 0 0 .098.356Z"/>
+                                                <path d="M0 6.826c0 1.455.781 2.765 2.001 3.656a.385.385 0 0 1 .143.439l-.161.6-.1.373a.499.499 0 0 0-.032.14.192.192 0 0 0 .193.193c.039 0 .077-.01.111-.029l1.268-.733a.622.622 0 0 1 .308-.088c.058 0 .116.009.171.025a6.83 6.83 0 0 0 1.625.26 4.45 4.45 0 0 1-.177-1.251c0-2.936 2.785-5.02 5.824-5.02.05 0 .1 0 .15.002C10.587 3.429 8.392 2 5.796 2 2.596 2 0 4.16 0 6.826Zm4.632-1.555a.77.77 0 1 1-1.54 0 .77.77 0 0 1 1.54 0Zm3.875 0a.77.77 0 1 1-1.54 0 .77.77 0 0 1 1.54 0Z"/>
+                                              </svg>&ensp;&ensp;${list.hit}</div>
+                                            </div>
+                                      </div>
                                   </div>
-                            </div>
-                            
-                             <div class="p-2 flex-shrink-1">
-                              <div class="mt-2" id="img" style="height: 200px; width: 310px">
-                                <c:forEach items="${list.shopFileDTOs}" var="shopFileDTO">               
-                                  <img src="../../../../resources/upload/shop/${shopFileDTO.fileName[0]}" style="width: 300px;">
-                                </c:forEach>
                               </div>
                           </div>
+                      </div>
+                      
+                    </c:when>
+                <c:otherwise>
+                  
+                    <div class="shop_list"  onclick="location.href='/shop/detailHTML?shopNum=${list.getShopNum()}';">
+                    <div class="list" style="box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px" >
+                        <div style="border-bottom: solid 1px gainsboro; height: 200px;" >
+                            <div class="d-flex">
+                                <div class="p-2 w-100" >
+                                    <div class="container2" style="padding: 12px;">
+                                        <div class="name">${list.shopName}</div>
+                                        <div class="shopContents">${list.shopTitle}</div>
+                                        <div class="shopContents2"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt-fill" viewBox="0 0 16 16">
+                                          <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/>
+                                        </svg>&ensp;&ensp;${list.shopAddress}</div>
+                                        <c:forEach items="${list.categoryDTOs}" var="category">
+                                          <div class="p-2 b" style="color: black;"># ${category.categoryName}</div>
+                                        </c:forEach>   
+                                        
+                                    </div>
+                                    <div class="d-flex flex-row mb-3 mt-2" style="cursor: pointer;">
+                                        <div class="p-2 b">SHOP NAME : ${list.shopName}</div>
+                                        <div class="p-2 b"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt-fill" viewBox="0 0 16 16">
+                                          <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/>
+                                        </svg>&ensp;&ensp;${list.shopAddress}</div>
+                                        <div class="p-2 b"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-wechat" viewBox="0 0 16 16">
+                                          <path d="M11.176 14.429c-2.665 0-4.826-1.8-4.826-4.018 0-2.22 2.159-4.02 4.824-4.02S16 8.191 16 10.411c0 1.21-.65 2.301-1.666 3.036a.324.324 0 0 0-.12.366l.218.81a.616.616 0 0 1 .029.117.166.166 0 0 1-.162.162.177.177 0 0 1-.092-.03l-1.057-.61a.519.519 0 0 0-.256-.074.509.509 0 0 0-.142.021 5.668 5.668 0 0 1-1.576.22ZM9.064 9.542a.647.647 0 1 0 .557-1 .645.645 0 0 0-.646.647.615.615 0 0 0 .09.353Zm3.232.001a.646.646 0 1 0 .546-1 .645.645 0 0 0-.644.644.627.627 0 0 0 .098.356Z"/>
+                                          <path d="M0 6.826c0 1.455.781 2.765 2.001 3.656a.385.385 0 0 1 .143.439l-.161.6-.1.373a.499.499 0 0 0-.032.14.192.192 0 0 0 .193.193c.039 0 .077-.01.111-.029l1.268-.733a.622.622 0 0 1 .308-.088c.058 0 .116.009.171.025a6.83 6.83 0 0 0 1.625.26 4.45 4.45 0 0 1-.177-1.251c0-2.936 2.785-5.02 5.824-5.02.05 0 .1 0 .15.002C10.587 3.429 8.392 2 5.796 2 2.596 2 0 4.16 0 6.826Zm4.632-1.555a.77.77 0 1 1-1.54 0 .77.77 0 0 1 1.54 0Zm3.875 0a.77.77 0 1 1-1.54 0 .77.77 0 0 1 1.54 0Z"/>
+                                        </svg>&ensp;&ensp;${list.hit}</div>
+                                      </div>
+                                </div>
+                                
+                                 <div class="p-2 flex-shrink-1">
+                                  <div class="mt-2" id="img" style="height: 200px; width: 310px">
+                                    <c:forEach items="${list.shopFileDTOs}" var="shopFileDTO">               
+                                      <img src="../../../../resources/upload/shop/${shopFileDTO.fileName[0]}" style="width: 300px;">
+                                    </c:forEach>
+                                  </div>
+                              </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            
+            </c:otherwise>
+          </c:choose>
             <div>
               <input name="shopNum" type="hidden" id="shopNum" value="${list.shopNum}">
               <input name="userID" type="hidden" id="userID" value="${list.userID}">
             </div> 
       </c:forEach>
-    
-   
-      <!-- <div id="map" style="width:500px;height:400px;"></div> -->
-      
-      <!--  -->
-
-
 
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -126,13 +168,13 @@
           </div>
           <div class="mb-3">
             <label for="message-text" class="col-form-label"> </label>
-            <div id="inputShopNameResult"  style="color: red;"></div>
+            <div id="inputShopNameResult" style="color: red;"></div>
             <input type="text" class="form-control" placeholder="식당의 상호명을 입력해주세요" name="shopName" id="shopName">
           </div>
           <div class="mb-3">
             <label for="message-text" class="col-form-label"> </label>
-            <div id="inputShopAddressResult"  style="color: red;"></div>
-           <input type="text" class="form-control" placeholder="식당의 주소를 직접 입력해주세요" name="shopAddress">
+            <div id="inputShopAddressResult" style="color: red;"></div>
+           <input type="text" class="form-control" placeholder="식당의 주소를 직접 입력해주세요" name="shopAddress" id="shopAddress">
           </div>
           <!-- <div class="mb-3" id="map" style="width:550px;height: 300px; ">
             <label for="message-text" class="col-form-label"> </label>
@@ -170,20 +212,15 @@
         </div>
         <div class="modal-footer file_box" id="modal-footer">
           <button type="button" class="btn btn-secondary upload-name" data-bs-dismiss="modal" id="close">취소</button>
-          <button type="submit" class="btn btn-primary" id="listAddButton">등록</button>
+          <button type="button" class="btn btn-primary" id="listAddButton">등록</button>
           
         </div>
         </form>
       </div>
     </div>
   </div>
+
  </div>
-      <!--  -->
-    <!-- map modal -->
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal1">
-     맵api
-    </button>
-    
     <!-- Modal -->
     <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog">
@@ -358,9 +395,7 @@ add.addEventListener("click", function(){
 
 
 </script>  -->
-<script>
-  listAddCheck();
-</script>
+
 
 
 

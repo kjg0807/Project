@@ -1,5 +1,9 @@
 package com.iu.home.util;
 
+import java.util.List;
+
+import com.iu.home.reviews.ReviewsDTO;
+
 public class ReviewsPager {
 
 	//멤버변수
@@ -30,6 +34,34 @@ public class ReviewsPager {
 	//검색어
 	private String search;
 	
+	
+	private List<ReviewsDTO> reviewsDTOs;
+	private Long shopNum;
+	
+	
+	
+
+	public Long getShopNum() {
+		return shopNum;
+	}
+
+
+	public void setShopNum(Long shopNum) {
+		this.shopNum = shopNum;
+	}
+
+	
+	
+
+	public List<ReviewsDTO> getReviewsDTOs() {
+		return reviewsDTOs;
+	}
+
+
+	public void setReviewsDTOs(List<ReviewsDTO> reviewsDTOs) {
+		this.reviewsDTOs = reviewsDTOs;
+	}
+
 
 	public ReviewsPager() {
 		this.perpage = 5L;
