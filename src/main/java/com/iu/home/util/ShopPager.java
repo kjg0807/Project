@@ -40,39 +40,6 @@ public class ShopPager {
 			this.lastRow = (this.getShopPage()*this.getPerPage());
 		}
 		
-//		public void getNum(Long totalCount)throws Exception{
-//			Long totalPage = totalCount/this.getPerPage();
-//			
-//			if(totalCount%this.getPerPage() !=0) {
-//				totalPage++;	
-//			}
-//			if(this.getShopPage() > totalPage) {
-//				this.setShopPage(totalPage);
-//			}
-//			Long totalBlock = totalPage/this.getPerBlock();
-//			if(totalPage%this.getPerBlock() != 0) {
-//				totalBlock++;
-//			}
-//			
-//			Long curBlock = this.getShopPage()/this.getPerBlock();
-//			if(this.getShopPage()%this.getPerBlock() != 0 ) {
-//				curBlock++;
-//			}
-//			this.startNum = (curBlock-1)*this.getPerBlock()+1;
-//			this.lastNum = curBlock*this.getPerBlock();
-//			
-//			if(curBlock == totalBlock) {
-//				this.lastNum=totalPage;
-//			}
-//			if(curBlock>1) {
-//				pre = true;
-//			}
-//			if(curBlock<totalBlock) {
-//				next = true;
-//			}
-//			
-//		}//getNum끝
-		
 		public void getNum(Long totalCount) throws Exception{
 		      //2. totalCount로 totalPage구하기
 		      
@@ -118,9 +85,6 @@ public class ShopPager {
 		         }
 		   }
 		   
-		
-		
-		
 		public Long getShopPage() {
 			if(this.shopPage==null || this.shopPage < 1) {
 				this.shopPage=1L;

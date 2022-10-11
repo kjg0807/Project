@@ -169,7 +169,7 @@
         </div>
         <div class="modal-footer file_box" id="modal-footer">
           <button type="button" class="btn btn-secondary upload-name" data-bs-dismiss="modal" id="close">취소</button>
-          <button type="button" class="btn btn-primary" id="listAddButton">등록</button>
+          <button type="submit" class="btn btn-primary" id="listAddButton">등록</button>
           
         </div>
         </form>
