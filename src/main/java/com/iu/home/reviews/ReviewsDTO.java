@@ -14,7 +14,6 @@ public class ReviewsDTO{
 	private Long shopNum;
 	private String userID;
 	private String title;
-	private String writer;
 	private String contents;
 	private Date reviewDate;
 	private Long hits;
@@ -77,12 +76,6 @@ public class ReviewsDTO{
 	}
 	public void setTitle(String title) {
 		this.title = title;
-	}
-	public String getWriter() {
-		return writer;
-	}
-	public void setWriter(String writer) {
-		this.writer = writer;
 	}
 	public String getContents() {
 		return contents;

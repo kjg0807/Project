@@ -6,6 +6,10 @@ const btn = document.querySelector("#btn");
 const writer = document.querySelector("#writer");
 const contents = document.querySelector("#contents");
 const reviewsCommentList = document.querySelector("#reviewsCommentList");
+
+//댓글코드 시작하는 작성자의 ID명
+const userID = document.querySelector("#userID");
+
 //더보기 버튼
 const plus = document.querySelector("#plus");
 //더보기 페이지를 줄이는 버튼
@@ -25,8 +29,6 @@ const cat = document.querySelector("#cat");
 const cat2 = document.querySelector("#cat2");
 
 
-//댓글코드 시작하는 작성자의 클래스명
-const userID = document.querySelector(".userID");
 
 
 
@@ -36,6 +38,8 @@ let page = 1;
 const reviewNum = btn.getAttribute("data-reviewNum");
 getReviewsCommentList(page,reviewNum);
 
+
+//댓글작성 버튼 클릭 이벤트
 btn.addEventListener("click", function(){
 
     console.log("댓글작성 버튼 클릭");
@@ -101,7 +105,7 @@ btn.addEventListener("click", function(){
                         
                         getReviewsCommentList(page, reviewNum);
                         
-                        writer.value='';
+                        userID.value='';
                         contents.value='';
                         
                 }else{
@@ -172,11 +176,11 @@ function getReviewsCommentList(p, rn){
     
             for(let i=0;i<ar.length;i++){
                 
-                const userId = document.querySelector(".userId");
+                
 
                 let tr = document.createElement("tr");                   //<tr></tr>
                 let td = document.createElement("td");                   //<td></td>
-                let tdText = document.createTextNode(ar[i].writer);      //<td>ar[i].writer</td>        
+                let tdText = document.createTextNode(ar[i].userID);      //<td>ar[i].writer</td>        
                 td.appendChild(tdText);
                 tr.appendChild(td);
     

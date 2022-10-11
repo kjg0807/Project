@@ -248,7 +248,11 @@
      <br>
      <br>
      <br>
-     <form action="../../reviews/list" class="row row-cols-lg-auto g-3 align-items-center">
+     
+     <!-- <form action="../../reviews/list" class="row row-cols-lg-auto g-3 align-items-center"> -->
+    <!-- <form action="../../shop/detailHTML?shopNum=${detail.shopNum}" class="row row-cols-lg-auto g-3 align-items-center"> -->
+      <!-- <form action="./detailHTML?shopNum=${detail.shopNum}" class="row row-cols-lg-auto g-3 align-items-center"> -->
+  <form action="../shop/detailHTML?shopNum=${dto.shopNum}" class="row row-cols-lg-auto g-3 align-items-center">
       <div class="col-12">
          <label class="visually-hidden" for="kind">Kind</label>
          <select name="kind" class="form-select" id="kind">
