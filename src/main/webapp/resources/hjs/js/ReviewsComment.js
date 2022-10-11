@@ -25,6 +25,10 @@ const cat = document.querySelector("#cat");
 const cat2 = document.querySelector("#cat2");
 
 
+//댓글코드 시작하는 작성자의 클래스명
+const userID = document.querySelector(".userID");
+
+
 
 //page번호를 담는 변수
 let page = 1;
@@ -37,9 +41,9 @@ btn.addEventListener("click", function(){
     console.log("댓글작성 버튼 클릭");
     console.log(reviewNum);
 
-    let wv = writer.value;
+    let uv = userID.value;
     let cv = contents.value;
-    console.log(wv);
+    console.log(uv);
     console.log(cv);
 
 
@@ -69,7 +73,7 @@ btn.addEventListener("click", function(){
 
         //4. 요청발생
 
-        xhttp.send("reviewNum="+reviewNum+"&writer="+wv+"&contents="+cv);
+        xhttp.send("reviewNum="+reviewNum+"&userID="+uv+"&contents="+cv);
 
         //5. 응답처리
 
@@ -167,7 +171,9 @@ function getReviewsCommentList(p, rn){
             let tb = document.createElement("tbody");
     
             for(let i=0;i<ar.length;i++){
-    
+                
+                const userId = document.querySelector(".userId");
+
                 let tr = document.createElement("tr");                   //<tr></tr>
                 let td = document.createElement("td");                   //<td></td>
                 let tdText = document.createTextNode(ar[i].writer);      //<td>ar[i].writer</td>        

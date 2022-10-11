@@ -318,7 +318,7 @@
           <c:if test="${reviewsPager.pre}">
             <li class="page-item">
 
-              <a class="page-link" href="../../shop/detailHTML?page=${reviewsPager.startNum-1}&kind=${reviewsPager.kind}&search=${reviewsPager.search}" aria-label="Previous">
+              <a class="page-link" href="../../shop/detailHTML?shopNum=${detail.shopNum}&page=${reviewsPager.startNum-1}&kind=${reviewsPager.kind}&search=${reviewsPager.search}" aria-label="Previous">
                 <span aria-hidden="true">&laquo;</span>
               </a>
             </li>
@@ -326,10 +326,10 @@
           
           <c:forEach begin="${reviewsPager.startNum}" end="${reviewsPager.lastNum}" var="i">
 
-                <li class="page-item"><a class="page-link" href="../../shop/detailHTML?page=${i}&kind=${reviewsPager.kind}&search=${reviewsPager.search}">${i}</a></li>
+                <li class="page-item"><a class="page-link" href="../../shop/detailHTML?shopNum=${detail.shopNum}&page=${i}&kind=${reviewsPager.kind}&search=${reviewsPager.search}">${i}</a></li>
           </c:forEach>
         <li class="page-item ${reviewsPager.next?'':'disabled'}">
-            <a class="page-link" href="../../shop/detailHTML?page=${reviewsPager.lastNum+1}&kind=${reviewsPager.kind}&search=${reviewsPager.search}" aria-label="Next">
+            <a class="page-link" href="../../shop/detailHTML?shopNum=${detail.shopNum}&page=${reviewsPager.lastNum+1}&kind=${reviewsPager.kind}&search=${reviewsPager.search}" aria-label="Next">
 
               <span aria-hidden="true">&raquo;</span>
             </a>

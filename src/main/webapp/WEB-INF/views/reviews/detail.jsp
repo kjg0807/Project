@@ -180,7 +180,7 @@
 	<div class="row">
 		<div class="mb-3">
 			<label for="writer" class="form-label">작성자</label>
-			<input type="text" class="form-label" id="writer" placeholder="${dto.userID}" readonly disabled>
+			<input type="text" class="form-label userID" id="writer" placeholder="${dto.userID}" readonly disabled>
 		</div>
 		
 		<div class="mb-3 col-lg-4">
@@ -190,7 +190,7 @@
 		</div>
 		
 		<div class="mb-3">
-			<button type="button" id="btn" class="btn btn-secondary" data-reviewNum="${dto.reviewNum}">댓글 작성</button>
+			<button class="btn btn-secondary" type="button" id="btn" data-reviewNum="${dto.reviewNum}">댓글 작성</button>
 		</div>
 	</div>
 	

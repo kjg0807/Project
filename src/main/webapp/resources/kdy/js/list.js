@@ -1,8 +1,10 @@
 const add = document.querySelector("#add");
+
     
 add.addEventListener("click", function(){
    alert("로그인이 필요합니다.")
 })
+
 
 function listAddCheck(){
 const cccc = document.querySelector("#cccc");
