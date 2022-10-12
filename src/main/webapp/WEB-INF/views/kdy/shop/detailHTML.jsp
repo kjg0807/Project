@@ -338,14 +338,14 @@
       </tbody>
     </table>
     <div style="display: flex; margin: 5 5px;  justify-content: center;">
-      <input name="shopNum" type="hidden" value="${dto.shopNum}">
+      <input name="shopNum" type="hidden" value="${detail.shopNum}">
       <nav aria-label="Page navigation example">
         <ul class="pagination">
           <!--이전 버튼-->
           <c:if test="${reviewsPager.pre}">
             <li class="page-item">
 
-              <a class="page-link" name="shopNum" href="../../shop/detailHTML?page=${reviewsPager.startNum-1}&kind=${reviewsPager.kind}&search=${reviewsPager.search}" aria-label="Previous">
+              <a class="page-link" name="shopNum" href="../../shop/detailHTML?shopNum=${detail.shopNum}&page=${reviewsPager.startNum-1}&kind=${reviewsPager.kind}&search=${reviewsPager.search}" aria-label="Previous">
                 <span aria-hidden="true">&laquo;</span>
               </a>
             </li>
@@ -353,12 +353,12 @@
           
           <c:forEach begin="${reviewsPager.startNum}" end="${reviewsPager.lastNum}" var="i">
 
-                <li class="page-item"><a class="page-link" name="shopNum" href="../../shop/detailHTML?page=${i}&kind=${reviewsPager.kind}&search=${reviewsPager.search}">${i}</a></li>
+                <li class="page-item"><a class="page-link" name="shopNum" href="../../shop/detailHTML?shopNum=${detail.shopNum}&page=${i}&kind=${reviewsPager.kind}&search=${reviewsPager.search}">${i}</a></li>
           </c:forEach>
 
           <!--다음 버튼-->
         <li class="page-item ${reviewsPager.next?'':'disabled'}">
-            <a class="page-link" name="shopNum" href="../../shop/detailHTML?page=${reviewsPager.lastNum+1}&kind=${reviewsPager.kind}&search=${reviewsPager.search}" aria-label="Next">
+            <a class="page-link" name="shopNum" href="../../shop/detailHTML?shopNum=${detail.shopNum}&page=${reviewsPager.lastNum+1}&kind=${reviewsPager.kind}&search=${reviewsPager.search}" aria-label="Next">
 
               <span aria-hidden="true">&raquo;</span>
             </a>
