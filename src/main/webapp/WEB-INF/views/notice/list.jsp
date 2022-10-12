@@ -38,7 +38,7 @@
 	<section class="container-fluid col-lg-10 mt-5">
 
 		<h1 id="h1">공지사항</h1>
-		<form action="../qna/list" class="row row-cols-lg-auto g-3 align-items-center">
+		<form action="../notice/list" class="row row-cols-lg-auto g-3 align-items-center">
 
 			<div class="col-12">
 				<label class="visually-hidden" for="kind">Kind</label>
