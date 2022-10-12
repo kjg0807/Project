@@ -18,18 +18,18 @@
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="../../resources/kdy/css/styles.css" rel="stylesheet" />
     </head>
-    <body >
+    <body style="background-color: rgb(206, 232, 255);" >
         <c:import url="./template/headerHTML.jsp"></c:import>
         <header style="box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;">
 
-
-                <img src="../../resources/kdy/images/GettyImages-505408442.webp" style="width: 100%; height: 100%; z-index: 1000;"  alt="">
+            <div style="position: relative;">
+                <img src="../../resources/kdy/images/GettyImages-505408442.webp" style="width: 100%; height: 40%; ">
             
-                <div class="container px-4 px-lg-5 my-5">
-                   <div class="text-center text-white"  style="z-index: 1002;">
-                      <h1 class="display-4 fw-bolder" style="color: black;">Shop in style</h1>
+                <div class="container px-4 px-lg-5 my-5" style="position: absolute; bottom: 150px; left: 15%;">
+                   <div class="text-center text-white" >
+                      <h1 class="display-4 fw-bolder" style="color: rgb(255, 255, 255); font-size: 80px;" readonly="readonly">대기의 맛집 리스트</h1>
     
-                      <div class="row">
+                      <div class="row" style="padding-bottom: 25px; font-size: 45px;">
                         <form action="./shop/listHTML"  class="row row-cols-lg-auto g-3 align-items-center justify-content-center">
                           <div class="col-12">
                             <label class="visually-hidden" for="kind" id="select">Kind</label>
@@ -46,29 +46,25 @@
                               <input type="text" name="search" value="${param.search}" var="" class="form-control" id="search" placeholder="검색어를 입력해 주세요">
                               <button type="submit" class="btn btn-secondary" id="searchNull">검색</button>
                             </div>
-                            <!-- <div class="col-12">
-                            </div> -->
+                           </div>
                           </form>
                       </div>
                     </div>
                 </div>
-                </img>
-
-          
-            </div>
+                </div>
          </header>
         <!-- Section-->
-        <section class="" style="margin-top: 0px;">
-            <div class="container px-4 px-lg-5 mt-2" style="box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;">
+        <section class="" style="margin-top: 40px;">
+            <div class="container px-4 px-lg-5 mt-2" style="border-radius: 30px; background-color: aliceblue; box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;">
                 <div class="d-flex justify-content-between pt-4 pb-3">
-                    <div style="color: orange; "><b>믿고 보는 맛집 리스트</b></div>
+                    <div style="color: rgb(109, 148, 255); "><b>믿고 보는 맛집 리스트</b></div>
                 </div>
                 <div  class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center" id="tttt" style="box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;">
 
-                    <div class="col mb-5" data-category="">
-                        <div class="card h-100 cs" id="al"style="box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;">
+                    <div class="col mb-5" data-category="" >
+                        <div class="card h-100 cs" id="al" style="box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;">
                             <!-- Product image-->
-                            <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
+                            <img class="card-img-top" src="https://dummyimage.com/350x250/dee2e6/6c757d.jpg" alt="..." />
                             <!-- Product details-->
                             <div class="card-body p-4">
                                 <div class="text-center">
@@ -80,7 +76,7 @@
                     </div>
                     
                     <div class="col mb-5" data-category="한식">
-                        <div class="card h-100 categorykor" id="categoryName" name="categoryName" style="box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;">
+                        <div class="card h-100 categorykor" id="categoryName" name="categoryName" style=" border-radius: 10px; box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;">
                             <button type="submit" style="display: none;"></button>
                             <!-- Product image-->
                             <img class="card-img-top" src="../../resources/kdy/images/korea.jpg" alt="..." value="한식" />
@@ -94,7 +90,7 @@
                     </div>
 
                     <div class="col mb-5" data-category="중식">
-                        <div class="card h-100 cs" style="box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;">
+                        <div class="card h-100 cs" style="border-radius: 10px; box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;">
                             <!-- Product image-->
                             <img class="card-img-top" src="../../resources/kdy/images/china.jpg" alt="..." />
                             <!-- Product details-->
@@ -108,7 +104,7 @@
                     </div>
 
                     <div class="col mb-5" data-category="일식">
-                        <div class="card h-100 cs"style="box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;">
+                        <div class="card h-100 cs"style="border-radius: 10px; box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;">
                             <!-- Product image-->
                             <img class="card-img-top" src="../../resources/kdy/images/jap.jpg" alt="..." />
                             <!-- Product details-->
@@ -122,7 +118,7 @@
                     </div>
 
                     <div class="col mb-5" data-category="분식">
-                        <div class="card h-100 cs"style="box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;">
+                        <div class="card h-100 cs"style="border-radius: 10px; box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;">
                             <!-- Product image-->
                             <img class="card-img-top" src="../../resources/kdy/images/bun.jpg" alt="..." />
                             <!-- Product details-->
@@ -136,7 +132,7 @@
                     </div>
 
                     <div class="col mb-5" data-category="양식">
-                        <div class="card h-100 cs" style="box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;">
+                        <div class="card h-100 cs" style="border-radius: 10px; box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;">
                             <!-- Product image-->
                             <img class="card-img-top" src="../../resources/kdy/images/yang.jpg" alt="..." />
                             <!-- Product details-->
@@ -150,7 +146,7 @@
                     </div> 
                     
                     <div class="col mb-5" data-category="아시안">
-                        <div class="card h-100 cs" style="box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;">
+                        <div class="card h-100 cs" style="border-radius: 10px; box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;">
                             <!-- Product image-->
                             <img class="card-img-top" src="../../resources/kdy/images/ssal.jpg" alt="..." />
                             <!-- Product details-->
@@ -214,8 +210,9 @@
                     </c:forEach>
                     <!-- 위로보내주는 버튼 -->
                     <br>
+                    <div style="padding-bottom: 25px;">
                     <button onclick="window.location.href='#top'" style="padding-bottom: 35px; color: black; box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;">위로가기</button>
-
+                    </div>
                 </div>
                 
             </div>
