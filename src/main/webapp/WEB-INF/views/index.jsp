@@ -62,7 +62,7 @@
                 <div  class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center" id="tttt" style="box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;">
 
                     <div class="col mb-5" data-category="" >
-                        <div class="card h-100 cs" id="al" style="box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;">
+                        <div class="card h-100 cs" id="al">
                             <!-- Product image-->
                             <img class="card-img-top" src="https://dummyimage.com/350x250/dee2e6/6c757d.jpg" alt="..." />
                             <!-- Product details-->
@@ -76,7 +76,7 @@
                     </div>
                     
                     <div class="col mb-5" data-category="한식">
-                        <div class="card h-100 categorykor" id="categoryName" name="categoryName" style=" border-radius: 10px; box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;">
+                        <div class="card h-100 categorykor" id="categoryName" name="categoryName" style=" border-radius: 10px;">
                             <button type="submit" style="display: none;"></button>
                             <!-- Product image-->
                             <img class="card-img-top" src="../../resources/kdy/images/korea.jpg" alt="..." value="한식" />
@@ -90,7 +90,7 @@
                     </div>
 
                     <div class="col mb-5" data-category="중식">
-                        <div class="card h-100 cs" style="border-radius: 10px; box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;">
+                        <div class="card h-100 cs" style="border-radius: 10px;">
                             <!-- Product image-->
                             <img class="card-img-top" src="../../resources/kdy/images/china.jpg" alt="..." />
                             <!-- Product details-->
@@ -104,7 +104,7 @@
                     </div>
 
                     <div class="col mb-5" data-category="일식">
-                        <div class="card h-100 cs"style="border-radius: 10px; box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;">
+                        <div class="card h-100 cs"style="border-radius: 10px;">
                             <!-- Product image-->
                             <img class="card-img-top" src="../../resources/kdy/images/jap.jpg" alt="..." />
                             <!-- Product details-->
@@ -118,7 +118,7 @@
                     </div>
 
                     <div class="col mb-5" data-category="분식">
-                        <div class="card h-100 cs"style="border-radius: 10px; box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;">
+                        <div class="card h-100 cs"style="border-radius: 10px;">
                             <!-- Product image-->
                             <img class="card-img-top" src="../../resources/kdy/images/bun.jpg" alt="..." />
                             <!-- Product details-->
@@ -132,7 +132,7 @@
                     </div>
 
                     <div class="col mb-5" data-category="양식">
-                        <div class="card h-100 cs" style="border-radius: 10px; box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;">
+                        <div class="card h-100 cs" style="border-radius: 10px;">
                             <!-- Product image-->
                             <img class="card-img-top" src="../../resources/kdy/images/yang.jpg" alt="..." />
                             <!-- Product details-->
@@ -146,7 +146,7 @@
                     </div> 
                     
                     <div class="col mb-5" data-category="아시안">
-                        <div class="card h-100 cs" style="border-radius: 10px; box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;">
+                        <div class="card h-100 cs" style="border-radius: 10px;">
                             <!-- Product image-->
                             <img class="card-img-top" src="../../resources/kdy/images/ssal.jpg" alt="..." />
                             <!-- Product details-->
