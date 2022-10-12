@@ -56,7 +56,6 @@
                 <c:forEach items="${requestScope.list}" var="list">    
                   <c:choose>
                     <c:when test="${member == null}">
-                    
                         <div class="shop_list" id="detailHTMLList">
                           <div class="list" style="box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px" >
                               <div style="border-bottom: solid 1px gainsboro; height: 200px;" >
