@@ -14,14 +14,16 @@
 #on {
 	align-content: right;
 	justify-content: right;
-	margin-left: 46%;
+	/* margin-left: 46%; */
 }
 </style>
 <body>
 
 	<section class="container-fluid col-lg-6 mt-5">
-		<h1>Q&A 글쓰기 페이지</h1>
-
+		<p>
+			<h1>Q&A 글쓰기 페이지</h1>
+		</p>
+		
 		<form action="./add" method="post">
 			<div class="mb-3">
 				<label for="formGroupExampleInput2" class="form-label">작성자</label>
@@ -29,35 +31,41 @@
 				<input type="text" class="form-control" readonly value="${member.userName}">
 			</div>
 
-			<div class="mb-3">
+			<!-- <div class="mb-3">
 				작성자 :<input type="text" name="writer" class="form-label" value="${member.userName}" readonly>
 
-			</div>
+			</div> -->
 
 			<div class="mb-3">
 				<label for="formGroupExampleInput" class="form-label">제목</label>
-				<input type="text" class="form-control" name="title" placeholder="${dto.title}">
+				<input type="text" class="form-control" name="title" placeholder="제목을 입력해주세요.">
 			</div>
 
 
 			<div class="mb-3">
 				<label for="formGroupExampleInput2" class="form-label">글 내용</label>
-				<textarea name="contents" id="contents" class="form-control" cols="20" rows="5"></textarea>
+				<textarea name="contents" id="contents" class="form-control" cols="20" rows="5" placeholder="내용을 입력해주세요."></textarea>
 			</div>
 			<br>
-			<button onclick="location='/'" class="btn btn-primary">
-				<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house-door" viewBox="0 0 16 16">
-					<path d="M8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4.5a.5.5 0 0 0 .5-.5v-4h2v4a.5.5 0 0 0 .5.5H14a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146zM2.5 14V7.707l5.5-5.5 5.5 5.5V14H10v-4a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v4H2.5z"/>
-				</svg>
-				홈으로
-			</button>
 
-			<button id="on" type="submit" class="btn btn-success">
-				<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
-					<path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"/>
+			
+			<!-- <button onclick="location='../qna/list'" class="btn btn-primary">
+				<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-double-left" viewBox="0 0 16 16">
+					<path fill-rule="evenodd" d="M8.354 1.646a.5.5 0 0 1 0 .708L2.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
+					<path fill-rule="evenodd" d="M12.354 1.646a.5.5 0 0 1 0 .708L6.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
 				</svg>
-				추가
-			</button>
+				뒤로가기
+			</button> -->
+
+
+			<div style="display: inline-block; margin: 0 5px;  float: right;">
+				<button id="on" type="submit" class="btn btn-success">
+					<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-all" viewBox="0 0 16 16">
+						<path d="M8.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L2.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093L8.95 4.992a.252.252 0 0 1 .02-.022zm-.92 5.14.92.92a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 1 0-1.091-1.028L9.477 9.417l-.485-.486-.943 1.179z"/>
+					</svg>
+					작성완료
+				</button>
+			</div>
 		</form>
 
 	</section>

@@ -19,6 +19,18 @@
 		cursor: pointer;
 	}
 </style>
+<style>
+	.update{
+		cursor: pointer;
+		width: 60px;
+	}
+</style>
+<style>
+	.delete{
+		cursor: pointer;
+		width: 60px;
+	}
+</style>
 </head>
 <body>
 
@@ -179,18 +191,18 @@
 	<!-- 댓글 코드 시작 -->
 	<div class="row">
 		<div class="mb-3">
-			<label for="writer" class="form-label">작성자</label>
-			<input type="text" class="form-label" id="writer" placeholder="${dto.userID}" readonly disabled>
+			<label for="userID" class="form-label">작성자</label>
+			<input type="text" class="form-label" id="userID" placeholder="${dto.userID}" value="${dto.userID}" readonly disabled>
 		</div>
 		
 		<div class="mb-3 col-lg-4">
 			<label for="contents" class="form-label">내 용</label>
-			<textarea id="contents" class="form-label" rows="3" cols="50" placeholder="내 용 :"></textarea>
+			<textarea id="contents" class="form-label" rows="3" cols="50" placeholder="내용을 입력하세요"></textarea>
 			<!-- <input type="text" class="form-label" id="contents" placeholder="내용 :"> -->
 		</div>
 		
 		<div class="mb-3">
-			<button type="button" id="btn" data-reviewNum="${dto.reviewNum}">댓글 작성</button>
+			<button class="btn btn-secondary" type="button" id="btn" data-reviewNum="${dto.reviewNum}">댓글 작성</button>
 		</div>
 	</div>
 	
@@ -265,16 +277,22 @@
 <br>
 <p>
 	<div  style="display: inline-block; margin: 0 5px;">
-		<button onclick="location='./list'" class="btn btn-primary">
-			<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
-				<path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
+		<button onclick="location='../shop/detailHTML?shopNum=${dto.shopNum}'" class="btn btn-primary">
+			<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-double-left" viewBox="0 0 16 16">
+				<path fill-rule="evenodd" d="M8.354 1.646a.5.5 0 0 1 0 .708L2.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
+				<path fill-rule="evenodd" d="M12.354 1.646a.5.5 0 0 1 0 .708L6.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
 			</svg>
-			목록
+			뒤로가기
 		</button>
 	</div>
 
 	<div  style="display: inline-block; margin: 0 5px;">
-		<button onclick="location='./update?reviewNum=${dto.reviewNum}'" class="btn btn-primary">수정하기</button>
+		<button onclick="location='./update?reviewNum=${dto.reviewNum}'" class="btn btn-primary">
+			<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-all" viewBox="0 0 16 16">
+				<path d="M8.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L2.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093L8.95 4.992a.252.252 0 0 1 .02-.022zm-.92 5.14.92.92a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 1 0-1.091-1.028L9.477 9.417l-.485-.486-.943 1.179z"/>
+			  </svg>
+			수정하기
+		</button>
 	</div>
 
 
