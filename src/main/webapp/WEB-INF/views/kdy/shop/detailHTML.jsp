@@ -43,17 +43,17 @@
   }
 </style>
 </head>
-<body>
+<body >
 <c:import url="../../template/headerHTML.jsp"></c:import>
 
             <div class="d-flex" id="img1">
               <c:forEach items="${detail.shopFileDTOs}" var="shopFileDTO">               
-                  <img class="flex image" style="width: 380px; height: 380px; box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;" src="../../../../resources/upload/shop/${shopFileDTO.fileName}" >
+                  <img class="flex image" style="margin-top: 25px; width: 380px; height: 380px; border-radius: 10px; box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;" src="../../../../resources/upload/shop/${shopFileDTO.fileName}" >
               </c:forEach>
             </div>
             
             <main> 
-              <div class="container" style="margin-top: 200px; box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;">
+              <div class="container" style="border-radius: 20px; margin-top: 200px; box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;">
               
                 <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">                     
                   <div class="modal-dialog">
@@ -157,16 +157,14 @@
                                     </div>
                                   </div>
                             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal1" data-bs-whatever="@mdo" id="modalOpenBtn" style="display: none;">게시글 수정</button>
-                            <button type="button" class="btn btn-primary" id="updateShop" data-writer="${detail.memberDTOs[0].userID}" data-user="${sessionScope.member.userID}">게시글 수정</button>
-                            <button type="button" class="btn btn-primary" id="menuAdd" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">메뉴 등록</button> 
-                            <div style="display: inline-block; margin:0 5px; float: right;">
-                              <button onclick="location='../../party/list?shopNum=${detail.shopNum}'" class="btn btn-primary">파티모집</button>
+                            
+                            <div d-flax style="padding-top: 25px;">
+                              <button type="button" class="btn btn-primary" id="updateShop" data-writer="${detail.memberDTOs[0].userID}" data-user="${sessionScope.member.userID}">게시글 수정</button>
+                              <button type="button" class="btn btn-primary" id="menuAdd" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">대표메뉴 등록</button> 
+                              <button style="display: inline-block; margin:0 5px; float: right;" onclick="location='../../party/list?shopNum=${detail.shopNum}'" class="btn btn-primary">파티모집</button>
+                              <button  style="display: inline-block; margin:0 5px; float: right;" onclick="location='../../reviews/add?shopNum=${detail.shopNum}'" class="btn btn-primary">리뷰남기기</button>
                             </div>
-
-                            <div style="display: inline-block; margin:0 5px; float: right;">
-                              <button onclick="location='../../reviews/add?shopNum=${detail.shopNum}'" class="btn btn-primary">리뷰남기기</button>
-                            </div>
-                                  <div style="border-bottom: solid 1px gainsboro; padding-bottom: 50px; padding-top: 50px; box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;">
+                                  <div style="border-bottom: solid 1px gainsboro; padding-bottom: 50px; padding-top: 50px;">
                                       <div class="p-2 pt-3" style="font-size: 50px;">${detail.shopName}</div>
                                         <div class="d-flex">
                                           <div >&ensp;&ensp;<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-wechat" viewBox="0 0 16 16">
