@@ -8,7 +8,7 @@ for(let i =0; i < ccccChildren.length; i++){
 
 const add = document.querySelector("#add");
 add.addEventListener("click", function(){
-   alert("로그인이 필요합니다.")
+   alert("글");
 
 })
 

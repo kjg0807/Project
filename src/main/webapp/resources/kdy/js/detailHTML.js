@@ -14,40 +14,6 @@ for(let i=0; i<caNumBerChildren.length; i++){
     })
 }
 
-
-
-// const pass = document.getElementById("pass");
-// const pwdInput = document.getElementById("pedInput");
-
-// pwddCheck = false;
-// console.log(pass.value);
-
-// pwdInput.addEventListener("blur", function(){
-//         let pas = pass.value;
-//         let pwd = pwdInput.value;
-//         if(pas != pwd){
-//                 document.getElementById("pwdText").style.display = 'block';
-//                 pwddCheck = false;
-//         }else{
-//                 document.getElementById("pwdText").style.display = 'none';
-//                 pwddCheck = true;    
-//         }
-// })
-// const updateFrm = document.getElementById("updateFrm");
-// shopDelete.addEventListener("click", function(){
-//         if(pwdInput == ""){
-//                 alert("비밀번호를 입력해주세요");
-//         }
-//         if (pwddCheck == false) {
-//                 alert("비밀번호가 틀렸습니다.");
-//             }
-//             if (pwddCheck == true) {
-//                 updateFrm.submit();
-//             }  else{
-//                 alert("실패");
-//             } 
-// })
-
 const updateShop = document.getElementById("updateShop");
 const modalOpenBtn = document.getElementById("modalOpenBtn");
 const updateFrm = document.getElementById("updateFrm");

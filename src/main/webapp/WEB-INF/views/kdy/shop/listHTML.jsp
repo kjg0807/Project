@@ -24,34 +24,17 @@
   </head>
 <body>
 <c:import url="../../template/headerHTML.jsp"></c:import>
-<main class="realMain" id="realMain">
+<main class="realMain" id="realMain" style="margin-top: 60px;">
         
-  <div class="container" style="padding-top: 80px; box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;">
+  <div class="container" style="border-radius: 30px; padding-top: 80px; box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;">
  
             <div class="c1">
                 맛집 리뷰
             </div>
-                <div class="d-flex flex-row mb-3" id="cccc"   style="cursor: pointer; box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;">
-                    <div class="p-2 a" data-miniCategory="">전체</div>
-                    <div class="p-2 a" data-miniCategory="한식">한식</div>
-                    <div class="p-2 a" data-miniCategory="중식">중식</div>
-                    <div class="p-2 a" data-miniCategory="일식">일식</div>
-                    <div class="p-2 a" data-miniCategory="분식">분식</div>
-                    <div class="p-2 a" data-miniCategory="양식">양식</div>
-                    <div class="p-2 a" data-miniCategory="아시안">아시안</div>
-                </div>
+                
 
                 <div d-flex>
-                <c:choose>
-                  <c:when  test="${member == null}">
-                     <div class="btn btn-secondary"    onclick="location.href='../../kjk/member/login';"; data-bs-toggle="modal" data-bs-whatever="@getbootstrap" id="add"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
-                      <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"/>
-                    </svg> &ensp;&ensp;가게등록</div>
-                  </c:when>
-                <c:otherwise>
-                  <div class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap" role="add" onclick="listAddCheck();">가게등록</div>
-                </c:otherwise>
-                </c:choose>
+                
 
                 <div class="row" >
                   <form action="./listHTML"  class="row row-cols-lg-auto g-3 align-items-center justify-content-center" >
@@ -72,13 +55,35 @@
                       </div>
                     </form>
                 </div>
+   
+                <div class="d-flex flex-row mb-3" id="cccc"   style="cursor: pointer; padding-top: 20px;">
+                  <div class="p-2 a" data-miniCategory="">전체</div>
+                  <div class="p-2 a" data-miniCategory="한식">한식</div>
+                  <div class="p-2 a" data-miniCategory="중식">중식</div>
+                  <div class="p-2 a" data-miniCategory="일식">일식</div>
+                  <div class="p-2 a" data-miniCategory="분식">분식</div>
+                  <div class="p-2 a" data-miniCategory="양식">양식</div>
+                  <div class="p-2 a" data-miniCategory="아시안">아시안</div>
+              </div>
+                <c:choose>
+                  <c:when  test="${sessionScope.member.classDTOs.get(0).className eq 'admin'}">
+                    <div style="padding-top: 20px; padding-left: 20px; text-align: right;">
+                      <div class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap" role="add" onclick="listAddCheck();">가게등록</div>
+                    </div>
+                  </c:when>
+                <c:otherwise>
+                  <!-- <div class="btn btn-secondary" data-bs-toggle="modal" data-bs-whatever="@getbootstrap" id="add"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
+                    <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"/>
+                  </svg> &ensp;&ensp;가게등록</div> -->
+                </c:otherwise>
+                </c:choose>
                 </div>
         
                 <c:forEach items="${requestScope.list}" var="list">    
                   <c:choose>
                     <c:when test="${member == null}">
                         <div class="shop_list detailHTMLList">
-                          <div class="list" style="box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px" >
+                          <div class="list" style="border-radius: 20px; box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px" >
                               <div style="border-bottom: solid 1px gainsboro; height: 200px;" >
                                   <div class="d-flex">
                                       <div class="p-2 w-100" >
@@ -112,7 +117,7 @@
 
                 <c:otherwise>
                     <div class="shop_list"  onclick="location.href='/shop/detailHTML?shopNum=${list.getShopNum()}';">
-                    <div class="list" style="box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px" >
+                    <div class="list" style="border-radius: 20px; box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px" >
                         <div style="border-bottom: solid 1px gainsboro; height: 200px;" >
                             <div class="d-flex">
                                 <div class="p-2 w-100" >
@@ -260,7 +265,7 @@
    
 
 </main>
-<div style="display: flex; margin: 100px; height: 40px;  justify-content: center;">
+<div style="display: flex; margin: 50px; height: 40px;  justify-content: center;">
   <nav aria-label="Page navigation example">
     <ul class="pagination">
        <c:if test="${shopPager.pre}">
