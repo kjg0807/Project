@@ -32,7 +32,7 @@ textarea {
 						<input type="text" class="form-control" name="title" value="${dto.title}">
 					</td>
 					<td>
-						<input type="text" class="form-control" name="writer" value="${dto.writer}" disabled>
+						<input type="text" class="form-control" name="userID" value="${dto.userID}" disabled>
 					</td>
 				</tr>
 			</table>

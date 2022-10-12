@@ -25,7 +25,7 @@
 				<tr>
 					<th>NUM</th>
 					<th>TITLE</th>
-					<th>WRITER</th>
+					<th>USERID</th>
 					<th>CONTENTS</th>
 					<th>REGDATE</th>
 					<th>HIT</th>
@@ -36,7 +36,7 @@
 				<tr>
 					<td>${dto.num}</td>
 					<td>${dto.title}</td>
-					<td>${dto.writer}</td>
+					<td>${dto.userID}</td>
 					<td id="context">
 						<textarea style="border:none" name="" id="" cols="50" style="height: 200px;" rows="10" disabled>${dto.contents}</textarea>
 					</td>

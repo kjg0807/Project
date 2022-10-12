@@ -8,7 +8,7 @@
 		WHERE
      			 <choose>
      					<when test="kind == 'title'">TITLE</when>
-     					<when test="kind == 'writer'">WRITER</when>
+     					<when test="kind == 'userID'">USERID</when>
      					<otherwise>CONTENTS</otherwise>
      			 </choose>
      	LIKE '%'||#{search}||'%'
@@ -37,12 +37,12 @@
  		<selectKey keyProperty="num" order="BEFORE" resultType="Long">
  			SELECT QNA_SEQ.NEXTVAL FROM DUAL
  		</selectKey>
- 		INSERT INTO QNA_1 (NUM, TITLE, WRITER, CONTENTS, REGDATE, HIT, REF, STEP, DEPTH)
- 		 VALUES (#{num}, #{title}, #{writer}, #{contents}, SYSDATE, 0, QNA_SEQ.CURRVAL, 0, 0)
+ 		INSERT INTO QNA_1 (NUM, TITLE, USERID, CONTENTS, REGDATE, HIT, REF, STEP, DEPTH)
+ 		 VALUES (#{num}, #{title}, #{userID}, #{contents}, SYSDATE, 0, QNA_SEQ.CURRVAL, 0, 0)
  	</insert>
  	
  	<update id="setQnaUpdate" parameterType="QnaDTO">
- 		UPDATE QNA_1 SET TITLE = #{title}, WRITER = #{writer}, CONTENTS = #{contents} WHERE NUM = #{num}
+ 		UPDATE QNA_1 SET TITLE = #{title}, USERID = #{userID}, CONTENTS = #{contents} WHERE NUM = #{num}
  	</update>
  	
  	<delete id="setQnaDelete" parameterType="QnaDTO">
@@ -58,8 +58,8 @@
 		<selectKey keyProperty="num" order="BEFORE" resultType="Long">
 			SELECT QNA_SEQ.NEXTVAL FROM DUAL
 		</selectKey>
-		INSERT INTO QNA_1 (NUM, TITLE, WRITER, CONTENTS, REGDATE, HIT, REF, STEP, DEPTH)
-		VALUES (#{num}, #{title}, #{writer}, #{contents}, SYSDATE, 0, #{ref} ,#{step} ,#{depth})
+		INSERT INTO QNA_1 (NUM, TITLE, USERID, CONTENTS, REGDATE, HIT, REF, STEP, DEPTH)
+		VALUES (#{num}, #{title}, #{userID}, #{contents}, SYSDATE, 0, #{ref} ,#{step} ,#{depth})
 	</insert>
 	
 	<update id="setStepUpdate" parameterType="QnaDTO">

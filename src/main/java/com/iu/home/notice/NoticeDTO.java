@@ -1,17 +1,37 @@
 package com.iu.home.notice;
 
 import java.sql.Date;
+import java.util.List;
+
+import com.iu.home.member.MemberDTO;
 
 public class NoticeDTO {
 	
 	private Long num;
 	private String title;
-	private String writer;
+	private String userID;
 	private String contents;
 	private Date regDate;
 	private Long hit;
 	
+	private List<MemberDTO> memberDTOs;
 	
+	
+	
+	
+	
+	public String getUserID() {
+		return userID;
+	}
+	public void setUserID(String userID) {
+		this.userID = userID;
+	}
+	public List<MemberDTO> getMemberDTOs() {
+		return memberDTOs;
+	}
+	public void setMemberDTOs(List<MemberDTO> memberDTOs) {
+		this.memberDTOs = memberDTOs;
+	}
 	public Long getNum() {
 		return num;
 	}
@@ -25,12 +45,7 @@ public class NoticeDTO {
 		this.title = title;	
 		
 	}
-	public String getWriter() {
-		return writer;
-	}
-	public void setWriter(String writer) {
-		this.writer = writer;
-	}
+	
 	
 	
 	

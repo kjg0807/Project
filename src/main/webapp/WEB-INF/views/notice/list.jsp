@@ -46,7 +46,7 @@
 					<option selected>선택하세요</option>
 					<option class="kinds" value="contents">내용</option>
 					<option class="kinds" value="title">제목</option>
-					<option class="kinds" value="writer">글쓴이</option>
+					<option class="kinds" value="userID">글쓴이</option>
 				</select>
 			</div>
 
@@ -91,7 +91,7 @@
 							<td>
 								${pageScope.dto.title}</a>
 							</td>
-							<td>${pageScope.dto.writer}</td>
+							<td>${pageScope.dto.userID}</td>
 							<td id="conText">${pageScope.dto.contents}</td>
 							<td>${pageScope.dto.regDate}</td>
 							<td>${pageScope.dto.hit}</td>

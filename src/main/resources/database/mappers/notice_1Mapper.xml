@@ -7,7 +7,7 @@
 		WHERE
 		<choose>
 			<when test="kind == 'title'">TITLE</when>
-			<when test="kind == 'writer'">WRITER</when>
+			<when test="kind == 'userID'">USERID</when>
 			<otherwise>CONTENTS</otherwise>
 		</choose>
 		LIKE '%'||#{search}||'%'
@@ -39,14 +39,13 @@
 			SELECT NOTICE_1_SEQ.NEXTVAL FROM DUAL
 		</selectKey>
 		INSERT INTO NOTICE_1 VALUES
-		(NOTICE_1_SEQ.NEXTVAL, #{title}, #{writer},
+		(NOTICE_1_SEQ.NEXTVAL, #{title}, #{userID},
 		#{contents}, SYSDATE, 0)
 	</insert>
 
 	<update id="setNoticeUpdate" parameterType="NoticeDTO">
 		UPDATE NOTICE_1 SET
-		TITLE = #{title}, WRITER = #{writer}, CONTENTS = #{contents} WHERE NUM
-		= #{num}
+		TITLE = #{title}, USERID = #{userID}, CONTENTS = #{contents} WHERE NUM = #{num}
 	</update>
 
 	<delete id="setNoticeDelete">
