@@ -26,12 +26,12 @@
 <c:import url="../../template/headerHTML.jsp"></c:import>
 <main class="realMain" id="realMain">
         
-  <div class="container">
+  <div class="container" style="padding-top: 80px; box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;">
  
             <div class="c1">
                 맛집 리뷰
             </div>
-                <div class="d-flex flex-row mb-3" id="cccc"   style="cursor: pointer;">
+                <div class="d-flex flex-row mb-3" id="cccc"   style="cursor: pointer; box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;">
                     <div class="p-2 a" data-miniCategory="">전체</div>
                     <div class="p-2 a" data-miniCategory="한식">한식</div>
                     <div class="p-2 a" data-miniCategory="중식">중식</div>
@@ -41,10 +41,10 @@
                     <div class="p-2 a" data-miniCategory="아시안">아시안</div>
                 </div>
 
-
+                <div d-flex>
                 <c:choose>
                   <c:when  test="${member == null}">
-                    <div class="btn btn-secondary" data-bs-toggle="modal" data-bs-whatever="@getbootstrap" id="add"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
+                     <div class="btn btn-secondary"    onclick="location.href='../../kjk/member/login';"; data-bs-toggle="modal" data-bs-whatever="@getbootstrap" id="add"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
                       <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"/>
                     </svg> &ensp;&ensp;가게등록</div>
                   </c:when>
@@ -52,11 +52,32 @@
                   <div class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap" role="add" onclick="listAddCheck();">가게등록</div>
                 </c:otherwise>
                 </c:choose>
+
+                <div class="row" >
+                  <form action="./listHTML"  class="row row-cols-lg-auto g-3 align-items-center justify-content-center" >
+                    <div class="col-12">
+                      <label class="visually-hidden" for="kind" id="select">Kind</label>
+                      <select  name="kind" class="form-select" id="kind">
+                        <option class="kinds" value="shopName">식당</option>
+                        <option class="kinds" value="menuName">음식</option>
+                        <option class="kinds" value="shopAddress">주소</option>
+                      </select>
+                    </div>
+
+                    <div class="col-12">
+                      <label class="visually-hidden" for="search">검색어</label>
+                      <div class="input-group">
+                        <input type="text" name="search" value="${param.search}" var="" class="form-control" id="search" placeholder="검색어를 입력해 주세요">
+                        <button type="submit" class="btn btn-secondary" id="searchNull">검색</button>
+                      </div>
+                    </form>
+                </div>
+                </div>
         
                 <c:forEach items="${requestScope.list}" var="list">    
                   <c:choose>
                     <c:when test="${member == null}">
-                        <div class="shop_list" id="detailHTMLList">
+                        <div class="shop_list detailHTMLList">
                           <div class="list" style="box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px" >
                               <div style="border-bottom: solid 1px gainsboro; height: 200px;" >
                                   <div class="d-flex">
@@ -87,10 +108,9 @@
                               </div>
                           </div>
                       </div>
-                      
                     </c:when>
+
                 <c:otherwise>
-                  
                     <div class="shop_list"  onclick="location.href='/shop/detailHTML?shopNum=${list.getShopNum()}';">
                     <div class="list" style="box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px" >
                         <div style="border-bottom: solid 1px gainsboro; height: 200px;" >
@@ -105,7 +125,6 @@
                                         <c:forEach items="${list.categoryDTOs}" var="category">
                                           <div class="p-2 b" style="color: black;"># ${category.categoryName}</div>
                                         </c:forEach>   
-                                        
                                     </div>
                                     <div class="d-flex flex-row mb-3 mt-2" style="cursor: pointer;">
                                         <div class="p-2 b">SHOP NAME : ${list.shopName}</div>
@@ -118,7 +137,6 @@
                                         </svg>&ensp;&ensp;${list.hit}</div>
                                       </div>
                                 </div>
-                                
                                  <div class="p-2 flex-shrink-1">
                                   <div class="mt-2" id="img" style="height: 200px; width: 310px">
                                     <c:forEach items="${list.shopFileDTOs}" var="shopFileDTO">               
@@ -133,6 +151,7 @@
             
             </c:otherwise>
           </c:choose>
+
             <div>
               <input name="shopNum" type="hidden" id="shopNum" value="${list.shopNum}">
               <input name="userID" type="hidden" id="userID" value="${list.userID}">

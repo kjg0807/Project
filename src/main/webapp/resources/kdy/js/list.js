@@ -9,12 +9,27 @@ for(let i =0; i < ccccChildren.length; i++){
 const add = document.querySelector("#add");
 add.addEventListener("click", function(){
    alert("로그인이 필요합니다.")
+
 })
 
-const detailHTMLList = document.getElementById("detailHTMLList");
-detailHTMLList.addEventListener("click", function(){
-    alert("로그인이 필요한 서비스입니다")
-    return;
+const detailHTMLList = document.querySelectorAll(".detailHTMLList");
+detailHTMLList.forEach(function( dh, index){
+    console.log(dh);
+    dh.addEventListener("click", function(){
+        alert("로그인이 필요한 서비스입니다");
+    })
+})
+
+const sn = document.querySelector("#searchNull");
+const s = document.querySelector("#search");
+
+sn.addEventListener("click", function(){
+    let ss = s.value;
+    console.log(ss);
+    if(ss <= 0){
+        alert("검색어를 입력해주세요");
+        return;
+    }
 })
 
 function listAddCheck(){
