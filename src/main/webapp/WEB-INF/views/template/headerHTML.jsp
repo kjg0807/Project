@@ -10,8 +10,8 @@
 <%-- <script type="text/javascript" src="${pageContext.request.contextPath}/js/test.js"></script> --%>
 
 </head>
-<body>
-	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<body >
+	<nav class="navbar navbar-expand-lg navbar-light bg-light" style="box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;">
 		<div class="container px-4 px-lg-5">
 			<img src="../../../resources/kdy/images/realLodo.jpg" style="width: 89px; height: 50px; margin: 0px 90px 0px 0px;" href="../../" alt="">
 			<a class="navbar-brand" href="../../">Home</a>

@@ -7,9 +7,9 @@
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="../../resources/kdy/css/footer.css">
 </head>
-<body>
+<body style="box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;">
 <br><br>
-	<div class="bottom-text-box">
+	<div class="bottom-text-box" >
 		<div class="wrapper">
 			<div class="sitemap-list">
 				<h3>사이트맵</h3>
@@ -22,7 +22,7 @@
 				</ul>
 			</div>
 			<div class="map-img-box">
-				<img src="" alt="">
+				<img src="../../../resources/kdy/images/qhstk2.PNG" style=" box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;" id="bs">
 			</div>
 			<div class="map-text-box">
 				<div class="map-list">

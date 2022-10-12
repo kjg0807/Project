@@ -20,63 +20,50 @@
     </head>
     <body >
         <c:import url="./template/headerHTML.jsp"></c:import>
-        <header class="bg-dark py-5">
-          
-            <div class="container px-4 px-lg-5 my-5">
-               <div class="text-center text-white">
-                  <h1 class="display-4 fw-bolder">Shop in style</h1>
-                  <p class="lead fw-normal text-white-50 mb-0" style="color: orange;">믿고보는 맛집 리스트</p>
-                  
-                  <!-- <fieldset class="main-search" style= "margin-top: 35px;">
-                    <label for="main-search" class="search-word">
-                        <input type="text" id="main-search" class="HomeSearchInput" name="main-search" maxlength="50" placeholder="지역, 식당 또는 음식" autocomplete="off">
-                    </label>
-                    <input type="submit" class="btn-search" value="검색">
-                  </fieldset> -->
-                  <div class="row">
-                    <form action="./shop/listHTML"  class="row row-cols-lg-auto g-3 align-items-center justify-content-center">
-                      <div class="col-12">
-                        <label class="visually-hidden" for="kind" id="select">Kind</label>
-                        <select  name="kind" class="form-select" id="kind">
-                          <option class="kinds" value="shopName">식당</option>
-                          <option class="kinds" value="menuName">음식</option>
-                          <option class="kinds" value="shopAddress">주소</option>
-                        </select>
-                        <!-- kind란 이름으로 넘어감 -->
-                      </div>
+        <header style="box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;">
 
-                      <!-- <div class="searchBox">
 
-                        <input class="searchInput"type="text" name="" placeholder="Search">
-                        <button class="searchButton" href="#">
-                            <i class="material-icons">
-                                search
-                            </i>
-                        </button>
-                    </div> -->
-                      
-                      <div class="col-12">
-                        <label class="visually-hidden" for="search">검색어</label>
-                        <div class="input-group">
-                          <input type="text" name="search" value="${param.search}" var="" class="form-control" id="search" placeholder="검색어를 입력해 주세요">
-                          <button type="submit" class="btn btn-secondary" id="searchNull">검색</button>
-                        </div>
-                        <!-- <div class="col-12">
-                        </div> -->
-                      </form>
-                  </div>
+                <img src="../../resources/kdy/images/GettyImages-505408442.webp" style="width: 100%; height: 100%; z-index: 1000;"  alt="">
+            
+                <div class="container px-4 px-lg-5 my-5">
+                   <div class="text-center text-white"  style="z-index: 1002;">
+                      <h1 class="display-4 fw-bolder" style="color: black;">Shop in style</h1>
+    
+                      <div class="row">
+                        <form action="./shop/listHTML"  class="row row-cols-lg-auto g-3 align-items-center justify-content-center">
+                          <div class="col-12">
+                            <label class="visually-hidden" for="kind" id="select">Kind</label>
+                            <select  name="kind" class="form-select" id="kind">
+                              <option class="kinds" value="shopName">식당</option>
+                              <option class="kinds" value="menuName">음식</option>
+                              <option class="kinds" value="shopAddress">주소</option>
+                            </select>
+                          </div>
+    
+                          <div class="col-12">
+                            <label class="visually-hidden" for="search">검색어</label>
+                            <div class="input-group">
+                              <input type="text" name="search" value="${param.search}" var="" class="form-control" id="search" placeholder="검색어를 입력해 주세요">
+                              <button type="submit" class="btn btn-secondary" id="searchNull">검색</button>
+                            </div>
+                            <!-- <div class="col-12">
+                            </div> -->
+                          </form>
                       </div>
+                    </div>
                 </div>
+                </img>
+
+          
             </div>
          </header>
         <!-- Section-->
         <section class="" style="margin-top: 0px;">
-            <div class="container px-4 px-lg-5 mt-2">
+            <div class="container px-4 px-lg-5 mt-2" style="box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;">
                 <div class="d-flex justify-content-between pt-4 pb-3">
-                    <div style="color: orange;"><b>믿고 보는 맛집 리스트</b></div>
-                    <div>음식 더보기</div>
+                    <div style="color: orange; "><b>믿고 보는 맛집 리스트</b></div>
                 </div>
-                <div  class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center" id="tttt">
+                <div  class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center" id="tttt" style="box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;">
 
                     <div class="col mb-5" data-category="">
                         <div class="card h-100 cs" id="al"style="box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;">
@@ -227,11 +214,11 @@
                     </c:forEach>
                     <!-- 위로보내주는 버튼 -->
                     <br>
-                    <button onclick="window.location.href='#top'" style="color: black; box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;">위로가기</button>
+                    <button onclick="window.location.href='#top'" style="padding-bottom: 35px; color: black; box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;">위로가기</button>
 
                 </div>
                 
-            </div>>
+            </div>
         </section>
 
        

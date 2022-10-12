@@ -12,9 +12,9 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
 
     <script type="text/javascript" src="//code.jquery.com/jquery-3.6.0.min.js"></script>
-    <!-- include summernote css/js-->
      <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
      <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+
      <!-- <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c971ac6c7712b0e728a1ba2df98cf0fd"></script> -->
 
 <style>
@@ -48,13 +48,12 @@
 
             <div class="d-flex" id="img1">
               <c:forEach items="${detail.shopFileDTOs}" var="shopFileDTO">               
-                  <img class="flex image" style="width: 380px; height: 380px;" src="../../../../resources/upload/shop/${shopFileDTO.fileName}">
-                  <!-- <img src="../../../../resources/upload/shop"> -->
+                  <img class="flex image" style="width: 380px; height: 380px; box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;" src="../../../../resources/upload/shop/${shopFileDTO.fileName}" >
               </c:forEach>
             </div>
             
             <main> 
-              <div class="container" style="margin-top: 200px;">
+              <div class="container" style="margin-top: 200px; box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;">
               
                 <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">                     
                   <div class="modal-dialog">
@@ -71,11 +70,6 @@
                                                 <label for="recipient-name" class="col-form-label"></label>
                                                 식당 이름 수정  <input type="text" class="form-control" name="shopName" value="${detail.shopName}">
                                               </div>
-                                            
-                                            <!-- <div class="mb-3">
-                                              <label for="recipient-name" class="col-form-label"></label>
-                                              식당의 카테고리 수정  <input type="text" class="form-control" name="categoryNum" value="${detail.categoryNum}">
-                                            </div> -->
                                             <div class="mb-3" id="caNumBer">
                                               <label for="message-text" class="col-form-label">category</label>
                                               <select  name="categoryNum" class="form-select" id="categoryNum">
@@ -123,7 +117,7 @@
                                               <!-- <button style="border-top: solid 1px gainsboro;"  type="button" id="shopDelete" class="btn btn-danger" onclick="location.href='/shop/delete?shopNum=${detail.getShopNum()}';">가게 삭제</button>  -->
                                           </div>
                                           <div class="modal-footer">
-                                            <!-- <button type="button" style="border-top: solid 1px gainsboro;" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModalDelete">가게 삭제</button> -->
+                                             <button type="button" style="border-top: solid 1px gainsboro;" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModalDelete">가게 삭제</button> 
                                             <button type="button" class="btn btn-danger" data-bs-dismiss="modal">취소하기</button>
                                             <button type="submit" class="btn btn-primary">등록하기</button>
                                           </div>
@@ -132,12 +126,12 @@
                                     </div>
                                   </div>
                                   <!-- Modal -->
-                                  <!-- <div class="modal fade" id="exampleModalDelete" tabindex="-1"
+                                  <div class="modal fade" id="exampleModalDelete" tabindex="-1"
                                     aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog">
                                       <div class="modal-content">
                                         <div class="modal-header">
-                                          <h1 class="modal-title fs-5" id="exampleModalLabel">비번을 확인하겠습니다!</h1>
+                                          <h1 class="modal-title fs-5" id="exampleModalLabel">가게 삭제</h1>
                                           <button type="button" class="btn-close"
                                             data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
@@ -148,33 +142,31 @@
                                             </div>
                                             
                                             <div class="mb-3">
-                                              <label for="message-text" class="col-form-label"></label>
-                                              <input type="hidden" name="pwd" id="pass" value="${memberDTO.pwd}">
-                                              <input type="text" class="form-control" placeholder="비밀번호를 입력해주세요" id="pwdInput" name="pwdInput">
-                                              <div id="pwdText" style="display: none; color: red;">비밀번호가 틀립니다.</div>
+                                              정말로 삭제하시겠습니까 
+                                              삭제 후에는 되돌릴 수 없습니다.
                                             </div>
                                             
                                           </c:forEach> 
                                         </div>
                                         <div class="modal-footer">
                                           <button type="button" class="btn btn-secondary"
-                                            data-bs-dismiss="modal">다시 생각해볼게요..</button>
+                                            data-bs-dismiss="modal">돌아가기</button>
                                           <button type="button" class="btn btn-primary" id="shopDelete" onclick="location.href='/shop/delete?shopNum=${detail.getShopNum()}';" >삭제..</button>
                                         </div>
                                       </div>
                                     </div>
-                                  </div> -->
+                                  </div>
                             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal1" data-bs-whatever="@mdo" id="modalOpenBtn" style="display: none;">게시글 수정</button>
                             <button type="button" class="btn btn-primary" id="updateShop" data-writer="${detail.memberDTOs[0].userID}" data-user="${sessionScope.member.userID}">게시글 수정</button>
                             <button type="button" class="btn btn-primary" id="menuAdd" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">메뉴 등록</button> 
+                            <div style="display: inline-block; margin:0 5px; float: right;">
+                              <button onclick="location='../../party/list?shopNum=${detail.shopNum}'" class="btn btn-primary">파티모집</button>
+                            </div>
 
-                            <!-- <div style="display: inline-block; margin: 0 5px;  float: right;">
-                              <button type="submit" class="btn btn-success">글쓰기</button>
-                            </div> -->
                             <div style="display: inline-block; margin:0 5px; float: right;">
                               <button onclick="location='../../reviews/add?shopNum=${detail.shopNum}'" class="btn btn-primary">리뷰남기기</button>
                             </div>
-                                  <div style="border-bottom: solid 1px gainsboro; padding-bottom: 50px; padding-top: 50px;">
+                                  <div style="border-bottom: solid 1px gainsboro; padding-bottom: 50px; padding-top: 50px; box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;">
                                       <div class="p-2 pt-3" style="font-size: 50px;">${detail.shopName}</div>
                                         <div class="d-flex">
                                           <div >&ensp;&ensp;<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-wechat" viewBox="0 0 16 16">
@@ -222,7 +214,7 @@
             </c:forEach>
       </div>
       </div>
-      <div class="side-wrap" id="map2" style="width:350px;height:350px;"></div>
+      <div class="side-wrap" id="map2" style="width:350px;height:350px; box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;" ></div>
                         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">                     
                                 <div class="modal-dialog">
                                   <div class="modal-content">
@@ -257,21 +249,23 @@
                    </div>
   
                   </div>
-                  <div style="border-bottom: solid 1px gainsboro;">
-                    식당 소개
+                  <div style="border-bottom: solid 1px gainsboro; box-shadow: rgba(0, 0, 0, 0.45) -20px -20px -20px -20px; ">
+                    <div style="font-size: 25px; text-align: center; font-weight: bold;">
+                      식당 소개
+                    </div>
                     <br>
                     <br>
                     <br>
-                    <>${detail.shopContents}
+                    <div style="font-weight: bold;">
+                      ${detail.shopContents}
+                    </div>
                    <br>
                     <br>
                     <br>
                  </div>
               
          </div>
-         <div style="display: inline-block; margin:0 5px; float: right;">
-          <button onclick="location='../../party/list?shopNum=${detail.shopNum}'" class="btn btn-primary">파티모집</button>
-        </div>
+        
 
      </div>
      <br>
@@ -291,7 +285,6 @@
               <option class="kinds" value="contents">내용</option>
             </select>
           </div>
-          
             <div class="col-12">
                 <label class="visually-hidden" for="search">검색어를 입력하세요</label>
               <div class="input-group">
