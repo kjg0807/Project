@@ -12,7 +12,7 @@
 <body>
 	<c:import url="../template/headerHTML.jsp"></c:import>
 	<section class="container-fluid col-lg-6" style="margin-bottom: 50px;">
-		<div class="row border-primary mt-5 bg-light" style="height: 25px margin-bottom: 400px;">
+		<div class="row border-primary mt-5 bg-light" style="height: 25px; margin-bottom: 400px;">
 			<div class="col-lg-8 border border-primary" style="
 			height: 42px; font-size: 27px;">
 				${partyListDTO.partyTitle}
