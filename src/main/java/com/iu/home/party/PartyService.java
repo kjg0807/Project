@@ -21,6 +21,10 @@ public class PartyService {
 	@Autowired
 	private FileManger fileManger;
 	
+	public int setPartyUpdate(PartyListDTO partyListDTO)throws Exception{
+		return partyDAO.setPartyUpdate(partyListDTO);
+	}
+	
 	public int setPartyFileAdd(PartyFileDTO partyFileDTO)throws Exception{
 		return partyDAO.setPartyFileAdd(partyFileDTO);
 	}

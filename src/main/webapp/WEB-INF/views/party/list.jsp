@@ -39,7 +39,7 @@
 	
 	</div>
 
-<div class="row">
+<div class="row mx-1	">
 	<table class="table">
 	  <thead class="table-dark">
 	    <tr>
