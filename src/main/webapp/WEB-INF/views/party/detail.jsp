@@ -11,34 +11,50 @@
 </head>
 <body>
 	<c:import url="../template/headerHTML.jsp"></c:import>
-	<section class="container-fluid col-lg-6">
-		<div class="row mt-5 bg-light">
-		</div>	
-		<div class="row border border-danger mt-5 bg-light" style="height: 75px">
-			<div class="col-lg-6 border border-danger">
+	<section class="container-fluid col-lg-6" style="margin-bottom: 50px;">
+		<div class="row border-primary mt-5 bg-light" style="height: 25px margin-bottom: 400px;">
+			<div class="col-lg-8 border border-primary" style="
+			height: 42px; font-size: 27px;">
 				${partyListDTO.partyTitle}
 			</div>
-			<div class="col-lg-2 border border-danger">
+			<div class="col-lg-4 border border-primary" style="
+			height: 42px; font-size: 27px;">
 				${partyListDTO.userName}
 			</div>
-			<div class="col-lg-2 border border-danger">
-				${partyListDTO.partyRegdate}
+			<div class="col-lg-4 border border-primary">
+				등록일 : ${partyListDTO.partyRegdate}
 			</div>
-			<div class="col-lg-2 border border-danger">
-				<fmt:formatDate value="${partyListDTO.partyTimeout}" pattern="HH:mm:ss"/>
+			<div class="col-lg-4 border border-primary">
+				마감일 : <fmt:formatDate value="${partyListDTO.partyTimeout}" pattern="yy-MM-dd"/>
 			</div>
+			<div class="col-lg-4 border border-primary">
+				마감시간 : <fmt:formatDate value="${partyListDTO.partyTimeout}" pattern="HH:mm:ss"/>
+			</div>
+			<div class="col-lg-12 border border-top-0 border-primary bg-light"  style="min-height: 60vh" >
+					${partyListDTO.partyContents}
+			</div> 
 		</div>
-		<div class="row border border-top-0 border-danger bg-light"  style="min-height: 60vh" >
-			<div class="col">
-				${partyListDTO.partyContents}
-			</div>
-		</div>
-		<c:if test="${not empty member}">
-			<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#joinModal">
-				파티가입
+		
+		<div class="d-inline mb-3" style="width: 150px;">
+			<c:if test="${not empty member}">
+				<button type="button" class="btn btn-outline-info" data-bs-toggle="modal" data-bs-target="#joinModal">
+					파티가입
+				</button>
+			</c:if>
+			<button type="button" class="btn btn-outline-info" data-bs-toggle="modal" data-bs-target="#partyModal" id="partybtn">
+				파티목록
 			</button>
-		</c:if>
-
+			<button type="button" class="btn btn-outline-info" onclick="location.href='../chat/chat' ">
+				채팅입장
+			</button>
+		</div>
+		<div class="d-inline mt-5" style="width: 300px;">
+			<button type="button" id="btnupdate" class="btn btn-outline-primary btn-sm"
+			onclick="location.href='./update?partyNum=${partyListDTO.partyNum}' "  style="margin-top: 2px;">수정</button>
+			<button type="button" id="btndelete" class="btn btn-outline-danger btn-sm">삭제</button>
+		</div>
+		
+		
 		<div class="modal fade" id="joinModal" tabindex="-1" aria-labelledby="joinModalLabel" aria-hidden="true">
 			<div class="modal-dialog">
 				<div class="modal-content">
@@ -80,9 +96,7 @@
 								</c:when>
 							</c:choose>
 						</div>
-						<!-- <select id="joinAge">
-							<option value="${member.age}" checked>${member.age} 세</option>
-						</select> -->
+					
 						<div class="mb-3">
 							<label for="message-text" class="col-form-label">Commenet</label>
 							<textarea class="form-control" id="joinComment"></textarea>
@@ -96,13 +110,6 @@
 			</div>
 		</div>
 
-		<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#partyModal" id="partybtn">
-			파티목록
-		</button>
-
-		<button type="button" class="btn btn-primary" onclick="location.href='../chat/chat' ">
-			채팅입장
-		</button>
 
 
 		<div class="modal fade" id="partyModal" tabindex="-1" aria-labelledby="joinModalLabel" aria-hidden="true">
