@@ -39,21 +39,10 @@ public class ShopController {
       ModelAndView mv = new ModelAndView();   
       MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
       shopDTO.setUserID(memberDTO.getUserID());
-      System.out.println("memberUserId" + memberDTO.getUserID());
       int result = shopService.setAdd(shopDTO, files, session.getServletContext());
       mv.addObject("result", result);
-      mv.setViewName("redirect:./listHTML");
-//      System.out.println("postadd");
-//      System.out.println("files"+files);
-//      System.out.println("파일은~"+files);
-//      MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
-//      if (memberDTO != null) {
-//         
+      mv.setViewName("redirect:./listHTML");      
          return mv;      
-//      }else {
-//         return "redirect:../kjk/member/login.js";
-//      }
-      
    }
 
    @GetMapping(value = "listHTML")
@@ -69,9 +58,7 @@ public class ShopController {
    
    @GetMapping(value = "detailHTML")
    public ModelAndView getDetail(ShopDTO shopDTO, ReviewsDTO reviewsDTO, ReviewsPager reviewsPager)throws Exception{
-      System.out.println("getDetail");
       System.out.println();
-      System.out.println("getMenuName"+shopDTO.getMenuName());
       ModelAndView mv = new ModelAndView();
       shopService.setHitUpdate(shopDTO);
       List<ReviewsDTO> ar = reviewsService.getReviewsList(reviewsPager);
@@ -106,6 +93,12 @@ public class ShopController {
       mv.setViewName("redirect:./listHTML");
       return mv;
    }
+//   @PostMapping("delete")
+//   public String setDelete(HttpSession session)throws Exception{
+//	   MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
+//	return "redirect:./listHTML";
+//	   
+//   }
 //   ------------------------------------------------------------------------------------------------------------------------MENU
    @GetMapping(value = "addMenuHTML")
    public ModelAndView setAddMenu(Long shopNum) throws Exception {
