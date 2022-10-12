@@ -1,6 +1,6 @@
 //파티가입
 const jm = document.querySelector("#joinModal");
-const ja = document.getElementById("joinAge");
+const ja = document.querySelector("#joinAge");
 const jb = document.querySelector("#joinbtn");
 const jn = document.querySelector("#joinNum");
 const ju = document.querySelector("#joinUserName");
@@ -14,17 +14,44 @@ const pb = document.querySelector("#partybtn");
 const reject = document.querySelector("#rejectbtn");
 const accept = document.querySelector("#acceptbtn");
 
-jm.addEventListener("click",age())
+// jm.addEventListener("click",age())
 
-function age(){
-    for(let i=0; i<101; i++){
-        let op = document.createElement("option");
-        op.value=i;
-        let t = document.createTextNode(i+"세");
-        op.appendChild(t);
-        ja.appendChild(op);
-    }
+// function age(){
+//     for(let i=0; i<101; i++){
+//         let op = document.createElement("option");
+//         op.value=i;
+//         let t = document.createTextNode(i+"세");
+//         op.appendChild(t);
+//         ja.appendChild(op);
+//     }
+// }
+let check1 = false;
+doublecheck();
+function doublecheck(){
+    const xhttp = new XMLHttpRequest();
+
+    xhttp.open("GET", "./partyRequest?partyNum="+jn.value);
+
+    xhttp.send();
+    
+    xhttp.addEventListener("readystatechange", function(){
+        if(this.readyState==4 && this.status==200){
+
+            let result = JSON.parse(xhttp.responseText.trim());
+        
+            let ar = result;
+
+            for(let i=0; i<ar.length; i++){
+
+                if(ar[i].userName == ju.value && ar[i].partyRequest != null){
+                    check1 = true;
+
+                }
+            }
+        }
+    })
 }
+
 
 jb.addEventListener("click",function(){
     let gender = 0;
@@ -34,28 +61,32 @@ jb.addEventListener("click",function(){
             gender = jg[i].value
         }
     }
-
-    const xhttp = new XMLHttpRequest();
-
-    xhttp.open("POST",  "./partyJoin");
-
-    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-
-    xhttp.send("partyNum="+jn.value+"&userName="+ju.value+"&partyAge="+ja.value+"&partyGender="+gender+"&partyComment="+jc.value
-    +"&shopNum="+jsn.value);
-
-    xhttp.onreadystatechange=function(){
-        if(this.readyState==4 && this.status==200){
-            let result = xhttp.responseText;
-            console.log(result)
-            result = JSON.parse(result);
-
-            if(result.result){
-                alert("가입신청이 안료되었습니다.")
-                window.location.reload();
+    if(check1 == true){
+        alert("신청 대기중입니다.");
+        window.location.reload();
+    }else{
+        const xhttp = new XMLHttpRequest();
+    
+        xhttp.open("POST",  "./partyJoin");
+    
+        xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    
+        xhttp.send("partyNum="+jn.value+"&userName="+ju.value+"&partyAge="+ja.value+"&partyGender="+gender+"&partyComment="+jc.value
+        +"&shopNum="+jsn.value);
+    
+        xhttp.onreadystatechange=function(){
+            if(this.readyState==4 && this.status==200){
+                let result = xhttp.responseText;
+                console.log(result)
+                result = JSON.parse(result);
+    
+                if(result.result){
+                    alert("가입신청이 완료되었습니다.")
+                    window.location.reload();
+                }
+            }else{
+                console.log("실패")
             }
-        }else{
-            console.log("실패")
         }
     }
 })
@@ -79,31 +110,41 @@ function getRequestList(pn){
         
             let ar = result;
 
-            console.log(ar[0].userName);
-
             for(let i=0; i<ar.length; i++){
                 let tr = document.createElement("tr");
                 let td = document.createElement("td");
                 tdput = document.createElement("input");
 
-                puttype = document.createAttribute("type");
-                puttype.value = "checkbox";
+                if(ar[i].partyRequest == 0){
+                    puttype = document.createAttribute("type");
+                    puttype.value = "checkbox";
+    
+                    putid = document.createAttribute("class");
+                    putid.value = "partyID";
+    
+                    putvalue = document.createAttribute("username");
+                    putvalue.value = ar[i].userName;
+    
+                    putnum = document.createAttribute("partynum");
+                    putnum.value = pn;
+    
+                    tdput.setAttributeNode(putnum);
+                    tdput.setAttributeNode(putvalue);
+                    tdput.setAttributeNode(putid);
+                    tdput.setAttributeNode(puttype);
+                    td.appendChild(tdput);
+                    tr.appendChild(td);
+                }else{
+                    puttype = document.createAttribute("type");
+                    puttype.value = "checkbox";
 
-                putid = document.createAttribute("class");
-                putid.value = "partyID";
+                    dis = document.createAttribute("disabled");
 
-                putvalue = document.createAttribute("username");
-                putvalue.value = ar[i].userName;
-
-                putnum = document.createAttribute("partynum");
-                putnum.value = pn;
-
-                tdput.setAttributeNode(putnum);
-                tdput.setAttributeNode(putvalue);
-                tdput.setAttributeNode(putid);
-                tdput.setAttributeNode(puttype);
-                td.appendChild(tdput);
-                tr.appendChild(td);
+                    tdput.setAttributeNode(puttype);
+                    tdput.setAttributeNode(dis);
+                    td.appendChild(tdput);
+                    tr.appendChild(td);
+                }
 
                 td = document.createElement("td");
                 tdtext = document.createTextNode(ar[i].userName);

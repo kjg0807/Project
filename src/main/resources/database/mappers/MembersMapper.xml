@@ -24,6 +24,8 @@
 	<resultMap type="MemberDTO" id="getLoginResult">
 		<id column="userID" property="userID" />
 		<result column="USERName" property="userName" />
+		<result column="GENDER" property="gender" />
+		<result column="AGE" property="age" />
 		<collection property="classDTOs" javaType="List"
 			ofType="ClassDTO">
 			<id column="classnum" property="classNum" />

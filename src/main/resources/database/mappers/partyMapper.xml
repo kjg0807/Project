@@ -80,7 +80,7 @@
     
     <insert id="setPartyJoin" parameterType="PartyDTO">
     	INSERT INTO PARTY VALUES
-    		(#{partyNum}, #{userName}, #{partyAge}, #{partyGender}, #{partyComment}, 0)
+    		(#{partyNum}, #{userName}, #{partyAge}, #{partyGender}, #{partyComment}, 0, #{shopNum})
     </insert>
     
     <select id="getPartyRequest" parameterType="partyDTO" resultType="PartyDTO">

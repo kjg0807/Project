@@ -14,7 +14,7 @@
   <link rel="stylesheet" href="../../resources/js/jquery-ui.css">
 </head>
 <body>
-	<c:import url="../../template/headerHTML.jsp"></c:import>
+	<c:import url="../template/headerHTML.jsp"></c:import>
 	<section class="container-fluid col-lg-4">
 	
 	<div class="row">
@@ -40,10 +40,6 @@
 			<div class="mb-3">
 			  <label for="contents" class="form-label">Contents</label>
 			  <textarea class="form-control" name="partyContents" id="contents" rows="3"></textarea>
-			</div>
-
-			<div id="addFiles">
-				<button type="button" class="btn btn-danger" id="fileAdd">파일 추가</button>
 			</div>
 
 			
@@ -74,7 +70,6 @@ $(function () {
   $('datepicker').value = Dvar;
 });
   </script>
-    <script src="/resources/js/party_files.js"></script>
 	<script src="/resources/js/partyList.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
 	<c:import url="../template/footerHTML.jsp"></c:import>

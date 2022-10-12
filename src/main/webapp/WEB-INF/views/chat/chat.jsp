@@ -52,7 +52,7 @@
 		ws = new WebSocket("ws://" + location.host + "/chating");
 		wsEvt();
 	}
-		
+			
 	function wsEvt() {
 		ws.onopen = function(data){
 			//소켓이 열리면 초기화 세팅하기
