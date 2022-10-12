@@ -42,13 +42,10 @@ function doublecheck(){
             let ar = result;
 
             for(let i=0; i<ar.length; i++){
-                console.log(ar[i].userName);
-                console.log(ju.value);
-                console.log(ar[i].partyRequest);
+
                 if(ar[i].userName == ju.value && ar[i].partyRequest != null){
                     check1 = true;
-                    console.log("진입")
-                    console.log(check1);
+
                 }
             }
         }
