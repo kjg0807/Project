@@ -29,7 +29,7 @@
 	
 	<update id="setPartyUpdate" parameterType="PartyListDTO">
 		UPDATE PARTYLIST SET PARTYTITLE=#{partyTitle}, PARTYCONTENTS=#{partyContents}, PARTYREGDATE=sysdate, 
-			PARTYTIMEOUT=sysdate+(#{partyHH}*60)+#{partymm}/(24*60) WHERE USERID=#{userID} PARTYNUM=#{partyNum}
+			PARTYTIMEOUT = TO_DATE(#{partyTimeout}||' '|| #{partyHH}||':'||#{partymm}||':00', 'YY:MM:DD HH24:MI:SS')
 	</update>
 	
 	<select id="getPartyDetail" parameterType="PartyListDTO" resultMap="getPartyFile">

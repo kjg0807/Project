@@ -27,6 +27,22 @@ public class PartyController {
 	private PartyService partyService;
 	
 	// PartyList===============================================================================
+	
+	@PostMapping(value = "update")
+	public String setPartyUpdate(PartyListDTO partyListDTO)throws Exception{
+		int result = partyService.setPartyUpdate(partyListDTO);
+		return "redirect:./detail?partyNum"+partyListDTO.getPartyNum();
+	}
+	
+	@GetMapping(value = "update")
+	public ModelAndView setPartyUpdate(PartyListDTO partyListDTO, ModelAndView mv, HttpSession session)throws Exception{
+		partyListDTO = partyService.getPartyDetail(partyListDTO);
+		mv.addObject("member", (MemberDTO)session.getAttribute("member"));
+		mv.addObject("partyListDTO", partyListDTO);
+		mv.setViewName("party/update");
+		return mv;
+	}
+	
 	@GetMapping(value="list")
 	public ModelAndView getPartyList(Pager pager, HttpSession session)throws Exception{
 		ModelAndView mv = new ModelAndView();
