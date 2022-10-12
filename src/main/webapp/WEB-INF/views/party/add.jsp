@@ -13,9 +13,13 @@
   <script src="../../../resources/js/jquery-ui.min.js"></script>
   <link rel="stylesheet" href="../../resources/js/jquery-ui.css">
 </head>
-<body>
-	<c:import url="../template/headerHTML.jsp"></c:import>
-	<section class="container-fluid col-lg-4">
+<body style="margin-top: 250px;">
+	
+	<div class="container-fluid col-lg-4" style="margin-top: 90px; text-align: center; font-size: 25px; background-color: rgb(221, 221, 221); border-radius: 20px; margin-top: 50px; box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset; ">
+		파티생성
+	</div>
+
+	<section class="container-fluid col-lg-4" style="background-color: rgb(255, 255, 255); border-radius: 20px; margin-top: 50px; box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset; ">
 	
 	<div class="row">
 		<form action="./add" method="post" enctype="multipart/form-data">
@@ -24,8 +28,8 @@
 			  <input type="hidden" name="shopNum" value = "${partyListDTO.shopNum}" class="form-control">
 			  	
 			<div class="mb-3">
-			  <label for="title" class="form-label">Title</label>
-			  <input type="text" name="partyTitle" class="form-control" id="title" placeholder="제목 입력">
+			  <label for="title" class="form-label" style="padding-top: 15px;">제목을 입력해주세요</label>
+			  <input type="text" name="partyTitle" class="form-control" id="title" placeholder="ex)모임장소, 식당상호명">
 			</div>
 			<div>
 				<input class="datepicker" name="partyTimeout" value="">
@@ -38,13 +42,14 @@
 			</div>
 			
 			<div class="mb-3">
-			  <label for="contents" class="form-label">Contents</label>
-			  <textarea class="form-control" name="partyContents" id="contents" rows="3"></textarea>
+			  <label for="contents" class="form-label">내용을 입력해주세요</label>
+			  <textarea class="form-control" name="partyContents" id="contents" rows="3" placeholder="ex)음주여부, 인원 수"></textarea>
 			</div>
 
 			
 			<div class="mb-3">
-				<button class="btn btn-success">WRITE</button>
+				<button class="btn btn-success">글 등록하기</button>
+				<!-- <button class="btn btn-primary" id="nono" onclick="location.href='./list?shopNum=${partyListDTO.shopNum}';">글 등록 취소</button> -->
 			</div>
 			
 		</form>	
@@ -72,6 +77,5 @@ $(function () {
   </script>
 	<script src="/resources/js/partyList.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
-	<c:import url="../template/footerHTML.jsp"></c:import>
 </body>
 </html>
