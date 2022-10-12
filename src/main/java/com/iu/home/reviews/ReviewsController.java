@@ -259,12 +259,18 @@ public class ReviewsController {
 	// jsp에 출력하고 결과물을 응답으로 전송
 	@GetMapping(value = "reviewsCommentList")
 	@ResponseBody
-	public Map<String, Object> reviewsCommentList(ReviewsCommentPager reviewsCommentPager) throws Exception{
+	public Map<String, Object> reviewsCommentList(ReviewsCommentPager reviewsCommentPager, HttpSession session) throws Exception{
+		
+		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
+		ReviewsDTO reviewsDTO = new ReviewsDTO();
+		ReviewsCommentDTO reviewsCommentDTO = new ReviewsCommentDTO();
+		
+		reviewsCommentDTO.setUserID(memberDTO.getUserID());
 		
 		List<ReviewsCommentDTO> ar = reviewsService.getReviewsCommentList(reviewsCommentPager);
 		
 		System.out.println("답글 목록");
-		System.out.println(ar.size());
+		System.out.println("ar.size : " + ar.size());
 		
 		Map<String, Object> map = new HashMap<String, Object>();
 		

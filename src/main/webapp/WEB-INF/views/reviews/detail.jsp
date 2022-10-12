@@ -179,18 +179,18 @@
 	<!-- 댓글 코드 시작 -->
 	<div class="row">
 		<div class="mb-3">
-			<label for="writer" class="form-label">작성자</label>
-			<input type="text" class="form-label" id="writer" placeholder="${dto.userID}" readonly disabled>
+			<label for="userID" class="form-label">작성자</label>
+			<input type="text" class="form-label" id="userID" placeholder="${dto.userID}" readonly disabled>
 		</div>
 		
 		<div class="mb-3 col-lg-4">
 			<label for="contents" class="form-label">내 용</label>
-			<textarea id="contents" class="form-label" rows="3" cols="50" placeholder="내 용 :"></textarea>
+			<textarea id="contents" class="form-label" rows="3" cols="50" placeholder="내용을 입력하세요"></textarea>
 			<!-- <input type="text" class="form-label" id="contents" placeholder="내용 :"> -->
 		</div>
 		
 		<div class="mb-3">
-			<button type="button" id="btn" data-reviewNum="${dto.reviewNum}">댓글 작성</button>
+			<button class="btn btn-secondary" type="button" id="btn" data-reviewNum="${dto.reviewNum}">댓글 작성</button>
 		</div>
 	</div>
 	
@@ -265,7 +265,7 @@
 <br>
 <p>
 	<div  style="display: inline-block; margin: 0 5px;">
-		<button onclick="location='./list'" class="btn btn-primary">
+		<button onclick="location='../shop/detailHTML?shopNum=${dto.shopNum}'" class="btn btn-primary">
 			<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
 				<path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
 			</svg>

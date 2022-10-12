@@ -18,8 +18,8 @@
 	</select>
 	
 	<insert id="setReviewsCommentAdd" parameterType="ReviewsCommentDTO">
-		INSERT INTO REVIEWS_COMMENT (NUM, REVIEWNUM, WRITER, CONTENTS, REGDATE)
-		VALUES	(NOTICE_1_SEQ.NEXTVAL, #{reviewNum}, #{writer}, #{contents}, SYSDATE)
+		INSERT INTO REVIEWS_COMMENT (NUM, REVIEWNUM, USERID, CONTENTS, REGDATE)
+		VALUES	(NOTICE_1_SEQ.NEXTVAL, #{reviewNum}, #{userID}, #{contents}, SYSDATE)
 	</insert>
 	
 	<select id="getReviewsCommentListCount" parameterType="ReviewsCommentPager" resultType="Long">
