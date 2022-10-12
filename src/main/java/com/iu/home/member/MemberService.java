@@ -54,9 +54,9 @@ public class MemberService
 		return memberDAO.setDelete(memberDTO);
 	}
 
-	public int checkId(MemberDTO memberDTO) throws Exception
+	public int getCheckId(String id) throws Exception
 	{
-		return memberDAO.checkId(memberDTO);
+		return memberDAO.getCheckId(id);
 	}
 
 	public List<ReviewsDTO> getReview(ReviewsPager reviewsPager) throws Exception

@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import com.iu.home.reviews.*;
 import com.iu.home.util.ReviewsPager;
@@ -195,33 +196,43 @@ public class MemberController
 		return "redirect:../../";
 	}
 
-	@GetMapping(value = "checkId")
-	public void checkId() throws Exception
+	@RequestMapping("checkId")
+	@ResponseBody
+	public int checkId(String id) throws Exception
 	{
 		System.out.println("checkId GET");
+
+//		String a = request.getParameter("id");
+//		System.out.println(a);
+
+		int rs = memberService.getCheckId(id);
+		System.out.println(rs);
+		return rs;
 	}
 
-	@PostMapping(value = "checkId")
-	public ModelAndView checkId(MemberDTO memberDTO) throws Exception
-	{
-		ModelAndView mv = new ModelAndView();
-		System.out.println("/user/checkId : post");
-		System.out.println("param : " + memberDTO.getUserID());
-		System.out.println(memberDTO);
-
-		int checkNum = memberService.checkId(memberDTO);
-
-		if (checkNum == 1)
-		{
-			System.out.println("아이디가 중복되었다.");
-			mv.setViewName("duplicated");
-			return mv;
-		} else
-		{
-			System.out.println("아이디 사용 가능");
-			mv.setViewName("available");
-			return mv;
-		}
-	}
+//	@PostMapping(value = "checkId")
+//	public ModelAndView checkId(MemberDTO memberDTO, ModelAndView mv, HttpServletRequest request) throws Exception
+//	{
+//		mv = new ModelAndView();
+//		System.out.println("/user/checkId : post");
+//		System.out.println("param : " + memberDTO.getUserID());
+//
+//		String a = request.getParameter("id");
+//		System.out.println("request parameter: " + a);
+//
+//		int checkNum = memberService.getCheckId(memberDTO);
+//
+//		if (checkNum == 1)
+//		{
+//			System.out.println("아이디가 중복되었다.");
+//			mv.setViewName("idDuplicated");
+//			return mv;
+//		} else
+//		{
+//			System.out.println("아이디 사용 가능");
+//			mv.setViewName("available");
+//			return mv;
+//		}
+//	}
 
 }

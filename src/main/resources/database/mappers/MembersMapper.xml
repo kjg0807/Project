@@ -119,7 +119,7 @@
 	<!-- <select id="idCheck" parameterType="MemberDTO" resultMap="check"> select 
 		userID from promembers where userID = #{userID} </select> <resultMap type="MemberDTO" 
 		id="check"> <id column="userid" property="userID" /> </resultMap> -->
-	<select id="checkId" parameterType="MemberDTO" resultType="int">
+	<select id="getCheckId" parameterType="MemberDTO" resultType="int">
 		select
 		count(*) from
 		promembers where userID = #{userID}

@@ -86,9 +86,9 @@ a:hover {
 						<c:forEach items="${reList}" var="reList">
 							<c:choose>
 								<c:when test="${dto.userID ne 'reList.userID'}">
+									<hr style="margin-bottom: 5px;">
 									<%-- 내가 작성한 리뷰, 댓글 출력후 클릭시 작성한 곳으로 이동 --%>
 									<%-- title; writer; contents; reviewDate; hits; --%>
-									<hr>
 									<ul class="list_newsissue">
 										<li class="libi">
 											<div class="item_issue" data-tiara-layer="headline1">
