@@ -20,7 +20,7 @@
 	<form action="./update" method="post">
 		<div class="mb-3">
 		  <label for="formGroupExampleInput2" class="form-label">작성자</label>
-		  <input type="text" class="form-control" name="writer" placeholder="${dto.writer}" readonly disabled>
+		  <input type="text" class="form-control" name="userID" placeholder="${dto.userID}" readonly disabled>
 		</div>
 		
 		<div class="mb-3">

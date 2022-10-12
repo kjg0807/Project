@@ -1,12 +1,15 @@
 package com.iu.home.qna;
 
 import java.sql.Date;
+import java.util.List;
+
+import com.iu.home.member.MemberDTO;
 
 public class QnaDTO {
 	
 	private Long num;
 	private String title;
-	private String writer;
+	private String userID;
 	private String contents;
 	private Date regDate;
 	private Long hit;
@@ -14,7 +17,17 @@ public class QnaDTO {
 	private Long step;
 	private Long depth;
 	
+	private List<MemberDTO> memberDTOs;
 	
+	
+	
+	
+	public List<MemberDTO> getMemberDTOs() {
+		return memberDTOs;
+	}
+	public void setMemberDTOs(List<MemberDTO> memberDTOs) {
+		this.memberDTOs = memberDTOs;
+	}
 	public Long getNum() {
 		return num;
 	}
@@ -27,11 +40,13 @@ public class QnaDTO {
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	public String getWriter() {
-		return writer;
+
+	
+	public String getUserID() {
+		return userID;
 	}
-	public void setWriter(String writer) {
-		this.writer = writer;
+	public void setUserID(String userID) {
+		this.userID = userID;
 	}
 	public String getContents() {
 		return contents;

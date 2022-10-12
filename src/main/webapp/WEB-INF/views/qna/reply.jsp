@@ -24,8 +24,8 @@
 			  <input type="text" name="title" class="form-control" id="title" placeholder="제목 입력">
 			</div>
 			<div class="mb-3">
-			  <label for="writer" class="form-label">Writer</label>
-			  <input type="text" name="writer" class="form-control" id="Writer" placeholder="작성자 입력">
+			  <label for="userID" class="form-label">userID</label>
+			  <input type="text" name="userID" class="form-control" id="userID" placeholder="작성자 입력">
 			</div>
 			<div class="mb-3">
 			  <label for="contents" class="form-label">Contents</label>

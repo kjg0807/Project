@@ -38,7 +38,7 @@
 	<section class="container-fluid col-lg-10 mt-5">
 
 		<h1 id="h1">공지사항</h1>
-		<form action="../qna/list" class="row row-cols-lg-auto g-3 align-items-center">
+		<form action="../notice/list" class="row row-cols-lg-auto g-3 align-items-center">
 
 			<div class="col-12">
 				<label class="visually-hidden" for="kind">Kind</label>
@@ -46,7 +46,7 @@
 					<option selected>선택하세요</option>
 					<option class="kinds" value="contents">내용</option>
 					<option class="kinds" value="title">제목</option>
-					<option class="kinds" value="writer">글쓴이</option>
+					<option class="kinds" value="userID">글쓴이</option>
 				</select>
 			</div>
 
@@ -91,7 +91,7 @@
 							<td>
 								${pageScope.dto.title}</a>
 							</td>
-							<td>${pageScope.dto.writer}</td>
+							<td>${pageScope.dto.userID}</td>
 							<td id="conText">${pageScope.dto.contents}</td>
 							<td>${pageScope.dto.regDate}</td>
 							<td>${pageScope.dto.hit}</td>
