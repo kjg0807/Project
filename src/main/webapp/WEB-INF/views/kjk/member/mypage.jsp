@@ -19,25 +19,21 @@
 <link rel="stylesheet" href="/resources/kjk/css/footerHold.css">
 <link rel="stylesheet" href="/resources/kjk/css/mypageReview.css">
 </head>
-<%
-Class.forName("oracle.jdbc.driver.OracleDriver");
-String url = "jdbc:oracle:thin:@localhost:1521:xe";
-String user = "hr";
-String password = "hr";
-Connection conn = DriverManager.getConnection(url, user, password); //db에 접근해서 sql실행하고
-
-Statement stmt = conn.createStatement();
-String sql = "select * from reviews";
-stmt.executeQuery(sql);
-ResultSet rs = stmt.executeQuery(sql);
-%>
 <style>
-a {
+/* a {
 	text-decoration: none;
 	color: black;
 }
 
 a:hover {
+	color: red;
+} */
+#up {
+	text-decoration: none;
+	color: black;
+}
+
+#up:hover {
 	color: red;
 }
 
@@ -74,83 +70,68 @@ a:hover {
 							<td>${dto.userName }</td>
 							<td>${dto.email }</td>
 							<td>${dto.phone }</td>
-							<td>
-								<a href="./update?userid=${dto.userID}">정보 수정</a> | <a href="./delete?userid=${dto.userID}">회원 탈퇴</a>
+							<td id="upDe">
+								<a id="up" href="./update?userid=${dto.userID}">정보 수정</a> | <a id="up" href="./delete?userid=${dto.userID}">회원 탈퇴</a>
 							</td>
 						</tr>
 					</table>
-					<%
-					int i = 0;
-					while (rs.next())
-					{
-						String title = rs.getString("title");
-						String contents = rs.getString("contents");
-						String reviewID = rs.getString("userID");
-						if (i >= 0)
-						{
-					%>
-					<form>
-						<input type="hidden" value="<%=reviewID%>" name="reID">
-						<input type="hidden" value="${dto.userID}" name="dtoID">
-						<button type="submit" class="btn btn-outline-dark">내가 작성한 리뷰 보기</button>
-						<c:choose>
-							<c:when test="${param.dtoID eq param.reID }">
-								<input type="text" value="무야호">
-								<!-- 내가 작성한 리뷰, 댓글 출력후 클릭시 작성한 곳으로 이동 -->
-								<div style="padding-top: 5%;">
-									<b>${dto.userName }님이 작성한 리뷰</b>
-								</div>
-								<!-- title; writer; contents; reviewDate; hits; -->
-								<hr>
-								<ul class="list_newsissue">
-									<li class="libi">
-										<div class="item_issue" data-tiara-layer="headline1">
-											<div class="imgali">
-												<a href="#" class="wrap_thumb"> <img src="" class="thumb_g">
-												</a>
+					<input type="hidden" value="${dto.userID}" id="dtoID">
+					<input type="hidden" value="${reList[0].userID}" id="revID">
+					<!-- onclick="buttonClick();" -->
+					<button type="button" class="btn btn-outline-dark" id="reviewButton">내가 작성한 리뷰 보기</button>
+					<div id="myReview" style="display: none;">
+						<div style="padding-top: 5%;">
+							<b>${dto.userName}님이 작성한 리뷰</b>
+						</div>
+						<c:forEach items="${reList}" var="reList">
+							<c:choose>
+								<c:when test="${dto.userID ne 'reList.userID'}">
+									<%-- 내가 작성한 리뷰, 댓글 출력후 클릭시 작성한 곳으로 이동 --%>
+									<%-- title; writer; contents; reviewDate; hits; --%>
+									<hr>
+									<ul class="list_newsissue">
+										<li class="libi">
+											<div class="item_issue" data-tiara-layer="headline1">
+												<div class="imgali">
+													<a href="#" class="wrap_thumb"> <img src="" class="thumb_g">
+													</a>
+												</div>
+												<div class="cont_thumb divtitle">
+													<strong class="tit_g"> <a href="#" class="link_txt">${reList.title } </a>
+														<p class="ppa">${reList.contents }</p>
+													</strong>
+												</div>
+												<!-- <div id="backa" style="display: none;">게시물이 존재하지 않습니다.</div> -->
 											</div>
-											<div class="cont_thumb divtitle">
-												<strong class="tit_g"> <a href="#" class="link_txt"> <%=title%>
-												</a>
-													<p class="ppa"><%=contents%></p>
-												</strong>
+										</li>
+									</ul>
+									<hr>
+								</c:when>
+								<c:otherwise>
+									<!-- 									<hr>
+									<ul class="list_newsissue">
+										<li class="libi">
+											<div class="item_issue" data-tiara-layer="headline1">
+												<div class="imgali">
+													<strong style="display: none;" class="tit_g"> <a href="#" class="link_txt"> 게시물이 존재하지 않습니다. </a>
+													</strong>
+												</div>
+												<div class="cont_thumb divtitle"></div>
 											</div>
-										</div>
-									</li>
-								</ul>
-								<hr>
-							</c:when>
-							<c:otherwise>
-								<hr>
-								<ul class="list_newsissue">
-									<li class="libi">
-										<div class="item_issue" data-tiara-layer="headline1">
-											<div class="imgali">
-												<a href="#" class="wrap_thumb"> <img src="" class="thumb_g">
-												</a>
-											</div>
-											<div class="cont_thumb divtitle">
-												<strong class="tit_g"> <a href="#" class="link_txt"> 게시물이 존재하지 않습니다. </a>
-												</strong>
-											</div>
-										</div>
-									</li>
-								</ul>
-								<hr>
-							</c:otherwise>
-						</c:choose>
-					</form>
-					<%
-					}
-					i++;
-					} //second while end
-					%>
+										</li>
+									</ul>
+									<hr> -->
+								</c:otherwise>
+							</c:choose>
+						</c:forEach>
+					</div>
 				</div>
 			</div>
 		</section>
 	</form>
 	<!-- title; writer; contents; reviewDate; hits; -->
 	<c:import url="../../template/footerHTML.jsp"></c:import>
+	<script src="/resources/kjk/js/mypageReview.js"></script>
 </body>
 
 </html>

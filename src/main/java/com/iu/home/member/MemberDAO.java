@@ -7,6 +7,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.iu.home.reviews.ReviewsDTO;
+
 @Repository("mydao")
 public class MemberDAO
 {
@@ -47,5 +49,10 @@ public class MemberDAO
 	public int checkId(MemberDTO memberDTO) throws Exception
 	{
 		return sqlSession.selectOne(NAMESPACE + "checkId", memberDTO);
+	}
+
+	public List<ReviewsDTO> reviewsList(ReviewsDTO reviewsDTO) throws Exception
+	{
+		return sqlSession.selectList(NAMESPACE + "reviewsList", reviewsDTO);
 	}
 }

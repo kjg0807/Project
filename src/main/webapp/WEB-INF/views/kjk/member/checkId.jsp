@@ -45,6 +45,24 @@ i++;
 %>
 ]
 <body>
+		<!-- id -->
+	<!-- <input type="text" name="userID" value="${member.userID}" id="DTOID"> -->
+	<!-- onclick="window.close();" -->
+	<!-- <form action="../member/checkId" method="post" id="frm" name="myform">
+		<br>
+		<h1 style="text-align: center;">회원 가입</h1>
+		<section class="col-lg-6 container-fluid mt-4">
+			<div class="row">
+				<div class="mb-3">
+					<label class="form-label">아이디</label>
+					<input type="text" class="form-control" name="userID" id="id"
+					>
+					<button type="submit" id="idchecked" class="btn btn-outline-dark">ID 중복 체크</button>
+					<span id="idChk"></span>
+				</div>
+			</div>
+		</section>
+	</form> -->
 	<form action="../member/join" method="post" id="frm" name="myform">
 		<br>
 		<h1 style="text-align: center;">회원 가입</h1>

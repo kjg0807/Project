@@ -63,4 +63,9 @@ public class MemberService
 	{
 		return reviewsDAO.getReviewsList(reviewsPager);
 	}
+
+	public List<ReviewsDTO> reviewsList(ReviewsDTO reviewsDTO) throws Exception
+	{
+		return memberDAO.reviewsList(reviewsDTO);
+	}
 }

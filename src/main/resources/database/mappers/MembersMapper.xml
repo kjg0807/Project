@@ -24,6 +24,8 @@
 	<resultMap type="MemberDTO" id="getLoginResult">
 		<id column="userID" property="userID" />
 		<result column="USERName" property="userName" />
+		<result column="GENDER" property="gender" />
+		<result column="AGE" property="age" />
 		<collection property="classDTOs" javaType="List"
 			ofType="ClassDTO">
 			<id column="classnum" property="classNum" />
@@ -120,7 +122,29 @@
 	<select id="checkId" parameterType="MemberDTO" resultType="int">
 		select
 		count(*) from
-		promembers where userid = #{userID}
+		promembers where userID = #{userID}
 	</select>
+
+	<select id="reviewsList" parameterType="ReviewsDTO"
+		resultMap="review">
+		SELECT m.*, r.userID, r.title, r.contents
+		FROM
+		PROMEMBERS M
+		INNER JOIN
+		REVIEWS R
+		ON M.userID = R.userID
+		WHERE M.userID = #{userID}
+	</select>
+
+	<resultMap type="ReviewsDTO" id="review">
+		<id column="reviewNum" property="reviewNum" />
+		<result column="userID" property="userID" />
+		<result column="title" property="title" />
+		<result column="contents" property="contents" />
+		<collection property="memberDTOs" javaType="List"
+			ofType="MemberDTO">
+			<id column="userID" property="userID" />
+		</collection>
+	</resultMap>
 
 </mapper>

@@ -13,18 +13,6 @@
 <link rel="stylesheet" type="text/css" href="../../../resources/kdy/css/styles.css">
 
 </head>
-<%
-Class.forName("oracle.jdbc.driver.OracleDriver");
-String url = "jdbc:oracle:thin:@localhost:1521:xe";
-String user = "hr";
-String password = "hr";
-Connection conn = DriverManager.getConnection(url, user, password); //db에 접근해서 sql실행하고
-
-Statement stmt = conn.createStatement();
-String sql = "select * from reviews";
-stmt.executeQuery(sql);
-ResultSet rs = stmt.executeQuery(sql);
-%>
 <body>
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
 		<div class="container px-4 px-lg-5">
@@ -72,9 +60,6 @@ ResultSet rs = stmt.executeQuery(sql);
 							<%
 							try
 							{
-								while (rs.next())
-								{
-									String reviewID = rs.getString("userID");
 							%>
 							<c:choose>
 								<c:when test="${member.classDTOs.get(0).className eq 'admin'}">
@@ -82,17 +67,15 @@ ResultSet rs = stmt.executeQuery(sql);
 										페이지</button>
 								</c:when>
 								<c:otherwise>
-									<form action="/kjk/member/mypage" method="post">
-										<input type="hidden" value="<%=reviewID%>" name="reID">
-										<input type="hidden" value="${dto.userID}" name="dtoID">
-
+									<%-- <form action="/kjk/member/mypage" method="post">
+										<input type="hidden" value="${reList.userID }" name="reID">
+										<input type="hidden" value="${dto.userID}" name="dtoID"> --%>
 										<button class="btn btn-outline-dark" onclick="location.href='/kjk/member/mypage';" type="submit" style="width: auto; margin-left: 3px">내
 											정보</button>
-									</form>
+									<!-- </form> -->
 								</c:otherwise>
 							</c:choose>
 							<%
-							}
 							} catch (Exception e)
 							{
 

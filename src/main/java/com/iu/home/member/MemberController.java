@@ -37,7 +37,7 @@ public class MemberController
 	}
 
 	@PostMapping(value = "login")
-	public ModelAndView login1(HttpSession session, HttpServletRequest request, MemberDTO memberDTO, Model model) throws Exception
+	public ModelAndView login1(HttpSession session, MemberDTO memberDTO) throws Exception
 	{
 		ModelAndView mv = new ModelAndView();
 		System.out.println("Login POST Test");
@@ -103,7 +103,7 @@ public class MemberController
 	}
 
 	@GetMapping(value = "mypage")
-	public ModelAndView mypage(HttpSession session, ReviewsPager reviewsPager, ReviewsDTO reviewsDTO) throws Exception
+	public ModelAndView mypage(HttpSession session, ReviewsDTO reviewsDTO) throws Exception
 	{
 		ModelAndView mv = new ModelAndView();
 		System.out.println("mypage Get Test");
@@ -111,40 +111,25 @@ public class MemberController
 		MemberDTO memberDTO = (MemberDTO) session.getAttribute("member");
 		memberDTO = memberService.getMyPage(memberDTO);
 
+		reviewsDTO.setUserID(memberDTO.getUserID());
+		List<ReviewsDTO> ar = memberService.reviewsList(reviewsDTO);
+		// reviewsDTO = memberService.reviewsList(reviewsDTO);
+
+		for (ReviewsDTO reviewsDTO2 : ar)
+		{
+			System.out.println("re ID: " + reviewsDTO2.getUserID());
+			System.out.println("re title: " + reviewsDTO2.getTitle());
+			System.out.println("re contents: " + reviewsDTO2.getContents());
+		}
+
+		mv.addObject("reList", ar);
+
 		mv.addObject("dto", memberDTO);
 
 		mv.setViewName("kjk/member/mypage");
 
 		return mv;
 	}
-
-//	@PostMapping(value = "mypage")
-//	public ModelAndView mypage(HttpSession session) throws Exception
-//	{
-//		ModelAndView mv = new ModelAndView();
-//		System.out.println("header POST Test");
-//
-//		MemberDTO memberDTO = (MemberDTO) session.getAttribute("member");
-//		memberDTO = memberService.getMyPage(memberDTO);
-//
-//		ReviewsService reviewsService = new ReviewsService();
-//		
-//		ReviewsDTO reviewsDTO = (ReviewsDTO) session.getAttribute("reviews");
-//		reviewsDTO = reviewsService.getReviewsDetail(reviewsDTO);
-//		System.out.println(reviewsDTO.getUserID());
-//
-//		mv.addObject("dto", memberDTO);
-//		
-//		if (reviewsDTO.getUserID().equals(memberDTO.getUserID()))
-//		{
-//			mv.setViewName("redirect:./mypage?userID=" + memberDTO.getUserID());
-//			return mv;
-//		} else
-//		{
-//			mv.setViewName("redirect:./mypage?reID=" + reviewsDTO.getUserID() + "dtoID=" + memberDTO.getUserID());
-//			return mv;
-//		}
-//	}
 
 	@GetMapping(value = "adpage")
 	public ModelAndView adMypage(MemberDTO memberDTO, HttpSession session) throws Exception
@@ -217,11 +202,12 @@ public class MemberController
 	}
 
 	@PostMapping(value = "checkId")
-	public ModelAndView checkId(@RequestBody MemberDTO memberDTO) throws Exception
+	public ModelAndView checkId(MemberDTO memberDTO) throws Exception
 	{
 		ModelAndView mv = new ModelAndView();
 		System.out.println("/user/checkId : post");
-		System.out.println("param : " + memberDTO);
+		System.out.println("param : " + memberDTO.getUserID());
+		System.out.println(memberDTO);
 
 		int checkNum = memberService.checkId(memberDTO);
 

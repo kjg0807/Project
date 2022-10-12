@@ -16,6 +16,9 @@ id.addEventListener("blur", function () {
     }
     else {
         document.getElementById("idText").style.display = 'none';
+        var favoritemovie = d;
+        sessionStorage.setItem("favoriteMovie", favoritemovie);
+        window.open("/kjk/member/checkId", "_blank", "width=600,height=600");
         idcheck = true;
     }
     //아이디 중복 확인
@@ -289,7 +292,7 @@ const frm = document.getElementById("frm");
 
 btn.addEventListener("click", function () {
     console.log(idcheck && pwdcheck && namecheck && emailcheck && phonecheck && agecheck && brithcheck && gendercheck);
-    if(id.value == pwd.value){
+    if (id.value == pwd.value) {
         alert("아이디와 비밀번호가 동일합니다.");
         return;
     }
