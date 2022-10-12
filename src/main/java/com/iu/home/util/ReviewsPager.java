@@ -64,6 +64,7 @@ public class ReviewsPager {
 
 
 	public ReviewsPager() {
+		//현재 보이는 jsp 줄 갯수
 		this.perpage = 5L;
 		this.perBlock = 5L;
 	}
