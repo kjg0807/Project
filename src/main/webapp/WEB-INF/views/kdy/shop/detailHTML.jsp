@@ -16,6 +16,32 @@
      <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
      <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
      <!-- <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c971ac6c7712b0e728a1ba2df98cf0fd"></script> -->
+
+<style>
+  #th{
+    cursor: default;
+  }
+
+  #tb1{
+    cursor:default;
+  }
+
+ 
+
+  #dcontents{
+    white-space: nowrap;
+	  overflow: hidden;
+	  text-overflow: ellipsis !important;
+	  max-width: 200px;
+  }
+
+  #dtitle{
+    white-space: nowrap;
+	  overflow: hidden;
+	  text-overflow: ellipsis !important;
+	  max-width: 200px;
+  }
+</style>
 </head>
 <body>
 <c:import url="../../template/headerHTML.jsp"></c:import>
@@ -251,115 +277,125 @@
      <br>
      <br>
      <br>
-     <form action="../../reviews/list" class="row row-cols-lg-auto g-3 align-items-center">
-      <div class="col-12">
-         <label class="visually-hidden" for="kind">Kind</label>
-         <select name="kind" class="form-select" id="kind">
-           <option selected>선택하세요</option>
-           <option class="kinds" value="userID">닉네임</option>
-           <option class="kinds" value="title">제목</option>
-           <option class="kinds" value="contents">내용</option>
-         </select>
-       </div>
-       
-        <div class="col-12">
-             <label class="visually-hidden" for="search">검색어</label>
-          <div class="input-group">
-               <input type="text" name="search" value="${param.search}" class="form-control" id="search">
-         </div>
-       </div> 
-      
-    
-     <div class="col-12">
-       <button type="submit" class="btn btn-primary">
-       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
-         <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
-         </svg>
-       검색
-     </button>
-     </div>
-   
-   </form>
-
-
-     <table border="1" class="table table-striped table-hover col-lg-12">
-      <thead class="table-white">
-        <tr>
-          <th>리뷰글번호</th>
-          <th>닉네임</th>
-          <th>제목</th>
-          <th>내용</th>
-          <th>작성날짜</th>
-          <th>조회수</th>
-          <th>자세히 보기</th>
-        </tr>
-      </thead>
-      
-      <tbody>
-        <c:forEach items="${requestScope.list}" var="dto">
-          <tr id="tdiv">
-            <td>${pageScope.dto.reviewNum}</td>
-            <td>${pageScope.dto.userID}</td>
-            <td>${pageScope.dto.title}</td>
-            <td>${pageScope.dto.contents}</td>
-            <td>${pageScope.dto.reviewDate}</td>
-            <td>${pageScope.dto.hits}</td>
-            <c:choose>
-
-                     <c:when test="${member == null}">
-                        <td>
-                           <button style="width: auto;" class="btn" id="detailList">
-                              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle" viewBox="0 0 16 16">
-                                 <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-                                 <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
-                              </svg>
-                              자세히
-                           </button>
-                        </td>
-                     </c:when>
-
-                     <c:otherwise>
-                        <td>
-                           <button class="btn btn-outline-dark" onclick="location.href='../../reviews/detail?reviewNum=${pageScope.dto.reviewNum}';" type="submit" style="width: auto;">
-                              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle" viewBox="0 0 16 16">
-                                 <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-                                 <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
-                              </svg>
-                              자세히
-                           </button>
-                        </td>
-                     </c:otherwise>
-                  </c:choose>
-          </tr>
-        </c:forEach>
-      </tbody>
-    </table>
-    <div style="display: flex; margin: 5 5px;  justify-content: center;">
-      <nav aria-label="Page navigation example">
-        <ul class="pagination">
-          <!--이전 버튼-->
-          <c:if test="${reviewsPager.pre}">
-            <li class="page-item">
-
-              <a class="page-link" href="../../shop/detailHTML?page=${reviewsPager.startNum-1}&kind=${reviewsPager.kind}&search=${reviewsPager.search}" aria-label="Previous">
-                <span aria-hidden="true">&laquo;</span>
-              </a>
-            </li>
-          </c:if>
+     <!-- <form action="../../reviews/list" class="row row-cols-lg-auto g-3 align-items-center"> -->
+      <section class="container-fluid col-lg-12 mt-5">
+        <form action="../shop/detailHTML" class="row row-cols-lg-auto g-3 align-items-center">
+        <!-- <form action="../../reviews/list" class="row row-cols-lg-auto g-3 align-items-center"> -->
+          <div class="col-12">
+            <input type="hidden" name="shopNum" value="${param.shopNum}">
+            <label class="visually-hidden" for="kind">Kind</label>
+            <select name="kind" class="form-select" id="kind">
+              <option selected>선택하세요</option>
+              <option class="kinds" value="userID">닉네임</option>
+              <option class="kinds" value="title">제목</option>
+              <option class="kinds" value="contents">내용</option>
+            </select>
+          </div>
           
-          <c:forEach begin="${reviewsPager.startNum}" end="${reviewsPager.lastNum}" var="i">
+            <div class="col-12">
+                <label class="visually-hidden" for="search">검색어를 입력하세요</label>
+              <div class="input-group">
+                  <input type="text" name="search" value="${param.search}" class="form-control" id="search">
+            </div>
+          </div> 
+          
+        
+        <div class="col-12">
+          <button type="submit" class="btn btn-primary">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+            </svg>
+              검색
+        </button>
+        </div>
+      
+      </form>
 
-                <li class="page-item"><a class="page-link" href="../../shop/detailHTML?page=${i}&kind=${reviewsPager.kind}&search=${reviewsPager.search}">${i}</a></li>
-          </c:forEach>
-        <li class="page-item ${reviewsPager.next?'':'disabled'}">
-            <a class="page-link" href="../../shop/detailHTML?page=${reviewsPager.lastNum+1}&kind=${reviewsPager.kind}&search=${reviewsPager.search}" aria-label="Next">
 
-              <span aria-hidden="true">&raquo;</span>
-            </a>
-          </li>
-        </ul>
-      </nav>
-    </div>
+        <table border="1" class="table table-striped table-hover col-lg-8">
+          <thead class="table-white" id="th">
+            <tr>
+              <th>리뷰글번호</th>
+              <th>닉네임</th>
+              <th>제목</th>
+              <!-- <th>내용</th> -->
+              <th>작성날짜</th>
+              <th>조회수</th>
+              <th>자세히 보기</th>
+            </tr>
+          </thead>
+          
+          <tbody id="tb1">
+            <c:forEach items="${requestScope.list}" var="dto">
+              <tr id="tdiv">
+                <td>${pageScope.dto.reviewNum}</td>
+                <td>${pageScope.dto.userID}</td>
+                <td id="dtitle">${pageScope.dto.title}</td>
+                <!-- <td id="dcontents">${pageScope.dto.contents}</td> -->
+                <td>${pageScope.dto.reviewDate}</td>
+                <td>${pageScope.dto.hits}</td>
+                <c:choose>
+
+                        <c:when test="${member == null}">
+                            <td>
+                              <button style="width: auto;" class="btn" id="detailList">
+                                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle" viewBox="0 0 16 16">
+                                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                                    <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+                                  </svg>
+                                  자세히
+                              </button>
+                            </td>
+                        </c:when>
+
+                        <c:otherwise>
+                            <td>
+                              <button class="btn btn-outline-dark" onclick="location.href='../../reviews/detail?reviewNum=${pageScope.dto.reviewNum}';" type="submit" style="width: auto;">
+                                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle" viewBox="0 0 16 16">
+                                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                                    <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+                                  </svg>
+                                  자세히
+                              </button>
+                            </td>
+                        </c:otherwise>
+                      </c:choose>
+              </tr>
+            </c:forEach>
+          </tbody>
+        </table>
+        <div style="display: flex; margin: 5 5px;  justify-content: center;">
+          <input name="shopNum" type="hidden" value="${detail.shopNum}">
+          <nav aria-label="Page navigation example">
+            <ul class="pagination">
+              <!--이전 버튼-->
+              <c:if test="${reviewsPager.pre}">
+                <li class="page-item">
+
+                  <a class="page-link" name="shopNum" href="../../shop/detailHTML?shopNum=${detail.shopNum}&page=${reviewsPager.startNum-1}&kind=${reviewsPager.kind}&search=${reviewsPager.search}" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                  </a>
+                </li>
+              </c:if>
+              
+              <c:forEach begin="${reviewsPager.startNum}" end="${reviewsPager.lastNum}" var="i">
+
+                    <li class="page-item"><a class="page-link" name="shopNum" href="../../shop/detailHTML?shopNum=${detail.shopNum}&page=${i}&kind=${reviewsPager.kind}&search=${reviewsPager.search}">${i}</a></li>
+              </c:forEach>
+
+              <!--다음 버튼-->
+            <li class="page-item ${reviewsPager.next?'':'disabled'}">
+                <a class="page-link" name="shopNum" href="../../shop/detailHTML?shopNum=${detail.shopNum}&page=${reviewsPager.lastNum+1}&kind=${reviewsPager.kind}&search=${reviewsPager.search}" aria-label="Next">
+
+                  <span aria-hidden="true">&raquo;</span>
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+    </section>
+
+
      <button onclick="window.location.href='#top'" style="color: black; box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;">위로가기</button>
 
 

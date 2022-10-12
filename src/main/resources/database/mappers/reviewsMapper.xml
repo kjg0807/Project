@@ -17,17 +17,39 @@
 	
 	<select id="getReviewsList" resultType="ReviewsDTO" parameterType="ReviewsPager">
 			SELECT * FROM
-			(
-				SELECT ROWNUM RN, N.* FROM
-					(
-						SELECT * FROM REVIEWS 
+			
+				(
+					SELECT ROWNUM RN, N.* FROM
+						(
+							SELECT * FROM REVIEWS 
+							
 							<include refid="search"></include>
-							ORDER BY REVIEWNUM DESC
-						)N
-				)
+							AND SHOPNUM = #{shopNum}
+							
+							ORDER BY REVIEWNUM DESC)N)
+			
 			WHERE RN BETWEEN #{startRow} AND #{lastRow}
 	</select>
 	
+	<!-- <select id="getReviewsList" parameterType="ReviewsPager" resultType="ReviewsDTO">
+			
+			SELECT * FROM
+			(
+				SELECT ROWNUM RN, N.* FROM
+					(
+						SELECT R.*,S.* FROM 
+						REVIEWS R
+						LEFT JOIN 
+						SHOP S
+						ON R.SHOPNUM = S.SHOPNUM 
+						
+						<include refid="search"></include>
+						
+						ORDER BY REVIEWNUM DESC)N)
+						
+			WHERE RN BETWEEN #{startRow} AND #{lastRow}
+			
+	</select> -->
 <!-- 	<select id="getReviewsShopDetailList" resultType="ReviewsDTO" parameterType="ReviewsDetailPager">
 		SELECT * FROM
 			(

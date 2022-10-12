@@ -12,14 +12,21 @@
 		 crossorigin="anonymous">
 <c:import url="../template/headerHTML.jsp"></c:import>
 <style>
-	#tdiv{
-		cursor: pointer;
-	}
+#tdiv{
+	cursor: pointer;
+}
+
+	#h1{
+	margin: 50px 25px;
+	text-align: center;
+}
+
+
 </style>
 </head>
 <body>
 <section class="container-fluid col-lg-8 mt-5">
-	<h1>리뷰 목록</h1>
+	<h1 id="h1">리뷰</h1>
 	
 <form action="./list" class="row row-cols-lg-auto g-3 align-items-center">
 	 <div class="col-12">
@@ -57,7 +64,7 @@
 				<th>리뷰글번호</th>
 				<th>닉네임</th>
 				<th>제목</th>
-				<th>내용</th>
+				<!-- <th>내용</th> -->
 				<th>작성날짜</th>
 				<th>조회수</th>
 				<th>자세히 보기</th>
@@ -73,7 +80,7 @@
 							
 					<!-- <td><a href="./detail?reviewNum=${pageScope.dto.reviewNum}">${pageScope.dto.title}</a></td> -->
 					<td>${pageScope.dto.title}</td>
-					<td>${pageScope.dto.contents}</td>
+					<!-- <td>${pageScope.dto.contents}</td> -->
 					<td>${pageScope.dto.reviewDate}</td>
 					<td>${pageScope.dto.hits}</td>
 					<input type="hidden" name="userID" id="userID" value="${param.member}">

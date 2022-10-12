@@ -18,13 +18,26 @@
 	text-overflow: ellipsis;
 	max-width: 200px;
 }
+
+#h1{
+	margin: 50px 25px;
+	text-align: center;
+}
+
+#th{
+	cursor: default;
+}
+
+#tb{
+	cursor: default;
+}
 </style>
 
 <body>
 
 	<section class="container-fluid col-lg-10 mt-5">
 
-		<h1>공지사항 리스트</h1>
+		<h1 id="h1">공지사항</h1>
 		<form action="../qna/list" class="row row-cols-lg-auto g-3 align-items-center">
 
 			<div class="col-12">
@@ -58,7 +71,7 @@
 
 		</form>
 		<div class="col-12">
-			<table border="1" class="table table-hover">
+			<table border="1" class="table table-hover" id="th">
 				<thead class="table-dark">
 					<tr>
 						<th>번호</th>
@@ -70,7 +83,7 @@
 						<th>자세히 보기</th>
 					</tr>
 				</thead>
-				<tbody>
+				<tbody id="tb">
 					<c:forEach items="${requestScope.list}" var="dto">
 
 						<tr>

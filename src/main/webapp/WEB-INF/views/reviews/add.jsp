@@ -17,7 +17,7 @@
 </head>
 <body>
 <c:import url="../template/headerHTML.jsp"></c:import>
-<section class="container-fluid col-lg-6 mt-5">
+<section class="container-fluid col-lg-10 mt-5">
 
 	<h1>리뷰 글쓰기 페이지</h1>
 	
@@ -41,7 +41,7 @@
 		
 		<div class="mb-3">
 		  <label for="formGroupExampleInput2" class="form-label">글내용</label>
-		  <textarea class="form-control" name="contents" id="contents" rows="5" placeholder="내용: ${dto.contents}"></textarea>
+		  <textarea class="form-control" name="contents" id="contents" rows="5" placeholder="내용을 입력하세요."></textarea>
 		</div>
 		
 		<br>
@@ -114,7 +114,21 @@
 <!-- 부트스트랩 -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
 <script type="text/javascript">
-	$("#contents").summernote();
+$('#contents').summernote({
+		height : 350,
+		toolbar: [
+		    ['style', ['style']],
+		    ['font', ['bold', 'italic', 'underline', 'clear']],
+		    ['fontname', ['fontname']],
+		    ['color', ['color']],
+		    ['para', ['ul', 'ol', 'paragraph']],
+		    ['height', ['height']],
+		    ['table', ['table']],
+		    ['insert', ['link', 'picture', 'hr']],
+		    ['view', ['fullscreen', 'codeview']],
+		    ['help', ['help']]
+		  ]
+	});
 </script>
 <script src="../../../resources/hjs/js/reviewsFile.js"></script>			 
 </body>
