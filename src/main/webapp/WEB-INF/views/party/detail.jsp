@@ -13,7 +13,6 @@
 	<c:import url="../template/headerHTML.jsp"></c:import>
 	<section class="container-fluid col-lg-6">
 		<div class="row mt-5 bg-light">
-			<h1>Party Detail Page</h1>
 		</div>	
 		<div class="row border border-danger mt-5 bg-light" style="height: 75px">
 			<div class="col-lg-6 border border-danger">
@@ -34,15 +33,6 @@
 				${partyListDTO.partyContents}
 			</div>
 		</div>
-		<div class="col-lg-2 border border-danger">
-			<div class="col">
-				<c:forEach items="${partyListDTO.partyFileDTOs}" var="fileDTO">
-					<p>
-					<a href="../resources/upload/Party/${fileDTO.fileName}">${fileDTO.oriName}</a>
-					</p>
-				</c:forEach>
-			</div>
-		</div>
 		<c:if test="${not empty member}">
 			<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#joinModal">
 				파티가입
@@ -53,7 +43,7 @@
 			<div class="modal-dialog">
 				<div class="modal-content">
 					<input type="hidden" id="joinNum" value="${partyListDTO.partyNum}">
-					<input type="hidden" id="joinShopNum" value="${partyLisetDTO.shopNum}">
+					<input type="hidden" id="joinShopNum" value="${partyListDTO.shopNum}">
 					<div class="modal-header">
 						<h5 class="modal-title" id="exampleModalLabel">파티 신청</h5>
 						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -110,6 +100,11 @@
 			파티목록
 		</button>
 
+		<button type="button" class="btn btn-primary" onclick="location.href='../chat/chat' ">
+			채팅입장
+		</button>
+
+
 		<div class="modal fade" id="partyModal" tabindex="-1" aria-labelledby="joinModalLabel" aria-hidden="true">
 			<div class="modal-dialog">
 				<div class="modal-content">
@@ -129,12 +124,13 @@
 					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
 					<c:if test="${name1 eq name2 }">
 						<button type="button" class="btn btn-danger" id="rejectbtn">거절</button>
-						<button type="button" class="btn btn-primary" id="acceptbtn">신청</button>					
+						<button type="button" class="btn btn-primary" id="acceptbtn">수락</button>					
 					</c:if>
 				</div>
 				</div> 
 			</div>
 		</div>
+
 
 		
 	</section>

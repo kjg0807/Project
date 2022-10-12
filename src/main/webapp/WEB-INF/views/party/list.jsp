@@ -25,7 +25,7 @@
 		  </div>
 		  <input type="hidden" class="shopNum" value="${pager.shopNum}" name="shopNum">
 		  <div class="col-12">
-		    <label class="visually-hidden" for="search">검색어 ${pager.shopNum}</label>
+		    <label class="visually-hidden" for="search">검색어</label>
 		    <div class="input-group">
 		      <input type="text" name="search" value="${pager.search}" class="form-control" id="search" >
 		    </div>
@@ -59,16 +59,17 @@
 				</td>
 				<td>${dto.userName}</td>
 				<td>${dto.partyRegdate}</td>
-				<td><fmt:formatDate value="${dto.partyTimeout}" pattern="yy-mm-dd HH:mm:ss"/></td>	
+				<td><fmt:formatDate value="${dto.partyTimeout}" pattern="yy-mm-dd / HH:mm:ss"/></td>	
 			</tr>
 		</c:forEach>
 	  </tbody>
 	</table>
 </div>
-
-<div class="mb-3">
-		<a href="./add?shopNum=${pager.shopNum}" class="btn btn-primary">글쓰기</a>
-	</div>
+	<c:if test="${pager.shopNum != null	 }">
+		<div class="mb-3">
+			<a href="./add?shopNum=${pager.shopNum}" class="btn btn-primary">글쓰기</a>
+		</div>
+	</c:if>
 	
 	<nav aria-label="Page navigation example">
 	  <ul class="pagination">

@@ -227,9 +227,7 @@
 
                 </div>
                 
-            </div>
-		<a href="./chat/chat">chat</a>
-		<a href="./party/list">list</a>
+            </div>>
         </section>
 
        
