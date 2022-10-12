@@ -251,8 +251,11 @@
      <br>
      <br>
      <br>
-     <form action="../../reviews/list" class="row row-cols-lg-auto g-3 align-items-center">
+     <!-- <form action="../../reviews/list" class="row row-cols-lg-auto g-3 align-items-center"> -->
+    <form action="../shop/detailHTML" class="row row-cols-lg-auto g-3 align-items-center">
+    <!-- <form action="../../reviews/list" class="row row-cols-lg-auto g-3 align-items-center"> -->
       <div class="col-12">
+        <input type="hidden" name="shopNum" value="${param.shopNum}">
          <label class="visually-hidden" for="kind">Kind</label>
          <select name="kind" class="form-select" id="kind">
            <option selected>선택하세요</option>
@@ -263,7 +266,7 @@
        </div>
        
         <div class="col-12">
-             <label class="visually-hidden" for="search">검색어</label>
+             <label class="visually-hidden" for="search">검색어를 입력하세요</label>
           <div class="input-group">
                <input type="text" name="search" value="${param.search}" class="form-control" id="search">
          </div>
@@ -275,7 +278,7 @@
        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
          <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
          </svg>
-       검색
+          검색
      </button>
      </div>
    
@@ -341,7 +344,7 @@
           <c:if test="${reviewsPager.pre}">
             <li class="page-item">
 
-              <a class="page-link" href="../../shop/detailHTML?page=${reviewsPager.startNum-1}&kind=${reviewsPager.kind}&search=${reviewsPager.search}" aria-label="Previous">
+              <a class="page-link" name="shopNum" href="../../shop/detailHTML?page=${reviewsPager.startNum-1}&kind=${reviewsPager.kind}&search=${reviewsPager.search}" aria-label="Previous">
                 <span aria-hidden="true">&laquo;</span>
               </a>
             </li>
@@ -349,10 +352,12 @@
           
           <c:forEach begin="${reviewsPager.startNum}" end="${reviewsPager.lastNum}" var="i">
 
-                <li class="page-item"><a class="page-link" href="../../shop/detailHTML?page=${i}&kind=${reviewsPager.kind}&search=${reviewsPager.search}">${i}</a></li>
+                <li class="page-item"><a class="page-link" name="shopNum" href="../../shop/detailHTML?page=${i}&kind=${reviewsPager.kind}&search=${reviewsPager.search}">${i}</a></li>
           </c:forEach>
+
+          <!--다음 버튼-->
         <li class="page-item ${reviewsPager.next?'':'disabled'}">
-            <a class="page-link" href="../../shop/detailHTML?page=${reviewsPager.lastNum+1}&kind=${reviewsPager.kind}&search=${reviewsPager.search}" aria-label="Next">
+            <a class="page-link" name="shopNum" href="../../shop/detailHTML?page=${reviewsPager.lastNum+1}&kind=${reviewsPager.kind}&search=${reviewsPager.search}" aria-label="Next">
 
               <span aria-hidden="true">&raquo;</span>
             </a>
