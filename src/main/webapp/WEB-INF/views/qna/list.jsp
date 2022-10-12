@@ -28,12 +28,26 @@ a:hover {
 	text-overflow: ellipsis;
 	max-width: 200px;
 }
+#h1{
+	margin: 50px 25px;
+	text-align: center;
+}
+
+#tb{
+	cursor: default;
+}
+
+#th{
+	cursor: default;
+}
 </style>
 
 <body>
 
 	<section class="container-fluid col-lg-10 mt-5">
-		<h1>Q&A List Page</h1>
+		<div mb-3>
+			<h1 id="h1">Q&A</h1>
+		</div>
 		<form action="../qna/list" class="row row-cols-lg-auto g-3 align-items-center">
 
 			<div class="col-12">
@@ -67,7 +81,7 @@ a:hover {
 		</form>
 
 		<table border="1" class="table table-striped table-hover">
-			<thead class="table-dark">
+			<thead class="table-dark" id="th">
 				<tr>
 					<th>번호</th>
 					<th>댓글 표시</th>
@@ -80,7 +94,7 @@ a:hover {
 				</tr>
 			</thead>
 
-			<tbody>
+			<tbody id="tb">
 				<c:forEach items="${requestScope.list}" var="dto">
 					<tr>
 						<td>${pageScope.dto.num}</td>

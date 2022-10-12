@@ -20,8 +20,10 @@
 <body>
 
 	<section class="container-fluid col-lg-6 mt-5">
-		<h1>Q&A 글쓰기 페이지</h1>
-
+		<p>
+			<h1>Q&A 글쓰기 페이지</h1>
+		</p>
+		
 		<form action="./add" method="post">
 			<div class="mb-3">
 				<label for="formGroupExampleInput2" class="form-label">작성자</label>

@@ -27,7 +27,7 @@
 					>Shop</a>
 					<li class="nav-item"><a class="nav-link" href="/notice/list">공지사항</a></li>
 					<li class="nav-item"><a class="nav-link" href="/qna/list">Q&A</a></li>
-					<li class="nav-item"><a class="nav-link" href="/reviews/list">리뷰</a></li>
+					<!-- <li class="nav-item"><a class="nav-link" href="./../kdy/shop/detailHTML">리뷰</a></li> -->
 				</ul>
 				<!-- login -->
 				<!-- 로그인 한 등급이 admin이면 실행 -->
