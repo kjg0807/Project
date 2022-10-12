@@ -300,7 +300,10 @@ reviewsCommentList.addEventListener("click", function(event){
     //--------------------------update----------------------
 
     if(event.target.className == "update"){
-        let check = window.confirm("수정할래??")
+        let check = window.confirm("수정을 하시겠습니까??")
+        if(check != true ){
+            return false;
+        }
         
         let writer = event.target.previousSibling.previousSibling.previousSibling.innerHTML;
         let contents = event.target.previousSibling.previousSibling.innerHTML;

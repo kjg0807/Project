@@ -19,6 +19,18 @@
 		cursor: pointer;
 	}
 </style>
+<style>
+	.update{
+		cursor: pointer;
+		width: 60px;
+	}
+</style>
+<style>
+	.delete{
+		cursor: pointer;
+		width: 60px;
+	}
+</style>
 </head>
 <body>
 
