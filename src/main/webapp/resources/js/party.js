@@ -113,6 +113,7 @@ function getRequestList(pn){
             let ar = result;
 
             for(let i=0; i<ar.length; i++){
+                let body = document.createElement("tbody")
                 let tr = document.createElement("tr");
                 let td = document.createElement("td");
                 tdput = document.createElement("input");
@@ -186,7 +187,8 @@ function getRequestList(pn){
                 td.appendChild(tdtext);
                 tr.appendChild(td);
 
-                pm.append(tr);
+                body.appendChild(tr);
+                pm.append(body);
             }
             
        }
