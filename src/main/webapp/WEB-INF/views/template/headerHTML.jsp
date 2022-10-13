@@ -11,10 +11,11 @@
 
 </head>
 <body>
-	<nav class="navbar navbar-expand-lg navbar-light bg-light" style="box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px; ">
-		<div class="container px-4 px-lg-5" >
-			<img src="../../../resources/kdy/images/realLodo.jpg" style="width: 89px; height: 50px; margin: 0px 90px 0px 0px;" href="../../" alt="">
-			<a class="navbar-brand" href="../../">Home</a>
+	<nav class="navbar navbar-expand-lg navbar-light bg-light" style="box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;">
+		<div class="container px-4 px-lg-5">
+			<img src="../../../resources/kdy/images/realLodo.jpg" style="width: 89px; height: 50px; margin: 0px 90px 0px 0px;" href="../../" alt=""> <a
+				class="navbar-brand" href="../../"
+			>Home</a>
 			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
 				aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
 			>
@@ -57,10 +58,6 @@
 							try
 							{
 							%>
-							<%-- <c:if test="${member.classDTOs.get(0).className eq 'admin'}">
-								<button class="btn btn-outline-dark" onclick="location.href='/kjk/member/adpage';" type="submit" style="width: auto; margin-left: 3px">관리자
-									페이지</button>
-							</c:if> --%>
 							<c:choose>
 								<c:when test="${member.classDTOs.get(0).className eq 'admin'}">
 									<button class="btn btn-outline-dark" onclick="location.href='/kjk/member/adpage';" type="submit" style="width: auto; margin-left: 3px">관리자
@@ -77,8 +74,6 @@
 
 							}
 							%>
-							<!-- <button class="btn btn-outline-dark" onclick="location.href='/kjk/member/mypage';" type="submit" style="width: auto; margin-left: 3px">내
-								정보</button> -->
 							<button class="btn btn-outline-dark" onclick="location.href='/kjk/member/logout';" type="submit" style="width: auto; margin-left: 3px">
 								로그아웃</button>
 						</c:when>

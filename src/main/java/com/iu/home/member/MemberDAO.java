@@ -7,6 +7,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.iu.home.reviews.ReviewsDTO;
+
 @Repository("mydao")
 public class MemberDAO
 {
@@ -44,13 +46,28 @@ public class MemberDAO
 		return sqlSession.delete(NAMESPACE + "setDelete", memberDTO);
 	}
 
-	public int idCheck(MemberDTO memberDTO) throws Exception
+	public int getCheckId(String id) throws Exception
 	{
-		return sqlSession.selectOne(NAMESPACE + "idCheck", memberDTO);
+		return sqlSession.selectOne(NAMESPACE + "getCheckId", id);
 	}
 
-	public int checkId(String a) throws Exception
+	public List<ReviewsDTO> reviewsList(ReviewsDTO reviewsDTO) throws Exception
 	{
-		return sqlSession.selectOne(NAMESPACE + "checkId", a);
+		return sqlSession.selectList(NAMESPACE + "reviewsList", reviewsDTO);
+	}
+
+	public int checkName(String name) throws Exception
+	{
+		return sqlSession.selectOne(NAMESPACE + "checkName", name);
+	}
+
+	public int checkEmail(String email) throws Exception
+	{
+		return sqlSession.selectOne(NAMESPACE + "checkEmail", email);
+	}
+
+	public int checkPhone(String phone) throws Exception
+	{
+		return sqlSession.selectOne(NAMESPACE + "checkPhone", phone);
 	}
 }

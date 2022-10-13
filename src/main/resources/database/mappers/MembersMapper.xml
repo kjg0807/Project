@@ -119,14 +119,54 @@
 	<!-- <select id="idCheck" parameterType="MemberDTO" resultMap="check"> select 
 		userID from promembers where userID = #{userID} </select> <resultMap type="MemberDTO" 
 		id="check"> <id column="userid" property="userID" /> </resultMap> -->
-	<select id="checkId" parameterType="MemberDTO" resultMap="che">
+	<select id="getCheckId" parameterType="MemberDTO"
+		resultType="int">
 		select
 		count(*) from
-		promembers where userid = #{userID}
+		promembers where userID = #{userID}
 	</select>
 
-	<resultMap type="MemberDTO" id="che">
-		<id column="USERID" property="userID" />
+	<select id="reviewsList" parameterType="ReviewsDTO"
+		resultMap="review">
+		SELECT m.*, r.userID, r.title, r.contents
+		FROM
+		PROMEMBERS M
+		INNER JOIN
+		REVIEWS R
+		ON M.userID = R.userID
+		WHERE M.userID = #{userID}
+	</select>
+
+	<resultMap type="ReviewsDTO" id="review">
+		<id column="reviewNum" property="reviewNum" />
+		<result column="userID" property="userID" />
+		<result column="title" property="title" />
+		<result column="contents" property="contents" />
+		<collection property="memberDTOs" javaType="List"
+			ofType="MemberDTO">
+			<id column="userID" property="userID" />
+		</collection>
 	</resultMap>
+
+	<select id="checkName" parameterType="MemberDTO"
+		resultType="int">
+		select
+		count(*) from
+		promembers where userName = #{userName}
+	</select>
+
+	<select id="checkEmail" parameterType="MemberDTO"
+		resultType="int">
+		select
+		count(*) from
+		promembers where email = #{email}
+	</select>
+
+	<select id="checkPhone" parameterType="MemberDTO"
+		resultType="int">
+		select
+		count(*) from
+		promembers where phone = #{phone}
+	</select>
 
 </mapper>

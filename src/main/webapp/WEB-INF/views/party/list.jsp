@@ -88,7 +88,7 @@
 											<div class="shopContents">파티이름&nbsp;:&nbsp;${dto.partyTitle}</div>
 											<div class="shopContents">방장&nbsp;:&nbsp;${dto.userName}</div>
 											<div class="shopContents">등록날짜&nbsp;:&nbsp;${dto.partyRegdate}</div>
-											<td>마감&nbsp;:&nbsp;<fmt:formatDate value="${dto.partyTimeout}" pattern="yy-mm-dd / HH:mm:ss"/></td>	
+											<td>마감&nbsp;:&nbsp;<fmt:formatDate value="${dto.partyTimeout}" pattern="yy-MM-dd / HH:mm:ss"/></td>	
 										</div>
 									</div>
 									<div class="p-2 flex-shrink-1">

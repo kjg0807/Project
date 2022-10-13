@@ -22,20 +22,24 @@
 
 <body>
 	<c:import url="../../template/headerHTML.jsp"></c:import>
-	
+
 	<form action="../member/login" method="post">
+		<br>
+		<h1 style="text-align: center;">로그인</h1>
 		<section class="col-lg-6 container-fluid mt-4">
 			<div class="row">
 				<div class="mb-3">
-					<label>아이디</label> <input type="text" id="userID" class="form-control" name="userID" placeholder="ID Input"
-						onfocus="this.placeholder=''" onblur="this.placeholder='ID Input'"
+					<label>아이디</label>
+					<input type="text" id="userID" class="form-control" name="userID" placeholder="ID Input" onfocus="this.placeholder=''"
+						onblur="this.placeholder='ID Input'" autocomplete="off"
 					>
-					<div>We'll never share your ID with anyone else.</div>
 				</div>
 				<div class="mb-3">
-					<label>비밀번호</label> <input type="password" id="pwd" class="form-control" name="pwd" placeholder="Password Input"
-						onfocus="this.placeholder=''" onblur="this.placeholder='Password Input'"
+					<label>비밀번호</label>
+					<input type="password" id="pwd" class="form-control" name="pwd" placeholder="Password Input" onfocus="this.placeholder=''"
+						onblur="this.placeholder='Password Input'" autocomplete="off"
 					>
+					<div></div>
 				</div>
 				<div class="mb-3">
 					<button type="submit" class="btn btn-primary log">로그인</button>

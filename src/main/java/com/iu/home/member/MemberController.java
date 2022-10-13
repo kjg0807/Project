@@ -1,5 +1,6 @@
 package com.iu.home.member;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -15,9 +16,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+import com.iu.home.reviews.*;
+import com.iu.home.util.ReviewsPager;
 
 @Controller
 @RequestMapping(value = "/kjk/member/*")
@@ -36,7 +38,7 @@ public class MemberController
 	}
 
 	@PostMapping(value = "login")
-	public ModelAndView login1(HttpSession session, HttpServletRequest request, MemberDTO memberDTO, Model model) throws Exception
+	public ModelAndView login1(HttpSession session, MemberDTO memberDTO) throws Exception
 	{
 		ModelAndView mv = new ModelAndView();
 		System.out.println("Login POST Test");
@@ -102,13 +104,27 @@ public class MemberController
 	}
 
 	@GetMapping(value = "mypage")
-	public ModelAndView mypage(HttpSession session) throws Exception
+	public ModelAndView mypage(HttpSession session, ReviewsDTO reviewsDTO) throws Exception
 	{
 		ModelAndView mv = new ModelAndView();
 		System.out.println("mypage Get Test");
 
 		MemberDTO memberDTO = (MemberDTO) session.getAttribute("member");
 		memberDTO = memberService.getMyPage(memberDTO);
+
+		reviewsDTO.setUserID(memberDTO.getUserID());
+		List<ReviewsDTO> ar = memberService.reviewsList(reviewsDTO);
+		// reviewsDTO = memberService.reviewsList(reviewsDTO);
+
+		for (ReviewsDTO reviewsDTO2 : ar)
+		{
+			System.out.println("re ID: " + reviewsDTO2.getUserID());
+			System.out.println("re title: " + reviewsDTO2.getTitle());
+			System.out.println("re contents: " + reviewsDTO2.getContents());
+		}
+
+		mv.addObject("reList", ar);
+
 		mv.addObject("dto", memberDTO);
 
 		mv.setViewName("kjk/member/mypage");
@@ -180,22 +196,47 @@ public class MemberController
 		return "redirect:../../";
 	}
 
-	@PostMapping(value = "checkId")
-	public String checkId(@RequestBody String a) throws Exception
-	{ // 받을 데이터타입이 텍스트라 스트링으로함 반드시 리퀘스트바디를 붙힐것! ajax 통신시
-		System.out.println("/user/checkId : post");
-		System.out.println("param : " + a);
+	@RequestMapping("checkId")
+	@ResponseBody
+	public int checkId(String id) throws Exception
+	{
+		System.out.println("checkId GET");
 
-		int checkNum = memberService.checkId(a);
+		int rs = memberService.getCheckId(id);
+		System.out.println(rs);
+		return rs;
+	}
 
-		if (checkNum == 1)
-		{
-			System.out.println("아이디가 중복되었다.");
-			return "duplicated";
-		} else
-		{
-			System.out.println("아이디 사용 가능");
-			return "available";
-		}
+	@RequestMapping("checkName")
+	@ResponseBody
+	public int checkName(String name) throws Exception
+	{
+		System.out.println("checkName GET");
+
+		int rs = memberService.checkName(name);
+		System.out.println(rs);
+		return rs;
+	}
+
+	@RequestMapping("checkEmail")
+	@ResponseBody
+	public int checkEmail(String email) throws Exception
+	{
+		System.out.println("checkEmail GET");
+
+		int rs = memberService.checkEmail(email);
+		System.out.println(rs);
+		return rs;
+	}
+	
+	@RequestMapping("checkPhone")
+	@ResponseBody
+	public int checkPhone(String phone) throws Exception
+	{
+		System.out.println("checkPhone GET");
+
+		int rs = memberService.checkPhone(phone);
+		System.out.println(rs);
+		return rs;
 	}
 }
