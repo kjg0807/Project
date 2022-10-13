@@ -105,7 +105,7 @@ btn.addEventListener("click", function(){
                         
                         getReviewsCommentList(page, reviewNum);
                         
-                        userID.value='';
+                       
                         contents.value='';
                         
                 }else{
