@@ -36,7 +36,7 @@
 
 <section class="container-fluid col-lg-10 mt-5">
 	<div class="row mt-5 bg-light">
-		<h1>리뷰 detail 페이지</h1>
+		<h1>리뷰 상세 페이지</h1>
 	</div>
 	
 <%-- 	<div class="row border border-danger mt-5 bg-light" style="height: 75px">
@@ -222,15 +222,19 @@
 			</thead>
 		</table>
 
-			<div class="d-grid gap-2 col-6 mx-auto">
-				<button id="plus" class="btn btn-primary">더보기</button>
-		  	</div>
+			<!-- <div class="d-grid gap-2">
+				<button type="btn" id="plus" class="btn btn-primary">더보기</button>
+		  	</div> -->
+
+			<div class="d-grid gap-2">
+				<button class="btn btn-primary" id="plus" type="button">더보기</button>
+			</div>
 			<!-- <button id="plus" class="btn btn-primary">더보기</button> -->
 			<br>
 			<br>
 
 			<div>
-				<button id="minus" class="btn btn-success disabled" onclick="location.href='./detail?reviewNum=${dto.reviewNum}'">닫기</button>
+				<button id="minus" class="btn btn-success disabled" onclick="location.href='./detail?reviewNum=${dto.reviewNum}'">초기화</button>
 			</div>
 
 	</div>
@@ -287,8 +291,9 @@
 		</button>
 	</div>
 
+	<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal1" data-bs-whatever="@mdo" id="alertOpenBtn" style="display: none;">수정</button>
 	<div  style="display: inline-block; margin: 0 5px;">
-		<button onclick="location='./update?reviewNum=${dto.reviewNum}'" class="btn btn-primary">
+		<button onclick="location='./update?reviewNum=${dto.reviewNum}'" class="btn btn-primary" id="updateComment1" data-userID="${dto.memberDTOs[0].userID}" data-user="${sessionScope.member.userID}">
 			<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-all" viewBox="0 0 16 16">
 				<path d="M8.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L2.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093L8.95 4.992a.252.252 0 0 1 .02-.022zm-.92 5.14.92.92a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 1 0-1.091-1.028L9.477 9.417l-.485-.486-.943 1.179z"/>
 			  </svg>
