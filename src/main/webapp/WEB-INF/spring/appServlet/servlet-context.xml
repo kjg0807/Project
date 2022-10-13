@@ -66,6 +66,7 @@
 			<!-- 작성자가 아니면 접근 가능한 경로 -->
 			<exclude-mapping path="/reviews/list"/>
 			<exclude-mapping path="/reviews/detail"/>
+			<exclude-mapping path="/reviews/add"/>
 			<beans:ref bean="writerCheckInterceptor"/>
 		</interceptor>
 		

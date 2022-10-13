@@ -192,7 +192,7 @@
 	<div class="row">
 		<div class="mb-3">
 			<label for="userID" class="form-label">작성자</label>
-			<input type="text" class="form-label" id="userID" placeholder="${dto.userID}" value="${dto.userID}" readonly disabled>
+			<input type="text" class="form-label" id="userID" name="userID" value="${member.userID}" readonly disabled>
 		</div>
 		
 		<div class="mb-3 col-lg-4">
@@ -323,18 +323,18 @@
     			 crossorigin="anonymous"></script>
 				 
 	
-<script src="../../../resources/hjs/js/ReviewsComment.js"></script>
-
-<script>
-	function clean(){
-		var clean = document.getElementsByClassName('clean');
-
-		//글을 쓸때마다 ''빈칸으로 만든다
-		for(var i=0; i<clean.length;i++){
-			clean[i].value='';
-		}
-	}
-</script>
+				 
+				 <script>
+					 function clean(){
+						 var clean = document.getElementsByClassName('clean');
+						 
+						 //글을 쓸때마다 ''빈칸으로 만든다
+						 for(var i=0; i<clean.length;i++){
+							 clean[i].value='';
+							}
+						}
+					</script>
 <c:import url="../template/footerHTML.jsp"></c:import>
+<script src="../../../resources/hjs/js/ReviewsComment.js"></script>
 </body>
 </html>

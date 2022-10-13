@@ -76,7 +76,7 @@
 					<tr>
 						<th>번호</th>
 						<th>제목</th>
-						<th>글쓴이</th>
+						<th>작성자</th>
 						<th>내용</th>
 						<th>작성 날짜</th>
 						<th>조회 수</th>
@@ -133,9 +133,6 @@
 			홈으로
 		</button>
 
-		<!--버튼 강제클릭 이벤트를 시켜서 비회원이 글쓰기 버튼을 누르면 로그인창으로 바로 보냄-->
-		<button id="fuxx" style="display: none;" onclick="location='../kjk/member/login'"></button>
-		
 		<c:choose>
 			<c:when test="${member == null}">
 				<div style="display: inline-block; margin: 0 5px; float: right;">
@@ -186,8 +183,8 @@
 		integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"
 	></script>
 	<c:import url="../template/footerHTML.jsp"></c:import>
-	<script src="/resources/kjk/js/noticeList.js"></script>
-	<script src="/resources/kjk/js/detailList.js"></script>
+	<!-- <script src="/resources/kjk/js/noticeList.js"></script>
+	<script src="/resources/kjk/js/detailList.js"></script> -->
 </body>
 
 </html>
