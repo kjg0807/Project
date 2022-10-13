@@ -6,7 +6,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
-
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
@@ -49,11 +48,19 @@ a:hover {
 .divtitle {
 	margin-bottom: 1%;
 }
+
+#cont {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	max-width: 200px;
+}
 </style>
 
 <body>
 	<c:import url="../../template/headerHTML.jsp"></c:import>
 	<form action="../member/mypage">
+		<!--  action="../member/mypage" -->
 		<section class="container-fluid col-lg-10">
 			<div id="body-wrapper">
 				<div class="row mt-3" id="body-content">
@@ -83,46 +90,41 @@ a:hover {
 						<div style="padding-top: 5%;">
 							<b>${dto.userName}님이 작성한 리뷰</b>
 						</div>
+						<%-- 내가 작성한 리뷰, 댓글 출력후 클릭시 작성한 곳으로 이동 --%>
+						<%-- title; writer; contents; reviewDate; hits; --%>
+						<!-- <form method="post" action="/kdy/shop/datailHTML"> -->
 						<c:forEach items="${reList}" var="reList">
-							<hr>
 							<c:choose>
 								<c:when test="${dto.userID ne 'reList.userID'}">
-									<%-- 내가 작성한 리뷰, 댓글 출력후 클릭시 작성한 곳으로 이동 --%>
-									<%-- title; writer; contents; reviewDate; hits; --%>
 									<ul class="list_newsissue">
 										<li class="libi">
 											<div class="item_issue" data-tiara-layer="headline1">
-												<div class="imgali">
-													<a href="#" class="wrap_thumb"> <img src="" class="thumb_g">
-													</a>
-												</div>
-												<div class="cont_thumb divtitle">
-													<strong class="tit_g"> <a href="#" class="link_txt">${reList.title } </a>
-														<p class="ppa">${reList.contents }</p>
-													</strong>
+												<div class="cont_thumb divtitle" id="ddiv" style="cursor: pointer;"
+													onclick="location.href='/shop/detailHTML?shopNum=${pageScope.reList.shopNum }';"
+												>
+													<section class="container-fluid col-lg-6">
+														<table class="table table-hover">
+															<tr>
+																<th>제목</th>
+																<th>내용</th>
+															</tr>
+															<tr>
+																<td>${reList.title }</td>
+																<td id="cont">${reList.contents }</td>
+															</tr>
+														</table>
+													</section>
 												</div>
 											</div>
 										</li>
 									</ul>
 								</c:when>
 								<c:otherwise>
-									<!-- <hr>
-									<ul class="list_newsissue">
-										<li class="libi">
-											<div class="item_issue" data-tiara-layer="headline1">
-												<div class="imgali">
-													<strong style="display: none;" class="tit_g"> <a href="#" class="link_txt"> 게시물이 존재하지 않습니다. </a>
-													</strong>
-												</div>
-												<div class="cont_thumb divtitle"></div>
-											</div>
-										</li>
-									</ul>
-									<hr> -->
+
 								</c:otherwise>
 							</c:choose>
-							<hr>
 						</c:forEach>
+						<!-- </form> -->
 					</div>
 				</div>
 			</div>
