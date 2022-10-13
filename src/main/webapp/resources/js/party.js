@@ -8,6 +8,7 @@ const jid = document.querySelector("#joinuserID")
 const jsn = document.querySelector("#joinShopNum");
 const jg = document.getElementsByName("genderRadio");
 const jc = document.querySelector("#joinComment");
+const bd = document.querySelector("#btndelete")
 
 const pm = document.querySelector("#partyMember");
 const pb = document.querySelector("#partybtn");
@@ -15,17 +16,35 @@ const pb = document.querySelector("#partybtn");
 const reject = document.querySelector("#rejectbtn");
 const accept = document.querySelector("#acceptbtn");
 
-// jm.addEventListener("click",age())
+bd.addEventListener("click", function(){
+    let check3 = window.confirm("삭제 하시겠습니까?");
+    console.log(check3);
+    if(check3 == true){
+        const xhttp = new XMLHttpRequest();
+        console.log("체크1")
+        xhttp.open("POST",  "./delete");
+        
+        xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        console.log(jn.value);
+        xhttp.send("partyNum="+jn.value);
 
-// function age(){
-//     for(let i=0; i<101; i++){
-//         let op = document.createElement("option");
-//         op.value=i;
-//         let t = document.createTextNode(i+"세");
-//         op.appendChild(t);
-//         ja.appendChild(op);
-//     }
-// }
+        xhttp.onreadystatechange=function(){
+   
+            if(this.readyState==4 && this.status==200){
+                let result = JSON.parse(xhttp.responseText.trim());
+                console.log(result);
+                console.log(result.result);
+                if(result.result==1){
+                    alert("삭제 성공");
+                    window.location.href = './list';
+                }else{
+                    alert("삭제 실패")
+                }
+            }
+        }
+    }
+})
+
 let check1 = false;
 doublecheck();
 function doublecheck(){

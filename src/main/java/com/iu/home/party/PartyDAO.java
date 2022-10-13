@@ -39,6 +39,11 @@ public class PartyDAO {
 	public int setPartyAdd(PartyListDTO partyListDTO)throws Exception{
 		return sqlSession.insert(NAMESPACE+"setPartyAdd", partyListDTO);
 	}
+	
+	public int setPartyDelete(PartyListDTO partyListDTO)throws Exception{
+
+		return sqlSession.delete(NAMESPACE+"setPartyDelete", partyListDTO);
+	}
 	//====================================================================
 	// Party DAO
 	public int setPartyJoin(PartyDTO partyDTO)throws Exception{

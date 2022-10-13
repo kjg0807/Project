@@ -39,14 +39,14 @@ public class WriterCheckInterceptor3 extends HandlerInterceptorAdapter{
 		
 		PartyDTO partyDTO = (PartyDTO)map.get("partyListDTO");
 		
-//		if(!memberDTO.getUserName().equals(partyDTO.getUserID())) {
-//			mv.setViewName("kjk/common/rs");
-//			mv.addObject("result", 1);
-//			mv.addObject("message", "작성자만 수정이 가능합니다!!");
-//			mv.addObject("url", "../");
-//			
-//			System.out.println("작성자가 아닙니다");
-//		}
+		if(!memberDTO.getUserName().equals(partyDTO.getUserID())) {
+			mv.setViewName("kjk/common/rs");
+			mv.addObject("result", 1);
+			mv.addObject("message", "작성자만 수정이 가능합니다!!");
+			mv.addObject("url", "../");
+			
+			System.out.println("작성자가 아닙니다");
+		}
 		
 		System.out.println("작성자 Interceptor");
 		

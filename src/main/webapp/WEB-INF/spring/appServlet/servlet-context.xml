@@ -26,6 +26,7 @@
 	<beans:bean class="com.iu.home.interceptor.WriterCheckInterceptor1" id="writerCheckInterceptor1"></beans:bean>
 	<beans:bean class="com.iu.home.interceptor.AdminCheckInterceptor" id="adminCheckInterceptor"></beans:bean>
 	<beans:bean class="com.iu.home.interceptor.MemberInterceptor" id="memberInterceptor"></beans:bean>
+	<beans:bean class="com.iu.home.interceptor.MemberInterceptor1" id="memberInterceptor1"></beans:bean>
 	
 	
 	
@@ -37,6 +38,14 @@
 			<exclude-mapping path="/notice/list"/>
 			<exclude-mapping path="/notice/detail"/>
 			<beans:ref bean="adminCheckInterceptor"/>
+		</interceptor>
+		
+		
+		<!-- 공지사항 글쓰기는 비회원은 클릭 불가  -->
+		<interceptor>
+			<mapping path="/notice/**"/>
+			<exclude-mapping path="/notice/list"/>
+			<beans:ref bean="memberInterceptor"/>
 		</interceptor>
 		
 		
@@ -91,12 +100,21 @@
 			<beans:ref bean="memberInterceptor"/>
 		</interceptor>
 		
-		<!-- <interceptor>
+<!-- 		<interceptor>
 			<mapping path="/party/**"/>
 			<exclude-mapping path="/party/list"/>
 			<exclude-mapping path="/party/detail"/>
 			<beans:ref bean="writerCheckInterceptor3"/>
 		</interceptor> -->
+		
+		
+		<!-- 비회원이 마이페이지를 주소창으로 직접 치게될경우 Interceptor발생 -->
+		<interceptor>
+			<mapping path="/kjk/member/**"/>
+			<exclude-mapping path="/kjk/member/login"/>
+			<exclude-mapping path="/kjk/member/join"/>
+			<beans:ref bean="memberInterceptor1"/>
+		</interceptor>
 		
 		
 	</interceptors>
