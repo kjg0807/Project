@@ -60,6 +60,7 @@
 				<div class="modal-content">
 					<input type="hidden" id="joinNum" value="${partyListDTO.partyNum}">
 					<input type="hidden" id="joinShopNum" value="${partyListDTO.shopNum}">
+					<input type="hidden" id="joinuserID" value="${member.userID}">
 					<div class="modal-header">
 						<h5 class="modal-title" id="exampleModalLabel">파티 신청</h5>
 						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>

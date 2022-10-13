@@ -9,6 +9,7 @@ public class PartyDTO {
 	private String partyComment;
 	private int partyRequest;
 	private int shopNum;
+	private String userID;
 	
 	public Long getPartyNum() {
 		return partyNum;
@@ -52,6 +53,13 @@ public class PartyDTO {
 	public void setShopNum(int shopNum) {
 		this.shopNum = shopNum;
 	}
+	public String getUserID() {
+		return userID;
+	}
+	public void setUserID(String userID) {
+		this.userID = userID;
+	}
+	
 	
 
 	
