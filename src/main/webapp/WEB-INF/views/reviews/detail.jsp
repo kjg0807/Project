@@ -204,6 +204,7 @@
 		<div class="mb-3">
 			<button class="btn btn-secondary" type="button" id="btn" data-reviewNum="${dto.reviewNum}">댓글 작성</button>
 		</div>
+		
 	</div>
 	
 	
