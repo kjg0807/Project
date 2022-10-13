@@ -114,6 +114,7 @@
                                             <div id="addFiles">
                                               <button style="color: blue;" type="button"name="files" id="fileAdd">파일추가</button>
                                             </div>
+                                            <button type="button" class="btn btn-primary" id="menuAdd" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">대표메뉴 등록</button> 
                                               <!-- <button style="border-top: solid 1px gainsboro;"  type="button" id="shopDelete" class="btn btn-danger" onclick="location.href='/shop/delete?shopNum=${detail.getShopNum()}';">가게 삭제</button>  -->
                                           </div>
                                           <div class="modal-footer">
@@ -157,10 +158,10 @@
                                     </div>
                                   </div>
                             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal1" data-bs-whatever="@mdo" id="modalOpenBtn" style="display: none;">게시글 수정</button>
+                          
                             
                             <div d-flax style="padding-top: 25px;">
                               <button type="button" class="btn btn-primary" id="updateShop" data-writer="${detail.memberDTOs[0].userID}" data-user="${sessionScope.member.userID}">게시글 수정</button>
-                              <button type="button" class="btn btn-primary" id="menuAdd" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">대표메뉴 등록</button> 
                               <button style="display: inline-block; margin:0 5px; float: right;" onclick="location='../../party/list?shopNum=${detail.shopNum}'" class="btn btn-primary">파티모집</button>
                               <button  style="display: inline-block; margin:0 5px; float: right;" onclick="location='../../reviews/add?shopNum=${detail.shopNum}'" class="btn btn-primary">리뷰남기기</button>
                             </div>
