@@ -1,3 +1,7 @@
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.Statement"%>
+<%@page import="java.sql.Connection"%>
+<%@page import="java.sql.DriverManager"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
@@ -16,12 +20,20 @@
 <link rel="stylesheet" href="/resources/kjk/css/mypageReview.css">
 </head>
 <style>
-a {
+/* a {
 	text-decoration: none;
 	color: black;
 }
 
 a:hover {
+	color: red;
+} */
+#up {
+	text-decoration: none;
+	color: black;
+}
+
+#up:hover {
 	color: red;
 }
 
@@ -41,7 +53,7 @@ a:hover {
 
 <body>
 	<c:import url="../../template/headerHTML.jsp"></c:import>
-	<form action="../member/mypage" method="post">
+	<form action="../member/mypage">
 		<section class="container-fluid col-lg-10">
 			<div id="body-wrapper">
 				<div class="row mt-3" id="body-content">
@@ -58,36 +70,68 @@ a:hover {
 							<td>${dto.userName }</td>
 							<td>${dto.email }</td>
 							<td>${dto.phone }</td>
-							<td>
-								<a href="./update?userid=${dto.userID}">정보 수정</a> | <a href="./delete?userid=${dto.userID}">회원 탈퇴</a>
+							<td id="upDe">
+								<a id="up" href="./update?userid=${dto.userID}">정보 수정</a> | <a id="up" href="./delete?userid=${dto.userID}">회원 탈퇴</a>
 							</td>
 						</tr>
 					</table>
-					<div style="padding-top: 5%;">
-						<b>내가 쓴 리뷰</b>
+					<input type="hidden" value="${dto.userID}" id="dtoID">
+					<input type="hidden" value="${reList[0].userID}" id="revID">
+					<!-- onclick="buttonClick();" -->
+					<button type="button" class="btn btn-outline-dark" id="reviewButton">내가 작성한 리뷰 보기</button>
+					<div id="myReview" style="display: none;">
+						<div style="padding-top: 5%;">
+							<b>${dto.userName}님이 작성한 리뷰</b>
+						</div>
+						<c:forEach items="${reList}" var="reList">
+							<c:choose>
+								<c:when test="${dto.userID ne 'reList.userID'}">
+									<hr style="margin-bottom: 5px;">
+									<%-- 내가 작성한 리뷰, 댓글 출력후 클릭시 작성한 곳으로 이동 --%>
+									<%-- title; writer; contents; reviewDate; hits; --%>
+									<ul class="list_newsissue">
+										<li class="libi">
+											<div class="item_issue" data-tiara-layer="headline1">
+												<div class="imgali">
+													<a href="#" class="wrap_thumb"> <img src="" class="thumb_g">
+													</a>
+												</div>
+												<div class="cont_thumb divtitle">
+													<strong class="tit_g"> <a href="#" class="link_txt">${reList.title } </a>
+														<p class="ppa">${reList.contents }</p>
+													</strong>
+												</div>
+												<!-- <div id="backa" style="display: none;">게시물이 존재하지 않습니다.</div> -->
+											</div>
+										</li>
+									</ul>
+									<hr>
+								</c:when>
+								<c:otherwise>
+									<!-- 									<hr>
+									<ul class="list_newsissue">
+										<li class="libi">
+											<div class="item_issue" data-tiara-layer="headline1">
+												<div class="imgali">
+													<strong style="display: none;" class="tit_g"> <a href="#" class="link_txt"> 게시물이 존재하지 않습니다. </a>
+													</strong>
+												</div>
+												<div class="cont_thumb divtitle"></div>
+											</div>
+										</li>
+									</ul>
+									<hr> -->
+								</c:otherwise>
+							</c:choose>
+						</c:forEach>
 					</div>
-					<hr>
-					<ul class="list_newsissue">
-						<li class="libi">
-							<div class="item_issue" data-tiara-layer="headline1">
-								<div class="imgali">
-									<a href="#" class="wrap_thumb"> <img src="" class="thumb_g">
-									</a>
-								</div>
-								<div class="cont_thumb divtitle">
-									<strong class="tit_g"> <a href="#" class="link_txt"> 으에에에에ㅔ에에에에에에ㅔㅔ 내용은 아직 </a>
-										<p class="ppa">으에에에에ㅔ에에에에에에ㅔㅔ</p>
-									</strong>
-								</div>
-							</div>
-						</li>
-					</ul>
-					<hr>
 				</div>
 			</div>
 		</section>
 	</form>
+	<!-- title; writer; contents; reviewDate; hits; -->
 	<c:import url="../../template/footerHTML.jsp"></c:import>
+	<script src="/resources/kjk/js/mypageReview.js"></script>
 </body>
 
 </html>

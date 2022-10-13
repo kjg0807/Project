@@ -2,6 +2,8 @@ package com.iu.home.member;
 
 import java.util.List;
 
+import com.iu.home.reviews.ReviewsDTO;
+
 public class MemberDTO
 {
 	private String userID;
@@ -15,6 +17,17 @@ public class MemberDTO
 	private List<ClassDTO> classDTOs;
 	private List<UserClassDTO> userClassDTOs;
 	private List<MemberDTO> memberDTOs;
+	private List<ReviewsDTO> reviewsDTOs;
+
+	public List<ReviewsDTO> getReviewsDTOs()
+	{
+		return reviewsDTOs;
+	}
+
+	public void setReviewsDTOs(List<ReviewsDTO> reviewsDTOs)
+	{
+		this.reviewsDTOs = reviewsDTOs;
+	}
 
 	public List<MemberDTO> getMemberDTOs()
 	{
