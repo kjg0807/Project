@@ -18,10 +18,15 @@
 	<h1>Q&A 수정 페이지</h1>
 	
 	<form action="./update" method="post">
+
+		<input type="hidden" name="num" value="${dto.num}">
+
 		<div class="mb-3">
 		  <label for="formGroupExampleInput2" class="form-label">작성자</label>
 		  <input type="text" class="form-control" name="userID" placeholder="${dto.userID}" readonly disabled>
 		</div>
+
+	
 		
 		<div class="mb-3">
 		  <label for="formGroupExampleInput" class="form-label">제목</label>

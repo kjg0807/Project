@@ -42,7 +42,7 @@
  	</insert>
  	
  	<update id="setQnaUpdate" parameterType="QnaDTO">
- 		UPDATE QNA_1 SET TITLE = #{title}, USERID = #{userID}, CONTENTS = #{contents} WHERE NUM = #{num}
+ 		UPDATE QNA_1 SET TITLE = #{title}, CONTENTS = #{contents} WHERE NUM = #{num}
  	</update>
  	
  	<delete id="setQnaDelete" parameterType="QnaDTO">
