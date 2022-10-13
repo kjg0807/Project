@@ -356,6 +356,7 @@
         </table>
         <div style="display: flex; margin: 5 5px;  justify-content: center;">
           <input name="shopNum" type="hidden" value="${detail.shopNum}">
+          
           <nav aria-label="Page navigation example">
             <ul class="pagination">
               <!--이전 버튼-->

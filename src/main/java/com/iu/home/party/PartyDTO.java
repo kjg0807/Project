@@ -1,5 +1,9 @@
 package com.iu.home.party;
 
+import java.util.List;
+
+import com.iu.home.member.MemberDTO;
+
 public class PartyDTO {
 	
 	private Long partyNum;
@@ -9,7 +13,18 @@ public class PartyDTO {
 	private String partyComment;
 	private int partyRequest;
 	private int shopNum;
+	private String userID;
 	
+	private List<MemberDTO> memberDTOs;
+	
+	
+	
+	public List<MemberDTO> getMemberDTOs() {
+		return memberDTOs;
+	}
+	public void setMemberDTOs(List<MemberDTO> memberDTOs) {
+		this.memberDTOs = memberDTOs;
+	}
 	public Long getPartyNum() {
 		return partyNum;
 	}
@@ -52,6 +67,13 @@ public class PartyDTO {
 	public void setShopNum(int shopNum) {
 		this.shopNum = shopNum;
 	}
+	public String getUserID() {
+		return userID;
+	}
+	public void setUserID(String userID) {
+		this.userID = userID;
+	}
+	
 	
 
 	
