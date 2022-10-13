@@ -68,4 +68,19 @@ public class MemberService
 	{
 		return memberDAO.reviewsList(reviewsDTO);
 	}
+
+	public int checkName(String name) throws Exception
+	{
+		return memberDAO.checkName(name);
+	}
+
+	public int checkEmail(String email) throws Exception
+	{
+		return memberDAO.checkEmail(email);
+	}
+
+	public int checkPhone(String phone) throws Exception
+	{
+		return memberDAO.checkPhone(phone);
+	}
 }

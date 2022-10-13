@@ -79,16 +79,16 @@
 
 			<c:forEach items="${list}" var="dto" >
 					<div class="party_list"  onclick="location.href='./detail?partyNum=${dto.partyNum}'; ">
-						<div class="list">
+						<div class="list" >
 							<div>
 								<div class="d-flex">
 									<div class="p-2 w-100" >
-										<div class="container2" style="padding: 12px;">
+										<div class="container2" style="font-size: 15px; padding: 12px; border-bottom: solid 1px gainsboro; height: 130px;" >
 											<div class="name" style="display: none;">파티 번호&nbsp;:&nbsp;${dto.partyNum}</div>
 											<div class="shopContents">파티이름&nbsp;:&nbsp;${dto.partyTitle}</div>
-											<div class="shopContents">반장&nbsp;:&nbsp;${dto.userName}</div>
+											<div class="shopContents">방장&nbsp;:&nbsp;${dto.userName}</div>
 											<div class="shopContents">등록날짜&nbsp;:&nbsp;${dto.partyRegdate}</div>
-											<td>마감&nbsp;:&nbsp;<fmt:formatDate value="${dto.partyTimeout}" pattern="yy-mm-dd / HH:mm:ss"/></td>	
+											<td>마감&nbsp;:&nbsp;<fmt:formatDate value="${dto.partyTimeout}" pattern="yy-MM-dd / HH:mm:ss"/></td>	
 										</div>
 									</div>
 									<div class="p-2 flex-shrink-1">

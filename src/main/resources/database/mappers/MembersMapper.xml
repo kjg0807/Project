@@ -119,7 +119,8 @@
 	<!-- <select id="idCheck" parameterType="MemberDTO" resultMap="check"> select 
 		userID from promembers where userID = #{userID} </select> <resultMap type="MemberDTO" 
 		id="check"> <id column="userid" property="userID" /> </resultMap> -->
-	<select id="getCheckId" parameterType="MemberDTO" resultType="int">
+	<select id="getCheckId" parameterType="MemberDTO"
+		resultType="int">
 		select
 		count(*) from
 		promembers where userID = #{userID}
@@ -146,5 +147,26 @@
 			<id column="userID" property="userID" />
 		</collection>
 	</resultMap>
+
+	<select id="checkName" parameterType="MemberDTO"
+		resultType="int">
+		select
+		count(*) from
+		promembers where userName = #{userName}
+	</select>
+
+	<select id="checkEmail" parameterType="MemberDTO"
+		resultType="int">
+		select
+		count(*) from
+		promembers where email = #{email}
+	</select>
+
+	<select id="checkPhone" parameterType="MemberDTO"
+		resultType="int">
+		select
+		count(*) from
+		promembers where phone = #{phone}
+	</select>
 
 </mapper>
