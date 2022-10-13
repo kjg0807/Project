@@ -6,11 +6,6 @@ for(let i =0; i < ccccChildren.length; i++){
     })
 }
 
-const add = document.querySelector("#add");
-add.addEventListener("click", function(){
-   alert("글");
-
-})
 
 const detailHTMLList = document.querySelectorAll(".detailHTMLList");
 detailHTMLList.forEach(function( dh, index){
