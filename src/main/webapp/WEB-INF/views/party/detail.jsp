@@ -123,7 +123,16 @@
 				
 				<div class="modal-body">
 					<table class="table" id="partyMember">
-	
+						<thead>
+							<tr>
+								<th scope="col">체크</th>
+								<th scope="col">이름</th>
+								<th scope="col">연령</th>
+								<th scope="col">성별</th>
+								<th scope="col">코멘트</th>
+								<th scope="col">참가여부</th>
+							</tr>
+						</thead>
 					</table>
 				</div>
 				<div class="modal-footer">
