@@ -21,10 +21,7 @@ a {
 <body>
 	<c:import url="../../template/headerHTML.jsp"></c:import>
 	<form action="../member/adpage" method="post">
-		<%-- <% try { %>
-						<c:if test="${dto.classDTOs.get(0).className eq 'admin'}">
-							<td style="color: red;">Class</td>
-						</c:if> --%>
+		<br>
 		<section class="container-fluid">
 			<div class="row">
 				<table class="table table-hover">
