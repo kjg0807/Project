@@ -91,7 +91,7 @@ btn.addEventListener("click", function(){
 
                     
                 if(result == 1){
-                    confirm("성공적인 답글 달기~!");
+                    confirm("댓글이 성공적으로 달렸습니다.");
                     // self.close();
                         
                     for(let i=0; i<reviewsCommentList.children.length;){
@@ -109,7 +109,7 @@ btn.addEventListener("click", function(){
                         contents.value='';
                         
                 }else{
-                    alert("답글 달기 실패~!!");
+                    alert("댓글 남기기가 실패하였습니다.");
                 }
                 
                 // if(!contents){
@@ -147,7 +147,7 @@ function getReviewsCommentList(p, rn){
     xhttp.open("GET", "./reviewsCommentList?page=" + p + "&reviewNum=" + rn)
 
     // 3. 요청 발생
-    // xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 
     xhttp.send();
 
@@ -320,7 +320,7 @@ reviewsCommentList.addEventListener("click", function(event){
 
     //---------------------------delete------------------------
     if(event.target.className == "delete"){
-        let check = window.confirm("삭제할래??");
+        let check = window.confirm("삭제를 하시겠십니까?");
 
         if(check){
             let num = event.target.getAttribute("data-comment-num");
@@ -345,7 +345,7 @@ reviewsCommentList.addEventListener("click", function(event){
                     console.log(result);
 
                     if(result == 1){
-                        alert("삭제 완료!");
+                        alert("삭제가 되었습니다!");
                         page = 1;                   //삭제 후 1페이지로 이동
                         for(let i=0; i<reviewsCommentList.children.length;){
                             reviewsCommentList.children[0].remove();
@@ -353,7 +353,7 @@ reviewsCommentList.addEventListener("click", function(event){
 
                         getReviewsCommentList(page, reviewNum);
                     }else{
-                        alert("삭제 실패 ㅜ");
+                        alert("삭제를 실패했습니다.");
                         return;
                     }
                 }
@@ -394,7 +394,7 @@ update.addEventListener("click", function(){
             let result = xhttp.responseText.trim();
 
             if(result > 0){
-                alert("댓글 수정 성공!!");
+                alert("댓글 수정이 성공하였습니다!");
                 for(let i=0; i<reviewsCommentList.children.length;){
                     reviewsCommentList.children[0].remove();
                 }
@@ -402,7 +402,7 @@ update.addEventListener("click", function(){
 
                 getReviewsCommentList(page, reviewNum);
             }else{
-                alert("댓글 수정 실패ㅜㅜ");
+                alert("댓글 수정이 실패하였습니다.");
             }
         }
     }
