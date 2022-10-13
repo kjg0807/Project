@@ -311,7 +311,7 @@
               <div class="reviews_list" onclick="location.href='../../reviews/detail?reviewNum=${pageScope.dto.reviewNum}';">
                 <div class="list" >
                   <div>
-                    <div class="d-flex">
+                    <div class="d-flex" style="cursor: pointer;">
                       <div class="p-2 w-100" >
                         <div class="container2" style="font-size: 15px; padding: 12px; border-bottom: solid 1px gainsboro; height: 130px;" >
                           <td>글번호&nbsp;&nbsp;:&nbsp;&nbsp;${pageScope.dto.reviewNum}</td><br>
