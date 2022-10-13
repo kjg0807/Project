@@ -270,17 +270,17 @@
     <ul class="pagination">
        <c:if test="${shopPager.pre}">
          <li class="page-item">
-           <a class="page-link" href="./listHTML?shopPage=${shopPager.startNum-1}&kind=${shopPager.kind}&search=${shopPager.search}" aria-label="Previous">
+           <a class="page-link" href="./listHTML?categoryName=${shopPager.categoryName}&shopPage=${shopPager.startNum-1}&kind=${shopPager.kind}&search=${shopPager.search}" aria-label="Previous">
              <span aria-hidden="true">&laquo;</span>
            </a>
          </li>
       </c:if>
       
       <c:forEach begin="${shopPager.startNum}" end="${shopPager.lastNum}" var="i">
-             <li class="page-item"><a class="page-link" href="./listHTML?shopPage=${i}&kind=${shopPager.kind}&search=${shopPager.search}">${i}</a></li>
+             <li class="page-item"><a class="page-link" href="./listHTML?categoryName=${shopPager.categoryName}&shopPage=${i}&kind=${shopPager.kind}&search=${shopPager.search}">${i}</a></li>
       </c:forEach>
      <li class="page-item ${shopPager.next?'':'disabled'}">
-        <a class="page-link" href="./listHTML?shopPage=${shopPager.lastNum+1}&kind=${shopPager.kind}&search=${shopPager.search}" aria-label="Next">
+        <a class="page-link" href="./listHTML?categoryName=${shopPager.categoryName}&shopPage=${shopPager.lastNum+1}&kind=${shopPager.kind}&search=${shopPager.search}" aria-label="Next">
           <span aria-hidden="true">&raquo;</span>
         </a>
       </li>
