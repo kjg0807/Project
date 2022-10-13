@@ -21,6 +21,85 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
+	<!-- interceptor 객체 생성 -->
+	<beans:bean class="com.iu.home.interceptor.WriterCheckInterceptor" id="writerCheckInterceptor"></beans:bean>
+	<beans:bean class="com.iu.home.interceptor.WriterCheckInterceptor1" id="writerCheckInterceptor1"></beans:bean>
+	<beans:bean class="com.iu.home.interceptor.AdminCheckInterceptor" id="adminCheckInterceptor"></beans:bean>
+	<beans:bean class="com.iu.home.interceptor.MemberInterceptor" id="memberInterceptor"></beans:bean>
+	
+	
+	
+	<!-- URL Interceptor 맵핑 -->
+	<interceptors>
+		<!-- 공지사항 수정,글쓰기,삭제는 관리자만 할수있음 관리자가 아닐경우 Interceptor 발생 -->
+		<interceptor>
+			<mapping path="/notice/**"/>
+			<exclude-mapping path="/notice/list"/>
+			<exclude-mapping path="/notice/detail"/>
+			<beans:ref bean="adminCheckInterceptor"/>
+		</interceptor>
+		
+		
+		<!-- 리뷰 수정,글쓰기,삭제는 로그인한 회원들만 사용가능, 비회원일시 Interceptor 발생 -->
+		<interceptor>
+			<mapping path="/reviews/**"/>
+			<!-- 아래에 exclude-mapping 주소들은 Interceptor 를 안거친다 = 접속 허락한다 -->
+			<exclude-mapping path="/reviews/list"/>
+			<exclude-mapping path="/reviews/detail"/>
+			<beans:ref bean="memberInterceptor"/>
+		</interceptor>
+		
+		
+		
+		<!-- 리뷰 작성자인지 아닌지 구별 Interceptor-->
+		<interceptor>
+			<mapping path="/reviews/**"/>
+			<!-- 작성자가 아니면 접근 가능한 경로 -->
+			<exclude-mapping path="/reviews/list"/>
+			<exclude-mapping path="/reviews/detail"/>
+			<beans:ref bean="writerCheckInterceptor"/>
+		</interceptor>
+		
+		
+		
+		<!-- QNA 수정,글쓰기,삭제는 로그인한 회원들만 할 수 있음 비회원일 경우 Interceptor 발생 -->
+		<interceptor>
+			<mapping path="/qna/**"/>
+			<exclude-mapping path="/qna/list"/>
+			<exclude-mapping path="/qna/detail"/>
+			<beans:ref bean="memberInterceptor"/>
+		</interceptor>
+		
+		
+		<!-- QNA 목록,디테일을 제외한 모든 페이지는 작성자만. -->
+	 	<interceptor>
+			<mapping path="/qna/**"/>
+			<exclude-mapping path="/qna/list"/>
+			<exclude-mapping path="/qna/detail"/>
+			<exclude-mapping path="/qna/add"/>
+			<exclude-mapping path="/qna/reply"/>
+			<beans:ref bean="writerCheckInterceptor1"/>
+		</interceptor>
+		
+		
+		<!-- 파티 목록,디테일은 비회원이 접근 불가능. -->
+		<interceptor>
+			<mapping path="/party/**"/>
+			<exclude-mapping path="/party/list"/>
+			<exclude-mapping path="/party/detail"/>
+			<beans:ref bean="memberInterceptor"/>
+		</interceptor>
+		
+		<!-- <interceptor>
+			<mapping path="/party/**"/>
+			<exclude-mapping path="/party/list"/>
+			<exclude-mapping path="/party/detail"/>
+			<beans:ref bean="writerCheckInterceptor3"/>
+		</interceptor> -->
+		
+		
+	</interceptors>
+	
 	<context:component-scan base-package="com.iu.home" />
 	
 	

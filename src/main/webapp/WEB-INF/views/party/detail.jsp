@@ -12,7 +12,7 @@
 <body>
 	<c:import url="../template/headerHTML.jsp"></c:import>
 	<section class="container-fluid col-lg-6" style="margin-bottom: 50px;">
-		<div class="row border-primary mt-5 bg-light" style="height: 25px margin-bottom: 400px;">
+		<div class="row border-primary mt-5 bg-light" style="height: 25px; margin-bottom: 400px;">
 			<div class="col-lg-8 border border-primary" style="
 			height: 42px; font-size: 27px;">
 				${partyListDTO.partyTitle}
@@ -60,6 +60,7 @@
 				<div class="modal-content">
 					<input type="hidden" id="joinNum" value="${partyListDTO.partyNum}">
 					<input type="hidden" id="joinShopNum" value="${partyListDTO.shopNum}">
+					<input type="hidden" id="joinuserID" value="${member.userID}">
 					<div class="modal-header">
 						<h5 class="modal-title" id="exampleModalLabel">파티 신청</h5>
 						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -122,7 +123,16 @@
 				
 				<div class="modal-body">
 					<table class="table" id="partyMember">
-	
+						<thead>
+							<tr>
+								<th scope="col">체크</th>
+								<th scope="col">이름</th>
+								<th scope="col">연령</th>
+								<th scope="col">성별</th>
+								<th scope="col">코멘트</th>
+								<th scope="col">참가여부</th>
+							</tr>
+						</thead>
 					</table>
 				</div>
 				<div class="modal-footer">

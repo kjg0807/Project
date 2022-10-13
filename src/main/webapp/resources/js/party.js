@@ -4,6 +4,7 @@ const ja = document.querySelector("#joinAge");
 const jb = document.querySelector("#joinbtn");
 const jn = document.querySelector("#joinNum");
 const ju = document.querySelector("#joinUserName");
+const jid = document.querySelector("#joinuserID")
 const jsn = document.querySelector("#joinShopNum");
 const jg = document.getElementsByName("genderRadio");
 const jc = document.querySelector("#joinComment");
@@ -65,6 +66,7 @@ jb.addEventListener("click",function(){
         alert("신청 대기중입니다.");
         window.location.reload();
     }else{
+        console.log(jid.value)
         const xhttp = new XMLHttpRequest();
     
         xhttp.open("POST",  "./partyJoin");
@@ -72,7 +74,7 @@ jb.addEventListener("click",function(){
         xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     
         xhttp.send("partyNum="+jn.value+"&userName="+ju.value+"&partyAge="+ja.value+"&partyGender="+gender+"&partyComment="+jc.value
-        +"&shopNum="+jsn.value);
+        +"&shopNum="+jsn.value+"&userID="+jid.value);
     
         xhttp.onreadystatechange=function(){
             if(this.readyState==4 && this.status==200){
@@ -111,6 +113,7 @@ function getRequestList(pn){
             let ar = result;
 
             for(let i=0; i<ar.length; i++){
+                let body = document.createElement("tbody")
                 let tr = document.createElement("tr");
                 let td = document.createElement("td");
                 tdput = document.createElement("input");
@@ -184,7 +187,8 @@ function getRequestList(pn){
                 td.appendChild(tdtext);
                 tr.appendChild(td);
 
-                pm.append(tr);
+                body.appendChild(tr);
+                pm.append(body);
             }
             
        }

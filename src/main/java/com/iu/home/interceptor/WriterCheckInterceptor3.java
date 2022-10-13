@@ -1,17 +1,18 @@
-package com.iu.homeinterceptor;
+package com.iu.home.interceptor;
 
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 import com.iu.home.member.MemberDTO;
+import com.iu.home.party.PartyDTO;
+import com.iu.home.qna.QnaDTO;
 
-public class WriterCheckInterceptor extends HandlerInterceptorAdapter{
+public class WriterCheckInterceptor3 extends HandlerInterceptorAdapter{
 	
 	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
 			ModelAndView mv)  throws Exception{
@@ -36,9 +37,20 @@ public class WriterCheckInterceptor extends HandlerInterceptorAdapter{
 		//DTO
 		Map<String, Object> map = mv.getModel();
 		
+		PartyDTO partyDTO = (PartyDTO)map.get("partyListDTO");
+		
+//		if(!memberDTO.getUserName().equals(partyDTO.getUserID())) {
+//			mv.setViewName("kjk/common/rs");
+//			mv.addObject("result", 1);
+//			mv.addObject("message", "작성자만 수정이 가능합니다!!");
+//			mv.addObject("url", "../");
+//			
+//			System.out.println("작성자가 아닙니다");
+//		}
+		
+		System.out.println("작성자 Interceptor");
+		
 		
 	}
-	
-	
 
 }
