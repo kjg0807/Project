@@ -16,8 +16,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.fasterxml.jackson.annotation.JsonCreator.Mode;
 import com.iu.home.member.MemberDTO;
 import com.iu.home.util.Pager;
+
+import oracle.jdbc.proxy.annotation.Post;
 
 @Controller
 @RequestMapping(value = "/party/*")
@@ -40,6 +43,16 @@ public class PartyController {
 		mv.addObject("member", (MemberDTO)session.getAttribute("member"));
 		mv.addObject("partyListDTO", partyListDTO);
 		mv.setViewName("party/update");
+		return mv;
+	}
+	
+	@PostMapping(value = "delete")
+	@ResponseBody
+	public ModelAndView setPartyDelete(PartyListDTO partyListDTO, ModelAndView mv)throws Exception{
+		int result = partyService.setPartyDelete(partyListDTO);
+		String jsonResult="{\"result\":\""+result+"\"}";
+		mv.addObject("result", jsonResult);
+		mv.setViewName("common/ajaxResult");
 		return mv;
 	}
 	
