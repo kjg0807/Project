@@ -17,6 +17,13 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="../../resources/kdy/css/styles.css" rel="stylesheet" />
+
+<style>
+.point{
+    cursor: pointer;
+}
+
+</style>
     </head>
     <body style="background-color: rgb(206, 232, 255);" >
         <c:import url="./template/headerHTML.jsp"></c:import>
@@ -61,7 +68,7 @@
                 </div>
                 <div  class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center" id="tttt" style="box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;">
 
-                    <div class="col mb-5" data-category="" >
+                    <div class="col mb-5 point" data-category="" >
                         <div class="card h-100 cs" id="al">
                             <!-- Product image-->
                             <img class="card-img-top" src="https://dummyimage.com/350x250/dee2e6/6c757d.jpg" alt="..." />
@@ -75,7 +82,7 @@
                         </div>
                     </div>
                     
-                    <div class="col mb-5" data-category="한식">
+                    <div class="col mb-5 point" data-category="한식">
                         <div class="card h-100 categorykor" id="categoryName" name="categoryName" style=" border-radius: 10px;">
                             <button type="submit" style="display: none;"></button>
                             <!-- Product image-->
@@ -89,7 +96,7 @@
                         </div>
                     </div>
 
-                    <div class="col mb-5" data-category="중식">
+                    <div class="col mb-5 point" data-category="중식">
                         <div class="card h-100 cs" style="border-radius: 10px;">
                             <!-- Product image-->
                             <img class="card-img-top" src="../../resources/kdy/images/china.jpg" alt="..." />
@@ -103,7 +110,7 @@
                         </div>
                     </div>
 
-                    <div class="col mb-5" data-category="일식">
+                    <div class="col mb-5 point" data-category="일식">
                         <div class="card h-100 cs"style="border-radius: 10px;">
                             <!-- Product image-->
                             <img class="card-img-top" src="../../resources/kdy/images/jap.jpg" alt="..." />
@@ -117,7 +124,7 @@
                         </div>
                     </div>
 
-                    <div class="col mb-5" data-category="분식">
+                    <div class="col mb-5 point" data-category="분식">
                         <div class="card h-100 cs"style="border-radius: 10px;">
                             <!-- Product image-->
                             <img class="card-img-top" src="../../resources/kdy/images/bun.jpg" alt="..." />
@@ -131,7 +138,7 @@
                         </div>
                     </div>
 
-                    <div class="col mb-5" data-category="양식">
+                    <div class="col mb-5 point" data-category="양식">
                         <div class="card h-100 cs" style="border-radius: 10px;">
                             <!-- Product image-->
                             <img class="card-img-top" src="../../resources/kdy/images/yang.jpg" alt="..." />
@@ -145,7 +152,7 @@
                         </div>
                     </div> 
                     
-                    <div class="col mb-5" data-category="아시안">
+                    <div class="col mb-5 point" data-category="아시안">
                         <div class="card h-100 cs" style="border-radius: 10px;">
                             <!-- Product image-->
                             <img class="card-img-top" src="../../resources/kdy/images/ssal.jpg" alt="..." />
@@ -165,7 +172,7 @@
                 <div>
                         <c:forEach items="${list}" var="list">
 
-                            <div class="shop_list"  onclick="location.href='/shop/detailHTML?shopNum=${list.getShopNum()}';">
+                            <div class="shop_list point"  onclick="location.href='/shop/detailHTML?shopNum=${list.getShopNum()}';">
 
                                 <div class="list" style="box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px" >
 
