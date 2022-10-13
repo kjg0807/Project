@@ -13,27 +13,29 @@
 		 <c:import url="../template/headerHTML.jsp"></c:import>
 </head>
 <body>
-	<h1 class="align-center">${board} Reply Page</h1>
+	<h1 class="align-center">Reply Page</h1>
 <section class="container-fluid col-lg-4">
 	
 	<div class="row">
 		<form action="./reply" method="post">
 			<input type="hidden" name="num" value="${qnaDTO.num}">
 			<div class="mb-3">
-			  <label for="title" class="form-label">Title</label>
-			  <input type="text" name="title" class="form-control" id="title" placeholder="제목 입력">
+			  <label for="userID" class="form-label">작성자</label>
+			  <input type="text" name="userID" class="form-control" id="userID" placeholder="${dto.userID}" readonly disabled>
 			</div>
 			<div class="mb-3">
-			  <label for="userID" class="form-label">userID</label>
-			  <input type="text" name="userID" class="form-control" id="userID" placeholder="작성자 입력">
+			  <label for="title" class="form-label">제목</label>
+			  <input type="text" name="title" class="form-control" id="title" placeholder="제목을 입력하세요.">
 			</div>
 			<div class="mb-3">
-			  <label for="contents" class="form-label">Contents</label>
-			  <textarea class="form-control" name="contents" id="contents" rows="3"></textarea>
+			  <label for="contents" class="form-label">내용</label>
+			  <textarea class="form-control" name="contents" id="contents" rows="3" placeholder="내용을 입력하세요."></textarea>
 			</div>
 			
-			<div class="mb-3">
-				<button class="btn btn-success">WRITE</button>
+			<div style="display: inline-block; margin: 0 5px;  float: right;">
+				<div class="mb-3">
+					<button class="btn btn-success">작성완료</button>
+				</div>
 			</div>
 			
 		</form>
