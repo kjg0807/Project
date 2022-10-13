@@ -24,8 +24,7 @@
 		(#{shopNum},#{categoryNum},#{shopPhone},#{shopName},#{shopAddress},#{priceAvg},#{delivery},#{shopContents},#{shopTitle}, 0, #{userID})
 	</insert>
 	
-	<select id="getList" resultType="ShopDTO"
-		parameterType="ShopPager">
+	<select id="getList" resultType="ShopDTO" parameterType="ShopPager">
      SELECT * FROM 
         (SELECT ROWNUM R, SN.MENUNAME,SN.SHOPNUM, SN.SHOPNAME, SN.SHOPADDRESS, SN.SHOPPHONE, SN.PRICEAVG, SN.DELIVERY, SN.SHOPCONTENTS, SN.SHOPTITLE ,SN.HIT, SN.MENUNUM, SN.CATEGORYNAME,SN.CONTENTS, SN.TITLE, SN.REVIEWNUM, SN.REVIEWDATE, SN.HITS, SN.USERID, SN.USERNAME, SN.PWD, SN.EMAIL, SN.AGE, SN.BIRTH, SN.PHONE, SN.GENDER FROM
 		(SELECT S.*, M.MENUNAME, M.MENUPRICE, M.MENUNUM, C.CATEGORYNUM, C.CATEGORYNAME, RE.REVIEWNUM,RE.CONTENTS, RE.TITLE, RE.REVIEWDATE, RE.HITS, PM.USERNAME, PM.PWD, PM.EMAIL, PM.AGE, PM.BIRTH, PM.PHONE, PM.GENDER FROM
@@ -62,10 +61,13 @@
 		WHERE R BETWEEN 1 AND 5
 	</select>
 	
-	<select id="getCount" resultType="Long"
-		parameterType="ShopPager">
-		SELECT COUNT(SHOPNUM) FROM SHOP
-		<include refid="search" />
+	<select id="getCount" resultType="Long" parameterType="ShopPager">
+		    SELECT COUNT(SHOPNUM) FROM
+ 				SHOP S
+                LEFT JOIN
+                CATEGORY C
+                ON S.CATEGORYNUM = C.CATEGORYNUM
+                WHERE CATEGORYNAME LIKE '%'||#{categoryName}||'%' 
 	</select>
 	
 	<select id="getDetail" parameterType="ShopDTO" resultMap="getDetailMap"> 

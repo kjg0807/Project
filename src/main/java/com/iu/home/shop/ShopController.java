@@ -53,6 +53,10 @@ public class ShopController {
       mv.addObject("list", ar);
       mv.addObject("shopPager", shopPager);
       mv.setViewName("kdy/shop/listHTML");
+//      System.out.println("스타트 로우"+shopPager.getStartRow());
+//      System.out.println("라스트 로우"+shopPager.getLastRow());
+//      System.out.println("스타트 넘"+shopPager.getStartNum());
+//      System.out.println("라스트 넘"+shopPager.getLastNum());
       return mv;
    }
    
