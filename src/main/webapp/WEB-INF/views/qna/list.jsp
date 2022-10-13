@@ -145,6 +145,8 @@ a:hover {
 			홈으로
 		</button>
 
+		<button id="fuxx" style="display: none;" onclick="location='../kjk/member/login'"></button>
+
 		<c:choose>
 			<c:when test="${member == null}">
 				<div style="display: inline-block; margin: 0 5px; float: right;">
@@ -199,8 +201,8 @@ a:hover {
 		integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"
 	></script>
 	<c:import url="../template/footerHTML.jsp"></c:import>
-	<!-- <script src="/resources/kjk/js/noticeList.js"></script>
-	<script src="/resources/kjk/js/detailList.js"></script> -->
+	<script src="/resources/kjk/js/noticeList.js"></script>
+	<script src="/resources/kjk/js/detailList.js"></script>
 	<script src="../../../resources/hjs/js/QnaList.js"></script>
 </body>
 

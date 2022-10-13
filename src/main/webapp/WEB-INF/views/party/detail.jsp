@@ -51,7 +51,8 @@
 		<div class="d-inline mt-5" style="width: 300px;">
 			<button type="button" id="btnupdate" class="btn btn-outline-primary btn-sm"
 			onclick="location.href='./update?partyNum=${partyListDTO.partyNum}' "  style="margin-top: 2px;">수정</button>
-			<button type="button" id="btndelete" class="btn btn-outline-danger btn-sm">삭제</button>
+			<button type="button" id="btndelete" class="btn btn-outline-danger btn-sm"
+			>삭제</button>
 		</div>
 		
 		
