@@ -202,37 +202,41 @@ public class MemberController
 	{
 		System.out.println("checkId GET");
 
-//		String a = request.getParameter("id");
-//		System.out.println(a);
-
 		int rs = memberService.getCheckId(id);
 		System.out.println(rs);
 		return rs;
 	}
 
-//	@PostMapping(value = "checkId")
-//	public ModelAndView checkId(MemberDTO memberDTO, ModelAndView mv, HttpServletRequest request) throws Exception
-//	{
-//		mv = new ModelAndView();
-//		System.out.println("/user/checkId : post");
-//		System.out.println("param : " + memberDTO.getUserID());
-//
-//		String a = request.getParameter("id");
-//		System.out.println("request parameter: " + a);
-//
-//		int checkNum = memberService.getCheckId(memberDTO);
-//
-//		if (checkNum == 1)
-//		{
-//			System.out.println("아이디가 중복되었다.");
-//			mv.setViewName("idDuplicated");
-//			return mv;
-//		} else
-//		{
-//			System.out.println("아이디 사용 가능");
-//			mv.setViewName("available");
-//			return mv;
-//		}
-//	}
+	@RequestMapping("checkName")
+	@ResponseBody
+	public int checkName(String name) throws Exception
+	{
+		System.out.println("checkName GET");
 
+		int rs = memberService.checkName(name);
+		System.out.println(rs);
+		return rs;
+	}
+
+	@RequestMapping("checkEmail")
+	@ResponseBody
+	public int checkEmail(String email) throws Exception
+	{
+		System.out.println("checkEmail GET");
+
+		int rs = memberService.checkEmail(email);
+		System.out.println(rs);
+		return rs;
+	}
+	
+	@RequestMapping("checkPhone")
+	@ResponseBody
+	public int checkPhone(String phone) throws Exception
+	{
+		System.out.println("checkPhone GET");
+
+		int rs = memberService.checkPhone(phone);
+		System.out.println(rs);
+		return rs;
+	}
 }
