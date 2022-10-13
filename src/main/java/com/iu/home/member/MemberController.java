@@ -121,16 +121,37 @@ public class MemberController
 			System.out.println("re ID: " + reviewsDTO2.getUserID());
 			System.out.println("re title: " + reviewsDTO2.getTitle());
 			System.out.println("re contents: " + reviewsDTO2.getContents());
+			System.out.println(reviewsDTO2.getShopNum());
 		}
 
 		mv.addObject("reList", ar);
 
 		mv.addObject("dto", memberDTO);
 
-		mv.setViewName("kjk/member/mypage");
+//		mv.setViewName("kjk/member/mypage");
 
 		return mv;
 	}
+
+//	@PostMapping(value = "mypage")
+//	public void mypage(ReviewsDTO reviewsDTO, HttpSession session) throws Exception
+//	{
+//		ModelAndView mv = new ModelAndView();
+//
+//		MemberDTO memberDTO = (MemberDTO) session.getAttribute("member");
+//		memberDTO = memberService.getMyPage(memberDTO);
+//
+//		reviewsDTO.setUserID(memberDTO.getUserID());
+//		List<ReviewsDTO> ar = memberService.reviewsList(reviewsDTO);
+//
+//		for (ReviewsDTO reviewsDTO2 : ar)
+//		{
+//			System.out.println("re Num: " + reviewsDTO2.getShopNum());
+//		}
+//		mv.addObject("rList", ar);
+//		mv.addObject("dto", memberDTO);
+//		mv.setViewName("kdy/shop/detailHTML?shopNum=" + reviewsDTO.getShopNum());
+//	}
 
 	@GetMapping(value = "adpage")
 	public ModelAndView adMypage(MemberDTO memberDTO, HttpSession session) throws Exception
@@ -228,7 +249,7 @@ public class MemberController
 		System.out.println(rs);
 		return rs;
 	}
-	
+
 	@RequestMapping("checkPhone")
 	@ResponseBody
 	public int checkPhone(String phone) throws Exception

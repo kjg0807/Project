@@ -128,7 +128,7 @@
 
 	<select id="reviewsList" parameterType="ReviewsDTO"
 		resultMap="review">
-		SELECT m.*, r.userID, r.title, r.contents
+		SELECT m.*, r.userID, r.title, r.contents, r.shopNum
 		FROM
 		PROMEMBERS M
 		INNER JOIN
@@ -142,6 +142,7 @@
 		<result column="userID" property="userID" />
 		<result column="title" property="title" />
 		<result column="contents" property="contents" />
+		<result column="shopNum" property="shopNum" />
 		<collection property="memberDTOs" javaType="List"
 			ofType="MemberDTO">
 			<id column="userID" property="userID" />
