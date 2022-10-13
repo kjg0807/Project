@@ -105,7 +105,7 @@
 					<th>사용자명</th>
 					<c:choose>
 						<c:when test="${not empty member.userName }">
-							<th><input type="text" name="userName" id="userName" value="${member.userName }" ></th>
+							<th><input type="text" name="userName" id="userName" value="${member.userName }" readonly ></th>
 							<th><button onclick="chatName()" id="startBtn">이름 등록</button></th>
 						</c:when>
 						<c:otherwise>

@@ -73,6 +73,10 @@
     		TO_DATE(#{partyTimeout}||' '|| #{partyHH}||':'||#{partymm}||':00', 'YY:MM:DD HH24:MI:SS')
     		)
     </insert>
+    
+    <delete id="setPartyDelete" parameterType="PartyListDTO">
+    	DELETE FROM PARTYLIST WHERE PARTYNUM = #{partyNum}	
+    </delete>
    
    <!-- partyList======================================================================================= -->
    
