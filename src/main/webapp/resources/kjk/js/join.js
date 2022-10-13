@@ -46,41 +46,6 @@ id.addEventListener("blur", function () {
     })
 });
 
-// const idchecked = document.getElementById("idchecked");
-// idchecked.addEventListener("click", function () {
-//     //ID중복 확인 통신을 위해 입력값을 가져오기
-//     const id = $("#id").val();
-
-//     //ajax 호출.
-//     //클라이언트에서 서버와 비동기 통신을 진행하는 ajax함수.
-//     $.ajax({
-//         type: 'post', // 서버에 전송하는 http방식
-//         url: '/kjk/member/join', // 서버 요청 url
-//         headers: {
-//             'Content-Type': 'application/json'
-//         },
-//         dataType: 'text', //서버로 부터 응답받을 데이터의 형태 
-//         data: id, // 서버로 전송할 데이터 // 위에서 지정한 const id 
-//         success: function (result) { // 매개변수에 통신성공시 데이터가 저장된다.
-//             //서버와 통신성공시 실행할 내용 작성.
-//             console.log('통신 성공!' + result);
-//             if (result === 'available') {
-//                 $('#id').css('background-color', 'aqua');
-//                 $('#idChk').html('<b style="font-size: 14px; color: green">[아이디 사용이 가능하다.]</b>');
-//                 idcheck = true;
-//             } else {
-//                 $('#id').css('background-color', 'red');
-//                 $('#idChk').html('<b style="font-size: 14px; color: red">[아이디 중복!.]</b>');
-//                 idcheck = false;
-//             }
-//         },
-//         error: function (status, error) { //통신에 실패했을때
-//             console.log('통신실패');
-//             console.log(status, error);
-//         }
-//     }); // end ajax(아이디 중복 확인)
-// })
-
 // pwd를 입력할 때마다 (1글자씩) 메세지를 출력 : pwd - 최소 6글자 이상
 const pwd = document.getElementById("pwd");
 
@@ -128,12 +93,36 @@ function na() {
         document.getElementById("nameText").style.display = 'none';
         namecheck = true;
     }
+
+    let mbId = $("#name").val();
+    $.ajax({
+        url: '/kjk/member/checkName',
+        type: "post",
+        data: { name: mbId },
+        dataType: 'json',
+        success: function (result) {
+            if (result == 1) {
+                $("#name_feedback").html("이미 사용중인 닉네임입니다.");
+                $("#name_feedback").attr("color", "#dc3545");
+                namecheck = false;
+            }
+            else {
+                $("#name_feedback").html("사용할 수 있는 닉네임입니다.");
+                $("#name_feedback").attr("color", "#2fb380");
+                namecheck = true;
+            }
+        },
+        error: function () {
+            alert("서버 요청 실패");
+        }
+    })
 }
 
 var emin = document.getElementById("email2");
 var emse = document.getElementById("emse");
 let email = document.getElementById("emaill");
 let sendEmail = document.getElementById("email");
+
 email.addEventListener("blur", em);
 function em() {
     let ne = email.value;
@@ -147,18 +136,98 @@ function em() {
     }
 }
 // @ 이후
+emin.addEventListener("blur", function () {
+    let emvalue = emin.value;
+
+    // email 값 비교
+    let mbId = $("#email").val();
+    $.ajax({
+        url: '/kjk/member/checkEmail',
+        type: "post",
+        data: { email: mbId },
+        dataType: 'json',
+        success: function (result) {
+            // console.log(emvalue);
+            $("#email2").val(emvalue);
+            // console.log("email all: " + email.value + emin.value);
+            let emailValue = email.value + emin.value;
+            let rs = emailValue.substring(0, emailValue.indexOf('@'));
+            document.getElementById("email").innerHTML = rs;
+            sendEmail.value = rs + emin.value;
+            console.log(sendEmail.value);
+            if (result == 1) {
+                $("#email_feedback").html("이미 사용중인 이메일입니다.");
+                $("#email_feedback").attr("color", "#dc3545");
+                emailcheck = false;
+            }
+            else {
+                if (emvalue == '') {
+                    $("#email_feedback").html("빈칸은 사용할 수 없습니다.");
+                    $("#email_feedback").attr("color", "#dc3545");
+                    emailcheck = false;
+                    return;
+                }
+                $("#email_feedback").html("사용할 수 있는 이메일입니다.");
+                $("#email_feedback").attr("color", "#2fb380");
+                emailcheck = true;
+            }
+        },
+        error: function () {
+            alert("서버 요청 실패");
+        }
+    })
+
+    // if (emin.value == "") {
+    //     $("#email_feedback").html("사용할 수 없는 형식입니다.");
+    //     $("#email_feedback").attr("color", "#dc3545");
+    //     emailcheck = false;
+    //     return;
+    // }
+})
+
 emse.addEventListener("change", function () {
-    // console.log("value: " + emse.options[emse.selectedIndex].value);
     let emvalue = emse.options[emse.selectedIndex].value;
-    // console.log(emvalue);
-    // console.log(emtext);
-    // console.log("변경 테스트: " + emvalue);
+
     $("#email2").val(emvalue);
     console.log("email all: " + email.value + emin.value);
     let emailValue = email.value + emin.value;
     let rs = emailValue.substring(0, emailValue.indexOf('@'));
     document.getElementById("email").innerHTML = rs;
     sendEmail.value = rs + emin.value;
+
+    let mbId = $("#email").val();
+    $.ajax({
+        url: '/kjk/member/checkEmail',
+        type: "post",
+        data: { email: mbId },
+        dataType: 'json',
+        success: function (result) {
+            if (result == 1) {
+                $("#email_feedback").html("이미 사용중인 이메일입니다.");
+                $("#email_feedback").attr("color", "#dc3545");
+                emailcheck = false;
+            }
+            else {
+                $("#email_feedback").html("사용할 수 있는 이메일입니다.");
+                $("#email_feedback").attr("color", "#2fb380");
+                emailcheck = true;
+            }
+        },
+        error: function () {
+            alert("서버 요청 실패");
+        }
+    })
+console.log(email.value);
+    if(email.value==''){
+        document.getElementById("emailText2").style.display = 'block';
+        document.getElementById("email_feedback").style.display = 'none';
+        emailcheck = false;
+    }
+    else{
+        document.getElementById("emailText2").style.display = 'none';
+        document.getElementById("email_feedback").style.display = 'block';
+        emailcheck = true;
+    }
 });
 
 const phone = document.getElementById("phone");
@@ -189,6 +258,29 @@ function ph() {
         document.getElementById("phoneText1").style.display = 'none';
         phonecheck = true;
     }
+
+    let mbId = $("#phone").val();
+    $.ajax({
+        url: '/kjk/member/checkPhone',
+        type: "post",
+        data: { phone: mbId },
+        dataType: 'json',
+        success: function (result) {
+            if (result == 1) {
+                $("#phone_feedback").html("이미 사용중인 전화번호입니다.");
+                $("#phone_feedback").attr("color", "#dc3545");
+                phonecheck = false;
+            }
+            else {
+                $("#phone_feedback").html("사용할 수 있는 전화번호입니다.");
+                $("#phone_feedback").attr("color", "#2fb380");
+                phonecheck = true;
+            }
+        },
+        error: function () {
+            alert("서버 요청 실패");
+        }
+    })
 }
 
 // age, birth, gender

@@ -55,4 +55,19 @@ public class MemberDAO
 	{
 		return sqlSession.selectList(NAMESPACE + "reviewsList", reviewsDTO);
 	}
+
+	public int checkName(String name) throws Exception
+	{
+		return sqlSession.selectOne(NAMESPACE + "checkName", name);
+	}
+
+	public int checkEmail(String email) throws Exception
+	{
+		return sqlSession.selectOne(NAMESPACE + "checkEmail", email);
+	}
+
+	public int checkPhone(String phone) throws Exception
+	{
+		return sqlSession.selectOne(NAMESPACE + "checkPhone", phone);
+	}
 }

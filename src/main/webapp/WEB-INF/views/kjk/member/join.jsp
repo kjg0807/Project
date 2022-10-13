@@ -38,11 +38,10 @@ select {
 }
 </style>
 <script>
-	function check(){
+	function check() {
 		window.open("./checkId", "_blank", "width=600,height=600");
 	}
 </script>
-
 <body>
 	<c:import url="../../template/headerHTML.jsp"></c:import>
 
@@ -55,20 +54,22 @@ select {
 				<div class="mb-3">
 					<label class="form-label">아이디</label>
 					<input type="text" class="form-control" name="userID" aria-describedby="emailHelp" placeholder="아이디 입력" onfocus="this.placeholder=''"
-						onblur="this.placeholder='아이디 입력'" id="id"
+						onblur="this.placeholder='아이디 입력'" id="id" autocomplete="off"
 					>
 					<!-- <button type="button" id="idchecked" class="btn btn-outline-dark">ID 중복 체크</button> -->
 					<!-- onclick="check();" -->
 					<!-- id를 입력하고 나왔을 때 2글자 미만이면 메세지 출력 : id는 2글자 이상 -->
 					<div id="idText" style="display: none; color: #dc3545;">ID는 2글자 이상 입력해야 합니다.</div>
-					<div><font id="id_feedback" size="3"></font></div>
+					<div>
+						<font id="id_feedback" size="3"></font>
+					</div>
 				</div>
 
 				<!-- password 1 -->
 				<div class="mb-3">
 					<label class="form-label">비밀번호</label>
 					<input type="password" class="form-control" name="pwd" placeholder="비밀번호 입력" id="pwd" onfocus="this.placeholder=''"
-						onblur="this.placeholder='비밀번호 입력'"
+						onblur="this.placeholder='비밀번호 입력'" autocomplete="off"
 					>
 					<!-- pwd를 입력할 때마다 (1글자씩) 메세지를 출력 : pwd - 최소 6글자 이상 -->
 					<div id="pwdText" style="display: none; color: #dc3545;">PWD는 6글자 이상 입력해야 합니다.</div>
@@ -77,18 +78,22 @@ select {
 				<div class="mb-3">
 					<label class="form-label">비밀번호 확인</label>
 					<!-- name="pwd"-->
-					<input type="password" class="form-control" placeholder="비밀번호 확인" id="pwd2" onfocus="this.placeholder=''" onblur="this.placeholder='비밀번호 확인'">
+					<input type="password" class="form-control" placeholder="비밀번호 확인" id="pwd2" onfocus="this.placeholder=''" onblur="this.placeholder='비밀번호 확인'"
+					autocomplete="off">
 					<!-- pwd를 입력하고 나왔을 때 첫번째 pwd와 값 비교 후 메세지 출력 : 같다, 다르다 -->
 					<div id="pwdText2" style="display: none; color: #dc3545;">PWD가 일치하지 않습니다.</div>
 				</div>
 				<!-- name -->
 				<div class="mb-3">
 					<label class="form-label">닉네임</label>
-					<input type="text" class="form-control" name="userName" aria-describedby="emailHelp" id="name" placeholder="닉네임 입력" onfocus="this.placeholder=''"
-						onblur="this.placeholder='닉네임 입력'"
+					<input type="text" class="form-control" name="userName" aria-describedby="emailHelp" placeholder="닉네임 입력" onfocus="this.placeholder=''"
+						onblur="this.placeholder='닉네임 입력'" id="name" autocomplete="off"
 					>
 					<!-- 입력 후 최소 1글자 이상 -->
 					<div id="nameText" style="display: none; color: #dc3545;">최소 1글자를 입력하세요.</div>
+					<div>
+						<font id="name_feedback" size="3"></font>
+					</div>
 				</div>
 				<!-- email -->
 				<div class="mb-7">
@@ -98,12 +103,13 @@ select {
 						<!-- style="width: 46%; padding: 5px; border: 1px solid #dedede" -->
 						<input type="hidden" name="email" id="email">
 						<input style="width: 37%; padding: 5px; border: 1px solid #dedede" name="emaill" id="emaill" type="text" placeholder="이메일 입력"
-							onfocus="this.placeholder=''" onblur="this.placeholder='이메일 입력'"
+							onfocus="this.placeholder=''" onblur="this.placeholder='이메일 입력'" autocomplete="off"
 						>
-						<input style="width: 37%; padding: 5px; border: 1px solid #dedede" name="email2" id="email2" type="text">
+						<input style="width: 37%; padding: 5px; border: 1px solid #dedede" name="email2" id="email2" type="text"
+						>
 						<br>
 						<select style="width: 27%; justify-content: right;" name="select_email" id="emse" class="kind">
-							<option class="kinds" value="">직접입력</option>
+							<option class="kinds" value="">이메일 선택</option>
 							<option class="kinds" value="@naver.com">naver.com</option>
 							<option class="kinds" value="@gmail.com">gmail.com</option>
 							<option class="kinds" value="@daum.com">daum.com</option>
@@ -112,23 +118,31 @@ select {
 					<!-- 입력 후 최소 1글자 이상 -->
 					<div id="emailText11" style="display: none; color: #dc3545;">이메일 형식에 맞게 입력하세요.</div>
 					<div id="emailText" style="display: none; color: #dc3545;">최소 1글자를 입력하세요.</div>
+					<div id="emailText2" style="display: none; color: #dc3545;">빈칸은 사용할 수 없습니다.</div>
+					<div>
+						<font id="email_feedback" size="3"></font>
+					</div>
 				</div>
 				<!-- phone -->
 				<br> <br> <br>
 				<div class="mb-3">
 					<label class="form-label">전화번호</label>
 					<input type="text" class="form-control" name="phone" id="phone" placeholder="전화번호 입력 - 010-xxxx-xxxx" onfocus="this.placeholder=''"
-						onblur="this.placeholder='전화번호 입력 - 010-xxxx-xxxx'"
+						onblur="this.placeholder='전화번호 입력 - 010-xxxx-xxxx'" autocomplete="off"v
 					>
 					<!-- 입력 후 최소 1글자 이상 -->
 					<div id="phoneText" style="display: none; color: #dc3545;">최소 1글자를 입력하세요.</div>
 					<div id="phoneText1" style="display: none; color: #dc3545;">휴대전화 번호 형식에 맞지 않습니다.</div>
 					<div id="phoneText2" style="display: none; color: #dc3545;">숫자를 입력하세요.</div>
+					<div>
+						<font id="phone_feedback" size="3"></font>
+					</div>
 				</div>
 				<!-- 나이 -->
 				<div class="mb-3">
 					<label class="form-label">나이</label>
-					<input type="text" class="form-control" name="age" id="age" placeholder="나이 입력" onfocus="this.placeholder=''" onblur="this.placeholder='나이 입력'">
+					<input type="text" class="form-control" name="age" id="age" placeholder="나이 입력" onfocus="this.placeholder=''" onblur="this.placeholder='나이 입력'"
+					autocomplete="off">
 					<!-- 입력 후 최소 1글자 이상 -->
 					<div id="ageText" style="display: none; color: #dc3545;">최소 1글자를 입력하세요.</div>
 					<div id="ageText1" style="display: none; color: #dc3545;">0보다 큰 숫자를 입력하세요.</div>
@@ -139,7 +153,7 @@ select {
 				<div class="mb-3">
 					<label class="form-label">생년월일</label>
 					<input type="text" class="form-control" name="birth" id="birth" placeholder="생년월일 입력 - ex)990807" onfocus="this.placeholder=''"
-						onblur="this.placeholder='생년월일 입력 - ex)990807'"
+						onblur="this.placeholder='생년월일 입력 - ex)990807'" autocomplete="off"
 					>
 					<div id="birthText" style="display: none; color: #dc3545;">6자를 입력하세요</div>
 					<div id="birthText1" style="display: none; color: #dc3545;">6자를 입력하세요</div>
@@ -149,7 +163,7 @@ select {
 				<div class="mb-3">
 					<label class="form-label">성별</label>
 					<input type="text" class="form-control" name="gender" id="gender" placeholder="성별 입력 - 남: 1, 여: 2" onfocus="this.placeholder=''"
-						onblur="this.placeholder='성별 입력 - 남: 1, 여: 2'"
+						onblur="this.placeholder='성별 입력 - 남: 1, 여: 2'" autocomplete="off"
 					>
 					<!-- 입력 후 최소 1글자 이상 -->
 					<div id="genderText" style="display: none; color: #dc3545;">최소 1글자를 입력하세요.</div>
