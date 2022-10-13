@@ -59,7 +59,7 @@ select {
 					<!-- <button type="button" id="idchecked" class="btn btn-outline-dark">ID 중복 체크</button> -->
 					<!-- onclick="check();" -->
 					<!-- id를 입력하고 나왔을 때 2글자 미만이면 메세지 출력 : id는 2글자 이상 -->
-					<div id="idText" style="display: none; color: #dc3545;">ID는 2글자 이상 입력해야 합니다.</div>
+					<div id="idText" style="display: none; color: #dc3545;">2글자 이상 입력해야 합니다.</div>
 					<div>
 						<font id="id_feedback" size="3"></font>
 					</div>
@@ -72,7 +72,7 @@ select {
 						onblur="this.placeholder='비밀번호 입력'" autocomplete="off"
 					>
 					<!-- pwd를 입력할 때마다 (1글자씩) 메세지를 출력 : pwd - 최소 6글자 이상 -->
-					<div id="pwdText" style="display: none; color: #dc3545;">PWD는 6글자 이상 입력해야 합니다.</div>
+					<div id="pwdText" style="display: none; color: #dc3545;">6글자 이상 16글자 이하로 입력해야 합니다.</div>
 				</div>
 				<!-- password 2 -->
 				<div class="mb-3">
@@ -90,7 +90,7 @@ select {
 						onblur="this.placeholder='닉네임 입력'" id="name" autocomplete="off"
 					>
 					<!-- 입력 후 최소 1글자 이상 -->
-					<div id="nameText" style="display: none; color: #dc3545;">최소 1글자를 입력하세요.</div>
+					<div id="nameText" style="display: none; color: #dc3545;">글자 수가 너무 짧습니다.</div>
 					<div>
 						<font id="name_feedback" size="3"></font>
 					</div>
@@ -106,6 +106,8 @@ select {
 							onfocus="this.placeholder=''" onblur="this.placeholder='이메일 입력'" autocomplete="off"
 						>
 						<input style="width: 37%; padding: 5px; border: 1px solid #dedede" name="email2" id="email2" type="text"
+						placeholder="입력하지 말고 선택하세요."
+							onfocus="this.placeholder=''" onblur="this.placeholder='입력하지 말고 선택하세요.'" autocomplete="off"
 						>
 						<br>
 						<select style="width: 27%; justify-content: right;" name="select_email" id="emse" class="kind">
@@ -117,7 +119,7 @@ select {
 					</div>
 					<!-- 입력 후 최소 1글자 이상 -->
 					<div id="emailText11" style="display: none; color: #dc3545;">이메일 형식에 맞게 입력하세요.</div>
-					<div id="emailText" style="display: none; color: #dc3545;">최소 1글자를 입력하세요.</div>
+					<div id="emailText" style="display: none; color: #dc3545;">글자 수가 너무 짧습니다.</div>
 					<div id="emailText2" style="display: none; color: #dc3545;">빈칸은 사용할 수 없습니다.</div>
 					<div>
 						<font id="email_feedback" size="3"></font>
@@ -131,7 +133,7 @@ select {
 						onblur="this.placeholder='전화번호 입력 - 010-xxxx-xxxx'" autocomplete="off"v
 					>
 					<!-- 입력 후 최소 1글자 이상 -->
-					<div id="phoneText" style="display: none; color: #dc3545;">최소 1글자를 입력하세요.</div>
+					<div id="phoneText" style="display: none; color: #dc3545;">글자 수가 너무 짧습니다.</div>
 					<div id="phoneText1" style="display: none; color: #dc3545;">휴대전화 번호 형식에 맞지 않습니다.</div>
 					<div id="phoneText2" style="display: none; color: #dc3545;">숫자를 입력하세요.</div>
 					<div>
@@ -144,7 +146,7 @@ select {
 					<input type="text" class="form-control" name="age" id="age" placeholder="나이 입력" onfocus="this.placeholder=''" onblur="this.placeholder='나이 입력'"
 					autocomplete="off">
 					<!-- 입력 후 최소 1글자 이상 -->
-					<div id="ageText" style="display: none; color: #dc3545;">최소 1글자를 입력하세요.</div>
+					<div id="ageText" style="display: none; color: #dc3545;">글자 수가 너무 짧습니다.</div>
 					<div id="ageText1" style="display: none; color: #dc3545;">0보다 큰 숫자를 입력하세요.</div>
 					<div id="ageText2" style="display: none; color: #dc3545;">숫자를 입력하세요.</div>
 					<div id="ageText3" style="display: none; color: #dc3545;">2자리 이하만 입력 가능합니다.</div>

@@ -16,9 +16,6 @@ id.addEventListener("blur", function () {
     }
     else {
         document.getElementById("idText").style.display = 'none';
-        var favoritemovie = d;
-        sessionStorage.setItem("favoriteMovie", favoritemovie);
-        // window.open("/kjk/member/checkId", "_blank", "width=600,height=600");
         idcheck = true;
     }
     //아이디 중복 확인
@@ -30,11 +27,22 @@ id.addEventListener("blur", function () {
         dataType: 'json',
         success: function (result) {
             if (result == 1) {
+                if(d == '1'){
+                    document.getElementById("idText").style.display = 'block';
+                    idcheck = false;
+                    $("#id_feedback").html("");
+                    return;
+                }
                 $("#id_feedback").html("이미 사용중인 아이디입니다.");
                 $("#id_feedback").attr("color", "#dc3545");
                 idcheck = false;
             }
             else {
+                if(d.length < 2){
+                    document.getElementById("idText").style.display = 'block';
+                    idcheck = false;
+                    return;
+                }
                 $("#id_feedback").html("사용할 수 있는 아이디입니다.");
                 $("#id_feedback").attr("color", "#2fb380");
                 idcheck = true;
@@ -49,10 +57,11 @@ id.addEventListener("blur", function () {
 // pwd를 입력할 때마다 (1글자씩) 메세지를 출력 : pwd - 최소 6글자 이상
 const pwd = document.getElementById("pwd");
 
-pwd.addEventListener("blur", pwd11);
-function pwd11() {
+pwd.addEventListener("blur", function(){
     let p = pwd.value;
-    if (p.length < 6) {
+    let pa = p.length;
+    console.log(pa);
+    if (pa < 6 || pa > 16) {
         document.getElementById("pwdText").style.display = 'block';
         pwdcheck = false;
     }
@@ -60,7 +69,7 @@ function pwd11() {
         document.getElementById("pwdText").style.display = 'none';
         pwdcheck = true;
     }
-}
+});
 
 // pwd를 입력하고 나왔을 때 첫번째 pwd와 값 비교 후 메세지 출력 : 같다, 다르다
 const pwd2 = document.getElementById("pwd2");
@@ -81,7 +90,7 @@ function pwd22() {
 
 // 입력 후 최소 1글자 이상 name, email, phone
 const name1 = document.getElementById("name");
-let a = 1;
+let a = 3;
 name1.addEventListener("blur", na);
 function na() {
     let ne = name1.value;
@@ -107,6 +116,12 @@ function na() {
                 namecheck = false;
             }
             else {
+                if(ne.length < a){
+                    document.getElementById("nameText").style.display = 'block';
+                    namecheck = false;
+                    $("#name_feedback").html("");
+                    return;
+                }
                 $("#name_feedback").html("사용할 수 있는 닉네임입니다.");
                 $("#name_feedback").attr("color", "#2fb380");
                 namecheck = true;
@@ -155,6 +170,12 @@ emin.addEventListener("blur", function () {
             document.getElementById("email").innerHTML = rs;
             sendEmail.value = rs + emin.value;
             console.log(sendEmail.value);
+            if(rs==''){
+                $("#email_feedback").html("직접 입력하지 말고 선택하세요");
+                $("#email_feedback").attr("color", "#dc3545");
+                emailcheck = false;
+                return;
+            }
             if (result == 1) {
                 $("#email_feedback").html("이미 사용중인 이메일입니다.");
                 $("#email_feedback").attr("color", "#dc3545");
@@ -217,7 +238,7 @@ emse.addEventListener("change", function () {
             alert("서버 요청 실패");
         }
     })
-console.log(email.value);
+console.log(rs);
     if(email.value==''){
         document.getElementById("emailText2").style.display = 'block';
         document.getElementById("email_feedback").style.display = 'none';
@@ -236,7 +257,7 @@ phone.addEventListener("blur", ph);
 function ph() {
     let ne = phone.value;
     // 입력하지 않았을 때
-    if (ne.length == 0) {
+    if (ne.length < a) {
         document.getElementById("phoneText").style.display = 'block';
         phonecheck = false;
     }
@@ -290,7 +311,7 @@ gendercheck = true;
 const age = document.getElementById("age");
 age.addEventListener("blur", function () {
     let ne = age.value;
-    if (ne.length < a) { // 입력하지 않았을 때
+    if (ne.length < 2) { // 입력하지 않았을 때
         document.getElementById("ageText").style.display = 'block';
         agecheck = false;
     }

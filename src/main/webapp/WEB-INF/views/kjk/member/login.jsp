@@ -33,13 +33,13 @@
 					<input type="text" id="userID" class="form-control" name="userID" placeholder="ID Input" onfocus="this.placeholder=''"
 						onblur="this.placeholder='ID Input'" autocomplete="off"
 					>
-					<div>We'll never share your ID with anyone else.</div>
 				</div>
 				<div class="mb-3">
 					<label>비밀번호</label>
 					<input type="password" id="pwd" class="form-control" name="pwd" placeholder="Password Input" onfocus="this.placeholder=''"
 						onblur="this.placeholder='Password Input'" autocomplete="off"
 					>
+					<div></div>
 				</div>
 				<div class="mb-3">
 					<button type="submit" class="btn btn-primary log">로그인</button>
