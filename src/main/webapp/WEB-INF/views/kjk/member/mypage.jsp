@@ -84,9 +84,9 @@ a:hover {
 							<b>${dto.userName}님이 작성한 리뷰</b>
 						</div>
 						<c:forEach items="${reList}" var="reList">
+							<hr>
 							<c:choose>
 								<c:when test="${dto.userID ne 'reList.userID'}">
-									<hr style="margin-bottom: 5px;">
 									<%-- 내가 작성한 리뷰, 댓글 출력후 클릭시 작성한 곳으로 이동 --%>
 									<%-- title; writer; contents; reviewDate; hits; --%>
 									<ul class="list_newsissue">
@@ -101,14 +101,12 @@ a:hover {
 														<p class="ppa">${reList.contents }</p>
 													</strong>
 												</div>
-												<!-- <div id="backa" style="display: none;">게시물이 존재하지 않습니다.</div> -->
 											</div>
 										</li>
 									</ul>
-									<hr>
 								</c:when>
 								<c:otherwise>
-									<!-- 									<hr>
+									<!-- <hr>
 									<ul class="list_newsissue">
 										<li class="libi">
 											<div class="item_issue" data-tiara-layer="headline1">
@@ -123,6 +121,7 @@ a:hover {
 									<hr> -->
 								</c:otherwise>
 							</c:choose>
+							<hr>
 						</c:forEach>
 					</div>
 				</div>
