@@ -27,8 +27,8 @@
 		<form action="./add" method="post">
 			<div class="mb-3">
 				<label for="formGroupExampleInput2" class="form-label">작성자</label>
-				<input type="hidden" name="userID" value="${member.userName}">
-				<input type="text" class="form-control" readonly value="${member.userName}">
+				<input type="hidden" name="userID" value="${member.userID}">
+				<input type="text" class="form-control" readonly value="${member.userID}">
 			</div>
 
 			<!-- <div class="mb-3">
