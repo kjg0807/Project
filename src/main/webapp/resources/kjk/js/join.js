@@ -24,7 +24,7 @@ id.addEventListener("blur", function () {
         url: '/kjk/member/checkId',
         type: "post",
         data: { id: mbId },
-        dataType: 'json',
+        dataType: 'text',
         success: function (result) {
             if (result == 1) {
                 if(d == '1'){
@@ -48,8 +48,10 @@ id.addEventListener("blur", function () {
                 idcheck = true;
             }
         },
-        error: function () {
+        error: function (textStatus, errorThrown) {
             alert("서버 요청 실패");
+            console.log(textStatus);
+            console.log(errorThrown);
         }
     })
 });
@@ -108,7 +110,7 @@ function na() {
         url: '/kjk/member/checkName',
         type: "post",
         data: { name: mbId },
-        dataType: 'json',
+        dataType: 'text',
         success: function (result) {
             if (result == 1) {
                 $("#name_feedback").html("이미 사용중인 닉네임입니다.");
@@ -160,7 +162,7 @@ emin.addEventListener("blur", function () {
         url: '/kjk/member/checkEmail',
         type: "post",
         data: { email: mbId },
-        dataType: 'json',
+        dataType: 'text',
         success: function (result) {
             // console.log(emvalue);
             $("#email2").val(emvalue);
@@ -221,7 +223,7 @@ emse.addEventListener("change", function () {
         url: '/kjk/member/checkEmail',
         type: "post",
         data: { email: mbId },
-        dataType: 'json',
+        dataType: 'text',
         success: function (result) {
             if (result == 1) {
                 $("#email_feedback").html("이미 사용중인 이메일입니다.");
@@ -285,7 +287,7 @@ function ph() {
         url: '/kjk/member/checkPhone',
         type: "post",
         data: { phone: mbId },
-        dataType: 'json',
+        dataType: 'text',
         success: function (result) {
             if (result == 1) {
                 $("#phone_feedback").html("이미 사용중인 전화번호입니다.");

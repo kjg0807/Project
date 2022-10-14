@@ -42,7 +42,7 @@
 					<div></div>
 				</div>
 				<div class="mb-3">
-					<button type="submit" class="btn btn-primary log">로그인</button>
+					<button type="submit" class="btn btn-outline-dark log">로그인</button>
 				</div>
 			</div>
 		</section>

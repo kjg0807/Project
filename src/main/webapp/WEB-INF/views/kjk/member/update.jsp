@@ -78,8 +78,8 @@
 								<input style="width: 37%; padding: 5px; border: 1px solid #dedede" name="emaill"
 									id="emaill" type="text">
 								<input style="width: 37%; padding: 5px; border: 1px solid #dedede" name="email2"
-									id="email2" type="text" placeholder="빈칸일시 수정되지 않음" onfocus="this.placeholder=''"
-									onblur="this.placeholder='빈칸일시 수정되지 않음'">
+									id="email2" type="text" placeholder="선택하지 않으면 변경되지 않음" onfocus="this.placeholder=''"
+									onblur="this.placeholder='선택하지 않으면 변경되지 않음'">
 								<br>
 								<select style="width: 27%; justify-content: right;" name="select_email" id="emses"
 									class="kind">
@@ -133,8 +133,8 @@
 							<div id="genderText3" style="display: none; color: red;">숫자를 입력하세요.</div>
 						</div>
 						<div>
-							<button type="button" id="btn" class="btn btn-primary">정보 수정</button>
-							<button type="reset" class="btn btn-primary">초기화</button>
+							<button type="button" id="btn" class="btn btn-outline-dark">정보 수정</button>
+							<button type="reset" class="btn btn-outline-dark">초기화</button>
 						</div>
 					</div>
 				</section>
