@@ -34,7 +34,7 @@
             
                 <div class="container px-4 px-lg-5 my-5" style="position: absolute; bottom: 150px; left: 15%;">
                    <div class="text-center text-white" >
-                      <h1 class="display-4 fw-bolder" style="color: rgb(255, 255, 255); font-size: 80px;" readonly="readonly">구디의 맛집 리스트</h1>
+                      <h1 class="display-4 fw-bolder" style="color: rgb(255, 255, 255); font-size: 80px;" readonly="readonly">구디플레이트</h1>
     
                       <div class="row" style="padding-bottom: 25px; font-size: 45px;">
                         <form action="./shop/listHTML"  class="row row-cols-lg-auto g-3 align-items-center justify-content-center">
