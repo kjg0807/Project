@@ -34,7 +34,7 @@
             
                 <div class="container px-4 px-lg-5 my-5" style="position: absolute; bottom: 150px; left: 15%;">
                    <div class="text-center text-white" >
-                      <h1 class="display-4 fw-bolder" style="color: rgb(255, 255, 255); font-size: 80px;" readonly="readonly">구디의 맛집 리스트</h1>
+                      <h1 class="display-4 fw-bolder" style="color: rgb(255, 255, 255); font-size: 80px;" readonly="readonly">구디플레이트</h1>
     
                       <div class="row" style="padding-bottom: 25px; font-size: 45px;">
                         <form action="./shop/listHTML"  class="row row-cols-lg-auto g-3 align-items-center justify-content-center">
@@ -71,7 +71,7 @@
                     <div class="col mb-5 point" data-category="" >
                         <div class="card h-100 cs" id="al">
                             <!-- Product image-->
-                            <img class="card-img-top" src="https://dummyimage.com/350x250/dee2e6/6c757d.jpg" alt="..." />
+                            <img class="card-img-top" style="width: 268px; height: 268px;" src="../../resources/kdy/images/allFood.jpg" alt="..." />
                             <!-- Product details-->
                             <div class="card-body p-4">
                                 <div class="text-center">
@@ -86,7 +86,7 @@
                         <div class="card h-100 categorykor" id="categoryName" name="categoryName" style=" border-radius: 10px;">
                             <button type="submit" style="display: none;"></button>
                             <!-- Product image-->
-                            <img class="card-img-top" src="../../resources/kdy/images/korea.jpg" alt="..." value="한식" />
+                            <img class="card-img-top" style="width: 268px; height: 268px;" src="../../resources/kdy/images/prokorea.jpg" alt="..." value="한식" />
                             <!-- Product details-->
                             <div class="card-body p-4">
                                 <div class="text-center">
@@ -99,7 +99,7 @@
                     <div class="col mb-5 point" data-category="중식">
                         <div class="card h-100 cs" style="border-radius: 10px;">
                             <!-- Product image-->
-                            <img class="card-img-top" src="../../resources/kdy/images/china.jpg" alt="..." />
+                            <img class="card-img-top" style="width: 268px; height: 268px;" src="../../resources/kdy/images/prochina.jpg" alt="..." />
                             <!-- Product details-->
                             <div class="card-body p-4">
                                 <div class="text-center">
@@ -113,7 +113,7 @@
                     <div class="col mb-5 point" data-category="일식">
                         <div class="card h-100 cs"style="border-radius: 10px;">
                             <!-- Product image-->
-                            <img class="card-img-top" src="../../resources/kdy/images/jap.jpg" alt="..." />
+                            <img class="card-img-top" style="width: 268px; height: 268px;" src="../../resources/kdy/images/projap.jpg" alt="..." />
                             <!-- Product details-->
                             <div class="card-body p-4">
                                 <div class="text-center">
@@ -127,7 +127,7 @@
                     <div class="col mb-5 point" data-category="분식">
                         <div class="card h-100 cs"style="border-radius: 10px;">
                             <!-- Product image-->
-                            <img class="card-img-top" src="../../resources/kdy/images/bun.jpg" alt="..." />
+                            <img class="card-img-top" style="width: 268px; height: 268px;" src="../../resources/kdy/images/probun.jpg" alt="..." />
                             <!-- Product details-->
                             <div class="card-body p-4">
                                 <div class="text-center">
@@ -141,7 +141,7 @@
                     <div class="col mb-5 point" data-category="양식">
                         <div class="card h-100 cs" style="border-radius: 10px;">
                             <!-- Product image-->
-                            <img class="card-img-top" src="../../resources/kdy/images/yang.jpg" alt="..." />
+                            <img class="card-img-top" style="width: 268px; height: 268px;" src="../../resources/kdy/images/proyang.jpg" alt="..." />
                             <!-- Product details-->
                             <div class="card-body p-4">
                                 <div class="text-center">
@@ -155,7 +155,7 @@
                     <div class="col mb-5 point" data-category="아시안">
                         <div class="card h-100 cs" style="border-radius: 10px;">
                             <!-- Product image-->
-                            <img class="card-img-top" src="../../resources/kdy/images/ssal.jpg" alt="..." />
+                            <img class="card-img-top" style="width: 268px; height: 268px;" src="../../resources/kdy/images/prossal.jpg" alt="..." />
                             <!-- Product details-->
                             <div class="card-body p-4">
                                 <div class="text-center">
