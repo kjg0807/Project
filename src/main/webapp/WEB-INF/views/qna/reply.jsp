@@ -13,7 +13,7 @@
 		 <c:import url="../template/headerHTML.jsp"></c:import>
 </head>
 <body>
-	<h1 class="align-center">Reply Page</h1>
+	<h1 class="align-center">답글페이지</h1>
 <section class="container-fluid col-lg-4">
 	
 	<div class="row">
@@ -21,7 +21,7 @@
 			<input type="hidden" name="num" value="${qnaDTO.num}">
 			<div class="mb-3">
 			  <label for="userID" class="form-label">작성자</label>
-			  <input type="text" name="userID" class="form-control" value="${dto.userID}" readonly disabled>
+			  <input type="text" name="userID" class="form-control" value="${member.userID}" readonly disabled>
 			</div>
 			<div class="mb-3">
 			  <label for="title" class="form-label">제목</label>
