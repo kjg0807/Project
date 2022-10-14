@@ -40,6 +40,7 @@ public class ShopController {
       MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
       shopDTO.setUserID(memberDTO.getUserID());
       int result = shopService.setAdd(shopDTO, files, session.getServletContext());
+      System.out.println("중복중복중복");
       mv.addObject("result", result);
       mv.setViewName("redirect:./listHTML");      
          return mv;      
