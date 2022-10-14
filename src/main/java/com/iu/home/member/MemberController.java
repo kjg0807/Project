@@ -223,6 +223,7 @@ public class MemberController
 	{
 		System.out.println("checkId GET");
 
+		System.out.println(id);
 		int rs = memberService.getCheckId(id);
 		System.out.println(rs);
 		return rs;
