@@ -37,11 +37,6 @@ select {
 	vertical-align: middle
 }
 </style>
-<script>
-	function check() {
-		window.open("./checkId", "_blank", "width=600,height=600");
-	}
-</script>
 <body>
 	<c:import url="../../template/headerHTML.jsp"></c:import>
 
@@ -54,7 +49,7 @@ select {
 				<div class="mb-3">
 					<label class="form-label">아이디</label>
 					<input type="text" class="form-control" name="userID" aria-describedby="emailHelp" placeholder="아이디 입력" onfocus="this.placeholder=''"
-						onblur="this.placeholder='아이디 입력'" id="id" autocomplete="off"
+						onblur="this.placeholder='아이디 입력'" id="id"
 					>
 					<!-- <button type="button" id="idchecked" class="btn btn-outline-dark">ID 중복 체크</button> -->
 					<!-- onclick="check();" -->
@@ -176,8 +171,8 @@ select {
 
 				<!-- id, pwd, name, email, phone의 각 조건을 검사 후 조건이 맞을때만 회원가입 -->
 				<div>
-					<button type="button" id="btn1" class="btn btn-primary">회원 가입</button>
-					<button type="reset" class="btn btn-primary">초기화</button>
+					<button type="button" id="btn1" class="btn btn-outline-dark">회원 가입</button>
+					<button type="reset" class="btn btn-outline-dark">초기화</button>
 				</div>
 			</div>
 		</section>

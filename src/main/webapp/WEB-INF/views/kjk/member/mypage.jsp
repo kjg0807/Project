@@ -50,10 +50,15 @@ a:hover {
 }
 
 #cont {
-	white-space: nowrap;
-	overflow: hidden;
-	text-overflow: ellipsis;
-	max-width: 200px;
+	max-width: 100px; /* 보이는 글자 수 제한 */
+	/* overflow: hidden; */ /* 넓이가 width를 넒어서는 내용에 대해서는 보이지 않게 처리함 */
+	white-space: nowrap; /* 공백문자가 있는 경우 줄바꿈하지 않고 한줄로 나오게 처리함 */
+	text-overflow: ellipsis; /* 글자가 넓이 70px를 넘을 경우 생략부호를 표시함 */
+	overflow: scroll;
+}
+
+#inpytStyle:hover {
+	color: #212529;
 }
 </style>
 
@@ -67,18 +72,26 @@ a:hover {
 					<table class="table table-hover">
 						<tr>
 							<td>아이디</td>
+							<td>비밀번호</td>
 							<td>닉네임</td>
 							<td>이메일</td>
 							<td>전화번호</td>
 							<td>메뉴</td>
+							<td>비밀번호 보기</td>
 						</tr>
 						<tr>
 							<td>${dto.userID }</td>
+							<td>
+								<input type="password" value="${dto.pwd}" id="inpytStyle" style="border: none; width: 70px; background-color: var(--bs-table-bg); color: black;" disabled>
+							</td>
 							<td>${dto.userName }</td>
 							<td>${dto.email }</td>
 							<td>${dto.phone }</td>
 							<td id="upDe">
 								<a id="up" href="./update?userid=${dto.userID}">정보 수정</a> | <a id="up" href="./delete?userid=${dto.userID}">회원 탈퇴</a>
+							</td>
+							<td>
+								<button type="button" style="width: auto;" class="btn btn-outline-dark" id="pwdCheck">클릭</button>
 							</td>
 						</tr>
 					</table>
@@ -133,6 +146,18 @@ a:hover {
 	<!-- title; writer; contents; reviewDate; hits; -->
 	<c:import url="../../template/footerHTML.jsp"></c:import>
 	<script src="/resources/kjk/js/mypageReview.js"></script>
+	<script src="http://code.jquery.com/jquery-latest.js"></script>
+	<script>
+		let inpwd = document.getElementById("pwdCheck");
+		inpwd.addEventListener("click", function() {
+			if ($('#inpytStyle').prop("type","password")) {
+				$('#inpytStyle').prop("type","text");
+			}
+			else{
+				$('#inpytStyle').prop("type","password");
+			}
+		});
+	</script>
 </body>
 
 </html>
