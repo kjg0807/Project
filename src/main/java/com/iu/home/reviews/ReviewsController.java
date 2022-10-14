@@ -265,7 +265,9 @@ public class ReviewsController {
 		ReviewsDTO reviewsDTO = new ReviewsDTO();
 		ReviewsCommentDTO reviewsCommentDTO = new ReviewsCommentDTO();
 		
+		System.out.println("댓글리스트 1번");
 		reviewsCommentDTO.setUserID(memberDTO.getUserID());
+		System.out.println("댓글리스트 2번");
 		
 		List<ReviewsCommentDTO> ar = reviewsService.getReviewsCommentList(reviewsCommentPager);
 		

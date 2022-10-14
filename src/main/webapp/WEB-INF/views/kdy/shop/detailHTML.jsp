@@ -24,9 +24,7 @@
 
   #tb1{
     cursor:default;
-  }
-
- 
+  } 
 
   #dcontents{
     white-space: nowrap;
@@ -40,6 +38,10 @@
 	  overflow: hidden;
 	  text-overflow: ellipsis !important;
 	  max-width: 200px;
+  }
+
+  .search11{
+    margin: 0 0 0 0;
   }
 </style>
 </head>
@@ -277,30 +279,37 @@
         
         <form action="../shop/detailHTML" class="row row-cols-lg-auto g-3 align-items-center">
             <!-- <form action="../../reviews/list" class="row row-cols-lg-auto g-3 align-items-center"> -->
-              <div class="container px-4 px-lg-5 my-5" style=" left: 45%;" >
-              <div class="col-12">
-                <input type="hidden" name="shopNum" value="${param.shopNum}">
-                <label class="visually-hidden" for="kind">Kind</label>
-                <select name="kind" class="form-select" id="kind">
-                  <option selected>선택하세요</option>
-                  <option class="kinds" value="userID">닉네임</option>
-                  <option class="kinds" value="title">제목</option>
-                  <option class="kinds" value="contents">내용</option>
-                </select>
-              </div>
-                <div class="col-12">
-                    <label class="visually-hidden" for="search">검색어를 입력하세요</label>
-                  <div class="input-group">
-                      <input type="text" name="search" value="${param.search}" class="form-control" id="search">
-                </div>
-              </div>   
-            <div class="col-12">
-              <button type="submit" class="btn btn-primary">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
-                <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
-                </svg>
-                  검색
-            </button>
+          <div class="container px-4 px-lg-5 my-5" style=" left: 45%;">
+              <!-- div class="col-12" 태그들을 감싸는 div -->
+            <div class="search11">
+
+                    <div class="col-12 search11">
+                      <input type="hidden" name="shopNum" value="${param.shopNum}">
+                      <label class="visually-hidden" for="kind">Kind</label>
+                      <select name="kind" class="form-select" id="kind">
+                        <option selected>선택하세요</option>
+                        <option class="kinds" value="userID">닉네임</option>
+                        <option class="kinds" value="title">제목</option>
+                        <option class="kinds" value="contents">내용</option>
+                      </select>
+                    </div>
+
+                    <div class="col-12">
+                      <label class="visually-hidden" for="search">검색어를 입력하세요</label>
+                    </div>
+
+                    <div class="input-group search11">
+                        <input type="text" name="search" value="${param.search}" class="form-control" id="search">
+                    </div>   
+
+                    <div class="col-12 search11">
+                      <button type="submit" class="btn btn-primary">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                          </svg>
+                            검색
+                      </button>
+                    </div>
             </div>
           </div>
       </form>
@@ -311,7 +320,7 @@
               <div class="reviews_list" onclick="location.href='../../reviews/detail?reviewNum=${pageScope.dto.reviewNum}';">
                 <div class="list" >
                   <div>
-                    <div class="d-flex">
+                    <div class="d-flex" style="cursor: pointer;">
                       <div class="p-2 w-100" >
                         <div class="container2" style="font-size: 15px; padding: 12px; border-bottom: solid 1px gainsboro; height: 130px;" >
                           <td>글번호&nbsp;&nbsp;:&nbsp;&nbsp;${pageScope.dto.reviewNum}</td><br>

@@ -105,7 +105,7 @@ btn.addEventListener("click", function(){
                         
                         getReviewsCommentList(page, reviewNum);
                         
-                        userID.value='';
+                       
                         contents.value='';
                         
                 }else{
@@ -526,4 +526,23 @@ trow.forEach(function(tr, index){
     tr.addEventListener("click", function(){
         console.log("tr 클릭이벤트");
     });
+});
+
+
+
+// 리뷰디테일에서 수정하기 버튼 누르면 작성자만 수정할 수 있게 alert
+// const updateComment1 = document.querySelector("#updateComment1");
+// const alertOpenBtn = document.querySelector("#alertOpenBtn");
+const updateComment1 = document.getElementById("updateComment1");
+const alertOpenBtn = document.getElementById("alertOpenBtn");
+
+updateComment1.addEventListener("click", function(){
+    if(updateComment1.getAttribute("data-userID") != updateComment1.getAttribute("data-user")){
+
+        alert("작성자만 수정가능합니다.");
+        return;
+        
+    }
+
+        alertOpenBtn.click();
 });
