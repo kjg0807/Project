@@ -83,7 +83,7 @@
 								<br>
 								<select style="width: 27%; justify-content: right;" name="select_email" id="emses"
 									class="kind">
-									<option class="kinds" value="">직접입력</option>
+									<option class="kinds" value="">선택하세요</option>
 									<option class="kinds" value="@naver.com">naver.com</option>
 									<option class="kinds" value="@gmail.com">gmail.com</option>
 									<option class="kinds" value="@daum.com">daum.com</option>

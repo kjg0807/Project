@@ -72,6 +72,34 @@ function na() {
         document.getElementById("nameText").style.display = 'none';
         namecheck = true;
     }
+    let mbId = $("#name").val();
+    $.ajax({
+        url: '/kjk/member/checkName',
+        type: "post",
+        data: { name: mbId },
+        dataType: 'text',
+        success: function (result) {
+            if (result == 1) {
+                $("#name_feedback").html("이미 사용중인 닉네임입니다.");
+                $("#name_feedback").attr("color", "#dc3545");
+                namecheck = false;
+            }
+            else {
+                if(ne.length < a){
+                    document.getElementById("nameText").style.display = 'block';
+                    namecheck = false;
+                    $("#name_feedback").html("");
+                    return;
+                }
+                $("#name_feedback").html("사용할 수 있는 닉네임입니다.");
+                $("#name_feedback").attr("color", "#2fb380");
+                namecheck = true;
+            }
+        },
+        error: function () {
+            alert("서버 요청 실패");
+        }
+    })
 }
 
 var emin = document.getElementById("email2");
@@ -276,8 +304,13 @@ btn.addEventListener("click", function () {
         frm.submit();
         alert("바뀌지 않으면 새로고침하세요.");
     }
+    else if(namecheck == false){
+        alert("동일한 이름이 존재합니다.");
+        return;
+    }
     else{
-        alert("이유가 뭐저ㅣ");
+        alert("수정에 실패했습니다. 다시 시도해주세요");
+        return;
     }
     if ((id || pwd || name1 || email || phone || age || birth || gender) == "") {
         alert("빈칸이 존재합니다.");
